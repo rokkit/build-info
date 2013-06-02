@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BuildInfo</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<!-- nav menu -->
+	<%= link_to 'Главная', root_path %>
+	<%= link_to 'Новости', news_index_path %>
+	<%= link_to 'Список объектов', build_object_index_path %>
+<%= yield %>
+	<div>
+		<% if user_signed_in? %>
+			<%= link_to "Выход", destroy_sessions_path %>
+		<% else %>
+			<%= render '/devise/sessions/new' %>
+		<% end %>
+	</div>
+</body>
+</html>

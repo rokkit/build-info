@@ -1,0 +1,51 @@
+<h1>Listing addresses</h1>
+
+<table>
+  <tr>
+    <th>Country</th>
+    <th>Region</th>
+    <th>City</th>
+    <th>Distinct</th>
+    <th>Street</th>
+    <th>Number house</th>
+    <th>Number korp</th>
+    <th>Minibus</th>
+    <th>Bus</th>
+    <th>Trolleybus</th>
+    <th>Railsbus</th>
+    <th>Metro</th>
+    <th>Valute</th>
+    <th>Ipoteka</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @addresses.each do |address| %>
+  <tr>
+    <td><%= address.country %></td>
+    <td><%= address.region %></td>
+    <td><%= address.city %></td>
+    <td><%= address.distinct %></td>
+    <td><%= address.street %></td>
+    <td><%= address.number_house %></td>
+    <td><%= address.number_korp %></td>
+    <td><%= address.minibus %></td>
+    <td><%= address.bus %></td>
+    <td><%= address.trolleybus %></td>
+    <td><%= address.railsbus %></td>
+    <td><%= address.metro %></td>
+    <td><%= address.valute %></td>
+    <td><%= address.ipoteka %></td>
+    <td><%= address.description %></td>
+    <td><%= link_to 'Show', address %></td>
+    <td><%= link_to 'Edit', edit_address_path(address) %></td>
+    <td><%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Address', new_address_path %>

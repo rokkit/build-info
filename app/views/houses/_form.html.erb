@@ -1,0 +1,117 @@
+<%= form_for(@house) do |f| %>
+  <% if @house.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@house.errors.count, "error") %> prohibited this house from being saved:</h2>
+
+      <ul>
+      <% @house.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :type_of_house %><br />
+    <%= f.text_field :type_of_house %>
+  </div>
+  <div class="field">
+    <%= f.label :byear %><br />
+    <%= f.date_select :byear %>
+  </div>
+  <div class="field">
+    <%= f.label :overhault %><br />
+    <%= f.check_box :overhault %>
+  </div>
+  <div class="field">
+    <%= f.label :material %><br />
+    <%= f.text_field :material %>
+  </div>
+  <div class="field">
+    <%= f.label :overlap %><br />
+    <%= f.text_field :overlap %>
+  </div>
+  <div class="field">
+    <%= f.label :elevator %><br />
+    <%= f.check_box :elevator %>
+  </div>
+  <div class="field">
+    <%= f.label :chute %><br />
+    <%= f.check_box :chute %>
+  </div>
+  <div class="field">
+    <%= f.label :consierge %><br />
+    <%= f.check_box :consierge %>
+  </div>
+  <div class="field">
+    <%= f.label :stair %><br />
+    <%= f.text_field :stair %>
+  </div>
+  <div class="field">
+    <%= f.label :basement %><br />
+    <%= f.text_field :basement %>
+  </div>
+  <div class="field">
+    <%= f.label :hfirstfloor %><br />
+    <%= f.text_field :hfirstfloor %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :builder %><br />
+    <%= f.text_field :builder %>
+  </div>
+  <div class="field">
+    <%= f.label :user %><br />
+    <%= f.text_field :user %>
+  </div>
+  <div class="field">
+    <%= f.label :shopprod %><br />
+    <%= f.text_field :shopprod %>
+  </div>
+  <div class="field">
+    <%= f.label :domesticserv %><br />
+    <%= f.text_field :domesticserv %>
+  </div>
+  <div class="field">
+    <%= f.label :shopping %><br />
+    <%= f.text_field :shopping %>
+  </div>
+  <div class="field">
+    <%= f.label :phrmacy %><br />
+    <%= f.text_field :phrmacy %>
+  </div>
+  <div class="field">
+    <%= f.label :clinic %><br />
+    <%= f.text_field :clinic %>
+  </div>
+  <div class="field">
+    <%= f.label :kgarten %><br />
+    <%= f.text_field :kgarten %>
+  </div>
+  <div class="field">
+    <%= f.label :school %><br />
+    <%= f.text_field :school %>
+  </div>
+  <div class="field">
+    <%= f.label :bank %><br />
+    <%= f.text_field :bank %>
+  </div>
+  <div class="field">
+    <%= f.label :parking %><br />
+    <%= f.text_field :parking %>
+  </div>
+  <div class="field">
+    <%= f.label :park %><br />
+    <%= f.text_field :park %>
+  </div>
+  <div class="field">
+    <%= f.label :busstop %><br />
+    <%= f.text_field :busstop %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

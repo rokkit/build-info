@@ -1,0 +1,77 @@
+<%= form_for(@address) do |f| %>
+  <% if @address.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@address.errors.count, "error") %> prohibited this address from being saved:</h2>
+
+      <ul>
+      <% @address.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :country %><br />
+    <%= f.text_field :country %>
+  </div>
+  <div class="field">
+    <%= f.label :region %><br />
+    <%= f.text_field :region %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :distinct %><br />
+    <%= f.text_field :distinct %>
+  </div>
+  <div class="field">
+    <%= f.label :street %><br />
+    <%= f.text_field :street %>
+  </div>
+  <div class="field">
+    <%= f.label :number_house %><br />
+    <%= f.text_field :number_house %>
+  </div>
+  <div class="field">
+    <%= f.label :number_korp %><br />
+    <%= f.text_field :number_korp %>
+  </div>
+  <div class="field">
+    <%= f.label :minibus %><br />
+    <%= f.text_field :minibus %>
+  </div>
+  <div class="field">
+    <%= f.label :bus %><br />
+    <%= f.text_field :bus %>
+  </div>
+  <div class="field">
+    <%= f.label :trolleybus %><br />
+    <%= f.text_field :trolleybus %>
+  </div>
+  <div class="field">
+    <%= f.label :railsbus %><br />
+    <%= f.text_field :railsbus %>
+  </div>
+  <div class="field">
+    <%= f.label :metro %><br />
+    <%= f.text_field :metro %>
+  </div>
+  <div class="field">
+    <%= f.label :valute %><br />
+    <%= f.text_field :valute %>
+  </div>
+  <div class="field">
+    <%= f.label :ipoteka %><br />
+    <%= f.check_box :ipoteka %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

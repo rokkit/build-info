@@ -1,0 +1,71 @@
+<h1>Listing houses</h1>
+
+<table>
+  <tr>
+    <th>Type of house</th>
+    <th>Byear</th>
+    <th>Overhault</th>
+    <th>Material</th>
+    <th>Overlap</th>
+    <th>Elevator</th>
+    <th>Chute</th>
+    <th>Consierge</th>
+    <th>Stair</th>
+    <th>Basement</th>
+    <th>Hfirstfloor</th>
+    <th>Name</th>
+    <th>Builder</th>
+    <th>User</th>
+    <th>Shopprod</th>
+    <th>Domesticserv</th>
+    <th>Shopping</th>
+    <th>Phrmacy</th>
+    <th>Clinic</th>
+    <th>Kgarten</th>
+    <th>School</th>
+    <th>Bank</th>
+    <th>Parking</th>
+    <th>Park</th>
+    <th>Busstop</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @houses.each do |house| %>
+  <tr>
+    <td><%= house.type_of_house %></td>
+    <td><%= house.byear %></td>
+    <td><%= house.overhault %></td>
+    <td><%= house.material %></td>
+    <td><%= house.overlap %></td>
+    <td><%= house.elevator %></td>
+    <td><%= house.chute %></td>
+    <td><%= house.consierge %></td>
+    <td><%= house.stair %></td>
+    <td><%= house.basement %></td>
+    <td><%= house.hfirstfloor %></td>
+    <td><%= house.name %></td>
+    <td><%= house.builder %></td>
+    <td><%= house.user %></td>
+    <td><%= house.shopprod %></td>
+    <td><%= house.domesticserv %></td>
+    <td><%= house.shopping %></td>
+    <td><%= house.phrmacy %></td>
+    <td><%= house.clinic %></td>
+    <td><%= house.kgarten %></td>
+    <td><%= house.school %></td>
+    <td><%= house.bank %></td>
+    <td><%= house.parking %></td>
+    <td><%= house.park %></td>
+    <td><%= house.busstop %></td>
+    <td><%= link_to 'Show', house %></td>
+    <td><%= link_to 'Edit', edit_house_path(house) %></td>
+    <td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New House', new_house_path %>
