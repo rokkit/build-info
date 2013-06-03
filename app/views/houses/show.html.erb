@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
-
+<p>
+	<b>Фотографии</b>
+	<%= @house.photos.each do |photo|%>
+		<%= image_tag photo.image_url.to_s %>
+	<%= end %>
+</p>
 <p>
   <b>Type of house:</b>
   <%= @house.type_of_house %>

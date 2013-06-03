@@ -73,7 +73,7 @@ class HousesController < ApplicationController
       @house.destroy
 
       respond_to do |format|
-        format.html { redirect_to promos_url }
+        format.html { redirect_to houses_url }
         format.json { head :no_content }
       end
     end

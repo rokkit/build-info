@@ -1,0 +1,32 @@
+ru:
+  activerecord:
+     models:
+       country: "Страна"
+       region: "Регион"
+       city: "Город"
+       distinct: "Район"
+       street: "Улица"
+       address: "Адрес"
+       metro: "Метро"
+       appartement: "Квартира"
+       house: "Дом"
+     attributes:
+       country:
+          name: "Название"
+          created_at: "Добавлено"
+          updated_at: "Обновлено"
+       town:
+          name: "Название"
+          created_at: "Добавлено"
+          updated_at: "Обновлено"
+       house:
+          name: "Название"
+          byear: "Дата постройки"
+          overhault: "Капитальный ремонт"
+          elevator: "Лифт"
+          consierge: "Консьерж"
+          chute: "Мусоропровод"
+          basement: "Подвал"
+          hfirstfloor: "Высота 1 этажа"
+          created_at: "Добавлено"
+          updated_at: "Обновлено"

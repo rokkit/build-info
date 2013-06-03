@@ -12,6 +12,9 @@ class Ability
         can :manage, Article do |article|
                 article.try(:user) == user
         end
+        can :manage, House do |house|
+                house.try(:user) == user
+        end
       end
     #
     # The first argument to `can` is the action you are giving the user 
