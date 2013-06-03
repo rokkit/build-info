@@ -176,6 +176,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 3.2.1)
   devise
+  has_scope
   jquery-datatables-rails!
   jquery-rails
   jquery-ui-rails

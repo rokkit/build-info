@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130602212542) do
+ActiveRecord::Schema.define(:version => 20130603085209) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -96,7 +96,27 @@ ActiveRecord::Schema.define(:version => 20130602212542) do
   add_index "appartements", ["toilet_id"], :name => "index_appartements_on_toilet_id"
   add_index "appartements", ["view_from_windows_id"], :name => "index_appartements_on_view_from_windows_id"
 
+  create_table "articles", :force => true do |t|
+    t.string   "name"
+    t.text     "content"
+    t.integer  "user_id"
+    t.boolean  "published"
+    t.integer  "category_article_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "rating"
+  end
+
+  add_index "articles", ["category_article_id"], :name => "index_articles_on_category_article_id"
+  add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
+
   create_table "basements", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "category_articles", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -196,6 +216,13 @@ ActiveRecord::Schema.define(:version => 20130602212542) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "photos", :force => true do |t|
+    t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "house_id"
   end
 
   create_table "plannings", :force => true do |t|

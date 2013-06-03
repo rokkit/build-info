@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+	<th>Цена</th>
     <th>Type of house</th>
     <th>Byear</th>
     <th>Overhault</th>
@@ -34,6 +35,7 @@
 
 <% @houses.each do |house| %>
   <tr>
+      <td><%= house.terms.price %></td>
     <td><%= house.type_of_house %></td>
     <td><%= house.byear %></td>
     <td><%= house.overhault %></td>

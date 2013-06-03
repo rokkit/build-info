@@ -1,4 +1,7 @@
 BuildInfo::Application.routes.draw do
+  resources :articles
+
+
   get "build_object/index"
 
   get "build_object/show"

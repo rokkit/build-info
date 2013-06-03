@@ -11,10 +11,11 @@
 	<%= link_to 'Главная', root_path %>
 	<%= link_to 'Новости', news_index_path %>
 	<%= link_to 'Список объектов', build_object_index_path %>
+	<%= link_to 'Статьи', articles_path %>
 <%= yield %>
 	<div>
 		<% if user_signed_in? %>
-			<%= link_to "Выход", destroy_sessions_path %>
+			<%= link_to "Выход", destroy_user_session_path, method: :delete %>
 		<% else %>
 			<%= render '/devise/sessions/new' %>
 		<% end %>
