@@ -1,0 +1,5 @@
+<%= datagrid_form_for @grid, :method => :get, :url => build_object_reports_path %>
+
+<%= paginate(@assets) %>
+<%= datagrid_table @grid, @assets %>
+<%= paginate(@assets) %>

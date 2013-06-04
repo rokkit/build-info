@@ -12,7 +12,7 @@
 
 <p>
   <b>User:</b>
-  <%= @article.user %>
+  <%= @article.user || "admin" %>
 </p>
 
 <p>
@@ -20,6 +20,7 @@
   <%= @article.category_article %>
 </p>
 
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
+	<% if can? :update, @article %>
+		<%= link_to 'Edit', edit_article_path(@article) %>
+	<% end %>
 <%= link_to 'Back', articles_path %>

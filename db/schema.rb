@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130604080928) do
+ActiveRecord::Schema.define(:version => 20130604132157) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -41,9 +41,9 @@ ActiveRecord::Schema.define(:version => 20130604080928) do
     t.string   "trolleybus"
     t.string   "railsbus"
     t.integer  "metro_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.integer  "house_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "build_object_id"
   end
 
   add_index "addresses", ["city_id"], :name => "index_addresses_on_city_id"
@@ -115,6 +115,52 @@ ActiveRecord::Schema.define(:version => 20130604080928) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "build_objects", :force => true do |t|
+    t.string   "type"
+    t.decimal  "price"
+    t.integer  "user_id"
+    t.integer  "type_of_house_id"
+    t.date     "byear"
+    t.boolean  "overhault"
+    t.integer  "material_id"
+    t.integer  "overlap_id"
+    t.boolean  "elevator"
+    t.boolean  "chute"
+    t.boolean  "consierge"
+    t.integer  "stair_id"
+    t.integer  "basement_id"
+    t.float    "hfirstfloor"
+    t.string   "name"
+    t.string   "builder"
+    t.string   "shopprod"
+    t.string   "domesticserv"
+    t.string   "shopping"
+    t.string   "phrmacy"
+    t.string   "clinic"
+    t.string   "kgarten"
+    t.string   "school"
+    t.string   "bank"
+    t.string   "parking"
+    t.string   "park"
+    t.string   "busstop"
+    t.integer  "address_id"
+    t.integer  "terms_id"
+    t.integer  "floor"
+    t.integer  "rooms"
+    t.float    "area"
+    t.float    "living_area"
+    t.float    "kitchen_area"
+    t.integer  "planning_id"
+    t.float    "hfloor"
+    t.integer  "toilet_id"
+    t.integer  "remont_id"
+    t.boolean  "balkon"
+    t.integer  "hotwater_id"
+    t.integer  "view_from_windows_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "category_articles", :force => true do |t|
@@ -222,9 +268,9 @@ ActiveRecord::Schema.define(:version => 20130604080928) do
 
   create_table "photos", :force => true do |t|
     t.string   "image"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "house_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "build_object_id"
   end
 
   create_table "plannings", :force => true do |t|

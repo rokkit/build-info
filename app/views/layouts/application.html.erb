@@ -10,7 +10,7 @@
 	<!-- nav menu -->
 	<%= link_to 'Главная', root_path %>
 	<%= link_to 'Новости', news_index_path %>
-	<%= link_to 'Список объектов', build_object_index_path %>
+	<%= link_to 'Список объектов', build_objects_path %>
 	<%= link_to 'Статьи', articles_path %>
 	<div> <!-- статьи -->
 		<%= render 'articles/index', :locals=>{ :articles_in_side => Article.top } %>

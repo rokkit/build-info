@@ -1,10 +1,15 @@
 BuildInfo::Application.routes.draw do
+  resources :build_object_reports
+
   resources :articles
+  
+  resources :build_objects
 
 
-  get "build_object/index"
-
-  get "build_object/show"
+  # get "build_object/index"
+ # 
+ #  get "build_object/show"
+ #  get "build_object/by_user"
 
   resources :news
 

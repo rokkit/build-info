@@ -1,0 +1,123 @@
+
+<%= simple_form_for(@build_object) do |f| %>
+<% @build_object.address = Address.new %>
+  <% if @build_object.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@build_object.errors.count, "error") %> prohibited this house from being saved:</h2>
+
+      <ul>
+      <% @build_object.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="adress-fields">
+	  <%= f.fields_for :address do |fa| %>
+	  <div class="field">
+		<%= fa.label :country, "Страна" %>
+	  	<%= fa.collection_select :country, Country.order(:name),:id,:name, include_blank:true %>
+	  </div>
+	  <div class="field">
+	      <%= fa.label :region, "Регион" %>
+	      <%= fa.grouped_collection_select :region, Country.order(:name),:regions,:name, :id, :name, include_blank:true %>
+	    </div>
+	  <% end %>
+  </div>
+  <div class="field">
+	  <%= f.fields_for :photos do |image| %>
+	      <%= image.file_field :image %>
+	  <% end %>
+  <div>
+  <div class="field">
+    <%= f.association :type_of_house, label: "Тип дома" %>
+  </div>
+  <div class="field">
+    <%= f.label :byear %><br />
+    <%= f.date_select :byear %>
+  </div>
+  <div class="field">
+     <%= f.label :overhault, "Капитальный ремонт" %>
+    <%= f.check_box :overhault %>
+  </div>
+  <div class="field">
+    <%= f.association :material %>
+  </div>
+  <div class="field">
+    <%= f.label :elevator %><br />
+    <%= f.check_box :elevator %>
+  </div>
+  <div class="field">
+    <%= f.label :chute %><br />
+    <%= f.check_box :chute %>
+  </div>
+  <div class="field">
+    <%= f.label :consierge %><br />
+    <%= f.check_box :consierge %>
+  </div>
+  <div class="field">
+    <%= f.association :stair %>
+  </div>
+  <div class="field">
+    <%= f.association :basement %>
+  </div>
+  <div class="field">
+    <%= f.label :hfirstfloor %><br />
+    <%= f.text_field :hfirstfloor %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :builder %><br />
+    <%= f.text_field :builder %>
+  </div>
+  <div class="field">
+    <%= f.label :shopprod %><br />
+    <%= f.text_field :shopprod %>
+  </div>
+  <div class="field">
+    <%= f.label :domesticserv %><br />
+    <%= f.text_field :domesticserv %>
+  </div>
+  <div class="field">
+    <%= f.label :shopping %><br />
+    <%= f.text_field :shopping %>
+  </div>
+  <div class="field">
+    <%= f.label :phrmacy %><br />
+    <%= f.text_field :phrmacy %>
+  </div>
+  <div class="field">
+    <%= f.label :clinic %><br />
+    <%= f.text_field :clinic %>
+  </div>
+  <div class="field">
+    <%= f.label :kgarten %><br />
+    <%= f.text_field :kgarten %>
+  </div>
+  <div class="field">
+    <%= f.label :school %><br />
+    <%= f.text_field :school %>
+  </div>
+  <div class="field">
+    <%= f.label :bank %><br />
+    <%= f.text_field :bank %>
+  </div>
+  <div class="field">
+    <%= f.label :parking %><br />
+    <%= f.text_field :parking %>
+  </div>
+  <div class="field">
+    <%= f.label :park %><br />
+    <%= f.text_field :park %>
+  </div>
+  <div class="field">
+    <%= f.label :busstop %><br />
+    <%= f.text_field :busstop %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

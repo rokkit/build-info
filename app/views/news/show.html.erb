@@ -15,6 +15,7 @@
   <%= @news.content %>
 </p>
 
-
-<%= link_to 'Edit', edit_news_path(@news) %> |
+<% if can? :update, @news %>
+	<%= link_to 'Edit', edit_news_path(@news) %>
+<% end %>
 <%= link_to 'Back', news_index_path %>

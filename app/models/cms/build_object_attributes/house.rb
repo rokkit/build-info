@@ -4,8 +4,8 @@ class House < ActiveRecord::Base
   belongs_to :overlap
   belongs_to :stair
   belongs_to :basement
-  belongs_to :user
-  has_one :address
+  #belongs_to :user
+
   attr_accessible :bank, :builder, :busstop, :byear, :chute, :clinic, 
                   :consierge, :domesticserv, :elevator, :hfirstfloor, 
                   :kgarten, :name, :overhault, :park, :parking, :phrmacy, 
@@ -14,5 +14,6 @@ class House < ActiveRecord::Base
                   :photos_attributes
                   
   has_many :photos, :dependent => :destroy 
+  has_one :address
   accepts_nested_attributes_for :photos, :address
 end

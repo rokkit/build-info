@@ -4,7 +4,6 @@ ActiveAdmin.register House do
           f.object.address = Address.new
           f.object.photos = [Photo.new]
           f.inputs do
-            f.input :name
             f.input :price
             f.input :type_of_house
             f.input :material
