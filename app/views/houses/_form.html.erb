@@ -1,4 +1,5 @@
-<%= form_for(@house) do |f| %>
+<%= simple_form_for(@house) do |f| %>
+<% @house.address = Address.new %>
   <% if @house.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@house.errors.count, "error") %> prohibited this house from being saved:</h2>
@@ -10,14 +11,25 @@
       </ul>
     </div>
   <% end %>
+  <div class="adress-fields">
+	  <%= f.fields_for :address do |fa| %>
+	  <div class="field">
+		<%= fa.label :country, "Страна" %>
+	  	<%= fa.collection_select :country,Country.order(:name),:id,:name, include_blank:true %>
+	  </div>
+	  <div class="field">
+	      <%= fa.label :region, "Регион" %>
+	      <%= fa.grouped_collection_select :region, Country.order(:name),:regions,:name, :id, :name, include_blank:true %>
+	    </div>
+	  <% end %>
+  </div>
   <div class="field">
 	  <%= f.fields_for :photos do |image| %>
 	      <%= image.file_field :image %>
 	  <% end %>
   <div>
   <div class="field">
-    <%= f.label :type_of_house %><br />
-    <%= f.text_field :type_of_house %>
+    <%= f.association :type_of_house, label: "Тип дома" %>
   </div>
   <div class="field">
     <%= f.label :byear %><br />

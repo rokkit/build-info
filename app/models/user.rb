@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :rating, :fio, :phone,:name,
@@ -20,5 +20,16 @@ class User < ActiveRecord::Base
   
   def to_s
     name
+  end
+  def confirmation_required?
+    false
+  end
+  def active_for_authentication?
+    confirmed? || confirmation_period_valid?
+  end
+  def approve!
+    skip_confirmation!
+    confirmed_at = Time.zone.now
+    save!
   end
 end

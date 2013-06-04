@@ -12,9 +12,13 @@
 	<%= link_to 'Новости', news_index_path %>
 	<%= link_to 'Список объектов', build_object_index_path %>
 	<%= link_to 'Статьи', articles_path %>
+	<div> <!-- статьи -->
+		<%= render 'articles/index', :locals=>{ :articles_in_side => Article.top } %>
+	</div><!-- статьи -->
 <%= yield %>
 	<div>
 		<% if user_signed_in? %>
+			<%= link_to 'Кабинет', pages_profile_path %>
 			<%= link_to "Выход", destroy_user_session_path, method: :delete %>
 		<% else %>
 			<%= render '/devise/sessions/new' %>

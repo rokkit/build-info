@@ -25,6 +25,7 @@ BuildInfo::Application.routes.draw do
 
 
   get "pages/index"
+  get "pages/profile"
 
   root :to => 'pages#index'
   

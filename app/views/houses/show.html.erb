@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 <p>
 	<b>Фотографии</b>
-	<%= @house.photos.each do |photo|%>
+	<% @house.photos.each do |photo|%>
 		<%= image_tag photo.image_url.to_s %>
-	<%= end %>
+	<% end %>
 </p>
 <p>
   <b>Type of house:</b>

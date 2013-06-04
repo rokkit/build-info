@@ -1,0 +1,23 @@
+<h2 class="block-title">Новости</h2>
+<div class="content">
+	<div class="view">
+		<div class="view-content">
+			<% Article.top.last(2).each do |article| %>
+			<div class="view_row">		
+				<div class="views-field views-field-title">        
+					<span class="field-content">
+						<%= link_to "#{article.name}",article_path(article) %>
+					</span>  
+				</div>
+				<div class="views-field views-field-body">        
+					<div class="field-content">
+						<p>
+						<%= article.content %>
+						</p>
+					</div>  
+				</div>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>

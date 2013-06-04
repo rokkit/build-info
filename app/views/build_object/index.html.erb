@@ -22,14 +22,16 @@
 			<li><%= "#{house.address.street} #{house.address.number_house}" %></li>
 		</ul>
 	</td>
-	<td><%= house.name %>
+	<td>
+		<%= house.name %>
 		<%= image_tag house.photos.first.image_url.to_s %>
 	</td>
-    <td><%= link_to 'Show', house %></td>
+    <td>
+		<%= link_to 'Show', house %></td>
 	<% if can? :update, house %>
     	<td><%= link_to 'Edit', edit_house_path(house) %></td>
+    	<td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	<% end %>
-    <td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

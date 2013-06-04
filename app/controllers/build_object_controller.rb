@@ -3,7 +3,7 @@ class BuildObjectController < ApplicationController
     @build_objects = House.all
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @houses }
+      format.json { render json: @build_objects }
     end
   end
 

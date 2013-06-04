@@ -7,7 +7,7 @@ class Article < ActiveRecord::Base
   before_create :make_unpublished
   
   scope :published, where(published: true)
-  
+  scope :top, Article.published
   
   private
   def make_unpublished

@@ -26,7 +26,7 @@
 		<%= image_tag house.photos.first.image_url.to_s %>
 	</td>
     <td><% link_to 'Show', house %></td>
-	<%= if can? :update, house %>
+	<% if can? :update, house %>
     	<td><%= link_to 'Edit', edit_house_path(house) %></td>
 	<% end %>
     <td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
