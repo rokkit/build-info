@@ -2,12 +2,14 @@ class BuildObjectsController < ApplicationController
   # GET /build_objects
   # GET /build_objects.json
   def index
-    @build_objects = BuildObject.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @build_objects }
-    end
+    # @build_objects = BuildObject.all
+    # 
+    # respond_to do |format|
+    #   format.html # index.html.erb
+    #   format.json { render json: @build_objects }
+    # end
+    @grid = BuildObjectReportsGrid.new(params[:build_object_reports_grid])
+    @assets = @grid.assets.page(params[:page])
   end
 
   # GET /build_objects/1
@@ -25,7 +27,6 @@ class BuildObjectsController < ApplicationController
   # GET /build_objects/new.json
   def new
     @build_object = BuildObject.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @build_object }

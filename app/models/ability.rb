@@ -12,7 +12,7 @@ class Ability
         can :manage, Article do |article|
                 article.try(:user) == user
         end
-        can :manage, House do |house|
+        can :manage, BuildObject do |house|
                 house.try(:user) == user
         end
       end

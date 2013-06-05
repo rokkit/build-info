@@ -1,9 +1,10 @@
-ActiveAdmin.register House do
+ActiveAdmin.register BuildObject do
         menu parent: "Объекты"
         form do |f|
           f.object.address = Address.new
           f.object.photos = [Photo.new]
           f.inputs do
+            f.input :type_of_build_object
             f.input :price
             f.input :type_of_house
             f.input :material

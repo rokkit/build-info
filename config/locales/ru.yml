@@ -1,4 +1,18 @@
 ru:
+  helpers:
+     label:
+      build_object:
+        name: "Название"
+        byear: "Дата постройки"
+        overhault: "Капитальный ремонт"
+        elevator: "Лифт"
+        consierge: "Консьерж"
+        chute: "Мусоропровод"
+        basement: "Подвал"
+        hfirstfloor: "Высота 1 этажа"
+        created_at: "Добавлено"
+        updated_at: "Обновлено"
+        price: "Цена"
   activerecord:
      models:
        country: "Страна"
@@ -36,3 +50,15 @@ ru:
        news:
           name: "Заголовок"
           content: "Текст"
+       build_object:
+          name: "Название"
+          byear: "Дата постройки"
+          overhault: "Капитальный ремонт"
+          elevator: "Лифт"
+          consierge: "Консьерж"
+          chute: "Мусоропровод"
+          basement: "Подвал"
+          hfirstfloor: "Высота 1 этажа"
+          created_at: "Добавлено"
+          updated_at: "Обновлено"
+          price: "Цена"

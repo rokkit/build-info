@@ -1,6 +1,7 @@
 
 <%= simple_form_for(@build_object) do |f| %>
 <% @build_object.address = Address.new %>
+<% @build_object.photos = [Photo.new] %>
   <% if @build_object.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@build_object.errors.count, "error") %> prohibited this house from being saved:</h2>
@@ -15,12 +16,12 @@
   <div class="adress-fields">
 	  <%= f.fields_for :address do |fa| %>
 	  <div class="field">
-		<%= fa.label :country, "Страна" %>
-	  	<%= fa.collection_select :country, Country.order(:name),:id,:name, include_blank:true %>
+		<%= fa.label :country_id, "Страна" %>
+	  	<%= fa.collection_select :country_id, Country.order(:name),:id,:name, include_blank:true %>
 	  </div>
 	  <div class="field">
-	      <%= fa.label :region, "Регион" %>
-	      <%= fa.grouped_collection_select :region, Country.order(:name),:regions,:name, :id, :name, include_blank:true %>
+	      <%= fa.label :region_id, "Регион" %>
+	      <%= fa.grouped_collection_select :region_id, Country.order(:name),:regions,:name, :id, :name, include_blank:true %>
 	    </div>
 	  <% end %>
   </div>
@@ -32,8 +33,10 @@
   <div class="field">
     <%= f.association :type_of_house, label: "Тип дома" %>
   </div>
+<div>
+	<h2>Описание дома</h2>
   <div class="field">
-    <%= f.label :byear %><br />
+    <%= f.label :byear %> 
     <%= f.date_select :byear %>
   </div>
   <div class="field">
@@ -44,15 +47,15 @@
     <%= f.association :material %>
   </div>
   <div class="field">
-    <%= f.label :elevator %><br />
+    <%= f.label :elevator %> 
     <%= f.check_box :elevator %>
   </div>
   <div class="field">
-    <%= f.label :chute %><br />
+    <%= f.label :chute %> 
     <%= f.check_box :chute %>
   </div>
   <div class="field">
-    <%= f.label :consierge %><br />
+    <%= f.label :consierge %> 
     <%= f.check_box :consierge %>
   </div>
   <div class="field">
@@ -62,61 +65,76 @@
     <%= f.association :basement %>
   </div>
   <div class="field">
-    <%= f.label :hfirstfloor %><br />
+    <%= f.label :hfirstfloor %> 
     <%= f.text_field :hfirstfloor %>
   </div>
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name %> 
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :builder %><br />
+    <%= f.label :builder %> 
     <%= f.text_field :builder %>
   </div>
   <div class="field">
-    <%= f.label :shopprod %><br />
+    <%= f.label :shopprod %> 
     <%= f.text_field :shopprod %>
   </div>
   <div class="field">
-    <%= f.label :domesticserv %><br />
+    <%= f.label :domesticserv %> 
     <%= f.text_field :domesticserv %>
   </div>
   <div class="field">
-    <%= f.label :shopping %><br />
+    <%= f.label :shopping %> 
     <%= f.text_field :shopping %>
   </div>
   <div class="field">
-    <%= f.label :phrmacy %><br />
+    <%= f.label :phrmacy %> 
     <%= f.text_field :phrmacy %>
   </div>
   <div class="field">
-    <%= f.label :clinic %><br />
+    <%= f.label :clinic %> 
     <%= f.text_field :clinic %>
   </div>
   <div class="field">
-    <%= f.label :kgarten %><br />
+    <%= f.label :kgarten %> 
     <%= f.text_field :kgarten %>
   </div>
   <div class="field">
-    <%= f.label :school %><br />
+    <%= f.label :school %> 
     <%= f.text_field :school %>
   </div>
   <div class="field">
-    <%= f.label :bank %><br />
+    <%= f.label :bank %> 
     <%= f.text_field :bank %>
   </div>
   <div class="field">
-    <%= f.label :parking %><br />
+    <%= f.label :parking %> 
     <%= f.text_field :parking %>
   </div>
   <div class="field">
-    <%= f.label :park %><br />
+    <%= f.label :park %> 
     <%= f.text_field :park %>
   </div>
   <div class="field">
-    <%= f.label :busstop %><br />
+    <%= f.label :busstop %> 
     <%= f.text_field :busstop %>
   </div>
+</div>
+<div>
+	<h2>Условия сделки</h2>
+	<div class="field">
+		<%= f.label :price, "Цена" %>
+		<%= f.number_field :price %>
+	</div>
+	<div class="field">
+		<%= f.association :valute %>
+	</div>
+	<div class="field">
+		<%= f.label :ipoteka, "Ипотека" %>
+		<%= f.check_box :ipoteka %>
+	</div>
+</div>
   <div class="actions">
     <%= f.submit %>
   </div>

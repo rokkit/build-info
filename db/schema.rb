@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130604132157) do
+ActiveRecord::Schema.define(:version => 20130605074057) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(:version => 20130604132157) do
     t.string   "type"
     t.decimal  "price"
     t.integer  "user_id"
+    t.integer  "type_of_build_object_id"
     t.integer  "type_of_house_id"
     t.date     "byear"
     t.boolean  "overhault"
@@ -145,7 +146,6 @@ ActiveRecord::Schema.define(:version => 20130604132157) do
     t.string   "parking"
     t.string   "park"
     t.string   "busstop"
-    t.integer  "address_id"
     t.integer  "terms_id"
     t.integer  "floor"
     t.integer  "rooms"
@@ -159,8 +159,11 @@ ActiveRecord::Schema.define(:version => 20130604132157) do
     t.boolean  "balkon"
     t.integer  "hotwater_id"
     t.integer  "view_from_windows_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.integer  "rating"
+    t.boolean  "ipoteka"
+    t.integer  "valute_id"
   end
 
   create_table "category_articles", :force => true do |t|
@@ -331,6 +334,12 @@ ActiveRecord::Schema.define(:version => 20130604132157) do
   add_index "terms", ["valute_id"], :name => "index_terms_on_valute_id"
 
   create_table "toilets", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "type_of_build_objects", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

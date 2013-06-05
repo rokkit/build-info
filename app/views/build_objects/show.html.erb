@@ -1,5 +1,136 @@
 <p id="notice"><%= notice %></p>
+<p>
+	<b>Фотографии</b>
+	<% @build_object.photos.each do |photo|%>
+		<%= image_tag photo.image_url.to_s %>
+	<% end %>
+</p>
+<p>
+  <b>Тип объекта</b>
+  <%= @build_object.type_of_build_object %>
+</p>
+
+<p>
+  <b>Byear:</b>
+  <%= @build_object.byear %>
+</p>
+
+<p>
+  <b>Overhault:</b>
+  <%= @build_object.overhault %>
+</p>
+
+<p>
+  <b>Material:</b>
+  <%= @build_object.material %>
+</p>
+
+<p>
+  <b>Overlap:</b>
+  <%= @build_object.overlap %>
+</p>
+
+<p>
+  <b>Elevator:</b>
+  <%= @build_object.elevator %>
+</p>
+
+<p>
+  <b>Chute:</b>
+  <%= @build_object.chute %>
+</p>
+
+<p>
+  <b>Consierge:</b>
+  <%= @build_object.consierge %>
+</p>
+
+<p>
+  <b>Stair:</b>
+  <%= @build_object.stair %>
+</p>
+
+<p>
+  <b>Basement:</b>
+  <%= @build_object.basement %>
+</p>
+
+<p>
+  <b>Hfirstfloor:</b>
+  <%= @build_object.hfirstfloor %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @build_object.name %>
+</p>
+
+<p>
+  <b>Builder:</b>
+  <%= @build_object.builder %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @build_object.user %>
+</p>
+
+<p>
+  <b>Shopprod:</b>
+  <%= @build_object.shopprod %>
+</p>
+
+<p>
+  <b>Domesticserv:</b>
+  <%= @build_object.domesticserv %>
+</p>
+
+<p>
+  <b>Shopping:</b>
+  <%= @build_object.shopping %>
+</p>
+
+<p>
+  <b>Phrmacy:</b>
+  <%= @build_object.phrmacy %>
+</p>
+
+<p>
+  <b>Clinic:</b>
+  <%= @build_object.clinic %>
+</p>
+
+<p>
+  <b>Kgarten:</b>
+  <%= @build_object.kgarten %>
+</p>
+
+<p>
+  <b>School:</b>
+  <%= @build_object.school %>
+</p>
+
+<p>
+  <b>Bank:</b>
+  <%= @build_object.bank %>
+</p>
+
+<p>
+  <b>Parking:</b>
+  <%= @build_object.parking %>
+</p>
+
+<p>
+  <b>Park:</b>
+  <%= @build_object.park %>
+</p>
+
+<p>
+  <b>Busstop:</b>
+  <%= @build_object.busstop %>
+</p>
 
 
 <%= link_to 'Edit', edit_build_object_path(@build_object) %> |
 <%= link_to 'Back', build_objects_path %>
+

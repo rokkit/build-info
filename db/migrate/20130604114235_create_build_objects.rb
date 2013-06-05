@@ -4,6 +4,7 @@ class CreateBuildObjects < ActiveRecord::Migration
       t.string :type
       t.decimal  :price
       t.integer  :user_id
+      t.integer :type_of_build_object_id
       #HOUSE
       t.integer  :type_of_house_id
       t.date     :byear
@@ -29,7 +30,7 @@ class CreateBuildObjects < ActiveRecord::Migration
       t.string   :parking
       t.string   :park
       t.string   :busstop
-      t.integer  :address_id
+      #t.integer  :address_id
       t.integer  :terms_id
       #END HOUSE
       
