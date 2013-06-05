@@ -54,6 +54,13 @@ ru:
        news:
           name: "Заголовок"
           content: "Текст"
+       address:
+          country: "Страна"
+          region: "Регион"
+          city: "Город"
+          distinct: "Район"
+          street: "Улица"
+          bus: "Автобус"
        build_object:
           name: "Название"
           byear: "Дата постройки"
@@ -66,4 +73,9 @@ ru:
           created_at: "Добавлено"
           updated_at: "Обновлено"
           price: "Цена" 
-          type_of_build_object_id: "Тип объекта"
+          type_of_build_object: "Тип объекта"
+          type_of_house: "Тип дома"
+          material: "Материал дома"
+          overlap: "Перекрытия"
+          stair: "Лестница"
+          user: "Добавил"

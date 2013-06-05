@@ -10,7 +10,7 @@ class BuildObject < ActiveRecord::Base
   belongs_to :overlap
   belongs_to :stair
   belongs_to :basement
-  has_one :address
+  belongs_to :address
   #end house
   
   #appartement

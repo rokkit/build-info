@@ -3,17 +3,23 @@ class BuildObjectReportsGrid
   include Datagrid
 
   scope do
-    BuildObject
+    BuildObject.joins(:address)
   end
 
   filter(:price, :integer, :range => true,header: "Цена")
   filter(:ipoteka, :boolean, header: "Ипотека")
-  filter(:created_at, :date, :range => true)
+  filter(:created_at, :date, :range => true, header: "Добавлено")
   filter(:type_of_build_object_id, :enum, :select => TypeOfBuildObject.all.map {|r| [r, r.id]},
           header: "Тип объекта")
-  
+          
+  filter(:country, :enum, :select => Country.all.map {|r| [r, r.id]},
+          header: "Страна") do |value|
+            self.where(addresses:{country_id: value.to_i})
+          end
+          
   column(:id)
   column(:price)
+  column(:address)
   column(:rating, order: :rating)
   column(:user)
   column(:photos, html: true) do |model|

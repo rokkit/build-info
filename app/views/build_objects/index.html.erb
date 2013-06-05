@@ -6,7 +6,7 @@
        <%= f.datagrid_filter filter %>
   </div>
   <% end %>
-  <%= f.submit %>
+  <%= f.submit "Подобрать" %>
 <% end %>
 <%= paginate(@assets) %>
 <%= datagrid_table @grid, @assets %>
