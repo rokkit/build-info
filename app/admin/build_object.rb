@@ -1,3 +1,4 @@
+# encoding: UTF-8
 ActiveAdmin.register BuildObject do
         menu parent: "Объекты"
         index do

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 ActiveAdmin.register User do
     menu parent: "Пользователи", priority: 0
     index do
