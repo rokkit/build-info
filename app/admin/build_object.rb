@@ -1,5 +1,13 @@
 ActiveAdmin.register BuildObject do
         menu parent: "Объекты"
+        index do
+          column "Тип объекта", :type_of_build_object
+          column :price do |p|
+            number_to_currency p.price
+          end
+          column "Тип дома", :type_of_house
+          column "Добавил", :user
+        end
         form do |f|
           f.object.address = Address.new
           f.object.photos = [Photo.new]

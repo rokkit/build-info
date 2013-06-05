@@ -1,6 +1,7 @@
 ru:
   attributes:
      name: "Название"
+     user: "Пользователь"
   helpers:
      label:
       build_object:
@@ -29,6 +30,7 @@ ru:
        article: "Статья"
        category_article: "Рубрика статьи"
        news: "Новость"
+       build_object: "Объект"
      attributes:
        country:
           name: "Название"
@@ -63,4 +65,5 @@ ru:
           hfirstfloor: "Высота 1 этажа"
           created_at: "Добавлено"
           updated_at: "Обновлено"
-          price: "Цена"
+          price: "Цена" 
+          type_of_build_object_id: "Тип объекта"
