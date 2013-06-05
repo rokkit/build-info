@@ -8,7 +8,7 @@ class BuildObjectReportsGrid
 
   filter(:price, :integer, :range => true)
   filter(:created_at, :date, :range => true)
-  filter(:build_object_type, :enum, :select => TypeOfBuildObject.all.map {|r| [r.humanize, r]})
+  filter(:type_of_build_object_id, :enum, :select => TypeOfBuildObject.all.map {|r| [r, r.id]})
   
   column(:id)
   column(:price)

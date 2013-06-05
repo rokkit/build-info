@@ -38,7 +38,8 @@ class BuildObject < ActiveRecord::Base
                   :photos_attributes,
                   :rating,
                   :ipoteka,
-                  :valute_id
+                  :valute_id,
+                  :type_of_build_object_id
   
   accepts_nested_attributes_for :photos, :address
 end

@@ -1,4 +1,6 @@
 ru:
+  attributes:
+     name: "Название"
   helpers:
      label:
       build_object:
