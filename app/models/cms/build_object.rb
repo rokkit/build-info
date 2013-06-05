@@ -39,7 +39,18 @@ class BuildObject < ActiveRecord::Base
                   :rating,
                   :ipoteka,
                   :valute_id,
-                  :type_of_build_object_id
+                  :type_of_build_object_id, #appartements
+                  :rooms,
+                  :area,
+                  :living_area,
+                  :floor,
+                  :planning_id
   
   accepts_nested_attributes_for :photos, :address
+  
+  before_save :count_rating
+  
+  def count_rating
+    #todo rating
+  end
 end

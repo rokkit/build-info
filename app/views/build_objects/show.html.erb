@@ -2,7 +2,7 @@
 <p>
 	<b>Фотографии</b>
 	<% @build_object.photos.each do |photo|%>
-		<%= image_tag photo.image_url.to_s %>
+		<%= image_tag photo.image_url(:main).to_s %>
 	<% end %>
 </p>
 <p>

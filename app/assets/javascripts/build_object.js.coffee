@@ -14,3 +14,12 @@ jQuery ->
     else
       $('#build_object_address_attributes_region_id').empty()
       $('#build_object_address_attributes_region_id').parent().hide()
+      
+    #прячем параметры квартиры если выбран пункт продажа дома
+jQuery ->
+    $('#appartement-fields').hide()
+    $("#build_object_type_of_build_object_id").change ->
+        if $("#build_object_type_of_build_object_id :selected").val() == "1"
+            $('#appartement-fields').show()
+        else
+            $('#appartement-fields').hide()

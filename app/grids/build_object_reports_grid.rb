@@ -6,13 +6,15 @@ class BuildObjectReportsGrid
     BuildObject
   end
 
-  filter(:price, :integer, :range => true)
+  filter(:price, :integer, :range => true,header: "Цена")
+  filter(:ipoteka, :boolean, header: "Ипотека")
   filter(:created_at, :date, :range => true)
-  filter(:type_of_build_object_id, :enum, :select => TypeOfBuildObject.all.map {|r| [r, r.id]})
+  filter(:type_of_build_object_id, :enum, :select => TypeOfBuildObject.all.map {|r| [r, r.id]},
+          header: "Тип объекта")
   
   column(:id)
   column(:price)
-  column(:rating)
+  column(:rating, order: :rating)
   column(:user)
   column(:photos, html: true) do |model|
     render partial: "build_objects/build_object", locals: {model: model}

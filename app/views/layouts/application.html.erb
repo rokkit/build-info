@@ -7,22 +7,34 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<!-- nav menu -->
-	<%= link_to 'Главная', root_path %>
-	<%= link_to 'Новости', news_index_path %>
-	<%= link_to 'Список объектов', build_objects_path %>
-	<%= link_to 'Статьи', articles_path %>
-	<div> <!-- статьи -->
-		<%= render 'articles/index', :locals=>{ :articles_in_side => Article.top } %>
-	</div><!-- статьи -->
-<%= yield %>
-	<div>
-		<% if user_signed_in? %>
-			<%= link_to 'Кабинет', pages_profile_path %>
-			<%= link_to "Выход", destroy_user_session_path, method: :delete %>
-		<% else %>
-			<%= render '/devise/sessions/new' %>
-		<% end %>
+	<div id="page">
+		<!-- nav menu -->
+		<nav class="main-nav">
+			<ul>
+				<li><%= link_to 'Главная', root_path %></li>
+				<li><%= link_to 'Новости', news_index_path %></li>
+				<li><%= link_to 'Список объектов', build_objects_path %></li>
+				<li><%= link_to 'Статьи', articles_path %></li>
+			</ul>
+		</nav>
+		<aside id="sidebar-left" class="sidebar"> <!-- left sidebar -->
+			<div class="block posts">
+				<%= render 'articles/index', :locals=>{ :articles_in_side => Article.top } %>
+			</div>
+		</aside><!-- /left sidebar -->
+		<section id="main-content">
+			<%= yield %>
+		</section>
+		<aside id="sidebar-right" class="sidebar"> <!-- right sidebar -->
+			<div class="block login">
+				<% if user_signed_in? %>
+					<%= link_to 'Кабинет', pages_profile_path %>
+					<%= link_to "Выход", destroy_user_session_path, method: :delete %>
+				<% else %>
+					<%= render '/devise/sessions/new' %>
+				<% end %>
+			</div>
+		</aside>
 	</div>
 </body>
 </html>

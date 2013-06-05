@@ -13,7 +13,11 @@
       </ul>
     </div>
   <% end %>
+  <div class="field">
+	  <%= f.association :type_of_build_object, label: "Тип объекта" %>
+  </div>
   <div class="adress-fields">
+	  <h2>Адрес объекта</h2>
 	  <%= f.fields_for :address do |fa| %>
 	  <div class="field">
 		<%= fa.label :country_id, "Страна" %>
@@ -122,13 +126,33 @@
   </div>
 </div>
 <div>
+	<!-- Поля квартиры -->
+<div id="appartement-fields">
+	<h2>Параметры квартиры</h2>
+	<div class="field">
+		<%= f.input :rooms, label: "Кол-во комнат" %>
+	</div>
+	<div class="field">
+		<%= f.association :planning, label: "Планировка" %>
+	</div>
+	<div class="field">
+		<%= f.input :area, label: "Общая площадь" %>
+	</div>
+	<div class="field">
+		<%= f.input :living_area, label: "Жилая площадь" %>
+	</div>
+	<div class="field">
+		<%= f.input :floor, label: "Этаж" %>
+	</div>
+</div>
+	<!-- end Поля квартиры -->
 	<h2>Условия сделки</h2>
 	<div class="field">
 		<%= f.label :price, "Цена" %>
 		<%= f.number_field :price %>
 	</div>
 	<div class="field">
-		<%= f.association :valute %>
+		<%= f.association :valute, label: "Валюта" %>
 	</div>
 	<div class="field">
 		<%= f.label :ipoteka, "Ипотека" %>

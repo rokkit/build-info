@@ -1,6 +1,6 @@
 <ul>
 <% model.photos.each do |photo|%>
-	<li><%= image_tag photo.image_url(:main).to_s %></li>
+	<li><%= image_tag photo.image_url(:thumb).to_s %></li>
 <% end %>
 </ul>
 
