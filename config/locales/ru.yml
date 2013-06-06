@@ -30,6 +30,9 @@ ru:
        city: 
            one: "Город"
            other: "Города"
+       news:
+           one:"Новость"
+           other:"Новости"
        distinct: "Район"
        street: "Улица"
        address: "Адрес"
