@@ -1,4 +1,6 @@
 BuildInfo::Application.routes.draw do
+  root :to => 'pages#index'
+    
   resources :build_object_reports
 
   resources :articles
@@ -32,7 +34,7 @@ BuildInfo::Application.routes.draw do
   get "pages/index"
   get "pages/profile"
 
-  root :to => 'pages#index'
+
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
