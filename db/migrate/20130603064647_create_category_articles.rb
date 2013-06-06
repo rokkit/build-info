@@ -4,6 +4,7 @@ class CreateCategoryArticles < ActiveRecord::Migration
     # Create a default user
     
     u=User.create(:email => 'admin@mail.com', :password => 'password', :password_confirmation => 'password') if direction == :up
+    u.approve!
     u.roles << Role.new(name:"admin")
     u.save!
   end
