@@ -53,4 +53,7 @@ class BuildObject < ActiveRecord::Base
   def count_rating
     #todo rating
   end
+  def to_s
+    name
+  end
 end

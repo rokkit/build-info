@@ -8,7 +8,9 @@ class Article < ActiveRecord::Base
   
   scope :published, where(published: true)
   scope :top, Article.published
-  
+  def to_s
+    name
+  end
   private
   def make_unpublished
     #published = false

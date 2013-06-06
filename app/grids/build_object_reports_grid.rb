@@ -14,8 +14,12 @@ class BuildObjectReportsGrid
           header: "Тип объекта")
           
   filter(:country, :enum, :select => Country.all.map {|r| [r, r.id]},
-          header: "Страна") do |value|
+          header: "Страна", :allow_blank => true) do |value|
             self.where(addresses:{country_id: value.to_i})
+          end
+  filter(:region, :enum, :select => Region.all.map {|r| [r, r.id]},
+          header: "Регион", allow_blank: true) do |value|
+            self.where(addresses:{region_id: value.to_i})
           end
           
   column(:id)

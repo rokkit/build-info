@@ -18,7 +18,9 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
   #gem 'jquery-ui-rails'
-  
+  gem 'compass'
+  gem 'sassy-buttons'
+  gem 'susy'
 end
 group :development do
   gem 'sqlite3'
