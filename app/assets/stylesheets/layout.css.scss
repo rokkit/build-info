@@ -15,15 +15,15 @@
   }
 
   #sidebar-left {
-    @include span-columns(3);
+    @include span-columns(2);
   }
 
   #main-content {
-    @include span-columns(6);
+    @include span-columns(8);
   }
 
   #sidebar-right {
-    @include span-columns(3 omega)
+    @include span-columns(2 omega)
   }
 
 }
