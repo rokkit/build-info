@@ -3,12 +3,16 @@
 <head>
   <title>BuildInfo</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 	<div id="page">
 		<header>
+			<div id="branding">
+				<%= link_to (image_tag "logo.png"), root_path %>
+			</div>
 			<!-- nav menu -->
 			<nav id="main-nav">
 				<ul>
@@ -29,6 +33,7 @@
 		</section>
 		<aside id="sidebar-right" class="sidebar"> <!-- right sidebar -->
 			<div class="block login">
+				<h2 class="block-title">Меню пользователя</h2>
 				<% if user_signed_in? %>
 					<%= link_to 'Кабинет', pages_profile_path %>
 					<%= link_to "Выход", destroy_user_session_path, method: :delete %>
