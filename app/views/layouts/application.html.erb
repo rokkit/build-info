@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js">
 <head>
   <title>BuildInfo</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -32,11 +32,13 @@
 			<%= yield %>
 		</section>
 		<aside id="sidebar-right" class="sidebar"> <!-- right sidebar -->
-			<div class="block login">
-				<h2 class="block-title">Меню пользователя</h2>
+			<div id="login-block" class="block login">
 				<% if user_signed_in? %>
-					<%= link_to 'Кабинет', pages_profile_path %>
-					<%= link_to "Выход", destroy_user_session_path, method: :delete %>
+					<h2 class="block-title">Меню пользователя</h2>
+					<div class="content">
+						<%= link_to 'Кабинет', pages_profile_path %>
+						<%= link_to "Выход", destroy_user_session_path, method: :delete %>
+					</div>
 				<% else %>
 					<%= render '/devise/sessions/new' %>
 				<% end %>
