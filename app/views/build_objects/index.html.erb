@@ -1,5 +1,5 @@
 <h1>Listing build_objects</h1>
-<%= form_for @grid, :html => {:method => :get}, :url => build_object_reports_path do |f| %>
+<%= form_for @grid, :html => {:method => :get}, :url => build_object_reports_path, remote:true do |f| %>
   <% @grid.filters.each do |filter| %>
   <div>
        <%= f.datagrid_label filter %>

@@ -36,3 +36,8 @@ jQuery ->
             $('#appartement-fields').show()
         else
             $('#appartement-fields').hide()
+jQuery ->
+    $("#new_build_object_reports_grid_build_object_reports_grid").on "ajax:success", (evt,selector,data) ->
+    console.log "data ajax"
+    target = $(this).data("update-target")
+    $("#" + target).html data
