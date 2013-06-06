@@ -67,6 +67,7 @@ h6 {
 // HEADER
 
 header {
+	border-top: 1px solid $dark-grey;
 	overflow: hidden;
 	margin: 2em 0;
 }
@@ -130,3 +131,13 @@ header {
 		width: 95%;
 	}
 }
+
+
+// FOOTER
+footer {
+	border-top: 1px solid $dark-grey;
+	text-align: right;
+}
+
+
+

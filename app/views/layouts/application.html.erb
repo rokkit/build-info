@@ -23,14 +23,17 @@
 				</ul>
 			</nav>
 		</header>
+
 		<aside id="sidebar-left" class="sidebar"> <!-- left sidebar -->
 			<div class="block posts">
 				<%= render 'articles/index', :locals=>{ :articles_in_side => Article.top } %>
 			</div>
 		</aside><!-- /left sidebar -->
-		<section id="main-content">
+
+		<section id="main-content"> <!-- content -->
 			<%= yield %>
-		</section>
+		</section><!-- /content -->
+
 		<aside id="sidebar-right" class="sidebar"> <!-- right sidebar -->
 			<div id="login-block" class="block login">
 				<% if user_signed_in? %>
@@ -43,7 +46,11 @@
 					<%= render '/devise/sessions/new' %>
 				<% end %>
 			</div>
-		</aside>
+		</aside><!-- /right sidebar -->
+
+		<footer>
+			&copy; 2013 Home.info
+		</footer>
 	</div>
 </body>
 </html>
