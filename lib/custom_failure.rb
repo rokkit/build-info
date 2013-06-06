@@ -1,8 +1,6 @@
 class CustomFailure < Devise::FailureApp
   def redirect_url
-    if warden_options[:scope] == :user
-          root_path
-        end
+        root_path
   end
 
   # You need to override respond to eliminate recall
@@ -10,7 +8,7 @@ class CustomFailure < Devise::FailureApp
     if http_auth?
       http_auth
     else
-      #flash[:notice] = I18n.t(:unauthenticated, :scope => [ :devise, :failure ])
+      flash[:notice] = I18n.t(:unauthenticated, :scope => [ :devise, :failure ])
       redirect
     end
   end
