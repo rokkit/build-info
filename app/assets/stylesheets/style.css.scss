@@ -1,3 +1,5 @@
+// background-image: image-url("rails.png");
+
 @import "../scss/mixins";
 @import "../scss/variables";
 
@@ -133,11 +135,18 @@ header {
 	}
 }
 
+// MAIN CONTENT
+.btn {
+	@include sassy-button("matte", 3px, 12px, $blue, darken($blue,5%), #fff, "inset");
+}
 
 // FOOTER
 footer {
-	border-top: 1px solid $dark-grey;
-	text-align: right;
+	.copyright {
+		border-top: 1px solid $dark-grey;
+		text-align: right;
+		margin:0;
+	}
 }
 
 
