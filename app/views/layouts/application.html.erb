@@ -39,6 +39,10 @@
 						<%= link_to 'Кабинет', pages_profile_path %>
 						<%= link_to "Выход", destroy_user_session_path, method: :delete %>
 					</div>
+                    <%= common_block "Меню пользователя" do %>
+					    <%= link_to 'Кабинет', pages_profile_path %>
+					    <%= link_to "Выход", destroy_user_session_path, method: :delete %>
+                    <% end %>
 				<% else %>
 					<%= render '/devise/sessions/new' %>
 				<% end %>
