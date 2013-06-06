@@ -8,15 +8,17 @@
 </head>
 <body>
 	<div id="page">
-		<!-- nav menu -->
-		<nav class="main-nav">
-			<ul>
-				<li><%= link_to 'Главная', root_path %></li>
-				<li><%= link_to 'Новости', news_index_path %></li>
-				<li><%= link_to 'Список объектов', build_objects_path %></li>
-				<li><%= link_to 'Статьи', articles_path %></li>
-			</ul>
-		</nav>
+		<header>
+			<!-- nav menu -->
+			<nav id="main-nav">
+				<ul>
+					<li><%= link_to 'Главная', root_path %></li>
+					<li><%= link_to 'Новости', news_index_path %></li>
+					<li><%= link_to 'Список объектов', build_objects_path %></li>
+					<li><%= link_to 'Статьи', articles_path %></li>
+				</ul>
+			</nav>
+		</header>
 		<aside id="sidebar-left" class="sidebar"> <!-- left sidebar -->
 			<div class="block posts">
 				<%= render 'articles/index', :locals=>{ :articles_in_side => Article.top } %>

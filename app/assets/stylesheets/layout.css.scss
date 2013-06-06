@@ -1,0 +1,23 @@
+@import "../scss/mixins";
+@import "../scss/variables";
+
+#page {
+  @include container;
+
+  header, footer { clear: both; }
+
+  nav { }
+
+  #sidebar-left {
+    @include span-columns(3, 12);
+  }
+
+  #main-content {
+    @include span-columns(6, 12);
+  }
+
+  #sidebar-right {
+    @include span-columns(3 omega, 12)
+  }
+
+}

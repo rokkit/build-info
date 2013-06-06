@@ -1,0 +1,12 @@
+@import "../scss/mixins";
+@import "../scss/variables";
+
+header {
+	overflow: hidden;
+}
+
+#main-nav {
+	ul {
+		@include horizontal-nav();
+	}
+}
