@@ -32,3 +32,4 @@ vendor/bundle
 **.orig
 rerun.txt
 pickle-email-*.html
+.ruby-version

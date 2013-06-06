@@ -1,16 +1,9 @@
 <h1>Listing build_objects</h1>
-<%= form_for @grid, :html => {:method => :get}, :url => build_object_reports_path, remote:true do |f| %>
-  <% @grid.filters.each do |filter| %>
-  <div>
-       <%= f.datagrid_label filter %>
-       <%= f.datagrid_filter filter %>
-  </div>
-  <% end %>
-  <%= f.submit "Подобрать" %>
-<% end %>
+<%= datagrid_form_for @grid, :method => :get, :url => build_object_reports_path %>
+<div id="update-container">
+...
+</div>
 <%= paginate(@assets) %>
 <%= datagrid_table @grid, @assets %>
 <%= paginate(@assets) %>
 
-
-<%= link_to 'New Build object', new_build_object_path %>
