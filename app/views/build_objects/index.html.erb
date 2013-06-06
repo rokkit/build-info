@@ -1,9 +1,2 @@
 <h1>Listing build_objects</h1>
-<%= datagrid_form_for @grid, :method => :get, :url => build_object_reports_path %>
-<div id="update-container">
-...
-</div>
-<%= paginate(@assets) %>
-<%= datagrid_table @grid, @assets %>
-<%= paginate(@assets) %>
-
+<%= link_to "Подобрать", build_object_reports_path %>

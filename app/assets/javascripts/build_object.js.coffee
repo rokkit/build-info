@@ -16,7 +16,6 @@ jQuery ->
       $('#build_object_address_attributes_region_id').parent().hide()
       
 jQuery ->
-  $('#build_object_reports_grid_region').parent().hide()
   states = $('#build_object_reports_grid_region').html()
   $('#build_object_reports_grid_country').change ->
     country = $('#build_object_reports_grid_country :selected').text()
@@ -24,10 +23,8 @@ jQuery ->
     console.log(options)
     if options
       $('#build_object_reports_grid_region').html(options)
-      $('#build_object_reports_grid_region').parent().show()      
     else
       $('#build_object_reports_grid_region').empty()
-      $('#build_object_reports_grid_region').parent().hide()
     #прячем параметры квартиры если выбран пункт продажа дома
 jQuery ->
     $('#appartement-fields').hide()
