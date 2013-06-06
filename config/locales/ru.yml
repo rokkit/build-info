@@ -2,6 +2,9 @@ ru:
   attributes:
      name: "Название"
      user: "Пользователь"
+     created_at: "Добавлено"
+     updated_at: "Обновлено"
+     rating: "Рейтинг"
   helpers:
      label:
       build_object:
@@ -18,9 +21,15 @@ ru:
         price: "Цена"
   activerecord:
      models:
-       country: "Страна"
-       region: "Регион"
-       city: "Город"
+       country: 
+           one: "Страна"
+           other: "Страны"
+       region: 
+           one: "Регион"
+           other: "Регионы"
+       city: 
+           one: "Город"
+           other: "Города"
        distinct: "Район"
        street: "Улица"
        address: "Адрес"
@@ -31,6 +40,10 @@ ru:
        category_article: "Рубрика статьи"
        news: "Новость"
        build_object: "Объект"
+       user: "Пользователь"
+       type_user: "Тип пользователя"
+       role: "Роль"
+       category_article: "Категория статьи"
      attributes:
        country:
           name: "Название"
@@ -79,3 +92,12 @@ ru:
           overlap: "Перекрытия"
           stair: "Лестница"
           user: "Добавил"
+       user:
+           fio: "ФИО"
+           phone: "Телефон"
+           rating: "Рейтиг"
+           created_at: "Добавлен"
+       article:
+           content: "Текст статьи"
+           published: "Опубликовано"
+           category_article: "Категория статьи"
