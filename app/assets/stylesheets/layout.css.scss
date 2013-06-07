@@ -3,6 +3,7 @@
 
 #page {
   @include container;
+  min-width: 780px;
 
   header, footer { clear: both; }
 

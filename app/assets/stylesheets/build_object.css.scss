@@ -1,3 +1,71 @@
-// Place all the styles related to the build_object controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// Build Objects form
+@import "../scss/mixins";
+@import "../scss/variables";
+
+// display filter
+.data-filter {
+	margin-bottom: 2em;
+	label {
+		display: block;
+		font-size: 1.2em;
+	}
+	input[type="text"] {
+		border:1px solid $grey;
+		background-color: $light-grey;
+		padding: 4px;
+	}
+
+	div.price, div.address {
+		@include span-columns(4,8);
+	}
+	div.area, div.details {
+		@include span-columns(4 omega,8);
+	}
+	.price, .area {
+		input {
+			width: 80px;
+		}
+	}
+	div.address, div.details {
+		margin-bottom: 1em;
+	}
+	.ipoteka {
+		label {
+			display: inline;
+		}
+	}
+	.submit-form {
+		display: block;
+		clear: both;
+	}
+}
+
+// display form
+.data-table {
+	table {
+		width: 99%;
+		margin-bottom: 1em;
+		thead {
+			background:$light-grey;
+			th {
+				font-size: 1.3em;
+				color: $grey;
+				font-weight: normal;
+				padding: 10px;
+				.order {
+					display: inline-block;
+					.ui-icon {
+						display: inline-block;
+					}
+				}
+			}
+		}
+		tbody {
+			tr {
+				td {
+					border:1px solid $light-grey;
+				}
+			}
+		}
+	}
+}

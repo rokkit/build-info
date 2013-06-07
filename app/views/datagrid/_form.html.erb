@@ -3,32 +3,40 @@
   <% grid.filters.each do |filter| %>
 
   <% end %>
-  <div class="filter">
+  <div class="filter price">
       <%= f.datagrid_label :price %>
       <%= f.datagrid_filter :price %>
   </div>
-  <div class="filter">
-      <%= f.datagrid_label :ipoteka %>
-      <%= f.datagrid_filter :ipoteka %>
-  </div>
-  <div class="filter">
-      <%= f.datagrid_label :type_of_build_object_id %>
-      <%= f.datagrid_filter :type_of_build_object_id %>
-  </div>
-  <div class="filter">
-	<%= f.label :country_id, "Страна" %>
-  	<%= f.collection_select :country, Country.order(:name),:id,:name, include_blank:true %>
-  <div class="filter">
-      <%= f.datagrid_label :region %>
-      <%= f.grouped_collection_select :region, Country.order(:name),:regions,:name, :id, :name, include_blank:true  %>
-  </div>
-  <div class="filter">
-      <%= f.datagrid_label :city %>
-      <%= f.grouped_collection_select :city, Region.order(:name),:cities,:name, :id, :name, include_blank:true  %>
-  </div>
-  <div class="filter">
+  <div class="filter area">
       <%= f.datagrid_label :area %>
       <%= f.datagrid_filter :area %>
   </div>
-  <%= f.submit I18n.t("datgrid.form.submit", :default => "Подобрать").html_safe %>
+
+  <div class="address">
+    <div class="filter country">
+  	<%= f.label :country_id, "Страна" %>
+    	<%= f.collection_select :country, Country.order(:name),:id,:name, include_blank:true %>
+    </div>
+    <div class="filter region">
+        <%= f.datagrid_label :region %>
+        <%= f.grouped_collection_select :region, Country.order(:name),:regions,:name, :id, :name, include_blank:true  %>
+    </div>
+    <div class="filter city">
+        <%= f.datagrid_label :city %>
+        <%= f.grouped_collection_select :city, Region.order(:name),:cities,:name, :id, :name, include_blank:true  %>
+    </div>
+  </div>
+
+  <div class="details">
+    <div class="filter ipoteka">
+        <%= f.datagrid_label :ipoteka %>
+        <%= f.datagrid_filter :ipoteka %>
+    </div>
+    <div class="filter object-type">
+        <%= f.datagrid_label :type_of_build_object_id %>
+        <%= f.datagrid_filter :type_of_build_object_id %>
+    </div>
+  </div>
+
+  <%= f.submit I18n.t("datgrid.form.submit", :default => "Подобрать").html_safe, :class => "submit-form btn" %>
 <% end -%>
