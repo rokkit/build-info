@@ -5,8 +5,9 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
       user ||= User.new # guest user (not logged in)
+
       if user.role? :admin
-        can :manage, :all
+        can [:read, :create, :update, :destroy], :all
       else
         can :read, Article, published: true
         can :manage, Article do |article|
@@ -15,6 +16,14 @@ class Ability
         can :manage, BuildObject do |house|
                 house.try(:user) == user
         end
+        
+        can :manage, Review do |review|
+          review.user == user
+        end
+      end
+      
+      can :request_review, BuildObject do |build_object| #запрос на просмотр, пользовател не должен запрашивать у своих объектов
+        build_object.user != user
       end
     #
     # The first argument to `can` is the action you are giving the user 

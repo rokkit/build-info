@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
                   :role_ids
   
   belongs_to :type_user
+  has_many :reviews
   # attr_accessible :title, :body
   has_and_belongs_to_many :roles
   accepts_nested_attributes_for :roles

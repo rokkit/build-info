@@ -1,4 +1,4 @@
-<%= link_to "Записаться на просмотр", reviews_path %>
+<%= link_to "Записаться на просмотр", new_review_path(build_object:@build_object) if can? :request_review, @build_object %>
 <p id="notice"><%= notice %></p>
 <p>
 	<b>Фотографии</b>
