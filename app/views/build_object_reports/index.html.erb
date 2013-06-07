@@ -1,7 +1,7 @@
-<%= datagrid_form_for @grid, :method => :get, :url => build_object_reports_path %>
-<div id="update-container">
-...
-</div>
+<%= datagrid_form_for @grid, :method => :get, :url => build_object_reports_path, html: {:class => "data-filter"} %>
+
 <%= paginate(@assets) %>
-<%= datagrid_table @grid, @assets %>
+<div class="data-table">
+	<%= datagrid_table @grid, @assets %>
+</div>
 <%= paginate(@assets) %>
