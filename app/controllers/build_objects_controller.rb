@@ -42,7 +42,7 @@ class BuildObjectsController < ApplicationController
   # POST /build_objects.json
   def create
     @build_object = BuildObject.new(params[:build_object])
-
+    @build_object.user = current_user
     respond_to do |format|
       if @build_object.save
         format.html { redirect_to @build_object, notice: 'Build object was successfully created.' }
@@ -58,7 +58,7 @@ class BuildObjectsController < ApplicationController
   # PUT /build_objects/1.json
   def update
     @build_object = BuildObject.find(params[:id])
-
+    @build_object.user = current_user
     respond_to do |format|
       if @build_object.update_attributes(params[:build_object])
         format.html { redirect_to @build_object, notice: 'Build object was successfully updated.' }

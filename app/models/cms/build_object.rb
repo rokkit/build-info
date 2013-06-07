@@ -58,10 +58,9 @@ class BuildObject < ActiveRecord::Base
     r += 1 if user.rating.between?(3,4)
     r += 2 if user.rating == 5
     filled_attributes = attributes.select { |k,v| !!v }
-    attr_count = attributes.count
-    attributes.each do |attr_name, attr_value|
-      
-    end
+    percent_filled_attributes = (attributes.count / filled_attributes.count).abs * 100 #считаем процент заполненных
+    r += 1 if percent_filled_attributes < 60
+    r += 1 if percent_filled_attributes < 80
     self.rating = r
   end
   

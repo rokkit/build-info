@@ -1,6 +1,7 @@
 <h1>Личный кабинет</h1>
 <%= link_to "Изменить", edit_user_registration_path %>
 <%= link_to "Мои объекты", build_object_reports_path %>
+<%= link_to "Добавить объект", new_build_object_path %>
 <ul>
 	<li>ФИО: <%= @user.fio %></li>
 	<li>Мобильный телефон: <%= @user.phone %></li>
