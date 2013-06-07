@@ -27,15 +27,12 @@ class BuildObjectReportsGrid
           end
   filter(:area, :integer, range: true, header: "Общая пл.")
           
-  column(:id)
   column(:price)
   column(:address)
-  column(:rating, order: :rating)
-  column(:user)
-  column(:photos, html: true) do |model|
-    render partial: "build_objects/build_object", locals: {model: model}
+  column(:area, html: true) do |model|
+    render partial: "build_objects/area", locals: {model: model}
   end
-  column(:created_at) do |model|
-    model.created_at.to_date
+  column(:description, html: true) do |model|
+    render partial: "build_objects/build_object", locals: {model: model}
   end
 end
