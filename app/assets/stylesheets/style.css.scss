@@ -140,6 +140,20 @@ header {
 	@include sassy-button("matte", 3px, 12px, $blue, darken($blue,5%), #fff, "inset");
 }
 
+// display form
+.datagrid-form {
+	table {
+		width: 99%;
+		thead {
+			th {
+				.order {
+					display: inline-block;
+				}
+			}
+		}
+	}
+}
+
 // FOOTER
 footer {
 	.copyright {
