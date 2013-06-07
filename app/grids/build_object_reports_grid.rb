@@ -21,6 +21,11 @@ class BuildObjectReportsGrid
           header: "Регион", allow_blank: true) do |value|
             self.where(addresses:{region_id: value.to_i})
           end
+  filter(:city, :enum, :select => City.all.map {|r| [r, r.id]},
+          header: "Город", allow_blank: true) do |value|
+            self.where(addresses:{city_id: value.to_i})
+          end
+  filter(:area, :integer, range: true, header: "Общая пл.")
           
   column(:id)
   column(:price)

@@ -6,8 +6,7 @@ jQuery ->
   states = $('#build_object_address_attributes_region_id').html()
   $('#build_object_address_attributes_country_id').change ->
     country = $('#build_object_address_attributes_country_id :selected').text()
-    options = $(states).filter("optgroup[label=#{country}]").html()
-    console.log(options)
+    options = $(states).filter("optgroup[label='#{country}']").html()
     if options
       $('#build_object_address_attributes_region_id').html(options)
       $('#build_object_address_attributes_region_id').parent().show()      
@@ -19,12 +18,26 @@ jQuery ->
   states = $('#build_object_reports_grid_region').html()
   $('#build_object_reports_grid_country').change ->
     country = $('#build_object_reports_grid_country :selected').text()
-    options = $(states).filter("optgroup[label=#{country}]").html()
-    console.log(options)
+    options = $(states).filter("optgroup[label='#{country}']").html()
     if options
       $('#build_object_reports_grid_region').html(options)
+      $('#build_object_reports_grid_region').parent().show()  
     else
       $('#build_object_reports_grid_region').empty()
+      $('#build_object_reports_grid_region').parent().hide()
+      
+jQuery ->
+  $('#build_object_reports_grid_city').parent().hide()
+  states = $('#build_object_reports_grid_city').html()
+  $('#build_object_reports_grid_region').change ->
+    country = $('#build_object_reports_grid_region :selected').text()
+    options = $(states).filter("optgroup[label='#{country}']").html()
+    if options
+      $('#build_object_reports_grid_city').html(options)
+      $('#build_object_reports_grid_city').parent().show()      
+    else
+      $('#build_object_reports_grid_city').empty()
+      $('#build_object_reports_grid_city').parent().hide()
     #прячем параметры квартиры если выбран пункт продажа дома
 jQuery ->
     $('#appartement-fields').hide()

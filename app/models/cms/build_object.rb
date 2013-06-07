@@ -49,10 +49,30 @@ class BuildObject < ActiveRecord::Base
   accepts_nested_attributes_for :photos, :address
   
   before_save :count_rating
+  before_create :set_rating
   
   def count_rating
+    self.user ||= User.first #если юзер не задан то добавить как от админа
     #todo rating
+    r = 0
+    r += 1 if user.rating.between?(3,4)
+    r += 2 if user.rating == 5
+    filled_attributes = attributes.select { |k,v| !!v }
+    attr_count = attributes.count
+    attributes.each do |attr_name, attr_value|
+      
+    end
+    self.rating = r
   end
+  
+  #Объектам в зависимости от заполненности присваивается рейтинг от 0 до 2 баллов, 
+  #за платные услуги свыше 2000 в месяц за объект присваивается 3 балла. 
+  #За ввод объекта пользователем с рейтингом 3-4 рейтинг объекта повышается на 1 балл. 
+  #За ввод объекта пользователем с рейтингом 5 рейтинг объекта повышается на 2 балла.
+  def set_rating
+
+  end
+  
   def to_s
     name
   end

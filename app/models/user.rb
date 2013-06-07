@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   accepts_nested_attributes_for :roles
   
+  before_create :set_rating
+  
+  
   def role?(role)
       return !!self.roles.find_by_name(role.to_s)
   end
@@ -31,5 +34,9 @@ class User < ActiveRecord::Base
     skip_confirmation!
     confirmed_at = Time.zone.now
     save!
+  end
+  private
+  def set_rating
+    self.rating = 0
   end
 end

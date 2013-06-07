@@ -22,5 +22,13 @@
       <%= f.datagrid_label :region %>
       <%= f.grouped_collection_select :region, Country.order(:name),:regions,:name, :id, :name, include_blank:true  %>
   </div>
+  <div class="filter">
+      <%= f.datagrid_label :city %>
+      <%= f.grouped_collection_select :city, Region.order(:name),:cities,:name, :id, :name, include_blank:true  %>
+  </div>
+  <div class="filter">
+      <%= f.datagrid_label :area %>
+      <%= f.datagrid_filter :area %>
+  </div>
   <%= f.submit I18n.t("datgrid.form.submit", :default => "Подобрать").html_safe %>
 <% end -%>
