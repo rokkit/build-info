@@ -1,4 +1,9 @@
 BuildInfo::Application.routes.draw do
+  resources :reviews
+
+
+  get "cabinet/index"
+
   root :to => 'pages#index'
     
   resources :build_object_reports
