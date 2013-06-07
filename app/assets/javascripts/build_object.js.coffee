@@ -3,10 +3,10 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
   $('#build_object_address_attributes_region_id').parent().hide()
-  states = $('#build_object_address_attributes_region_id').html()
+  regions = $('#build_object_address_attributes_region_id').html()
   $('#build_object_address_attributes_country_id').change ->
     country = $('#build_object_address_attributes_country_id :selected').text()
-    options = $(states).filter("optgroup[label='#{country}']").html()
+    options = $(regions).filter("optgroup[label='#{country}']").html()
     if options
       $('#build_object_address_attributes_region_id').html(options)
       $('#build_object_address_attributes_region_id').parent().show()      
@@ -21,24 +21,29 @@ jQuery ->
     options = $(states).filter("optgroup[label='#{country}']").html()
     if options
       $('#build_object_reports_grid_region').html(options)
+      $("#build_object_reports_grid_region").prepend("<option value=''>Выберите регион</option>").val('');
       $('#build_object_reports_grid_region').parent().show()  
     else
       $('#build_object_reports_grid_region').empty()
       $('#build_object_reports_grid_region').parent().hide()
+      $('#build_object_reports_grid_city').empty()
+      $('#build_object_reports_grid_city').parent().hide()
       
 jQuery ->
-  $('#build_object_reports_grid_city').parent().hide()
+  #$('#build_object_reports_grid_city').parent().hide()
   states = $('#build_object_reports_grid_city').html()
   $('#build_object_reports_grid_region').change ->
     country = $('#build_object_reports_grid_region :selected').text()
     options = $(states).filter("optgroup[label='#{country}']").html()
     if options
       $('#build_object_reports_grid_city').html(options)
+      $("#build_object_reports_grid_city").prepend("<option value=''>Выберите город</option>").val('');
       $('#build_object_reports_grid_city').parent().show()      
     else
       $('#build_object_reports_grid_city').empty()
       $('#build_object_reports_grid_city').parent().hide()
     #прячем параметры квартиры если выбран пункт продажа дома
+    
 jQuery ->
     $('#appartement-fields').hide()
     $("#build_object_type_of_build_object_id").change ->
@@ -46,8 +51,3 @@ jQuery ->
             $('#appartement-fields').show()
         else
             $('#appartement-fields').hide()
-jQuery ->
-    $("#new_build_object_reports_grid_build_object_reports_grid").on "ajax:success", (evt,selector,data) ->
-    console.log "data ajax"
-    target = $(this).data("update-target")
-    $("#" + target).html data
