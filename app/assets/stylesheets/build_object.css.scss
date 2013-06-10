@@ -93,6 +93,9 @@ table.details {
 				border: 1px solid $grey;
 				vertical-align: top;
 				padding: 5px;
+				p {
+					margin: 0 0 .5em 0;
+				}
 			}
 		}
 	}
