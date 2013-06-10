@@ -73,6 +73,7 @@
 // display appartment info
 .gallery {
 	@include span-columns(3,8);
+	@include clear-nav();
 }
 .gmap {
 	margin-bottom: 1em;
