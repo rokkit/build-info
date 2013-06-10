@@ -14,7 +14,7 @@
     </div>
   <% end %>
   <div class="field">
-	  <%= f.association :type_of_build_object, label: "Тип объекта" %>
+	  <%= f.association :type_of_build_object, label: "Тип объекта"%>
   </div>
   <div class="adress-fields">
 	  <h2>Адрес объекта</h2>
@@ -26,6 +26,21 @@
 	  <div class="field">
 	      <%= fa.label :region_id, "Регион" %>
 	      <%= fa.grouped_collection_select :region_id, Country.order(:name),:regions,:name, :id, :name, include_blank:true %>
+	    </div>
+	  <div class="field">
+	      <%= fa.label :city_id, "Город" %>
+          <%= fa.grouped_collection_select :city_id, Region.order(:name),:cities,:name, :id, :name, include_blank:true  %>
+	    </div>
+	  <div class="field">
+	      <%= fa.label :distinct_id, "Район" %>
+          <%= fa.grouped_collection_select :distinct_id, City.order(:name),:distincts ,:name, :id, :name, include_blank:true  %>
+	    </div>
+  	  <div class="field">
+  	      <%= fa.label :street_id, "Улица" %>
+            <%= fa.grouped_collection_select :street_id, Distinct.order(:name),:streets ,:name, :id, :name, include_blank:true  %>
+  	    </div>
+	  <div class="field">
+          <%= fa.input :number_house, label: "Номер дома" %>
 	    </div>
 	  <% end %>
   </div>
