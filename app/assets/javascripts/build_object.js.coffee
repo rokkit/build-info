@@ -4,7 +4,9 @@
 
 #Dynamic select
 jQuery.fn.extend dynsel: (child) ->
-  $(child).parent().hide()
+  if $(this).val() == null
+      $(child).parent().hide()
+      $(child).nextAll().empty()
   data = $(child).html()
   $(this).change ->
     filter_value = $("option:selected", this).text()
@@ -16,6 +18,7 @@ jQuery.fn.extend dynsel: (child) ->
     else
       $(child).empty()
       $(child).parent().hide()
+      $(this).parent().nextAll().hide()
   child
   
 jQuery ->
