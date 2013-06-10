@@ -1,4 +1,6 @@
 ru:
+  true: "Да"
+  false: "Нет"
   attributes:
      name: "Название"
      user: "Пользователь"

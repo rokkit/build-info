@@ -8,7 +8,7 @@
 	<% end %>
   </ul>
 </p>
-
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@build_object.address.lat}%2C#{@build_object.address.lng}" %>
 <table width="100%" class="apartment details">
   <thead>
     <tr>
@@ -76,13 +76,13 @@
 
         <% unless @build_object.material.nil? %>
           <p>
-            <b>Матерьял:</b>
+            <b>Материал:</b>
             <%= @build_object.material %>
           </p>
         <% end %>
         <% unless @build_object.overlap.nil? %>
           <p>
-            <b>Overlap:</b>
+            <b>Перекрытия:</b>
             <%= @build_object.overlap %>
           </p>
         <% end %>
@@ -90,14 +90,14 @@
         <% unless @build_object.elevator.nil? %>
           <p>
             <b>Лифт:</b>
-            <%= @build_object.elevator %>
+            <%= t @build_object.elevator %>
           </p>
         <% end %>
 
         <% unless @build_object.chute.nil? %>
           <p>
             <b>Мусоропровод:</b>
-            <%= @build_object.chute %>
+            <%= t @build_object.chute %>
           </p>
         <% end %>
 
@@ -239,7 +239,7 @@
   <dt>Контакты</dt>
   <dd><%= @build_object.user %></dd>
   <dd>+7 (921) 123-42-42</dd>
-  <dd><a href="mailto:Julia@gmail.com">Julia@gmail.com</a></dd>
+  <dd><a href="mailto:<%= @build_object.user.email %>"><%= @build_object.user.email %></a></dd>
 <% end %>
 </dl>
 
