@@ -136,8 +136,21 @@ header {
 }
 
 // MAIN CONTENT
+#main-content {
+	padding-bottom: 2em;
+}
 .btn {
-	@include sassy-button("matte", 3px, 12px, $blue, darken($blue,5%), #fff, "inset");
+	@include sassy-button();
+}
+//admin
+.edit-links {
+	clear: both;
+	a {
+		@include sassy-button();
+		&.edit {
+			@include sassy-button-gradient("matte", #FFC345, darken(#FFC345,5%), #fff, "inset");
+		}
+	}
 }
 
 // FOOTER
