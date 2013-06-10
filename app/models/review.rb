@@ -6,12 +6,15 @@ class Review < ActiveRecord::Base
   
   before_create :init_status
   
-  scope :by_user, -> (user) { 
-    find(:all, :limit => 10,
-                :joins => "LEFT JOIN `build_object` ON build_object.user_id = users.id"
-  }
+  scope :by_user, -> (user) { where(user_id: user) }
+  scope :by_object_owner, -> (user) { joins(:build_object).where(build_objects: {user_id: user}) }
   
   def init_status
     self.status = 1
+  end
+  
+  def accept!
+    self.status = 2
+    save!
   end
 end

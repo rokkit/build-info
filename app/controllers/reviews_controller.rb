@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
   # GET /reviews.json
   def index
     @reviews = Review.by_user current_user
-
+    @reviews_input = Review.by_object_owner current_user
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @reviews }
@@ -79,6 +79,15 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to reviews_url }
       format.json { head :no_content }
+    end
+  end
+  #POST /reviews/1
+  #Подтверждение заявки
+  def accept
+    @review = Review.find(params[:id])
+    @review.accept!
+    respond_to do |format|
+      format.html { redirect_to reviews_url, notice: 'Заявка успешно подтверждена' }
     end
   end
 end

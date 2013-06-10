@@ -31,6 +31,15 @@
 		</aside><!-- /left sidebar -->
 
 		<section id="main-content"> <!-- content -->
+            <%- flash.each do |name, msg| -%>
+                    <% if name == :error %>
+                        <%= content_tag :div, msg, :class => "alert-message error" %>
+                    <% elsif name == :notice %>
+                        <%= content_tag :div, msg, :class => "alert-message success" %>
+                    <% elsif name == :warning %>
+                        <%= content_tag :div, msg, :class => "alert-message warning" %>
+                    <% end %>
+                  <%- end -%>
 			<%= yield %>
 		</section><!-- /content -->
 

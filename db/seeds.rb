@@ -64,3 +64,25 @@ Material.delete_all
 %w(Кирпичный Крупно-панел. Деревянный Блочный Монолитный).each do |t|
   Material.create! name: t
 end
+
+Address.delete_all
+BuildObject.delete_all
+a = Address.create!(country: Country.find_by_name("Russian Federation"),region:Region.find_by_name("Санкт-Петербург и Ленинградская область"),
+city: City.find_by_name('Санкт-Петербург'), distinct: Distinct.find_by_name('Кировский'), street: Street.find_by_name("Проспект Ветеранов")
+)
+a.build_objects << BuildObject.new(type_of_build_object: TypeOfBuildObject.first, user: User.first, type_of_house: TypeOfHouse.first, material: Material.first,
+price: 3000000, description: """Прямая продажа, 3 года собственности есть. Дом стоит во дворе, ТСЖ, чистые парадные, приличные соседи. Квартира двухсторонняя, стороны света:восток и запад.
+Ремонт вполне качественный, есть некоторые недоделки. Встроенной кухни нет, место под кухню подготовлено, в том числе электропроводка. 89112558082""",
+area: 77, living_area: 46, kitchen_area: 10.8, rooms:3
+)
+a.build_objects << BuildObject.new(type_of_build_object: TypeOfBuildObject.first, user: User.first, type_of_house: TypeOfHouse.first, material: Material.first,
+price: 3000000, description: """Прямая продажа, 3 года собственности есть. Дом стоит во дворе, ТСЖ, чистые парадные, приличные соседи. Квартира двухсторонняя, стороны света:восток и запад.
+Ремонт вполне качественный, есть некоторые недоделки. Встроенной кухни нет, место под кухню подготовлено, в том числе электропроводка. 89112558082""",
+area: 77, living_area: 46, kitchen_area: 10.8, rooms:3
+)
+a.build_objects << BuildObject.new(type_of_build_object: TypeOfBuildObject.first, user: User.first, type_of_house: TypeOfHouse.first, material: Material.first,
+price: 3000000, description: """Прямая продажа, 3 года собственности есть. Дом стоит во дворе, ТСЖ, чистые парадные, приличные соседи. Квартира двухсторонняя, стороны света:восток и запад.
+Ремонт вполне качественный, есть некоторые недоделки. Встроенной кухни нет, место под кухню подготовлено, в том числе электропроводка. 89112558082""",
+area: 77, living_area: 46, kitchen_area: 10.8, rooms:3
+)
+a.save!

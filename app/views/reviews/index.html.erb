@@ -1,8 +1,7 @@
 <h1>Записи на просмотр</h1>
-
+<h3>Входящие</h3>
 <table>
   <tr>
-      <th>Тип</th>
       <th>Дата</th>
       <th>Объект</th>
       <th>Статус</th>
@@ -13,7 +12,6 @@
 
 <% @reviews.each do |review| %>
   <tr>
-      <td><%= io review %></td>
       <td><%= review.date %></td>
       <td><%= review.build_object %></td>
       <td><%= status review.status %></td>
@@ -22,6 +20,29 @@
         <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
+
 </table>
 
 <br />
+<table>
+    <h3>Исходящие</h3>
+  <tr>
+      <th>Дата</th>
+      <th>Объект</th>
+      <th>Статус</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @reviews_input.each do |review| %>
+  <tr>
+      <td><%= review.date %></td>
+      <td><%= review.build_object %></td>
+      <td><%= status review.status %></td>
+    <td><%= link_to 'Show', review %></td>
+    <td><%= link_to 'Подтвердить', accept_review_path(review), method: :post %></td>
+        <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>

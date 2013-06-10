@@ -44,7 +44,16 @@ class BuildObject < ActiveRecord::Base
                   :area,
                   :living_area,
                   :floor,
-                  :planning_id
+                  :planning,
+                  :type_of_build_object,
+                  :type_of_house, 
+                  :material,
+                  :overlap, 
+                  :stair, 
+                  :basement, 
+                  :user,
+                  :description,
+                  :kitchen_area
   
   accepts_nested_attributes_for :photos, :address
   

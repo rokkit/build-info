@@ -1,6 +1,7 @@
 BuildInfo::Application.routes.draw do
-  resources :reviews
-
+  resources :reviews do
+    post "accept" => 'reviews#accept', on: :member
+  end
 
   get "cabinet/index"
 
