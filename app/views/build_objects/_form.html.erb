@@ -39,6 +39,9 @@
   	      <%= fa.label :street_id, "Улица" %>
             <%= fa.grouped_collection_select :street_id, Distinct.order(:name),:streets ,:name, :id, :name, include_blank:true  %>
   	    </div>
+	  <div class="field">
+          <%= fa.input :number_house, label: "Номер дома" %>
+	    </div>
 	  <% end %>
   </div>
   <div class="field">

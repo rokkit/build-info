@@ -30,7 +30,7 @@ class BuildObjectReportsGrid
             self.where(addresses:{distinct_id: value.to_i})
           end
   filter(:street, :enum, :select => Street.all.map {|r| [r, r.id]},
-          header: "Район", allow_blank: true) do |value|
+          header: "Улица", allow_blank: true) do |value|
             self.where(addresses:{street_id: value.to_i})
           end
   filter(:area, :integer, range: true, header: "Общая пл.")
