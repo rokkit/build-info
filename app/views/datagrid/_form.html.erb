@@ -25,6 +25,14 @@
         <%= f.datagrid_label :city %>
         <%= f.grouped_collection_select :city, Region.order(:name),:cities,:name, :id, :name, include_blank:true  %>
     </div>
+    <div class="filter city">
+        <%= f.datagrid_label :distinct %>
+        <%= f.grouped_collection_select :distinct, City.order(:name),:distincts,:name, :id, :name, include_blank:true  %>
+    </div>
+    <div class="filter city">
+        <%= f.datagrid_label :street %>
+        <%= f.grouped_collection_select :street, Distinct.order(:name),:streets,:name, :id, :name, include_blank:true  %>
+    </div>
   </div>
 
   <div class="details">

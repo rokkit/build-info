@@ -4,7 +4,7 @@ class BuildObjectReportsGrid
   include Datagrid
 
   scope do
-    BuildObject.joins(:address)
+    BuildObject.actual.joins(:address)
   end
 
   filter(:price, :integer, :range => true,header: "Цена")
@@ -24,6 +24,14 @@ class BuildObjectReportsGrid
   filter(:city, :enum, :select => City.all.map {|r| [r, r.id]},
           header: "Город", allow_blank: true) do |value|
             self.where(addresses:{city_id: value.to_i})
+          end
+  filter(:distinct, :enum, :select => Distinct.all.map {|r| [r, r.id]},
+          header: "Район", allow_blank: true) do |value|
+            self.where(addresses:{distinct_id: value.to_i})
+          end
+  filter(:street, :enum, :select => Street.all.map {|r| [r, r.id]},
+          header: "Район", allow_blank: true) do |value|
+            self.where(addresses:{street_id: value.to_i})
           end
   filter(:area, :integer, range: true, header: "Общая пл.")
           

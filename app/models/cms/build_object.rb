@@ -45,6 +45,7 @@ class BuildObject < ActiveRecord::Base
                   :living_area,
                   :floor,
                   :planning,
+                  :planning_id,
                   :type_of_build_object,
                   :type_of_house, 
                   :material,
@@ -59,6 +60,8 @@ class BuildObject < ActiveRecord::Base
   
   before_save :count_rating
   before_create :set_rating
+  
+  scope :actual, -> { where(archived: false) }
   
   def count_rating
     self.user ||= User.first #если юзер не задан то добавить как от админа
@@ -79,6 +82,11 @@ class BuildObject < ActiveRecord::Base
   #За ввод объекта пользователем с рейтингом 5 рейтинг объекта повышается на 2 балла.
   def set_rating
 
+  end
+  
+  #not removing just archiving
+  def archive!
+    self.archived = true
   end
   
   def to_s
