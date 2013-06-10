@@ -15,33 +15,36 @@ jQuery ->
       $('#build_object_address_attributes_region_id').parent().hide()
       
 jQuery ->
-  states = $('#build_object_reports_grid_region').html()
+  grid_region = $('#build_object_reports_grid_region')
+  $(grid_region).parent().hide()
+  states = $(grid_region).html()
   $('#build_object_reports_grid_country').change ->
     country = $('#build_object_reports_grid_country :selected').text()
     options = $(states).filter("optgroup[label='#{country}']").html()
     if options
-      $('#build_object_reports_grid_region').html(options)
-      $("#build_object_reports_grid_region").prepend("<option value=''>Выберите регион</option>").val('');
-      $('#build_object_reports_grid_region').parent().show()  
+      $(grid_region).html(options)
+      $(grid_region).prepend("<option value=''>Выберите регион</option>").val('');
+      $(grid_region).parent().show()  
     else
-      $('#build_object_reports_grid_region').empty()
-      $('#build_object_reports_grid_region').parent().hide()
+      $(grid_region).empty()
+      $(grid_region).parent().hide()
       $('#build_object_reports_grid_city').empty()
       $('#build_object_reports_grid_city').parent().hide()
       
 jQuery ->
-  #$('#build_object_reports_grid_city').parent().hide()
+  grid_city = $('#build_object_reports_grid_city')
+  $(grid_city).parent().hide()
   states = $('#build_object_reports_grid_city').html()
   $('#build_object_reports_grid_region').change ->
     country = $('#build_object_reports_grid_region :selected').text()
     options = $(states).filter("optgroup[label='#{country}']").html()
     if options
-      $('#build_object_reports_grid_city').html(options)
-      $("#build_object_reports_grid_city").prepend("<option value=''>Выберите город</option>").val('');
-      $('#build_object_reports_grid_city').parent().show()      
+      $(grid_city).html(options)
+      $(grid_city).prepend("<option value=''>Выберите город</option>").val('');
+      $(grid_city).parent().show()      
     else
-      $('#build_object_reports_grid_city').empty()
-      $('#build_object_reports_grid_city').parent().hide()
+      $(grid_city).empty()
+      $(grid_city).parent().hide()
     #прячем параметры квартиры если выбран пункт продажа дома
     
 jQuery ->

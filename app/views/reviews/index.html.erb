@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+      <th>Тип</th>
       <th>Дата</th>
       <th>Объект</th>
       <th>Статус</th>
@@ -12,9 +13,10 @@
 
 <% @reviews.each do |review| %>
   <tr>
+      <td><%= io review %></td>
       <td><%= review.date %></td>
       <td><%= review.build_object %></td>
-      <td><%= review.status %></td>
+      <td><%= status review.status %></td>
     <td><%= link_to 'Show', review %></td>
         <td><%= link_to 'Edit', edit_review_path(review) %></td>
         <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -23,5 +25,3 @@
 </table>
 
 <br />
-
-<%= link_to 'New Review', new_review_path %>

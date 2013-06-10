@@ -180,6 +180,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  arel
   cancan
   carrierwave
   coffee-rails (~> 3.2.1)

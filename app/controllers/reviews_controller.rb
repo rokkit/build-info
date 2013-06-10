@@ -1,9 +1,9 @@
 class ReviewsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource only: [:index, :show, :edit, :update, :destroy]
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = current_user.reviews
+    @reviews = Review.by_user current_user
 
     respond_to do |format|
       format.html # index.html.erb

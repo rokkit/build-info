@@ -23,7 +23,7 @@ class Ability
       end
       
       can :request_review, BuildObject do |build_object| #запрос на просмотр, пользовател не должен запрашивать у своих объектов
-        build_object.user != user
+        build_object.user != user && !user.id.nil? 
       end
     #
     # The first argument to `can` is the action you are giving the user 
