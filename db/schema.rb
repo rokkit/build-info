@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130607130435) do
+ActiveRecord::Schema.define(:version => 20130610114504) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(:version => 20130607130435) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "build_object_id"
+    t.float    "lat"
+    t.float    "lng"
   end
 
   add_index "addresses", ["city_id"], :name => "index_addresses_on_city_id"
@@ -166,6 +168,7 @@ ActiveRecord::Schema.define(:version => 20130607130435) do
     t.integer  "valute_id"
     t.integer  "address_id"
     t.text     "description"
+    t.boolean  "archived"
   end
 
   create_table "category_articles", :force => true do |t|

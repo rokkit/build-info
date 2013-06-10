@@ -74,7 +74,7 @@ class BuildObjectsController < ApplicationController
   # DELETE /build_objects/1.json
   def destroy
     @build_object = BuildObject.find(params[:id])
-    @build_object.destroy
+    @build_object.archive!
 
     respond_to do |format|
       format.html { redirect_to build_objects_url }
