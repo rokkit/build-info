@@ -161,14 +161,14 @@ ActiveRecord::Schema.define(:version => 20130610114504) do
     t.boolean  "balkon"
     t.integer  "hotwater_id"
     t.integer  "view_from_windows_id"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
     t.integer  "rating"
     t.boolean  "ipoteka"
     t.integer  "valute_id"
     t.integer  "address_id"
     t.text     "description"
-    t.boolean  "archived"
+    t.boolean  "archived",                :default => false
   end
 
   create_table "category_articles", :force => true do |t|

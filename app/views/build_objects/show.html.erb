@@ -1,14 +1,16 @@
-<%= link_to "Записаться на просмотр", new_review_path(build_object:@build_object) if can? :request_review, @build_object %>
-<p id="notice"><%= notice %></p>
-<p>
-	<b>Фотографии</b>
-  <ul class="gallery">
-	<% @build_object.photos.each do |photo|%>
-		<li><%= image_tag photo.image_url(:main).to_s %></li>
-	<% end %>
-  </ul>
-</p>
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@build_object.address.lat}%2C#{@build_object.address.lng}" %>
+
+<% unless notice.nil? %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
+<ul class="gallery">
+<% @build_object.photos.each do |photo|%>
+	<li><%= image_tag photo.image_url(:main).to_s %></li>
+<% end %>
+</ul>
+
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=350x250&sensor=false&zoom=16&markers=#{@build_object.address.lat}%2C#{@build_object.address.lng}", :class => "gmap" %>
+
 <table width="100%" class="apartment details">
   <thead>
     <tr>
@@ -247,7 +249,7 @@
   <dt>Записаться на просмотр</dt>
   <dd>Пн. 21.01.13 18:00 - 18:30</dd>
   <dd>Вт. 22.01.13 18:00 - 19:00</dd>
-  <dd><a href="#">подать заявку</a></dd>
+  <dd><%= link_to "Записаться на просмотр", new_review_path(build_object:@build_object) if can? :request_review, @build_object %></dd>
 </dl>
 
 

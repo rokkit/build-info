@@ -71,7 +71,15 @@
 }
 
 // display appartment info
+.gallery {
+	@include span-columns(3,8);
+}
+.gmap {
+	margin-bottom: 1em;
+	float: right;
+}
 table.details {
+	clear: both;
 	border-spacing:0;
 	border-collapse:collapse;
 	margin-bottom: 1em;
