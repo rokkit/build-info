@@ -6,6 +6,7 @@
 jQuery.fn.extend dynsel: (child) ->
   if $(this).val() == null
       $(child).parent().hide()
+      $(child).nextAll().empty()
   data = $(child).html()
   $(this).change ->
     filter_value = $("option:selected", this).text()
