@@ -17,7 +17,6 @@ group :assets do
   gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'jquery-ui-rails'
   gem 'compass'
   gem 'compass-rails'
   gem 'sassy-buttons'
@@ -32,6 +31,7 @@ group :production do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'devise'
 gem 'simple_form'
 gem 'activeadmin'
