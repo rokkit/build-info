@@ -5,3 +5,22 @@
 	<%= datagrid_table @grid, @assets %>
 </div>
 <%= paginate(@assets) %>
+
+<table id="build_object_main_tbl" class="display">
+<thead>
+  <tr>
+    <th>Цена</th>
+    <th>Адрес</th>
+    <th>Площадь</th>
+    <th>Описание</th>
+  </tr>
+</thead>
+<tbody>
+  <% BuildObject.all.each do |product| %>
+    <tr>
+      <td><%= link_to(product.name, product) %></td>
+      <td><%= number_to_currency(product.price) %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>

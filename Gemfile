@@ -17,11 +17,12 @@ group :assets do
   gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  #gem 'jquery-ui-rails'
+  gem 'jquery-ui-rails'
   gem 'compass'
   gem 'compass-rails'
   gem 'sassy-buttons'
   gem 'susy'
+  gem 'jquery-datatables-rails'
 end
 group :development do
   gem 'sqlite3'

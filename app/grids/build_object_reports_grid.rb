@@ -14,24 +14,24 @@ class BuildObjectReportsGrid
           header: "Тип объекта")
           
   filter(:country, :enum, :select => Country.all.map {|r| [r, r.id]},
-          header: "Страна", :allow_blank => true) do |value|
-            self.where(addresses:{country_id: value.to_i})
+          header: "Страна", :allow_blank => true) do |value,scope|
+            scope.where(addresses:{country_id: value.to_i})
           end
   filter(:region, :enum, :select => Region.all.map {|r| [r, r.id]},
-          header: "Регион", allow_blank: true) do |value|
-            self.where(addresses:{region_id: value.to_i}) unless value.nil?
+          header: "Регион", allow_blank: true) do |value, scope|
+            scope.where(addresses:{region_id: value.to_i}) unless value.nil?
           end
   filter(:city, :enum, :select => City.all.map {|r| [r, r.id]},
           header: "Город", allow_blank: true) do |value|
-            self.where(addresses:{city_id: value.to_i}) unless value.nil?
+            where(addresses:{city_id: value.to_i}) unless value.nil?
           end
   filter(:distinct, :enum, :select => Distinct.all.map {|r| [r, r.id]},
           header: "Район", allow_blank: true) do |value|
-            self.where(addresses:{distinct_id: value.to_i}) unless value.nil?
+            where(addresses:{distinct_id: value.to_i}) unless value.nil?
           end
   filter(:street, :enum, :select => Street.all.map {|r| [r, r.id]},
           header: "Улица", allow_blank: true) do |value|
-            self.where(addresses:{street_id: value.to_i}) unless value.nil?
+            where(addresses:{street_id: value.to_i}) unless value.nil?
           end
   filter(:area, :integer, range: true, header: "Общая пл.")
           
