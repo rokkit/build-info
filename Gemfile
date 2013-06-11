@@ -31,7 +31,6 @@ group :production do
 end
 
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
 gem 'devise'
 gem 'simple_form'
 gem 'activeadmin'
