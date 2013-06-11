@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ReviewsController < ApplicationController
   load_and_authorize_resource only: [:index, :show, :edit, :update, :destroy]
   # GET /reviews
