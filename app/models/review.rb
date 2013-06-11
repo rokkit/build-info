@@ -6,8 +6,8 @@ class Review < ActiveRecord::Base
   
   before_create :init_status
   
-  scope :by_user, -> (user) { where(user_id: user) }
-  scope :by_object_owner, -> (user) { joins(:build_object).where(build_objects: {user_id: user}) }
+  scope :by_user, lambda {|user| where(user_id: user) }
+  scope :by_object_owner, lambda {|user| joins(:build_object).where(build_objects: {user_id: user}) }
   
   def init_status
     self.status = 1
