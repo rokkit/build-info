@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module ReviewsHelper
   def status status
     if status == 1
