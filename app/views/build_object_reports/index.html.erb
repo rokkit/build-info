@@ -1,44 +1,50 @@
 
 
 <%= form_tag build_object_reports_path, method: :get do |f| -%>
-  <div class="filter price">
-      <%= label_tag :price %>
-      <%= number_field_tag :price %>
-  </div>
-  <div class="filter area">
-      <%= label_tag :area %>
-      <%= number_field_tag :area %>
-  </div>
-
-  <div class="address">
-    <div class="filter country">
-  	<%= label_tag 'filter[country]', "Страна" %>
-        <%= collection_select :filter, :country_id, Country.order(:name),:id,:name, include_blank:true %>
+  <div class="row">
+    <div class="large-6 columns filter price">
+        <%= label_tag :price, "Цена" %>
+        <%= number_field_tag :price %>
     </div>
-    <div class="filter region">
-        <%= label_tag 'filter[region]',"Регион" %>
-        <%= grouped_collection_select :filter,:region_id, Country.order(:name),:regions,:name, :id, :name, include_blank:true  %>   
-    </div>
-    <div class="filter city">
-        <%= label_tag 'filter[city]',"Город" %>
-        <%= grouped_collection_select :filter, :city_id,Region.order(:name),:cities,:name, :id, :name, include_blank:true  %>
-    </div>
-    <div class="filter city">
-        <%= label_tag 'filter[distinct]', 'Район' %>
-        <%= grouped_collection_select :filter, :distinct_id, City.order(:name),:distincts,:name, :id, :name, include_blank:true  %>
-    </div>
-    <div class="filter city">
-        <%= label_tag 'filter[street]', "Улица" %>
-        <%= grouped_collection_select :filter, :street_id,Distinct.order(:name),:streets,:name, :id, :name, include_blank:true  %>
+    <div class="large-6 columns filter area">
+        <%= label_tag :area, "Площадь" %>
+        <%= number_field_tag :area %>
     </div>
   </div>
 
-  <div class="details">
-    <div class="filter ipoteka">
+  <div class="address row">
+    <div class="large-6 columns">
+      <div class="filter country">
+    	<%= label_tag 'filter[country]', "Страна" %>
+          <%= collection_select :filter, :country_id, Country.order(:name),:id,:name, include_blank:true %>
+      </div>
+      <div class="filter region">
+          <%= label_tag 'filter[region]',"Регион" %>
+          <%= grouped_collection_select :filter,:region_id, Country.order(:name),:regions,:name, :id, :name, include_blank:true  %>   
+      </div>
+      <div class="filter city">
+          <%= label_tag 'filter[city]',"Город" %>
+          <%= grouped_collection_select :filter, :city_id,Region.order(:name),:cities,:name, :id, :name, include_blank:true  %>
+      </div>
+    </div>
+    <div class="large-6 columns">
+      <div class="filter district">
+          <%= label_tag 'filter[distinct]', 'Район' %>
+          <%= grouped_collection_select :filter, :distinct_id, City.order(:name),:distincts,:name, :id, :name, include_blank:true  %>
+      </div>
+      <div class="filter street">
+          <%= label_tag 'filter[street]', "Улица" %>
+          <%= grouped_collection_select :filter, :street_id,Distinct.order(:name),:streets,:name, :id, :name, include_blank:true  %>
+      </div>
+    </div>
+  </div>
+
+  <div class="details row">
+    <div class="large-2 columns filter ipoteka">
         <%= label_tag :ipoteka %>
         <%= check_box_tag :ipoteka %>
     </div>
-    <div class="filter object-type">
+    <div class="large-2 columns large-uncentered filter object-type">
         <%= label_tag :type_of_build_object_id %>
         <%= check_box_tag :type_of_build_object_id %>
     </div>
