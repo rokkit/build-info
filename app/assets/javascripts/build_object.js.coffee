@@ -44,6 +44,6 @@ jQuery ->
             $('#appartement-fields').show()
         else
             $('#appartement-fields').hide()
-# jQuery ->
-#         $('#build_object_main_tbl').dataTable
-#             bJQueryUI: true
+jQuery ->
+        $('#build_object_main_tbl').dataTable
+            bJQueryUI: true
