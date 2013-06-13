@@ -142,6 +142,11 @@ header {
 .btn {
 	@include sassy-button();
 }
+.alert-box {
+	h3 {
+		color: #fff;
+	}
+}
 //admin
 .edit-links {
 	clear: both;
