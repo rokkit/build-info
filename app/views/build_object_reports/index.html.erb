@@ -62,8 +62,7 @@
       <td><%= number_to_currency buildobject.price %></td>
       <td><%= render partial: 'build_objects/address', locals: { model: buildobject.address} %></td>
       <td><%= buildobject.area %></td>
-      <td><%= buildobject.description %></td>
-      <td><%= link_to  build_object_path(buildobject) %></td>
+      <td><%= render partial: 'build_objects/build_object', locals: { model: buildobject} %></td>
     </tr>
   <% end %>
 </tbody>

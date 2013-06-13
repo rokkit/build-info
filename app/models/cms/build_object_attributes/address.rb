@@ -12,11 +12,17 @@ class Address < ActiveRecord::Base
   :country_id, :region_id, :city_id, :distinct_id, :street_id, :build_object_id,
   :country, :region, :city, :distinct, :street, :build_object, :lat, :lng
   
+  validates :country,:region, :city,:distinct,:street,  presence: true
+  
   def to_s
   end
-  
+private
   def geocode_by_address
-    data = Geocoder.search("#{self.country} #{self.city} #{self.street} #{self.number_house}")
-    self.lat, self.lng = data[0].latitude, data[0].longitude unless data.nil?
+    begin
+      data = Geocoder.search("#{self.country} #{self.city} #{self.street} #{self.number_house}")
+      self.lat, self.lng = data[0].latitude, data[0].longitude unless data.nil?
+    rescue Exception #Адрес может быть не найден геокодером
+      return true
+    end
   end
 end

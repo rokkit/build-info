@@ -58,13 +58,21 @@ class BuildObject < ActiveRecord::Base
   
   accepts_nested_attributes_for :photos, :address
   
+  validates :type_of_build_object,:type_of_house, :price, presence: true
+  
   before_save :count_rating
   before_create :set_rating
   
   scope :actual, -> { where(archived: false) }
-  
+  scope :full, -> { joins(:address) }
   #FILTER SCOPES
-  scope :filter_country, lambda {|country| joins(:address).where(addresses: { country_id: country })}
+  scope :filter_country, lambda {|country| full.where(addresses: { country_id: country })}
+  scope :filter_region, lambda {|region| full.where(addresses: { region_id: region })}
+  scope :filter_city, lambda {|city| full.where(addresses: { city_id: city })}
+  scope :filter_distinct, lambda {|distinct| full.where(addresses: { distinct_id: distinct })}
+  scope :filter_street, lambda {|street| full.where(addresses: { street_id: street })}
+  
+  
   #END FILTERS
   
   def count_rating
