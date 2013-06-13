@@ -15,7 +15,7 @@ u.roles << Role.new(name:"admin")
 u.save!
 
 Country.delete_all
-open("http://openconcept.ca/sites/openconcept.ca/files/country_code_drupal_0.txt") do |countries|
+['Российская Федерация',"Украина", "Финляндия"].each do |countries|
   countries.read.each_line do |country|
     code, name = country.chomp.split("|")
     Country.create!(:name => name)
@@ -23,7 +23,7 @@ open("http://openconcept.ca/sites/openconcept.ca/files/country_code_drupal_0.txt
 end
 
 Region.delete_all
-  c = Country.find_by_name("Russian Federation")
+  c = Country.find_by_name("Российская Федерация")
   ['Санкт-Петербург и Ленинградская область','Республика Карелия','Алтайский край', 'Краснодарский край'].each do |r|
     c.regions << Region.new(name: r)
   end
