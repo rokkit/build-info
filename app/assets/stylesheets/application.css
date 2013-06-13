@@ -10,7 +10,7 @@
  *
  *= require_self
  *= require foundation_and_overrides
- *= require jquery.ui.core
+ *= require jquery.ui.all
  *= require jquery.ui.theme
  *= require dataTables/src/demo_table_jui
  *= require layout

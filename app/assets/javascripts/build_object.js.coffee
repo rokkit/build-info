@@ -4,6 +4,7 @@
 
 #Dynamic select
 jQuery.fn.extend dynsel: (child) ->
+  $(child).parent().hide()
   if $(this).val() == null
       $(child).parent().hide()
       $(child).nextAll().empty()
@@ -39,11 +40,32 @@ jQuery ->
     
 jQuery ->
     $('#appartement-fields').hide()
-    $("#build_object_type_of_build_object_id").change ->
-        if $("#build_object_type_of_build_object_id :selected").text() == "Квартира (Вторичный рынок)"
+    $("#filter_type_of_build_object").change ->
+        if $("#filter_type_of_build_object :selected").text() == "Квартира (Вторичный рынок)"
             $('#appartement-fields').show()
         else
             $('#appartement-fields').hide()
 jQuery ->
         $('#buildobjects-tbl').dataTable
             bJQueryUI: true
+            bFilter: false
+            bInfo: false
+            bPaginate: false
+            oLanguage:
+                sProcessing: "Подождите..."
+                sLengthMenu: "Показать _MENU_ записей"
+                sZeroRecords: "Записи отсутствуют."
+                sInfo: "Записи с _START_ до _END_ из _TOTAL_ записей"
+                sInfoEmpty: "Записи с 0 до 0 из 0 записей"
+                sInfoFiltered: "(отфильтровано из _MAX_ записей)"
+                sInfoPostFix: ""
+                sSearch: "Поиск:"
+                sUrl: ""
+                oPaginate:
+                  sFirst: "Первая"
+                  sPrevious: "Предыдущая"
+                  sNext: "Следующая"
+                  sLast: "Последняя"
+                oAria:
+                  sSortAscending: ": активировать для сортировки столбца по возрастанию"
+                  sSortDescending: ": активировать для сортировки столбцов по убыванию"

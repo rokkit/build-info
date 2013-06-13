@@ -22,7 +22,7 @@ group :assets do
   gem 'sassy-buttons'
   gem 'susy'
   gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
-  gem 'jquery-ui-rails'
+  
   gem 'zurb-foundation'
 end
 group :development do
@@ -30,9 +30,12 @@ group :development do
 end
 group :production do
   gem 'pg'
+  gem 'mysql2'
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'rails3-jquery-autocomplete'
 gem 'devise'
 gem 'simple_form'
 gem 'activeadmin'
@@ -41,7 +44,6 @@ gem 'carrierwave'
 gem 'has_scope'
 gem 'russian'
 gem "rmagick"
-gem "datagrid"
 gem "geocoder"
 gem 'arel'
 # To use ActiveModel has_secure_password

@@ -33,13 +33,25 @@ BuildInfo::Application.routes.draw do
 
   resources :addresses
 
-
-  resources :streets
+  resources :countries do
+    get :autocomplete_country_name, :on => :collection
+  end
+  resources :regions do
+    get :autocomplete_region_name, :on => :collection
+  end
+  resources :cities do
+    get :autocomplete_city_name, :on => :collection
+  end
+  resources :distincts do
+    get :autocomplete_distinct_name, :on => :collection
+  end
+  resources :streets do
+    get :autocomplete_street_name, :on => :collection
+  end
 
 
   get "pages/index"
   get "pages/profile"
-
 
   
   devise_for :admin_users, ActiveAdmin::Devise.config

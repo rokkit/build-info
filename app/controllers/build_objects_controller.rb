@@ -2,14 +2,19 @@ class BuildObjectsController < ApplicationController
   # GET /build_objects
   # GET /build_objects.json
   def index
-    # @build_objects = BuildObject.all
-    # 
-    # respond_to do |format|
-    #   format.html # index.html.erb
-    #   format.json { render json: @build_objects }
-    # end
-    @grid = BuildObjectReportsGrid.new(params[:build_object_reports_grid])
-    @assets = @grid.assets.page(params[:page])
+    @build_objects = BuildObject.scoped.full
+    unless params[:filter].blank?
+      @build_objects = @build_objects.filter_country params[:filter][:country_id] unless params[:filter][:country_id].blank?
+      @build_objects = @build_objects.filter_region params[:filter][:region_id] unless params[:filter][:region_id].blank?
+      @build_objects = @build_objects.filter_city params[:filter][:city_id] unless params[:filter][:city_id].blank?
+      @build_objects = @build_objects.filter_distinct params[:filter][:distinct_id] unless params[:filter][:distinct_id].blank?
+      @build_objects = @build_objects.filter_street params[:filter][:street_id] unless params[:filter][:street_id].blank?
+      @build_objects = @build_objects.filter_min_price params[:filter][:min_price] unless params[:filter][:min_price].blank?
+      @build_objects = @build_objects.filter_max_price params[:filter][:max_price] unless params[:filter][:max_price].blank?
+      @build_objects = @build_objects.filter_min_area params[:filter][:min_area] unless params[:filter][:min_area].blank?
+      @build_objects = @build_objects.filter_max_area params[:filter][:max_area] unless params[:filter][:max_area].blank?
+      @build_objects = @build_objects.filter_ipoteka params[:filter][:ipoteka] unless params[:filter][:ipoteka].blank?
+    end
   end
 
   # GET /build_objects/1
