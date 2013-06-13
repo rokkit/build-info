@@ -114,6 +114,8 @@ ru:
           price: "Цена" 
           type_of_build_object_id: "Тип объекта"
           type_of_house_id: "Тип дома"
+          type_of_build_object: "Тип объекта"
+          type_of_house: "Тип дома"
           material_id: "Материал дома"
           material: "Материал дома"
           overlap_id: "Перекрытия"

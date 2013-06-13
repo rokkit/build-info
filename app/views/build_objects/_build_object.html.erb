@@ -1,14 +1,15 @@
 <ul>
-    <li><%= model.description %></li>
+    <% unless model.description.blank? %>
+        <li><%= model.description %></li>
+    <% end %>
 <% model.photos.each do |photo|%>
 	<li><%= image_tag photo.image_url(:thumb).to_s %></li>
 <% end %>
 </ul>
 
-<td>
+
 	<%= link_to 'Show', model %>
-</td>
 <% if can? :update, model %>
-	<td><%= link_to 'Edit', edit_build_object_path(model) %></td>
-	<td><%= link_to 'Destroy', model, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<%= link_to 'Edit', edit_build_object_path(model) %>
+	<%= link_to 'Destroy', model, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
