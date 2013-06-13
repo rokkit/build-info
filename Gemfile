@@ -23,6 +23,7 @@ group :assets do
   gem 'susy'
   gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
   gem 'jquery-ui-rails'
+  gem 'zurb-foundation'
 end
 group :development do
   gem 'sqlite3'
