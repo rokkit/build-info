@@ -66,11 +66,16 @@ class BuildObject < ActiveRecord::Base
   scope :actual, -> { where(archived: false) }
   scope :full, -> { joins(:address) }
   #FILTER SCOPES
-  scope :filter_country, lambda {|country| full.where(addresses: { country_id: country })}
-  scope :filter_region, lambda {|region| full.where(addresses: { region_id: region })}
-  scope :filter_city, lambda {|city| full.where(addresses: { city_id: city })}
-  scope :filter_distinct, lambda {|distinct| full.where(addresses: { distinct_id: distinct })}
-  scope :filter_street, lambda {|street| full.where(addresses: { street_id: street })}
+  scope :filter_country, lambda {|country| where(addresses: { country_id: country })}
+  scope :filter_region, lambda {|region| where(addresses: { region_id: region })}
+  scope :filter_city, lambda {|city| where(addresses: { city_id: city })}
+  scope :filter_distinct, lambda {|distinct| where(addresses: { distinct_id: distinct })}
+  scope :filter_street, lambda {|street| where(addresses: { street_id: street })}
+  scope :filter_min_price, lambda {|price| where("price >= ?", price)}
+  scope :filter_max_price, lambda {|price| where("price <= ?", price)}
+  scope :filter_min_area, lambda {|area| where("area >= ?", area)}
+  scope :filter_max_area, lambda {|area| where("area <= ?", area)}
+  scope :filter_ipoteka, lambda {|ipoteka| where(ipoteka: ipoteka)}
   
   
   #END FILTERS

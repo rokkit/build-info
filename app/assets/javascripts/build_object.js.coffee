@@ -4,6 +4,7 @@
 
 #Dynamic select
 jQuery.fn.extend dynsel: (child) ->
+  $(child).parent().hide()
   if $(this).val() == null
       $(child).parent().hide()
       $(child).nextAll().empty()
@@ -39,14 +40,17 @@ jQuery ->
     
 jQuery ->
     $('#appartement-fields').hide()
-    $("#build_object_type_of_build_object_id").change ->
-        if $("#build_object_type_of_build_object_id :selected").text() == "Квартира (Вторичный рынок)"
+    $("#filter_type_of_build_object").change ->
+        if $("#filter_type_of_build_object :selected").text() == "Квартира (Вторичный рынок)"
             $('#appartement-fields').show()
         else
             $('#appartement-fields').hide()
 jQuery ->
         $('#buildobjects-tbl').dataTable
             bJQueryUI: true
+            bFilter: false
+            bInfo: false
+            bPaginate: false
             oLanguage:
                 sProcessing: "Подождите..."
                 sLengthMenu: "Показать _MENU_ записей"
