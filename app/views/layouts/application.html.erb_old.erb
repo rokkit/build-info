@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <title>BuildInfo</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="page">
+		<header>
+			<div id="branding">
+				<%= link_to (image_tag "logo.png"), root_path %>
+			</div>
+			<!-- nav menu -->
+			<nav id="main-nav">
+				<ul>
+					<li><%= link_to 'Главная', root_path %></li>
+					<li><%= link_to 'Новости', news_index_path %></li>
+					<li><%= link_to 'Список объектов', build_objects_path %></li>
+					<li><%= link_to 'Статьи', articles_path %></li>
+				</ul>
+			</nav>
+		</header>
+
+		<aside id="sidebar-left" class="sidebar"> <!-- left sidebar -->
+			<div class="block posts">
+				<%= render 'articles/index', :locals=>{ :articles_in_side => Article.top } %>
+			</div>
+		</aside><!-- /left sidebar -->
+
+		<section id="main-content"> <!-- content -->
+            <%- flash.each do |name, msg| -%>
+                    <% if name == :error %>
+                        <%= content_tag :div, msg, :class => "alert-message error" %>
+                    <% elsif name == :notice %>
+                        <%= content_tag :div, msg, :class => "alert-message success" %>
+                    <% elsif name == :warning %>
+                        <%= content_tag :div, msg, :class => "alert-message warning" %>
+                    <% end %>
+                  <%- end -%>
+			<%= yield %>
+		</section><!-- /content -->
+
+		<aside id="sidebar-right" class="sidebar"> <!-- right sidebar -->
+			<div id="login-block" class="block login">
+				<% if user_signed_in? %>
+					<h2 class="block-title">Меню пользователя</h2>
+					<div class="content">
+						<%= link_to 'Кабинет', pages_profile_path %>
+						<%= link_to "Выход", destroy_user_session_path, method: :delete %>
+					</div>
+				<% else %>
+					<%= render '/devise/sessions/new' %>
+				<% end %>
+			</div>
+		</aside><!-- /right sidebar -->
+
+		<footer>
+			<p class="copyright">&copy; 2013 Home.info</p>
+		</footer>
+	</div>
+</body>
+</html>

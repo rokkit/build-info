@@ -1,10 +1,10 @@
 
-<%= simple_form_for(@build_object) do |f| %>
+<%= simple_form_for(@build_object, html: {class: "custom"}) do |f| %>
 <% @build_object.address = Address.new %>
 <% @build_object.photos = [Photo.new] %>
   <% if @build_object.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@build_object.errors.count, "error") %> prohibited this house from being saved:</h2>
+    <div class="alert-box alert radius">
+      <h3><%= pluralize(@build_object.errors.count, "error") %> предотвратили создание этой страницы:</h3>
 
       <ul>
       <% @build_object.errors.full_messages.each do |msg| %>
@@ -13,9 +13,18 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-	  <%= f.association :type_of_build_object, label: "Тип объекта"%>
+  
+  <div class="row">
+    <div class="large-4 columns field">
+      <%= f.association :type_of_build_object, label: "Тип объекта"%>
+    </div>
   </div>
+
+
+  <div class="row">
+
+  <div class="large-6 columns">
+
   <div class="adress-fields">
     <h2>Адрес объекта</h2>
     <%= f.fields_for :address do |fa| %>
@@ -42,7 +51,7 @@
     <div class="field">
           <%= fa.label :number_house, "Номер дома" %>
           <%= fa.number_field :number_house %>
-      </div>
+    </div>
     <% end %>
 
     <div class="field">
@@ -53,134 +62,142 @@
       <%= f.fields_for :photos do |image| %>
           <%= image.file_field :image %>
       <% end %>
-    <div>
+    </div>
 
-  </div>
+  </div><!-- /#adress-fields -->
 
-<div id="house-description">
-	<h2>Описание дома</h2>
-  <div class="field">
-    <%= f.label :byear %> 
-    <%= f.date_select :byear %>
-  </div>
-  <div class="field">
-     <%= f.label :overhault, "Капитальный ремонт" %>
-    <%= f.check_box :overhault %>
-  </div>
-  <div class="field">
-    <%= f.association :material %>
-  </div>
-  <div class="field">
-    <%= f.label :elevator %> 
-    <%= f.check_box :elevator %>
-  </div>
-  <div class="field">
-    <%= f.label :chute %> 
-    <%= f.check_box :chute %>
-  </div>
-  <div class="field">
-    <%= f.label :consierge %> 
-    <%= f.check_box :consierge %>
-  </div>
-  <div class="field">
-    <%= f.association :stair %>
-  </div>
-  <div class="field">
-    <%= f.association :basement %>
-  </div>
-  <div class="field">
-    <%= f.label :hfirstfloor %> 
-    <%= f.text_field :hfirstfloor %>
-  </div>
-  <div class="field">
-    <%= f.label :name %> 
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :builder %> 
-    <%= f.text_field :builder %>
-  </div>
-  <div class="field">
-    <%= f.label :shopprod %> 
-    <%= f.text_field :shopprod %>
-  </div>
-  <div class="field">
-    <%= f.label :domesticserv %> 
-    <%= f.text_field :domesticserv %>
-  </div>
-  <div class="field">
-    <%= f.label :shopping %> 
-    <%= f.text_field :shopping %>
-  </div>
-  <div class="field">
-    <%= f.label :phrmacy %> 
-    <%= f.text_field :phrmacy %>
-  </div>
-  <div class="field">
-    <%= f.label :clinic %> 
-    <%= f.text_field :clinic %>
-  </div>
-  <div class="field">
-    <%= f.label :kgarten %> 
-    <%= f.text_field :kgarten %>
-  </div>
-  <div class="field">
-    <%= f.label :school %> 
-    <%= f.text_field :school %>
-  </div>
-  <div class="field">
-    <%= f.label :bank %> 
-    <%= f.text_field :bank %>
-  </div>
-  <div class="field">
-    <%= f.label :parking %> 
-    <%= f.text_field :parking %>
-  </div>
-  <div class="field">
-    <%= f.label :park %> 
-    <%= f.text_field :park %>
-  </div>
-  <div class="field">
-    <%= f.label :busstop %> 
-    <%= f.text_field :busstop %>
-  </div>
-</div>
 
-<div id="appartement-fields">
-	<h2>Параметры квартиры</h2>
-	<div class="field">
-		<%= f.input :rooms, label: "Кол-во комнат" %>
-	</div>
-	<div class="field">
-		<%= f.association :planning, label: "Планировка" %>
-	</div>
-	<div class="field">
-		<%= f.input :area, label: "Общая площадь" %>
-	</div>
-	<div class="field">
-		<%= f.input :living_area, label: "Жилая площадь" %>
-	</div>
-	<div class="field">
-		<%= f.input :floor, label: "Этаж" %>
-	</div>
-</div>
+  <div id="appartement-fields">
+    <h2>Параметры квартиры</h2>
+    <div class="field">
+      <%= f.input :rooms, label: "Кол-во комнат" %>
+    </div>
+    <div class="field">
+      <%= f.association :planning, label: "Планировка" %>
+    </div>
+    <div class="field">
+      <%= f.input :area, label: "Общая площадь" %>
+    </div>
+    <div class="field">
+      <%= f.input :living_area, label: "Жилая площадь" %>
+    </div>
+    <div class="field">
+      <%= f.input :floor, label: "Этаж" %>
+    </div>
+  </div><!-- /#appartment-fields -->
 
-<div id="sale-info">
-	<h2>Условия сделки</h2>
-	<div class="field">
-		<%= f.label :price, "Цена" %>
-		<%= f.number_field :price %>
-	</div>
-	<div class="field">
-		<%= f.association :valute, label: "Валюта" %>
-	</div>
-	<div class="field">
-		<%= f.label :ipoteka, "Ипотека" %>
-		<%= f.check_box :ipoteka %>
-	</div>
-</div>
+  <div id="sale-info">
+    <h2>Условия сделки</h2>
+    <div class="field">
+      <%= f.label :price, "Цена" %>
+      <%= f.number_field :price %>
+    </div>
+    <div class="field">
+      <%= f.association :valute, label: "Валюта" %>
+    </div>
+    <div class="field">
+      <%= f.label :ipoteka, "Ипотека" %>
+      <%= f.check_box :ipoteka %>
+    </div>
+  </div><!-- /#sale-info -->
+
+  </div><!-- /.large-6 -->
+
+  <div class="large-6 columns">
+
+  <div id="house-description">
+    <h2>Описание дома</h2>
+    <div class="field">
+      <%= f.label :byear %> 
+      <%= f.date_select :byear %>
+    </div>
+    <div class="field">
+       <%= f.label :overhault, "Капитальный ремонт" %>
+      <%= f.check_box :overhault %>
+    </div>
+    <div class="field">
+      <%= f.association :material %>
+    </div>
+    <div class="field">
+      <%= f.label :elevator %> 
+      <%= f.check_box :elevator %>
+    </div>
+    <div class="field">
+      <%= f.label :chute %> 
+      <%= f.check_box :chute %>
+    </div>
+    <div class="field">
+      <%= f.label :consierge %> 
+      <%= f.check_box :consierge %>
+    </div>
+    <div class="field">
+      <%= f.association :stair %>
+    </div>
+    <div class="field">
+      <%= f.association :basement %>
+    </div>
+    <div class="field">
+      <%= f.label :hfirstfloor %> 
+      <%= f.text_field :hfirstfloor %>
+    </div>
+    <div class="field">
+      <%= f.label :name %> 
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :builder %> 
+      <%= f.text_field :builder %>
+    </div>
+    <div class="field">
+      <%= f.label :shopprod %> 
+      <%= f.text_field :shopprod %>
+    </div>
+    <div class="field">
+      <%= f.label :domesticserv %> 
+      <%= f.text_field :domesticserv %>
+    </div>
+    <div class="field">
+      <%= f.label :shopping %> 
+      <%= f.text_field :shopping %>
+    </div>
+    <div class="field">
+      <%= f.label :phrmacy %> 
+      <%= f.text_field :phrmacy %>
+    </div>
+    <div class="field">
+      <%= f.label :clinic %> 
+      <%= f.text_field :clinic %>
+    </div>
+    <div class="field">
+      <%= f.label :kgarten %> 
+      <%= f.text_field :kgarten %>
+    </div>
+    <div class="field">
+      <%= f.label :school %> 
+      <%= f.text_field :school %>
+    </div>
+    <div class="field">
+      <%= f.label :bank %> 
+      <%= f.text_field :bank %>
+    </div>
+    <div class="field">
+      <%= f.label :parking %> 
+      <%= f.text_field :parking %>
+    </div>
+    <div class="field">
+      <%= f.label :park %> 
+      <%= f.text_field :park %>
+    </div>
+    <div class="field">
+      <%= f.label :busstop %> 
+      <%= f.text_field :busstop %>
+    </div>
+  </div><!-- /#house-description -->
+
+</div><!-- /.large-6 -->
+</div><!-- /.row -->
 
 <div class="actions">
-  <%= f.submit %>
+  <%= f.button :submit %>
 </div>
 <% end %>
