@@ -22,7 +22,7 @@ group :assets do
   gem 'sassy-buttons'
   gem 'susy'
   gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
-  gem 'jquery-ui-rails'
+  
   gem 'zurb-foundation'
 end
 group :development do
@@ -33,6 +33,7 @@ group :production do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'rails3-jquery-autocomplete'
 gem 'devise'
 gem 'simple_form'
