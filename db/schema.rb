@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(:version => 20130610114504) do
 
   create_table "build_objects", :force => true do |t|
     t.string   "type"
-    t.decimal  "price"
+    t.decimal  "price",                   :precision => 10, :scale => 0
     t.integer  "user_id"
     t.integer  "type_of_build_object_id"
     t.integer  "type_of_house_id"
@@ -161,14 +161,14 @@ ActiveRecord::Schema.define(:version => 20130610114504) do
     t.boolean  "balkon"
     t.integer  "hotwater_id"
     t.integer  "view_from_windows_id"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+    t.datetime "created_at",                                                                :null => false
+    t.datetime "updated_at",                                                                :null => false
     t.integer  "rating"
     t.boolean  "ipoteka"
     t.integer  "valute_id"
     t.integer  "address_id"
     t.text     "description"
-    t.boolean  "archived",                :default => false
+    t.boolean  "archived",                                               :default => false
   end
 
   create_table "category_articles", :force => true do |t|
@@ -232,11 +232,11 @@ ActiveRecord::Schema.define(:version => 20130610114504) do
     t.string   "parking"
     t.string   "park"
     t.string   "busstop"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                                      :null => false
+    t.datetime "updated_at",                                      :null => false
     t.integer  "address_id"
     t.integer  "terms_id"
-    t.decimal  "price"
+    t.decimal  "price",            :precision => 10, :scale => 0
   end
 
   add_index "houses", ["basement_id"], :name => "index_houses_on_basement_id"
@@ -340,12 +340,12 @@ ActiveRecord::Schema.define(:version => 20130610114504) do
   add_index "streets", ["distinct_id"], :name => "index_streets_on_distinct_id"
 
   create_table "terms", :force => true do |t|
-    t.decimal  "price"
+    t.decimal  "price",      :precision => 10, :scale => 0
     t.integer  "valute_id"
     t.boolean  "ipoteka"
     t.text     "desciption"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   add_index "terms", ["valute_id"], :name => "index_terms_on_valute_id"
