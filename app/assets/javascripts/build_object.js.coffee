@@ -30,11 +30,11 @@ jQuery ->
     
     
 jQuery ->
-    $('#build_object_reports_grid_country')
-    .dynsel($('#build_object_reports_grid_region'))
-    .dynsel($('#build_object_reports_grid_city'))
-    .dynsel($('#build_object_reports_grid_distinct'))
-    .dynsel($('#build_object_reports_grid_street'))
+    $('#filter_country_id')
+    .dynsel($('#filter_region_id'))
+    .dynsel($('#filter_city_id'))
+    .dynsel($('#filter_distinct_id'))
+    .dynsel($('#filter_street_id'))
     
     
 jQuery ->
@@ -45,5 +45,5 @@ jQuery ->
         else
             $('#appartement-fields').hide()
 jQuery ->
-        $('#build_object_main_tbl').dataTable
+        $('#buildobjects-tbl').dataTable
             bJQueryUI: true

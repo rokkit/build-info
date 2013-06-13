@@ -50,6 +50,26 @@ ru:
        user: "Пользователь"
        type_user: "Тип пользователя"
        role: "Роль"
+       hotwater: "Горячая вода"
+       planning: "Планировка"
+       remont: "Ремонт"
+       toilet: "Туалет"
+       view_from_windows: "Вид из окон"
+       type_of_house:
+           one: "Тип дома"
+           other: "Типы домов"
+       type_of_build_object:
+           one: "Тип объекта"
+           other: "Типы объектов"
+       valute:
+           one: "Валюта"
+           other: "Валюты"
+       stair:
+           one: "Лестница"
+           other: "Лестницы"
+       basement: 
+           one: "Подвал"
+           other: "Подвалы"
      attributes:
        country:
           name: "Название"
@@ -95,8 +115,11 @@ ru:
           type_of_build_object_id: "Тип объекта"
           type_of_house_id: "Тип дома"
           material_id: "Материал дома"
+          material: "Материал дома"
           overlap_id: "Перекрытия"
+          overlap: "Перекрытия"
           stair_id: "Лестница"
+          stair: "Лестница"
           user: "Добавил"
           rooms: "Кол-во комнат"
           area: "Общая площадь"

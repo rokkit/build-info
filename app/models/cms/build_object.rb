@@ -63,6 +63,10 @@ class BuildObject < ActiveRecord::Base
   
   scope :actual, -> { where(archived: false) }
   
+  #FILTER SCOPES
+  scope :filter_country, lambda {|country| joins(:address).where(addresses: { country_id: country })}
+  #END FILTERS
+  
   def count_rating
     self.user ||= User.first #если юзер не задан то добавить как от админа
     #todo rating

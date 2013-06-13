@@ -22,6 +22,7 @@ group :assets do
   gem 'sassy-buttons'
   gem 'susy'
   gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+  gem 'jquery-ui-rails'
 end
 group :development do
   gem 'sqlite3'
