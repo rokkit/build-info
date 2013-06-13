@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails'
+gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -43,7 +43,6 @@ gem 'carrierwave'
 gem 'has_scope'
 gem 'russian'
 gem "rmagick"
-gem "datagrid"
 gem "geocoder"
 gem 'arel'
 # To use ActiveModel has_secure_password
