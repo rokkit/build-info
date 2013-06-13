@@ -8,42 +8,45 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div id="page">
-		<header>
-			<div id="branding">
-				<%= link_to (image_tag "logo.png"), root_path %>
+	<div id="page" class="row">
+		<header class="small-12 columns">
+			<div class="row">
+				<div id="branding" class="large-2 columns">
+					<%= link_to (image_tag "logo.png"), root_path %>
+				</div>
+				<!-- nav menu -->
+				<nav id="main-nav" class="large-10 columns">
+					<ul>
+						<li><%= link_to 'Главная', root_path %></li>
+						<li><%= link_to 'Новости', news_index_path %></li>
+						<li><%= link_to 'Список объектов', build_objects_path %></li>
+						<li class="last"><%= link_to 'Статьи', articles_path %></li>
+					</ul>
+				</nav>
 			</div>
-			<!-- nav menu -->
-			<nav id="main-nav">
-				<ul>
-					<li><%= link_to 'Главная', root_path %></li>
-					<li><%= link_to 'Новости', news_index_path %></li>
-					<li><%= link_to 'Список объектов', build_objects_path %></li>
-					<li><%= link_to 'Статьи', articles_path %></li>
-				</ul>
-			</nav>
 		</header>
 
-		<aside id="sidebar-left" class="sidebar"> <!-- left sidebar -->
+		<aside id="sidebar-left" class="small-3 large-2 columns sidebar"> <!-- left sidebar -->
 			<div class="block posts">
 				<%= render 'articles/index', :locals=>{ :articles_in_side => Article.top } %>
 			</div>
 		</aside><!-- /left sidebar -->
 
-		<section id="main-content"> <!-- content -->
+		<section id="main-content" class="small-6 large-8 columns"> <!-- content -->
             <%- flash.each do |name, msg| -%>
-                    <% if name == :error %>
-                        <%= content_tag :div, msg, :class => "alert-message error" %>
-                    <% elsif name == :notice %>
-                        <%= content_tag :div, msg, :class => "alert-message success" %>
-                    <% elsif name == :warning %>
-                        <%= content_tag :div, msg, :class => "alert-message warning" %>
-                    <% end %>
-                  <%- end -%>
+	            <% if name == :error %>
+	                <%= content_tag :div, msg, :class => "alert-box alert radius" %>
+	            <% elsif name == :notice %>
+	                <%= content_tag :div, msg, :class => "alert-box success radius" %>
+	            <% elsif name == :warning %>
+	                <%= content_tag :div, msg, :class => "alert-box warning radius" %>
+	            <% end %>
+	        <%- end -%>
+			
 			<%= yield %>
 		</section><!-- /content -->
 
-		<aside id="sidebar-right" class="sidebar"> <!-- right sidebar -->
+		<aside id="sidebar-right" class="small-3 large-2 columns sidebar"> <!-- right sidebar -->
 			<div id="login-block" class="block login">
 				<% if user_signed_in? %>
 					<h2 class="block-title">Меню пользователя</h2>
@@ -57,7 +60,7 @@
 			</div>
 		</aside><!-- /right sidebar -->
 
-		<footer>
+		<footer class="small-12 columns">
 			<p class="copyright">&copy; 2013 Home.info</p>
 		</footer>
 	</div>

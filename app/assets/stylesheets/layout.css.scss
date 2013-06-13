@@ -1,30 +1,30 @@
-@import "../scss/mixins";
-@import "../scss/variables";
+//@import "../scss/mixins";
+//@import "../scss/variables";
 
-#page {
-  @include container;
-  min-width: 780px;
+// #page {
+//   @include container;
+//   min-width: 780px;
 
-  header, footer { clear: both; }
+//   header, footer { clear: both; }
 
-  #branding {
-    @include span-columns(2);
-  }
+//   #branding {
+//     @include span-columns(2);
+//   }
 
-  #main-nav {
-    @include span-columns(10 omega);
-  }
+//   #main-nav {
+//     @include span-columns(10 omega);
+//   }
 
-  #sidebar-left {
-    @include span-columns(2);
-  }
+//   #sidebar-left {
+//     @include span-columns(2);
+//   }
 
-  #main-content {
-    @include span-columns(8);
-  }
+//   #main-content {
+//     @include span-columns(8);
+//   }
 
-  #sidebar-right {
-    @include span-columns(2 omega)
-  }
+//   #sidebar-right {
+//     @include span-columns(2 omega)
+//   }
 
-}
+// }
