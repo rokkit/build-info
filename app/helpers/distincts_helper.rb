@@ -1,0 +1,2 @@
+module DistinctsHelper
+end

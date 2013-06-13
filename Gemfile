@@ -33,6 +33,7 @@ group :production do
 end
 
 gem 'jquery-rails'
+gem 'rails3-jquery-autocomplete'
 gem 'devise'
 gem 'simple_form'
 gem 'activeadmin'

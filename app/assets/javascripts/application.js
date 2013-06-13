@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require autocomplete-rails
 //= require foundation
 //= require dataTables/jquery.dataTables
 //= require_tree .
