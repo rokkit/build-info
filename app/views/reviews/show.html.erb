@@ -1,5 +1,22 @@
 <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
+<p>
+  <b>Подал заявку:</b>
+  <%= @review.user %>
+</p>
 
-<%= link_to 'Изменить', edit_review_path(@review) %> |
+<p>
+  <b>Объект:</b>
+  <%= @review.build_object %>
+</p>
+
+<p>
+  <b>Статус:</b>
+  <%= status @review.status %>
+</p>
+
+<% if can? :update, @review %>
+	<%= link_to 'Изменить', edit_review_path(@review) %>
+<% end %>
 <%= link_to 'Назад', reviews_path %>

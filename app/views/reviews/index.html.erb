@@ -15,9 +15,9 @@
       <td><%= review.date %></td>
       <td><%= review.build_object %></td>
       <td><%= status review.status %></td>
-    <td><%= link_to 'Show', review %></td>
-        <td><%= link_to 'Edit', edit_review_path(review) %></td>
-        <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Подробнее', review %></td>
+        <td><%= link_to 'Изменить', edit_review_path(review) %></td>
+        <td><%= link_to 'Удалить', review, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
   </tr>
 <% end %>
 
@@ -40,9 +40,9 @@
       <td><%= review.date %></td>
       <td><%= review.build_object %></td>
       <td><%= status review.status %></td>
-    <td><%= link_to 'Show', review %></td>
+    <td><%= link_to 'Подробнее', review %></td>
     <td><%= link_to 'Подтвердить', accept_review_path(review), method: :post %></td>
-        <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Удалить', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
