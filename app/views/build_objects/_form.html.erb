@@ -47,7 +47,8 @@
   	  <div class="field">
   	      <%= fa.label :street_id, "Улица" %>
             <%= fa.grouped_collection_select :street_id, Distinct.order(:name),:streets ,:name, :id, :name, include_blank:true  %>
-            <%= fa.input :street, url: autocomplete_street_name_streets_path, as: :autocomplete %>
+            <%= fa.input :street, url: autocomplete_street_name_streets_path, as: :autocomplete,:input_html => { :id => "street_name", :name => "", :id_element => "#build_object_address_attributes_street_id" } %>
+            <%= fa.input :street_id, as: :hidden %>
   	    </div>
     <div class="field">
           <%= fa.label :number_house, "Номер дома" %>
@@ -92,9 +93,6 @@
     <div class="field">
       <%= f.label :price, "Цена" %>
       <%= f.number_field :price %>
-    </div>
-    <div class="field">
-      <%= f.association :valute, label: "Валюта" %>
     </div>
     <div class="field">
       <%= f.label :ipoteka, "Ипотека" %>

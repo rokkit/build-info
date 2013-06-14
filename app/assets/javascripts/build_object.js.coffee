@@ -5,7 +5,7 @@
 #Dynamic select
 jQuery.fn.extend dynsel: (child) ->
   $(child).parent().hide()
-  if $(this).val() == null
+  if $(this).val() == ""
       $(child).parent().hide()
       $(child).nextAll().empty()
   data = $(child).html()
@@ -42,6 +42,13 @@ jQuery ->
     $('#appartement-fields').hide()
     $("#filter_type_of_build_object").change ->
         if $("#filter_type_of_build_object :selected").text() == "Квартира (Вторичный рынок)"
+            $('#appartement-fields').show()
+        else
+            $('#appartement-fields').hide()
+jQuery ->
+    $('#appartement-fields').hide()
+    $("#build_object_type_of_build_object_id").change ->
+        if $("#build_object_type_of_build_object_id :selected").text() == "Квартира (Вторичный рынок)"
             $('#appartement-fields').show()
         else
             $('#appartement-fields').hide()
