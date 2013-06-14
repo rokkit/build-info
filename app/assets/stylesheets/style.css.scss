@@ -14,7 +14,10 @@ $pt-sans: 'PT Sans';
 /* entypo */
 [class*="entypo-"]:before {
   font-family: 'entypo', sans-serif;
+  margin-right: 5px;
 }
+
+// Main styles
 
 body {
 	margin: 0;
@@ -149,6 +152,9 @@ header {
 }
 .btn {
 	@include sassy-button();
+	&:link, &:visited, &:active {
+		color: #fff;
+	}
 }
 .alert-box {
 	h3 {
@@ -162,6 +168,9 @@ header {
 		@include sassy-button();
 		&.edit {
 			@include sassy-button-gradient("matte", #FFC345, darken(#FFC345,5%), #fff, "inset");
+		}
+		&.delete {
+			@include sassy-button-gradient("matte", #c60f13, darken(#c60f13,5%), #fff, "inset");
 		}
 	}
 }
