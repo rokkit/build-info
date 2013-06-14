@@ -50,7 +50,7 @@ class BuildObjectsController < ApplicationController
     @build_object.user = current_user
     respond_to do |format|
       if @build_object.save
-        format.html { redirect_to @build_object, notice: 'Build object was successfully created.' }
+        format.html { redirect_to @build_object, notice: 'Объект успешно добавлен' }
         format.json { render json: @build_object, status: :created, location: @build_object }
       else
         format.html { render action: "new" }

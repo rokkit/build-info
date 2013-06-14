@@ -249,11 +249,11 @@
   <dt>Записаться на просмотр</dt>
   <dd>Пн. 21.01.13 18:00 - 18:30</dd>
   <dd>Вт. 22.01.13 18:00 - 19:00</dd>
-  <dd><%= link_to "Записаться на просмотр", new_review_path(build_object:@build_object) if can? :request_review, @build_object %></dd>
+  <dd><%= link_to "Записаться", new_review_path(build_object:@build_object) if can? :request_review, @build_object %></dd>
 </dl>
 
 
 <div class="admin edit-links">
   <%= link_to 'Назад', build_objects_path, :class=> "back" %> | 
-  <%= link_to 'Редактировать', edit_build_object_path(@build_object), :class => "edit" %>
+  <%= link_to 'Редактировать', edit_build_object_path(@build_object), :class => "edit" if can? :manage, @build_object%>
 </div>
