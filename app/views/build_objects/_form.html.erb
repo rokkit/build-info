@@ -69,7 +69,7 @@
   </div><!-- /#adress-fields -->
 
 
-  <div id="appartement-fields">
+  <div id="appartement-fields" style="display: block;">
     <h2>Параметры квартиры</h2>
     <div class="field">
       <%= f.input :rooms, label: "Кол-во комнат" %>
@@ -156,20 +156,12 @@
       <%= f.text_field :domesticserv %>
     </div>
     <div class="field">
-      <%= f.label :shopping %> 
-      <%= f.text_field :shopping %>
-    </div>
-    <div class="field">
       <%= f.label :phrmacy %> 
       <%= f.text_field :phrmacy %>
     </div>
     <div class="field">
       <%= f.label :clinic %> 
       <%= f.text_field :clinic %>
-    </div>
-    <div class="field">
-      <%= f.label :kgarten %> 
-      <%= f.text_field :kgarten %>
     </div>
     <div class="field">
       <%= f.label :school %> 
