@@ -46,7 +46,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     respond_to do |format|
       if @review.save
-        format.html { redirect_to reviews_url, notice: 'Review was successfully created.' }
+        format.html { redirect_to reviews_url, notice: 'Заявка на просмотр подана' }
         format.json { render json: @review, status: :created, location: @review }
       else
         format.html { render action: "new" }
