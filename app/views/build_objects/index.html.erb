@@ -49,7 +49,7 @@
         <%= check_box_tag 'filter[ipoteka]' %>
     </div>
     <div class="large-4 columns large-uncentered filter object-type">
-        <%= label_tag :type_of_build_object_id %>
+        <%= label_tag :type_of_build_object_id, "Тип объекта" %>
         <%= collection_select :filter, :type_of_build_object,TypeOfBuildObject.all, :id, :name %>
     </div>
   </div>
@@ -57,7 +57,7 @@
   <%= submit_tag I18n.t("datgrid.form.submit", :default => "Подобрать").html_safe, :class => "submit-form btn" %>
 <% end -%>
 
-<table id="buildobjects-tbl" class="display">
+<table id="buildobjects-datatable" class="display">
 <thead>
   <tr>
     <th>Цена</th>

@@ -35,16 +35,16 @@ ActiveAdmin.register BuildObject do
                 bool_row :consierge
               end
             end
-            panel 'Параметры квартиры', if: proc {false} do
-              attributes_table_for b do
-                row :rooms
-                row :floor
-                row :area
-                row :living_area
-                row :kitchen_area
+            panel 'Параметры квартиры' do
+                attributes_table_for b  do
+                  row :rooms
+                  row :floor
+                  row :area
+                  row :living_area
+                  row :kitchen_area
+                end
               end
-            end
-            panel 'Адрес' do
+              panel 'Адрес' do
               attributes_table_for b.address do
                       rows :country, :region, :city, :distinct, :street, :number_house
               end

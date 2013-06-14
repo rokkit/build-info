@@ -2,7 +2,7 @@ class BuildObjectsController < ApplicationController
   # GET /build_objects
   # GET /build_objects.json
   def index
-    @build_objects = BuildObject.scoped.full.actual
+    @build_objects = BuildObject.scoped.full
     unless params[:filter].blank?
       @build_objects = @build_objects.filter_country params[:filter][:country_id] unless params[:filter][:country_id].blank?
       @build_objects = @build_objects.filter_region params[:filter][:region_id] unless params[:filter][:region_id].blank?
