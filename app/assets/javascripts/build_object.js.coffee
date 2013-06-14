@@ -45,12 +45,9 @@ jQuery ->
             $('#appartement-fields').show()
         else
             $('#appartement-fields').hide()
+            
 jQuery ->
-<<<<<<< HEAD
     $('#appartement-fields').show()
-=======
-    #$('#appartement-fields').show()
->>>>>>> 720a1690aa8146584de720cacf3707b8d2908a60
     $("#build_object_type_of_build_object_id").change ->
         if $("#build_object_type_of_build_object_id :selected").text() == "Квартира (Вторичный рынок)"
             $('#appartement-fields').show()

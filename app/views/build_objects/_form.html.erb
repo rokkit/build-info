@@ -1,5 +1,5 @@
 
-<%= simple_form_for(@build_object, html: {class: "custom"}) do |f| %>
+<%= simple_form_for(@build_object, html: {class: ""}) do |f| %>
 <% @build_object.address = Address.new %>
 <% @build_object.photos = [Photo.new] %>
   <% if @build_object.errors.any? %>
