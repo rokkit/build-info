@@ -15,6 +15,7 @@ ActiveAdmin.register User do
             row :phone
             row :rating
             row :created_at
+            bool_row :forem_admin
           end
           active_admin_comments
         end
@@ -27,6 +28,7 @@ ActiveAdmin.register User do
         f.input :fio
         f.input :email
         f.input :roles, as: :check_boxes
+        f.input :forem_admin
       end
           f.actions  
     end

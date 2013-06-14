@@ -1,39 +1,22 @@
 BuildInfo::Application.routes.draw do
 
-  
+  root :to => 'pages#index'
 
   resources :reviews do
     post "accept" => 'reviews#accept', on: :member
   end
 
   get "cabinet/index"
-
-  root :to => 'pages#index'
-    
-  resources :build_object_reports
-
-  resources :articles
+  get "pages/index"
+  get "pages/profile"
   
+  resources :build_object_reports
+  resources :articles
   resources :build_objects
-
-
-  # get "build_object/index"
- # 
- #  get "build_object/show"
- #  get "build_object/by_user"
-
   resources :news
-
-
   resources :appartements
-
-
   resources :terms
-
-
   resources :houses
-
-
   resources :addresses
 
   resources :countries do
@@ -51,10 +34,6 @@ BuildInfo::Application.routes.draw do
   resources :streets do
     get :autocomplete_street_name, :on => :collection
   end
-
-
-  get "pages/index"
-  get "pages/profile"
 
   
   devise_for :admin_users, ActiveAdmin::Devise.config

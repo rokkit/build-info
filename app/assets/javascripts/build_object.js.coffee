@@ -59,7 +59,10 @@ jQuery ->
             bJQueryUI: true
             bFilter: false
             bInfo: false
+            bProcessing: true
+            bServerSide: true
             bPaginate: false
+            sAjaxSource: $('#products').data('source')
             oLanguage:
                 sProcessing: "Подождите..."
                 sLengthMenu: "Показать _MENU_ записей"

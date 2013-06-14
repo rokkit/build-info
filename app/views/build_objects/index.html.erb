@@ -57,7 +57,7 @@
   <%= submit_tag I18n.t("datgrid.form.submit", :default => "Подобрать").html_safe, :class => "submit-form btn" %>
 <% end -%>
 
-<table id="buildobjects-datatable" class="display">
+<table id="buildobjects-datatable" class="display" data-source="<%= build_objects_url(format: "json") %>">
 <thead>
   <tr>
     <th>Цена</th>
@@ -67,13 +67,6 @@
   </tr>
 </thead>
 <tbody>
-  <% @build_objects.each do |buildobject| %>
-    <tr>
-      <td><%= number_to_currency buildobject.price %></td>
-      <td><%= render partial: 'build_objects/address', locals: { model: buildobject.address} %></td>
-      <td><%= buildobject.area %></td>
-      <td><%= render partial: 'build_objects/build_object', locals: { model: buildobject} %></td>
-    </tr>
-  <% end %>
+
 </tbody>
 </table>
