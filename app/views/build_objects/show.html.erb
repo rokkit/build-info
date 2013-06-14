@@ -3,7 +3,7 @@
   <p id="notice"><%= notice %></p>
 <% end %>
 
-<ul class="gallery">
+<ul class="gallery ">
 <% @build_object.photos.each do |photo|%>
 	<li><%= image_tag photo.image_url(:main).to_s %></li>
 <% end %>
@@ -236,7 +236,7 @@
   </table>
 <% end %>
 
-<dl class="obj-contact details">
+<dl class="obj-contact details small-4 columns">
 <% unless @build_object.user.nil? %>
   <dt>Контакты</dt>
   <dd><%= @build_object.user %></dd>
@@ -245,7 +245,7 @@
 <% end %>
 </dl>
 
-<dl class="obj-show details">
+<dl class="obj-show details small-4 columns">
   <dt>Записаться на просмотр</dt>
   <dd>Пн. 21.01.13 18:00 - 18:30</dd>
   <dd>Вт. 22.01.13 18:00 - 19:00</dd>
