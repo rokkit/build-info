@@ -8,8 +8,8 @@
 </ul>
 
 
-	<%= link_to 'Show', model %>
+	<%= link_to 'Подробнее', model %>
 <% if can? :update, model %>
-	<%= link_to 'Edit', edit_build_object_path(model) %>
+	<%= link_to 'Изменить', edit_build_object_path(model) %>
 	<%= link_to 'Destroy', model, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
