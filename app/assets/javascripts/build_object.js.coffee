@@ -46,7 +46,7 @@ jQuery ->
         else
             $('#appartement-fields').hide()
 jQuery ->
-    #$('#appartement-fields').hide()
+    #$('#appartement-fields').show()
     $("#build_object_type_of_build_object_id").change ->
         if $("#build_object_type_of_build_object_id :selected").text() == "Квартира (Вторичный рынок)"
             $('#appartement-fields').show()
