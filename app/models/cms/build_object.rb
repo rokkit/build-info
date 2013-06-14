@@ -54,7 +54,8 @@ class BuildObject < ActiveRecord::Base
                   :basement, 
                   :user,
                   :description,
-                  :kitchen_area
+                  :kitchen_area,
+                  :archived
   
   accepts_nested_attributes_for :photos, :address
   
@@ -104,6 +105,7 @@ class BuildObject < ActiveRecord::Base
   #not removing just archiving
   def archive!
     self.archived = true
+    save!
   end
   
   def to_s

@@ -99,6 +99,7 @@ ru:
           city: "Город"
           distinct: "Район"
           street: "Улица"
+          number_house: 'Номер дома'
           bus: "Автобус"
        build_object:
           name: "Название"
@@ -135,6 +136,9 @@ ru:
           phrmacy: "Аптека"
           domesticserv: "Дом обслуживается"
           shopprod: "Продукты"
+          archived: "Архивный"
+          remont: "Ремонт"
+          id: '№'
        user:
            fio: "ФИО"
            phone: "Телефон"

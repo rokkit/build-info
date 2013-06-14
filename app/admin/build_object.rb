@@ -8,14 +8,56 @@ ActiveAdmin.register BuildObject do
           end
           column "Тип дома", :type_of_house
           column "Добавил", :user
+          bool_column  :archived
           default_actions
+        end
+        show do |b|
+            panel 'Параметры объекта' do
+              attributes_table_for b do
+                row :id
+                row :type_of_build_object
+                row :price do |product|
+                      number_to_currency product.price, :unit => "руб."
+                    end
+                bool_row :ipoteka
+                row :user
+                bool_row :archived
+              end
+            end
+            panel 'Параметры дома' do
+              attributes_table_for b do
+                row :type_of_house
+                row :byear
+                row :material
+                bool_row :remont
+                bool_row :elevator
+                bool_row :chute
+                bool_row :consierge
+              end
+            end
+            panel 'Параметры квартиры', if: proc {false} do
+              attributes_table_for b do
+                row :rooms
+                row :floor
+                row :area
+                row :living_area
+                row :kitchen_area
+              end
+            end
+            panel 'Адрес' do
+              attributes_table_for b.address do
+                      rows :country, :region, :city, :distinct, :street, :number_house
+              end
+            end
+            active_admin_comments
         end
         form do |f|
           f.object.address = Address.new
           f.object.photos = [Photo.new]
           f.inputs "Тип объекта" do
             f.input :type_of_build_object   
-            f.input :user         
+            f.input :user     
+            f.input :archived    
           end
           f.inputs "Описание дома" do 
             f.input :type_of_house
