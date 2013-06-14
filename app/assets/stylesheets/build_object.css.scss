@@ -14,6 +14,13 @@
 		background-color: $light-grey;
 		padding: 4px;
 	}
+
+	div.price, div.address {
+		@include span-columns(4,8);
+	}
+	div.area, div.details {
+		@include span-columns(4 omega,8);
+	}
 	.price, .area {
 		input {
 			width: 80px;
@@ -119,13 +126,11 @@ dl.details {
 		margin: 0;
 	}
 	&.obj-contact {
-		@include span-columns(2,8);
 		dt {
 			background: image-url("icons.png") no-repeat 60px -131px;
 		}
 	}
 	&.obj-show {
-		@include span-columns(2 omega,8);
 		dt {
 			background: image-url("icons.png") no-repeat 140px -157px;
 		}
