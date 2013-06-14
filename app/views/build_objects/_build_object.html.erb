@@ -11,5 +11,5 @@
 	<%= link_to 'Подробнее', model %>
 <% if can? :update, model %>
 	<%= link_to 'Изменить', edit_build_object_path(model) %>
-	<%= link_to 'Destroy', model, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<%= link_to 'Удалить', model, method: :delete, data: { confirm: 'Вы уверены?' } %>
 <% end %>
