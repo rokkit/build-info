@@ -19,9 +19,10 @@
 					<ul>
 						<li><%= link_to 'Главная', root_path %></li>
                         <li><%= link_to 'Админ. панель', admin_root_path if can? :update, :all %></li>
-						<li><%= link_to 'Новости', news_index_path %></li>
-						<li><%= link_to 'Список объектов', build_objects_path %></li>
-						<li class="last"><%= link_to 'Статьи', articles_path %></li>
+						<li><%= link_to 'Новости', main_app.news_index_path %></li>
+						<li><%= link_to 'Список объектов', main_app.build_objects_path %></li>
+						<li><%= link_to 'Форум', forem.root_path %></li>
+						<li class="last"><%= link_to 'Статьи', main_app.articles_path %></li>
 					</ul>
 				</nav>
 			</div>
@@ -52,8 +53,8 @@
 				<% if user_signed_in? %>
 					<h2 class="block-title">Меню пользователя</h2>
 					<div class="content">
-						<%= link_to 'Кабинет', pages_profile_path %>
-						<%= link_to "Выход", destroy_user_session_path, method: :delete %>
+						<%= link_to 'Кабинет', main_app.pages_profile_path %>
+						<%= link_to "Выход", main_app.destroy_user_session_path, method: :delete %>
 					</div>
 				<% else %>
 					<%= render '/devise/sessions/new' %>
