@@ -34,13 +34,20 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
-
+  process :watermark
+  
+  def watermark
+    manipulate! do |img|
+      logo = Magick::Image.read("#{Rails.root}/app/assets/images/watermark.png").first
+      img = img.composite(logo, Magick::CenterGravity, 15, 0, Magick::OverCompositeOp)
+    end
+  end
   # Create different versions of your uploaded files:
   version :thumb do
     process :resize_to_limit => [50, 50]
   end
   version :main do
-    process :resize_to_limit => [170, 130]
+    process :resize_to_limit => [350, 250]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
