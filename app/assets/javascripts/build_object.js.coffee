@@ -39,14 +39,14 @@ jQuery ->
     
     
 jQuery ->
-    $('#appartement-fields').hide()
+    #$('#appartement-fields').hide()
     $("#filter_type_of_build_object").change ->
         if $("#filter_type_of_build_object :selected").text() == "Квартира (Вторичный рынок)"
             $('#appartement-fields').show()
         else
             $('#appartement-fields').hide()
 jQuery ->
-    $('#appartement-fields').hide()
+    #$('#appartement-fields').hide()
     $("#build_object_type_of_build_object_id").change ->
         if $("#build_object_type_of_build_object_id :selected").text() == "Квартира (Вторичный рынок)"
             $('#appartement-fields').show()
