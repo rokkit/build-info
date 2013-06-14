@@ -18,7 +18,7 @@
 				<nav id="main-nav" class="large-10 columns">
 					<ul>
 						<li><%= link_to 'Главная', root_path %></li>
-                        <li><%= link_to 'Админ. панель', admin_root_path if current_user.role? :admin %></li>
+                        <li><%= link_to 'Админ. панель', admin_root_path if current_user.try(role?) :admin %></li>
 						<li><%= link_to 'Новости', news_index_path %></li>
 						<li><%= link_to 'Список объектов', build_objects_path %></li>
 						<li class="last"><%= link_to 'Статьи', articles_path %></li>
