@@ -1,22 +1,22 @@
 <%= content_for :header do %>
-<h1>Listing articles</h1>
+<h1>Статьи</h1>
 <% end %>
-<table>
 
 <% @articles.each do |article| %>
-  <tr>
-    <td><%= article.name %></td>
-    <td><%= article.content %></td>
-    <td><%= article.try(:user) %></td>
-    <td><%= article.category_article %></td>
-    <td><%= link_to 'Show', article %></td>
+  <article>
+    <h2><%= link_to article.name, article %></h2>
+    <p class="user-date"><%= article.try(:user) %><%= article.created_at.to_date %></p>
+    <div class="content"><%= article.content %></div>
+    <p class="more"><%= link_to 'Show', article %></p>
+    <p class="article-categoy"><%= article.category_article %></p>
 	<% if can? :update, article %>
-    	<td><%= link_to 'Edit', edit_article_path(article) %></td>
-    	<td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    	<div class="edit-delete">
+        <p><%= link_to 'Edit', edit_article_path(article) %> / 
+        <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      </div>
 	<% end %>
-  </tr>
+  </article>
 <% end %>
-</table>
 
 <br />
 

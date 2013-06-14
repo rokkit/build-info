@@ -1,25 +1,16 @@
 <h1>Новости</h1>
 
-<table>
-  <tr>
-    <th>Заголовок</th>
-    <th>Добавил</th>
-    <th>Текст</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @news.each do |news| %>
-  <tr>
-    <td><%= news.name %></td>
-    <td><%= news.user %></td>
-    <td><%= news.content %></td>
-    <td><%= link_to 'Подробнее', news %></td>
+  <article>
+    <h2><%= news.name %></h2>
+    <p class="user-date"><%= news.user %></p>
+    <div class="content"><%= news.content %></div>
+    <p class="read-more btn"><%= link_to 'Подробнее', news %></p>
 		<% if can? :update, news %>
-    		<td><%= link_to 'Edit', edit_news_path(news) %></td>
-    		<td><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    		<div class="edit">
+          <p><%= link_to 'Edit', edit_news_path(news) %> / 
+      		<%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        </div>
 		<% end %>
-  </tr>
+  </article>
 <% end %>
-</table>

@@ -8,6 +8,14 @@
 $pt-sans-narrow: 'PT Sans Narrow';
 $pt-sans: 'PT Sans';
 
+// Icons
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+
 body {
 	margin: 0;
 	font: 13px / 1.5em $pt-sans-narrow, 'Helvetica Neue', helvetica, Arial, sans-serif;
