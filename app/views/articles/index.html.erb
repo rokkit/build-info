@@ -7,7 +7,7 @@
   <tr>
     <td><%= article.name %></td>
     <td><%= article.content %></td>
-    <td><%= article.user %></td>
+    <td><%= article.try(:user) %></td>
     <td><%= article.category_article %></td>
     <td><%= link_to 'Show', article %></td>
 	<% if can? :update, article %>
@@ -20,4 +20,4 @@
 
 <br />
 
-<%= link_to 'New Article', new_article_path %>
+<%= link_to 'Добавить статью', new_article_path %>

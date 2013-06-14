@@ -10,7 +10,7 @@
 
 <p>
   <b>Добавил:</b>
-  <%= @article.user || "admin" %>
+  <%= @article.try(:user) || "admin" %>
 </p>
 
 <p>
