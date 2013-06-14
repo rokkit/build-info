@@ -3,12 +3,12 @@
 
 <p>
   <b>Подал заявку:</b>
-  <%= @review.user %>
+  <%= @review.user.fio %>
 </p>
 
 <p>
   <b>Объект:</b>
-  <%= @review.build_object %>
+  <%= linkt_to @review.build_object.name, @review.build_object  %>
 </p>
 
 <p>
