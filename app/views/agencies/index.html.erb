@@ -1,12 +1,10 @@
 <h1>Агенства недвижимости</h1>
+<%= link_to 'Создать агенство', new_agency_path if can? :create, Agency %>
 
 <table>
   <tr>
     <th>Агенство</th>
     <th>Описание</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @agencies.each do |agency| %>
@@ -19,4 +17,3 @@
 
 <br />
 
-<%= link_to 'New Agency', new_agency_path %>

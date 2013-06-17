@@ -5,17 +5,15 @@
 #Dynamic select
 jQuery.fn.extend dynsel: (child) ->
   $(child).parent().hide()
-  if $(this).val() == ""
-      $(child).parent().hide()
-      $(child).nextAll().empty()
   data = $(child).html()
   $(this).change ->
     filter_value = $("option:selected", this).text()
     options = $(data).filter("optgroup[label='#{filter_value }']").html()
+    $(this).parent().nextAll().hide()
     if options
       $(child).html(options)
       $(child).prepend("<option value=''>Выберите значение</option>").val('');
-      $(child).parent().show()      
+      $(child).parent().show()     
     else
       $(child).empty()
       $(child).parent().hide()
@@ -37,6 +35,8 @@ jQuery ->
     .dynsel($('#filter_distinct_id'))
     .dynsel($('#filter_street_id'))
     
+    
+#<# environment.context_class.instance_eval { include Rails.application.routes.url_helpers } %>
     
 jQuery ->
       $('#appartement-fields').show()
@@ -62,7 +62,7 @@ jQuery ->
             bProcessing: true
             bServerSide: true
             bPaginate: false
-            sAjaxSource: $('#products').data('source')
+            sAjaxSource: $('#buildobjects-datatable').data('source')
             oLanguage:
                 sProcessing: "Подождите..."
                 sLengthMenu: "Показать _MENU_ записей"
@@ -81,3 +81,10 @@ jQuery ->
                 oAria:
                   sSortAscending: ": активировать для сортировки столбца по возрастанию"
                   sSortDescending: ": активировать для сортировки столбцов по убыванию"
+
+$ ->
+  $("#filter-build-object-form").bind("submit", (e, data, status, xhr) ->
+    e.preventDefault()
+    $("#buildobjects-datatable").dataTable().fnReloadAjax($('#buildobjects-datatable').data('source')+"?"+$("#filter-build-object-form").serialize())
+  ).bind "ajax:error", (e, xhr, status, error) ->
+    console.log "error json: " + xhr.responseText

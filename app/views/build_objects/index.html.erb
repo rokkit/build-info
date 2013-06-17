@@ -1,6 +1,6 @@
 
 
-<%= form_tag build_objects_path, method: :get do |f| -%>
+<%= form_tag build_objects_path(format: :json), method: :get,id:'filter-build-object-form' do |f| -%>
   <div class="row">
     <div class="large-3 columns filter price">
         <%= label_tag :price, "Цена от" %>

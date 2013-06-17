@@ -21,13 +21,17 @@ class Ability
           review.user == user
         end
         
-        can :manage, Agency do |agency|
+        can [:read, :update, :destroy], Agency do |agency|
           agency.owner == user
         end
       end
       
       can :request_review, BuildObject do |build_object| #запрос на просмотр, пользовател не должен запрашивать у своих объектов
         build_object.user != user && !user.id.nil? 
+      end
+      
+      if user.role? :agent
+        can :create, Agency
       end
     #
     # The first argument to `can` is the action you are giving the user 

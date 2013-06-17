@@ -19,11 +19,14 @@ class BuildObjectsDatatable
     def data
       products.map do |product|
         [
-          link_to(product.name, product),
-          number_to_currency(product.price)
+          number_to_currency(product.price),
+          "#{product.address.city}, #{product.address.street}, #{product.address.number_house}",
+          "#{product.area}/#{product.living_area}",
+          "#{image_tag(product.photos.first.image_url(:thumb).to_s)} #{product.description} | #{link_to(product, product)}"
         ]
       end
     end
+    
 
     def products
       @products ||= fetch_products

@@ -18,6 +18,8 @@ class BuildObjectsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: BuildObjectsDatatable.new(view_context)  }
+      # format.json { render json: [succ: "ok"]  }
+      format.js
     end
   end
 

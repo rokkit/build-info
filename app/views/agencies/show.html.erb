@@ -29,6 +29,7 @@
   <%= @agency.description %>
 </p>
 
-
+<% if can? :manage,  @agency%>
 <%= link_to 'Edit', edit_agency_path(@agency) %> |
+<% end %>
 <%= link_to 'Back', agencies_path %>
