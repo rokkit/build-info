@@ -26,6 +26,9 @@ ru:
        country: 
            one: "Страна"
            other: "Страны"
+       agency:
+           one: "Агенство"
+           other: "Агенства"
        region: 
            one: "Регион"
            other: "Регионы"

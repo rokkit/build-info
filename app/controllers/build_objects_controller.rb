@@ -29,6 +29,10 @@ class BuildObjectsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @build_object }
+      format.pdf do
+         report = BuildObjectReport.new(@build_object, view_context).to_pdf
+         send_data report, filename: "#{@build_object.name}_#{report}.pdf", type: "application/pdf", disposition: "inline" 
+      end
     end
   end
 

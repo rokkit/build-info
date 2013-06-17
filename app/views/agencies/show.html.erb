@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <b>Название:</b>
+  <%= @agency.name %>
+</p>
+<p>
+  <%= image_tag @agency.logo_url(:main).to_s %>
+</p>
+<p>
+  <b>Сайт:</b>
+  <%= @agency.site %>
+</p>
+<p>
+  <b>Адрес:</b>
+  <%= @agency.address %>
+</p>
+<p>
+  <b>Телефон:</b>
+  <%= @agency.phone %>
+</p>
+<p>
+  <b>Факс:</b>
+  <%= @agency.fax %>
+</p>
+<p>
+  <b>Описание:</b>
+  <%= @agency.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_agency_path(@agency) %> |
+<%= link_to 'Back', agencies_path %>

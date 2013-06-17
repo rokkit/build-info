@@ -1,0 +1,22 @@
+<h1>Агенства недвижимости</h1>
+
+<table>
+  <tr>
+    <th>Агенство</th>
+    <th>Описание</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @agencies.each do |agency| %>
+  <tr>
+    <td><%= link_to agency, agency %></td>
+    <td><%= agency.description %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Agency', new_agency_path %>

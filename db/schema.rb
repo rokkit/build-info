@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130614120468) do
+ActiveRecord::Schema.define(:version => 20130617110458) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -71,6 +71,21 @@ ActiveRecord::Schema.define(:version => 20130614120468) do
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
+
+  create_table "agencies", :force => true do |t|
+    t.integer  "owner_id"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "address"
+    t.string   "phone"
+    t.string   "fax"
+    t.string   "site"
+    t.string   "logo"
+  end
+
+  add_index "agencies", ["owner_id"], :name => "index_agencies_on_owner_id"
 
   create_table "appartements", :force => true do |t|
     t.integer  "floor"
@@ -161,14 +176,14 @@ ActiveRecord::Schema.define(:version => 20130614120468) do
     t.boolean  "balkon"
     t.integer  "hotwater_id"
     t.integer  "view_from_windows_id"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
     t.integer  "rating"
     t.boolean  "ipoteka"
     t.integer  "valute_id"
     t.integer  "address_id"
     t.text     "description"
-    t.boolean  "archived",                :default => false
+    t.boolean  "archived"
   end
 
   create_table "category_articles", :force => true do |t|
@@ -496,6 +511,7 @@ ActiveRecord::Schema.define(:version => 20130614120468) do
     t.boolean  "forem_admin",            :default => false
     t.string   "forem_state",            :default => "pending_review"
     t.boolean  "forem_auto_subscribe",   :default => false
+    t.string   "type"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

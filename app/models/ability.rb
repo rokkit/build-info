@@ -20,6 +20,10 @@ class Ability
         can :manage, Review do |review|
           review.user == user
         end
+        
+        can :manage, Agency do |agency|
+          agency.owner == user
+        end
       end
       
       can :request_review, BuildObject do |build_object| #запрос на просмотр, пользовател не должен запрашивать у своих объектов

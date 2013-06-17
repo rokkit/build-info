@@ -1,5 +1,8 @@
 BuildInfo::Application.routes.draw do
 
+  resources :agencies
+
+
   root :to => 'pages#index'
 
   resources :reviews do
