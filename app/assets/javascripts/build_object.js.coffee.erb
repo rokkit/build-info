@@ -85,6 +85,7 @@ jQuery ->
 $ ->
   $("#filter-build-object-form").bind("submit", (e, data, status, xhr) ->
     e.preventDefault()
+    console.log data
     $("#buildobjects-datatable").dataTable().fnReloadAjax($('#buildobjects-datatable').data('source')+"?"+$("#filter-build-object-form").serialize())
   ).bind "ajax:error", (e, xhr, status, error) ->
     console.log "error json: " + xhr.responseText
