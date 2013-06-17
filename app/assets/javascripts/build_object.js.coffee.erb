@@ -81,7 +81,9 @@ jQuery ->
                 oAria:
                   sSortAscending: ": активировать для сортировки столбца по возрастанию"
                   sSortDescending: ": активировать для сортировки столбцов по убыванию"
-
+jQuery ->
+    console.log "init sucess"
+    
 $ ->
   $("#filter-build-object-form").bind("submit", (e, data, status, xhr) ->
     e.preventDefault()
