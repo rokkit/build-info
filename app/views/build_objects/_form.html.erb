@@ -24,7 +24,15 @@
   <div class="row">
 
   <div class="large-6 columns">
-
+      <div class="field">
+        <%= f.association :type_of_house, label: "Тип дома" %>
+      </div>
+  
+      <div class="field">
+        <%= f.fields_for :photos do |image| %>
+            <%= image.file_field :image %>
+        <% end %>
+      </div>
   <div class="adress-fields">
     <h2>Адрес объекта</h2>
     <%= f.fields_for :address do |fa| %>
@@ -54,15 +62,7 @@
     </div>
     <% end %>
 
-    <div class="field">
-      <%= f.association :type_of_house, label: "Тип дома" %>
-    </div>
-  
-    <div class="field">
-      <%= f.fields_for :photos do |image| %>
-          <%= image.file_field :image %>
-      <% end %>
-    </div>
+
 
   </div><!-- /#adress-fields -->
 
