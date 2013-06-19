@@ -1,8 +1,9 @@
 class BuildObjectsDatatable
   delegate :params, :h, :image_tag, :link_to, :number_to_currency, to: :@view
 
-    def initialize(view)
+    def initialize(view, type_selection)
       @view = view
+      @type_selection = type_selection
     end
 
     def as_json(options = {})
@@ -33,7 +34,10 @@ class BuildObjectsDatatable
     end
 
     def fetch_products
-      build_objects = BuildObject.scoped.full
+      build_objects = BuildObject.scoped.full 
+      build_objects = build_objects.invest_projects if @type_selection == :invest_projects
+      build_objects = build_objects.public_objects if @type_selection == :public_objects
+      
       unless params[:filter].blank?
         build_objects = build_objects.filter_country params[:filter][:country_id] unless params[:filter][:country_id].blank?
         build_objects = build_objects.filter_region params[:filter][:region_id] unless params[:filter][:region_id].blank?

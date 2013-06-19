@@ -4,4 +4,8 @@ class CabinetController < ApplicationController
     @user = current_user
   end
   
+  def upgrade_account
+    
+  end
+  
 end

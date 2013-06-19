@@ -10,12 +10,15 @@ BuildInfo::Application.routes.draw do
   end
 
   get "cabinet/index"
+  get "cabinet/upgrade_account", as: :upgrade_account
   get "pages/index"
   get "pages/profile"
   
   resources :build_object_reports
   resources :articles
-  resources :build_objects
+  resources :build_objects do
+    get :invest_projects, on: :collection
+  end
   resources :news
   resources :appartements
   resources :terms

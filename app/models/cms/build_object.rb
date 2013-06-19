@@ -66,6 +66,9 @@ class BuildObject < ActiveRecord::Base
   
   scope :actual, -> { where(archived: false) }
   scope :full, -> { joins(:address) }
+  scope :invest_projects, -> { where(private: true) }
+  scope :public_objects, -> { where(private: false) }
+  
   #FILTER SCOPES
   scope :filter_country, lambda {|country| where(addresses: { country_id: country })}
   scope :filter_region, lambda {|region| where(addresses: { region_id: region })}

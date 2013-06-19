@@ -11,7 +11,15 @@
 	<li>Email: <%= @user.email %></li>
 </ul>
 
-<div id="inform-modal" title="Basic modal dialog" class="modal" style="display: none; ">
+<% unless can? :invest, :all %>
+    <p>Для доступа к инвестпроектам и закрытым разделам сайта необходимо повысить уровень аккаунта</p>
+<%= link_to "Открыть доступ", upgrade_account_path %>
+<% else %>
+    <p>У вас открыт доступ к инветспроектам</p>
+<% end %>
+
+
+<div id="inform-modal" title="Информация" class="modal" style="display: none; ">
      <h1>Рейтинг</h1>
      <p>Вы можете увеличить свой рейтинг</p>
 </div>

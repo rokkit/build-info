@@ -1,0 +1,72 @@
+
+
+<%= form_tag build_objects_path(format: :json), method: :get,id:'filter-build-object-form' do |f| -%>
+  <div class="row">
+    <div class="large-3 columns filter price">
+        <%= label_tag :price, "Цена от" %>
+        <%= number_field_tag 'filter[min_price]' %>
+    </div>
+    <div class="large-3 columns filter price">
+        <%= label_tag :price, "Цена до" %>
+        <%= number_field_tag 'filter[max_price]' %>
+    </div>
+    <div class="large-3 columns filter area">
+        <%= label_tag :area, "Площадь от" %>
+        <%= number_field_tag 'filter[min_area]' %>
+    </div>
+    <div class="large-3 columns filter area">
+        <%= label_tag :area, "Площадь до" %>
+        <%= number_field_tag 'filter[max_area]' %>
+    </div>
+  </div>
+
+  <div class="address row">
+    <div class="large-6 columns filter country">
+  	    <%= label_tag 'filter[country]', "Страна" %>
+        <%= collection_select :filter, :country_id, Country.order(:name),:id,:name, include_blank:true %>
+    </div>
+    <div class="large-6 columns filter region">
+        <%= label_tag 'filter[region]',"Регион" %>
+        <%= grouped_collection_select :filter,:region_id, Country.order(:name),:regions,:name, :id, :name, include_blank:true  %>   
+    </div>
+    <div class="large-6 columns filter city">
+        <%= label_tag 'filter[city]',"Город" %>
+        <%= grouped_collection_select :filter, :city_id,Region.order(:name),:cities,:name, :id, :name, include_blank:true  %>
+    </div>
+    <div class="large-6 columns filter district">
+        <%= label_tag 'filter[distinct]', 'Район' %>
+        <%= grouped_collection_select :filter, :distinct_id, City.order(:name),:distincts,:name, :id, :name, include_blank:true  %>
+    </div>
+    <div class="large-6 columns filter street">
+        <%= label_tag 'filter[street]', "Улица" %>
+        <%= grouped_collection_select :filter, :street_id,Distinct.order(:name),:streets,:name, :id, :name, include_blank:true  %>
+    </div>
+  </div>
+
+  <div class="details row">
+    <div class="large-2 columns filter ipoteka">
+        <%= label_tag :ipoteka, "Ипотека" %>
+        <%= check_box_tag 'filter[ipoteka]' %>
+    </div>
+    <div class="large-4 columns large-uncentered filter object-type">
+        <%= label_tag :type_of_build_object_id, "Тип объекта" %>
+        <%= collection_select :filter, :type_of_build_object,TypeOfBuildObject.all, :id, :name %>
+    </div>
+  </div>
+
+  <%= submit_tag I18n.t("datgrid.form.submit", :default => "Подобрать").html_safe, :class => "submit-form btn" %>
+<% end -%>
+
+<table id="buildobjects-datatable" class="display" data-source="<%= build_objects_url(format: "json") %>">
+<thead>
+  <tr>
+    <th>Цена</th>
+    <th>Адрес</th>
+    <th>Площадь</th>
+    <th>Описание</th>
+  </tr>
+</thead>
+<tbody>
+
+</tbody>
+</table>

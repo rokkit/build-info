@@ -26,7 +26,9 @@ class Ability
           agency.owner == user
         end
       end
-      
+      if user.role? :super_user or user.role? :admin
+        can :invest, :all
+      end
       can :request_review, BuildObject do |build_object| #запрос на просмотр, пользовател не должен запрашивать у своих объектов
         build_object.user != user && !user.id.nil? 
       end
