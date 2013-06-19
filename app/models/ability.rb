@@ -10,8 +10,9 @@ class Ability
         can [:read, :create, :update, :destroy], :all
       else
         can :read, Article, published: true
-        can :manage, Article do |article|
+        can [:update, :destroy], Article do |article|
                 article.try(:user) == user
+                true
         end
         can :manage, BuildObject do |house|
                 house.try(:user) == user

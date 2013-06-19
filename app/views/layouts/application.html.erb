@@ -16,14 +16,7 @@
 				</div>
 				<!-- nav menu -->
 				<nav id="main-nav" class="large-10 columns">
-					<ul>
-						<li><%= link_to 'Главная', root_path %></li>
-                        <li><%= link_to 'Админ. панель', admin_root_path if can? :update, :all %></li>
-						<li><%= link_to 'Новости', main_app.news_index_path %></li>
-						<li><%= link_to 'Список объектов', main_app.build_objects_path %></li>
-						<li><%= link_to 'Форум', forem.root_path %></li>
-						<li class="last"><%= link_to 'Статьи', main_app.articles_path %></li>
-					</ul>
+                    <%= render_navigation %>
 				</nav>
 			</div>
 		</header>

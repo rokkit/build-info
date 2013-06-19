@@ -7,12 +7,12 @@
     <h2><%= link_to article.name, article %></h2>
     <p class="user-date"><%= article.try(:user) %><%= article.created_at.to_date %></p>
     <div class="content"><%= article.content %></div>
-    <p class="more"><%= link_to 'Show', article %></p>
+    <p class="more"><%= link_to 'Подробнее', article %></p>
     <p class="article-categoy"><%= article.category_article %></p>
 	<% if can? :update, article %>
     	<div class="edit-links">
-        <p><%= link_to 'Edit', edit_article_path(article), :class => 'edit btn entypo-pencil' %> | 
-        <%= link_to 'Destroy', article, :class => 'delete btn entypo-cancel-circled', method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        <p><%= link_to 'Изменить', edit_article_path(article), :class => 'edit btn entypo-pencil' %> | 
+        <%= link_to 'Удалить', article, :class => 'delete btn entypo-cancel-circled', method: :delete, data: { confirm: 'Are you sure?' } %></p>
       </div>
 	<% end %>
   </article>

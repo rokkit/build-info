@@ -36,6 +36,14 @@ class User < ActiveRecord::Base
     confirmed_at = Time.zone.now
     save!
   end
+  
+  def add_rating! reason
+    if reason == :article
+      self.rating += 1
+    end
+    save!
+  end
+  
   private
   def set_rating
     self.rating = 0

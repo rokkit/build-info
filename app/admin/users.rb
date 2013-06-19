@@ -18,7 +18,7 @@ ActiveAdmin.register User do
             bool_row :forem_admin
           end
           active_admin_comments
-        end
+    end
     action_item only: :show do
           button_to "Одобрить регистрацию", approve_admin_user_path(user), method: :post if user.confirmed_at.nil?
     end

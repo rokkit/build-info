@@ -50,6 +50,7 @@ gem 'forem', :git => "git://github.com/radar/forem.git"
 gem 'forem-theme-twist', :git => "git://github.com/radar/forem-theme-twist.git"
 gem 'kaminari'
 gem 'prawn'
+gem "simple-navigation"
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

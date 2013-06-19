@@ -15,6 +15,7 @@
 //= require autocomplete-rails
 //= require foundation
 //= require dataTables/jquery.dataTables
+//= require jquery.ui.all
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
