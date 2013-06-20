@@ -30,6 +30,7 @@
   
       <div class="field">
         <%= f.fields_for :photos do |image| %>
+        <%= image.label :image, "Фото" %>
             <%= image.file_field :image %>
         <% end %>
       </div>
