@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Reester:</b>
+  <%= @reester_object.reester_id %>
+</p>
+
+<p>
+  <b>Cadaster number:</b>
+  <%= @reester_object.cadaster_number %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @reester_object.address %>
+</p>
+
+<p>
+  <b>Apartement number:</b>
+  <%= @reester_object.apartement_number %>
+</p>
+
+<p>
+  <b>Area:</b>
+  <%= @reester_object.area %>
+</p>
+
+<p>
+  <b>Cost:</b>
+  <%= @reester_object.cost %>
+</p>
+
+<p>
+  <b>Cost one meter:</b>
+  <%= @reester_object.cost_one_meter %>
+</p>
+
+<p>
+  <b>Distinct:</b>
+  <%= @reester_object.distinct %>
+</p>
+
+
+<%= link_to 'Edit', edit_reester_object_path(@reester_object) %> |
+<%= link_to 'Back', reester_objects_path %>

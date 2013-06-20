@@ -1,0 +1,37 @@
+<h1>Listing reester_objects</h1>
+
+<table>
+  <tr>
+    <th>Reester</th>
+    <th>Cadaster number</th>
+    <th>Address</th>
+    <th>Apartement number</th>
+    <th>Area</th>
+    <th>Cost</th>
+    <th>Cost one meter</th>
+    <th>Distinct</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @reester_objects.each do |reester_object| %>
+  <tr>
+    <td><%= reester_object.reester_id %></td>
+    <td><%= reester_object.cadaster_number %></td>
+    <td><%= reester_object.address %></td>
+    <td><%= reester_object.apartement_number %></td>
+    <td><%= reester_object.area %></td>
+    <td><%= reester_object.cost %></td>
+    <td><%= reester_object.cost_one_meter %></td>
+    <td><%= reester_object.distinct %></td>
+    <td><%= link_to 'Show', reester_object %></td>
+    <td><%= link_to 'Edit', edit_reester_object_path(reester_object) %></td>
+    <td><%= link_to 'Destroy', reester_object, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Reester object', new_reester_object_path %>

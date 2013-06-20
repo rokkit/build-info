@@ -1,5 +1,8 @@
 BuildInfo::Application.routes.draw do
 
+  resources :reester_objects
+
+
   resources :agencies
 
 

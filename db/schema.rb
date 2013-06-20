@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130620070515) do
+ActiveRecord::Schema.define(:version => 20130620132156) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -405,6 +405,21 @@ ActiveRecord::Schema.define(:version => 20130620070515) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "reester_objects", :force => true do |t|
+    t.string   "reester_id"
+    t.string   "cadaster_number"
+    t.string   "address"
+    t.string   "apartement_number"
+    t.float    "area"
+    t.decimal  "cost"
+    t.decimal  "cost_one_meter"
+    t.integer  "distinct_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "reester_objects", ["distinct_id"], :name => "index_reester_objects_on_distinct_id"
 
   create_table "regions", :force => true do |t|
     t.string   "name"

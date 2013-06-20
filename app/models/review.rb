@@ -15,6 +15,7 @@ class Review < ActiveRecord::Base
   
   def accept!
     self.status = 2
+    InformMailer.approve_request(self).deliver
     save!
   end
 end

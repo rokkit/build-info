@@ -1,0 +1,2 @@
+<p>Ваша заявка на заседание <%= "#{@request_meeting.meeting.will_be_on}  #{@request_meeting.meeting.will_be_at}" %> <%= @message %></p>
+<%= link_to "Подробнее", request_meeting_url(@request_meeting), class: "btn" %>
