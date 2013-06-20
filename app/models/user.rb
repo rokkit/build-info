@@ -25,12 +25,12 @@ class User < ActiveRecord::Base
   def to_s
     name
   end
-  def confirmation_required?
-    false
-  end
-  def active_for_authentication?
-    confirmed? || confirmation_period_valid?
-  end
+  # def confirmation_required?
+  #   false
+  # end
+  # def active_for_authentication?
+  #   confirmed? || confirmation_period_valid?
+  # end
   def approve!
     skip_confirmation!
     confirmed_at = Time.zone.now
