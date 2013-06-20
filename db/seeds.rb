@@ -8,48 +8,18 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'open-uri'
 
-User.delete_all
-Role.delete_all
-u=User.create!(:email => 'admin@mail.com', :password => 'password', :password_confirmation => 'password')
-u.approve!
-u.roles << Role.new(name:"admin")
-u.save!
 
-['common_seller','common_buyer','agency_owner','super_user'].each do |role|
+Role.delete_all
+['admin','common_seller','common_buyer','agency_owner','super_user'].each do |role|
   Role.create!(name: role)
 end
 
-Country.delete_all
-['Российская Федерация',"Украина", "Финляндия"].each do |countries|
-    Country.create!(:name => countries)
-end
+User.delete_all
+  u=User.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password', fio: "admin")
+  u.approve!
+  u.roles << Role.find_by_name("admin")
+  u.save!
 
-Region.delete_all
-  c = Country.find_by_name("Российская Федерация")
-  ['Санкт-Петербург и Ленинградская область','Республика Карелия','Алтайский край', 'Краснодарский край'].each do |r|
-    c.regions << Region.new(name: r)
-  end
-  c.save!
-  
-City.delete_all
-t = Region.find_by_name('Санкт-Петербург и Ленинградская область')
-['Санкт-Петербург', 'Кировск'].each do |c|
-  t.cities << City.new(name: c)
-end
-t.save!
-Distinct.delete_all
-t = City.find_by_name('Санкт-Петербург')
-['Кировский', 'Петроградский'].each do |c|
-  t.distincts << Distinct.new(name: c)
-end
-t.save!
-
-Street.delete_all
-t = Distinct.find_by_name('Кировский')
-['Проспект Ветеранов'].each do |c|
-  t.streets << Street.new(name: c)
-end
-t.save!
 
 
 #####BUILD OBEJCTS#####

@@ -1,4 +1,0 @@
-<%= form_for :dump, :url=>{:action=>"import_csv"}, :html => { :multipart => true } do |f| %>
-     <%= f.file_field :file %>
-     <%= submit_tag 'Submit' %>
-<% end %>

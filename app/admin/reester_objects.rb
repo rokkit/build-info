@@ -1,14 +1,14 @@
 # encoding: UTF-8
 ActiveAdmin.register ReesterObject do
     action_item :only => :index do
-      link_to 'Загрузить CSV', :action => 'upload_csv'
+      link_to 'Загрузить CSV', :action => 'import_reester_objects_new'
     end
-    collection_action :upload_csv do
-        render "admin/csv/upload_csv"
+    collection_action :import_reester_objects_new do
+        render "admin/import/import"
       end
 
-      collection_action :import_csv, :method => :post do
-        ReesterObject.convert_save("reesterobjects", params[:dump][:file])
+      collection_action :import_reester_objects, :method => :post do
+        DataImporter.import(ReesterObject,params[:file])
         redirect_to :action => :index, :notice => "CSV imported successfully!"
       end
 end
