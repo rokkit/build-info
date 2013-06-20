@@ -12,10 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require autocomplete-rails
 //= require foundation
 //= require dataTables/jquery.dataTables
 //= require jquery.ui.all
+//= require autocomplete-rails
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
