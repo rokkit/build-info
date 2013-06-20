@@ -21,12 +21,10 @@
 			</div>
 		</header>
 
-		<aside id="sidebar-left" class="small-3 large-2 columns sidebar"> <!-- left sidebar -->
+		<aside id="sidebar-left" class="small-3 large-2 columns sidebar">
 			<div class="block posts">
 				<%= render 'articles/index', :locals=>{ :articles_in_side => Article.top } %>
 			</div>
-            <div class="banner"><object width="200" height="300"><param name="movie" value="<%= asset_path '200h300_legenda_root_30_bn_02.swf'%>"><param name="menu" value="false"><param name="width" value="200"><param name="height" value="300"><param name="quality" value="high"><param name="bgcolor" value="#ffffff"><param name="flashvars" value="link1=/special/613.html?click=1"><embed src="/images/special/200h300_legenda_root_30_bn_02.swf" menu="false" quality="high" bgcolor="#ffffff" width="200" height="300" type="application/x-shockwave-flash" flashvars="link1=/special/613.html?click=1"></object>
-            </div>
 		</aside><!-- /left sidebar -->
 
 		<section id="main-content" class="small-6 large-8 columns"> <!-- content -->
@@ -43,7 +41,7 @@
 			<%= yield %>
 		</section><!-- /content -->
 
-		<aside id="sidebar-right" class="small-3 large-2 columns sidebar"> <!-- right sidebar -->
+		<aside id="sidebar-right" class="small-3 large-2 columns sidebar">
 			<div id="login-block" class="block login">
 				<% if user_signed_in? %>
 					<h2 class="block-title">Меню пользователя</h2>
@@ -54,6 +52,14 @@
 				<% else %>
 					<%= render '/devise/sessions/new' %>
 				<% end %>
+			</div>
+			<div class="banner">
+				<object type="application/x-shockwave-flash" data="<%= asset_path '200h300_legenda_root_30_bn_02.swf'%>" 
+				    width="400" height="550" align="top"> 
+				    <param name="movie" value="<%= asset_path '200h300_legenda_root_30_bn_02.swf'%>" />
+				    <param name="quality" value="high" />
+				    <param name="align" value="t" />
+				</object>
 			</div>
 		</aside><!-- /right sidebar -->
 

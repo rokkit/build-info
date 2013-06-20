@@ -137,6 +137,12 @@ header {
 			@include clear-nav();
 		}
 	}
+	.banner {
+		object {
+			height: 270px;
+			vertical-align: top;
+		}
+	}
 }
 
 // login form
