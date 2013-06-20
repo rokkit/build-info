@@ -33,7 +33,7 @@ class Ability
         build_object.user != user && !user.id.nil? 
       end
       
-      if user.role? :agent
+      if user.role? :agency_owner
         can :create, Agency
       end
     #

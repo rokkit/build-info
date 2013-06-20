@@ -151,3 +151,11 @@ ru:
            content: "Текст статьи"
            published: "Опубликовано"
            category_article: "Категория статьи"
+       agency:
+           description: "Описание"
+           address: "Адрес"
+           phone: "Телефон"
+           fax: "Факс"
+           site: "Сайт"
+           logo: "Лого"
+           confirmed_at: "Подтверждено"

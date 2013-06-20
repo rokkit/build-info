@@ -9,4 +9,8 @@ class Agency < ActiveRecord::Base
   def to_s
     name
   end
+  def approve!
+    self.confirmed_at = Time.zone.now
+    save!
+  end
 end
