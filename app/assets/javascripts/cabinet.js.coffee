@@ -6,6 +6,7 @@ jQuery ->
           dialogClass: "no-close"
           height: 140,
           modal: true
-          hide: "explode"
-          show: "slow"
+          hide: "fade"
+          show: "fade"
+          resizable: false
         
