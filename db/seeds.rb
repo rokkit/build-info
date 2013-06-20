@@ -15,6 +15,10 @@ u.approve!
 u.roles << Role.new(name:"admin")
 u.save!
 
+['common_seller','common_buyer','agency_owner','super_user'].each do |role|
+  Role.create!(name: role)
+end
+
 Country.delete_all
 ['Российская Федерация',"Украина", "Финляндия"].each do |countries|
     Country.create!(:name => countries)

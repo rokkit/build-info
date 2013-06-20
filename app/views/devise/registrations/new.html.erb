@@ -4,6 +4,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.select :user_type, [["Собственник (частное лицо)",'common_seller'],['Соискатель','common_buyer'], ['Руководитель агенства','agency_owner']] %>
     <%= f.input :email,label:"Почта", :required => true, :autofocus => true %>
     <%= f.input :password,label: "Пароль", :required => true %>
     <%= f.input :password_confirmation,label:"Подтверждение пароля", :required => true %>
