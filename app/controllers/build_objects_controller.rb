@@ -1,4 +1,5 @@
 class BuildObjectsController < ApplicationController
+  before_filter :authenticate_user!, except: :index
   # GET /build_objects
   # GET /build_objects.json
   def index

@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :rating, :fio, :phone,:name,
+  attr_accessible :email, :password, :remember_me, :rating, :fio, :phone,:name,
                   :role_ids, :forem_admin, :user_type
   attr_accessor :user_type
   
@@ -38,12 +38,39 @@ class User < ActiveRecord::Base
     save!
   end
   
+
+  
   def add_rating! reason
     if reason == :article
       self.rating += 1
     end
     save!
   end
+  
+  def send_devise_notification(notification)
+      devise_mailer.send(notification, self).deliver
+  end
+  
+  def send_devise_confirmation_by_sms confirmation_token
+      client = Twilio::REST::Client.new(APP['twilio']['sid'], APP['twilio']['token'])
+      client.account.sms.messages.create(
+        from: APP['twilio']['from'],
+        to: "+#{self.phone}",
+        body: "#{confirmation_token}"
+      )
+  end
+  
+  # Send confirmation instructions by email
+      def send_confirmation_instructions
+        self.confirmation_token = nil if reconfirmation_required?
+        @reconfirmation_required = false
+
+        ensure_confirmation_token!
+
+        opts = pending_reconfirmation? ? { :to => unconfirmed_email } : { }
+        send_devise_confirmation_by_sms "self.confirmation_token"
+        send_devise_notification(:confirmation_instructions, opts)
+      end
   
   private
   def set_rating

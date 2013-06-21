@@ -84,10 +84,21 @@ jQuery ->
 jQuery ->
     console.log "init sucess"
     
-$ ->
+$ -> #serch by datatables ajax
   $("#filter-build-object-form").bind("submit", (e, data, status, xhr) ->
     e.preventDefault()
     console.log data
     $("#buildobjects-datatable").dataTable().fnReloadAjax($('#buildobjects-datatable').data('source')+"?"+$("#filter-build-object-form").serialize())
   ).bind "ajax:error", (e, xhr, status, error) ->
     console.log "error json: " + xhr.responseText
+    
+$ ->
+  $('#build_object_appartement_number').blur ->
+      house = $("#build_object_address_attributes_number_house}").val()
+      street = $("#build_object_address_attributes_street_id}").val()
+      if house and street
+          $.getJSON "/reester_objects/find.json",{distinct: $("#build_object_address_attributes_distinct_id").val(),street: street,number_house: house,apartement_number:$("#build_object_appartement_number").val() }, (data) ->
+              if data
+                  alert "Найдены подходящие Вам параметры квартиры"
+                  $("#build_object_area").val(data.area)
+                  $("#build_object_price").val(data.cost)

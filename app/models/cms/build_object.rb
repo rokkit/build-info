@@ -55,7 +55,8 @@ class BuildObject < ActiveRecord::Base
                   :user,
                   :description,
                   :kitchen_area,
-                  :archived
+                  :archived,
+                  :appartement_number
   
   accepts_nested_attributes_for :photos, :address
   

@@ -1,6 +1,10 @@
 BuildInfo::Application.routes.draw do
 
-  resources :reester_objects
+  resources :reester_objects do
+    collection do
+      get 'find'
+    end
+  end
 
 
   resources :agencies

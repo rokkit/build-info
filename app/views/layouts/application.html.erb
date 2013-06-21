@@ -25,6 +25,14 @@
 			<div class="block posts">
 				<%= render 'articles/index', :locals=>{ :articles_in_side => Article.top } %>
 			</div>
+			<div class="banner">
+				<object type="application/x-shockwave-flash" data="<%= asset_path '1_200x300_24smart_root_02.swf'%>" 
+				    width="400" height="550" align="top"> 
+				    <param name="movie" value="<%= asset_path '1_200x300_24smart_root_02.swf'%>" />
+				    <param name="quality" value="high" />
+				    <param name="align" value="t" />
+				</object>
+			</div>
 		</aside><!-- /left sidebar -->
 
 		<section id="main-content" class="small-6 large-8 columns"> <!-- content -->

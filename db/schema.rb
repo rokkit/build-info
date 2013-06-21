@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130620132156) do
+ActiveRecord::Schema.define(:version => 20130621065430) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -185,7 +185,8 @@ ActiveRecord::Schema.define(:version => 20130620132156) do
     t.integer  "address_id"
     t.text     "description"
     t.boolean  "archived",                :default => false
-    t.boolean  "private"
+    t.boolean  "private",                 :default => false
+    t.integer  "appartement_number"
   end
 
   create_table "category_articles", :force => true do |t|
