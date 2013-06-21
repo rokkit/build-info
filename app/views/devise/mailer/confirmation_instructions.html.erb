@@ -1,5 +1,5 @@
 <p>Здравствуйте, <%= @email %>!</p>
 
 <p>На телефон Вам пришёл код активации, введите его, перейдя по ссылке</p>
-
-<p><%= link_to 'Подтвердить мой аккаунт', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+<p><%= link_to 'Подтвердить мой аккаунт', users_activating_path %></p>
+<p><%# link_to 'Подтвердить мой аккаунт', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>

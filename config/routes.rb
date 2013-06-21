@@ -51,8 +51,13 @@ BuildInfo::Application.routes.draw do
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-
-  devise_for :users, :controllers => {:registrations => "registrations"}
+  
+  devise_for :users, :controllers => {:registrations => "registrations"} do
+    get 'users/activating' => 'registrations#activating'
+  end
+  # devise_scope :user do
+  #   get 'activating' => 'registrations#activating'
+  # end
   ActiveAdmin.routes(self)
   
   # This line mounts Forem's routes at /forums by default.

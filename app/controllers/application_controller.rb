@@ -24,4 +24,6 @@ class ApplicationController < ActionController::Base
     #return nil if user_signed_in? && !current_user.admin?
     current_user
   end
+  
+
 end

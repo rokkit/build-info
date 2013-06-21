@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :roles
   
   before_create :set_rating
+  after_create :send_devise_confirmation_by_sms
   
   
   def role?(role)
@@ -47,30 +48,21 @@ class User < ActiveRecord::Base
     save!
   end
   
-  def send_devise_notification(notification)
-      devise_mailer.send(notification, self).deliver
-  end
   
-  def send_devise_confirmation_by_sms confirmation_token
+  def send_devise_confirmation_by_sms 
+      confirmation_token = "token"
       client = Twilio::REST::Client.new(APP['twilio']['sid'], APP['twilio']['token'])
       client.account.sms.messages.create(
         from: APP['twilio']['from'],
         to: "+#{self.phone}",
-        body: "#{confirmation_token}"
+        body: "#{self.confirmation_token}"
       )
   end
   
-  # Send confirmation instructions by email
-      def send_confirmation_instructions
-        self.confirmation_token = nil if reconfirmation_required?
-        @reconfirmation_required = false
-
-        ensure_confirmation_token!
-
-        opts = pending_reconfirmation? ? { :to => unconfirmed_email } : { }
-        send_devise_confirmation_by_sms "self.confirmation_token"
-        send_devise_notification(:confirmation_instructions, opts)
-      end
+  def generate_confirmation_token
+    self.confirmation_token = "best_confirm_token"
+    self.confirmation_sent_at = Time.now.utc
+  end
   
   private
   def set_rating

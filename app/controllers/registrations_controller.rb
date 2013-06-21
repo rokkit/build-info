@@ -8,20 +8,23 @@ class RegistrationsController < Devise::RegistrationsController
       # add custom create logic here
       super
       self.resource
-      # generated_password = Devise.friendly_token.first(8)
-#       self.resource.password = generated_password
-      # client = Twilio::REST::Client.new(APP['twilio']['sid'], APP['twilio']['token'])
-      # client.account.sms.messages.create(
-      #   from: APP['twilio']['from'],
-      #   to: "+#{self.resource.phone}",
-      #   body: "#{generated_password}"
-      # )
-      # InformMailer.inform(self, message).deliver 
+      self.resource.send_devise_confirmation_by_sms
       self.resource.roles << Role.find_by_name(params[:user][:user_type])
       self.resource.save!
     end
 
     def update
       super
+    end
+    
+    def activating
+      render 'devise/confirmations/activating'
+    end
+  protected
+    def after_inactive_sign_up_path_for(resource)
+      users_activating_path
+    end
+    def after_sign_up_path_for(resource)
+      users_activating_path
     end
 end
