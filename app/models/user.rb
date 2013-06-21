@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable, :async
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :remember_me, :rating, :fio, :phone,:name,
@@ -50,17 +50,16 @@ class User < ActiveRecord::Base
   
   
   def send_devise_confirmation_by_sms 
-      confirmation_token = "token"
-      client = Twilio::REST::Client.new(APP['twilio']['sid'], APP['twilio']['token'])
-      client.account.sms.messages.create(
-        from: APP['twilio']['from'],
-        to: "+#{self.phone}",
-        body: "#{self.confirmation_token}"
-      )
+    client = Twilio::REST::Client.new(APP['twilio']['sid'], APP['twilio']['token'])
+    client.account.sms.messages.create(
+      from: APP['twilio']['from'],
+      to: "+#{self.phone}",
+      body: "Код активации: #{self.confirmation_token}"
+    )
   end
   
   def generate_confirmation_token
-    self.confirmation_token = "best_confirm_token"
+    self.confirmation_token = (0...5).map{ ('a'..'z').to_a[rand(26)] }.join
     self.confirmation_sent_at = Time.now.utc
   end
   

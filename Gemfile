@@ -54,6 +54,8 @@ gem 'prawn'
 gem "simple-navigation"
 gem 'roo'
 gem 'twilio-ruby'
+gem 'sidekiq'
+gem "devise-async"
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -8,7 +8,6 @@ class RegistrationsController < Devise::RegistrationsController
       # add custom create logic here
       super
       self.resource
-      self.resource.send_devise_confirmation_by_sms
       self.resource.roles << Role.find_by_name(params[:user][:user_type])
       self.resource.save!
     end
