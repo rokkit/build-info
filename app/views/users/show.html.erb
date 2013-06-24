@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+<p>
+    <b>ФИО:</b>
+    <%= @user.fio %>
+</p>
+<p>
+    <%= image_tag @user.photo_url.to_s %>
+</p>
+<p><b>Телефон:</b>
+    <%= @user.phone %>
+</p>
+
+<%= link_to 'Администрирование', admin_user_path(@user) if can? :manage, @user%>

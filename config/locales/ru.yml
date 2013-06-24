@@ -147,6 +147,8 @@ ru:
            phone: "Телефон"
            rating: "Рейтиг"
            created_at: "Добавлен"
+           confirmed_at: "Подтверждён"
+           forem_admin: "Администратор форума"
        article:
            content: "Текст статьи"
            published: "Опубликовано"

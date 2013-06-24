@@ -8,6 +8,7 @@ BuildInfo::Application.routes.draw do
 
 
   resources :agencies
+  resources :users
 
 
   root :to => 'pages#index'

@@ -10,11 +10,15 @@
 </p>
 <p>
   <b>Сайт:</b>
-  <%= @agency.site %>
+  <%= link_to @agency.site, @agency.site %>
 </p>
 <p>
   <b>Адрес:</b>
   <%= @agency.address %>
+</p>
+<p>
+  <b>Владелец:</b>
+  <%= @agency.owner %>
 </p>
 <p>
   <b>Телефон:</b>
@@ -28,8 +32,15 @@
   <b>Описание:</b>
   <%= @agency.description %>
 </p>
+<p>
+    Агенты:
+    <% @agency.agents.each do |agent| %>
+        <%= link_to agent, agent %>
+    <% end %>
+</p>
 
 <% if can? :manage,  @agency%>
-<%= link_to 'Edit', edit_agency_path(@agency) %> |
+    <%= link_to 'Изменить', edit_agency_path(@agency) %> |
+    <%= link_to 'Администрирование', admin_agency_path %>
 <% end %>
-<%= link_to 'Back', agencies_path %>
+<%= link_to 'Назад', agencies_path %>

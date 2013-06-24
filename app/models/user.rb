@@ -7,10 +7,11 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :remember_me, :rating, :fio, :phone,:name,
-                  :role_ids, :forem_admin, :user_type
+                  :role_ids, :forem_admin, :user_type, :photo
   attr_accessor :user_type
   
   belongs_to :type_user
+  belongs_to :agency
   has_many :reviews
   # attr_accessible :title, :body
   has_and_belongs_to_many :roles
@@ -19,13 +20,15 @@ class User < ActiveRecord::Base
   before_create :set_rating
   after_create :send_devise_confirmation_by_sms
   
+  mount_uploader :photo, LogoUploader
+  
   
   def role?(role)
       return !!self.roles.find_by_name(role.to_s)
   end
   
   def to_s
-    name
+    fio
   end
   # def confirmation_required?
   #   false

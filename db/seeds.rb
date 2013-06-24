@@ -15,7 +15,7 @@ Role.delete_all
 end
 
 User.delete_all
-  u=User.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password', fio: "admin")
+  u=User.create!(:email => 'admin@example.com', :password => 'password', fio: "admin", phone:'79523707281')
   u.approve!
   u.roles << Role.find_by_name("admin")
   u.save!

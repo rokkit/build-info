@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130621065430) do
+ActiveRecord::Schema.define(:version => 20130624073148) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -537,6 +537,8 @@ ActiveRecord::Schema.define(:version => 20130621065430) do
     t.string   "forem_state",            :default => "pending_review"
     t.boolean  "forem_auto_subscribe",   :default => false
     t.string   "type"
+    t.integer  "agency_id"
+    t.string   "photo"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

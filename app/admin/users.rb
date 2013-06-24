@@ -14,7 +14,10 @@ ActiveAdmin.register User do
             row :email
             row :phone
             row :rating
+            row :agency
+            row :roles
             row :created_at
+            row :confirmed_at
             bool_row :forem_admin
           end
           active_admin_comments
@@ -27,6 +30,9 @@ ActiveAdmin.register User do
       f.inputs do
         f.input :fio
         f.input :email
+        f.input :phone
+        f.input :rating
+        f.input :agency
         f.input :roles, as: :check_boxes
         f.input :forem_admin
       end

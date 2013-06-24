@@ -37,23 +37,23 @@
   <div class="adress-fields">
     <h2>Адрес объекта</h2>
     <%= f.fields_for :address do |fa| %>
-    <div class="field">
+    <div class="field location-filter">
   	<%= fa.label :country_id, "Страна" %>
     	<%= fa.collection_select :country_id, Country.order(:name),:id,:name, include_blank:true %>
     </div>
-    <div class="field">
+    <div class="field location-filter">
         <%= fa.label :region_id, "Регион" %>
         <%= fa.grouped_collection_select :region_id, Country.order(:name),:regions,:name, :id, :name, include_blank:true %>
       </div>
-    <div class="field">
+    <div class="field location-filter">
         <%= fa.label :city_id, "Город" %>
           <%= fa.grouped_collection_select :city_id, Region.order(:name),:cities,:name, :id, :name, include_blank:true  %>
       </div>
-    <div class="field">
+    <div class="field location-filter">
         <%= fa.label :distinct_id, "Район" %>
           <%= fa.grouped_collection_select :distinct_id, City.order(:name),:distincts ,:name, :id, :name, include_blank:true  %>
       </div>
-  	  <div class="field">
+  	  <div class="field location-filter">
   	      <%= fa.label :street_id, "Улица" %>
             <%= fa.grouped_collection_select :street_id, Distinct.order(:name),:streets ,:name, :id, :name, include_blank:true  %>
   	    </div>

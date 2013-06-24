@@ -9,7 +9,7 @@ jQuery.fn.extend dynsel: (child) ->
   $(this).change ->
     filter_value = $("option:selected", this).text()
     options = $(data).filter("optgroup[label='#{filter_value }']").html()
-    $(this).parent().nextAll().hide()
+    $(this).parent().nextAll(".location-filter").hide()
     if options
       $(child).html(options)
       $(child).prepend("<option value=''>Выберите значение</option>").val('');
@@ -17,7 +17,7 @@ jQuery.fn.extend dynsel: (child) ->
     else
       $(child).empty()
       $(child).parent().hide()
-      $(this).parent().nextAll().hide()
+      $(this).parent().nextAll(".location-filter").hide()
   child
   
 jQuery ->
@@ -92,7 +92,7 @@ $ -> #serch by datatables ajax
   ).bind "ajax:error", (e, xhr, status, error) ->
     console.log "error json: " + xhr.responseText
     
-$ ->
+$ -> #заполнить поля создаваемого объекта возможными значениями цены и площади если найдена запись в реестре
   $('#build_object_appartement_number').blur ->
       house = $("#build_object_address_attributes_number_house}").val()
       street = $("#build_object_address_attributes_street_id}").val()
