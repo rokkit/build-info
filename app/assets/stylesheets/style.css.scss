@@ -21,7 +21,7 @@ $pt-sans: 'PT Sans';
 
 body {
 	margin: 0;
-	font: 13px / 1.5em $pt-sans-narrow, 'Helvetica Neue', helvetica, Arial, sans-serif;
+	font: 15px / 1.5em $pt-sans-narrow, 'Helvetica Neue', helvetica, Arial, sans-serif;
 	letter-spacing: 0.03em;
 }
 
@@ -100,7 +100,7 @@ header {
 			a {
 				display: inline-block;
 				padding: 4px 15px 4px 15px;
-				font-size: 1.2em;
+				font-size: 1em;
 				font-family: $pt-sans;
 				font-weight: bold;
 				color: #000;
