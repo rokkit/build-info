@@ -63,9 +63,9 @@ namespace :crawle do
     #получаем город
     address = strip_html address
     recvisites[:country_id] = Country.find_by_name "Россия"
-    recvisites[:region_id] = Region.find_or_create_by_name name: "Санкт-Петербург", country: recvisites[:country_id].id
-    recvisites[:city_id] = City.find_or_create_by_name name: address.split[0], region: recvisites[:region_id].id
-    recvisites[:distinct_id] = Distinct.find_or_create_by_name name: address.split[2], city: recvisites[:city_id].id
+    recvisites[:region_id] = Region.find_or_create_by_name name: "Санкт-Петербург", country_id: recvisites[:country_id].id
+    recvisites[:city_id] = City.find_or_create_by_name name: address.split[0], region_id: recvisites[:region_id].id
+    recvisites[:distinct_id] = Distinct.find_or_create_by_name name: address.split[2], city_id: recvisites[:city_id].id
     recvisites[:street_id]  = Street.find_or_create_by_name name: (address.match(/\n(.*),/)[0])[0..-2], distinct_id: recvisites[:distinct_id].id #ищем от перевода строки до запятой и убираем запятую
     recvisites[:number_house] = address.split[-1]
     a = Address.where(recvisites).first_or_create
