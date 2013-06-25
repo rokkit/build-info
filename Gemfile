@@ -22,7 +22,7 @@ group :assets do
   gem 'sassy-buttons'
   gem 'susy'
   gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
-  
+  gem 'jquery-fileupload-rails'
   gem 'zurb-foundation'
 end
 group :development do
@@ -56,6 +56,7 @@ gem 'roo'
 gem 'twilio-ruby'
 gem 'sidekiq'
 gem "devise-async"
+gem 'nokogiri'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

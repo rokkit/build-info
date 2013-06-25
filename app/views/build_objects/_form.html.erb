@@ -31,7 +31,8 @@
       <div class="field">
         <%= f.fields_for :photos do |image| %>
             <%= image.label :image, "Фото" %>
-            <%= image.file_field :image, multiple: true %>
+            <%= image.file_field :image, multiple: true, name:"build_object[photos_attributes][0][image]" %>
+            <%= file_field_tag :image, multiple: true, name: "build_object[photos_attributes][0][image]" %>
         <% end %>
       </div>
   <div class="adress-fields">

@@ -1,5 +1,7 @@
 BuildInfo::Application.routes.draw do
 
+  get "crawler/parse"
+
   resources :reester_objects do
     collection do
       get 'find'

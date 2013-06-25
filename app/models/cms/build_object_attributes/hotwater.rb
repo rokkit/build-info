@@ -1,5 +1,6 @@
 class Hotwater < ActiveRecord::Base
-  # attr_accessible :title, :body
+   attr_accessible :name
+  
   def to_s
     name
   end

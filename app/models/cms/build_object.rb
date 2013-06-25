@@ -56,11 +56,11 @@ class BuildObject < ActiveRecord::Base
                   :description,
                   :kitchen_area,
                   :archived,
-                  :appartement_number
+                  :appartement_number, :photos_attributes
   
   accepts_nested_attributes_for :photos, :address
   
-  validates :type_of_build_object,:type_of_house, :price, presence: true
+  #validates :type_of_build_object,:type_of_house, :price, presence: true
   
   before_save :count_rating
   before_create :set_rating
@@ -113,6 +113,6 @@ class BuildObject < ActiveRecord::Base
   end
   
   def to_s
-    name
+    "Объект"
   end
 end

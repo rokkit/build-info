@@ -15,6 +15,7 @@
 //= require foundation
 //= require dataTables/jquery.dataTables
 //= require jquery.ui.all
+//= require jquery-fileupload/basic
 //= require autocomplete-rails
 //= require_tree .
 
