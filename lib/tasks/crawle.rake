@@ -13,7 +13,7 @@ namespace :crawle do
       }.compact
       build_objects = Array.new
 
-    hrefs[1..2].each do |href|
+    hrefs[1..15].each do |href|
       
       build_object = BuildObject.new   
       build_object[:photos] = Array.new 
@@ -43,7 +43,7 @@ namespace :crawle do
           #пол 19
           build_object[:remont] = Remont.find_or_create_by_name name: description_table[20].css("td")[1].inner_text
           #ванна 21
-          build_object[:hot_water] = Hotwater.find_or_create_by_name description_table[22].css("td")[1].inner_text
+          build_object[:hot_water] = Hotwater.find_or_create_by_name name: description_table[22].css("td")[1].inner_text
           build_object[:chute] = description_table[23].css("td")[1].inner_text
           build_object[:entrance] = description_table[24].css("td")[1].inner_text
           build_object[:view_from_windows] = ViewFromWindows.find_or_create_by_name name: description_table[25].css("td")[1].inner_text

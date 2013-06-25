@@ -23,7 +23,7 @@ class BuildObjectsDatatable
           number_to_currency(product.price),
           "#{product.address.city}, #{product.address.street}, #{product.address.number_house}",
           "#{product.area}/#{product.living_area}",
-          "#{image_tag(product.photos.first.image_url(:thumb).to_s)} #{product.description} | #{link_to(product, product)}"
+          "#{image_tag(product.photos.first.image_url(:thumb).to_s)} #{product.description[0..100]}... | #{link_to('Подробнее', product)}"
         ]
       end
     end
@@ -50,7 +50,7 @@ class BuildObjectsDatatable
         build_objects = build_objects.filter_max_area params[:filter][:max_area] unless params[:filter][:max_area].blank?
         build_objects = build_objects.filter_ipoteka params[:filter][:ipoteka] unless params[:filter][:ipoteka].blank?
       end
-      products = build_objects
+      products = build_objects.order("#{sort_column} #{sort_direction}")
       # Product.order("#{sort_column} #{sort_direction}")
 #       products = products.page(page).per_page(per_page)
 #       if params[:sSearch].present?

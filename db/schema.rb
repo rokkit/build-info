@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625094650) do
+ActiveRecord::Schema.define(:version => 20130625124455) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -166,7 +166,7 @@ ActiveRecord::Schema.define(:version => 20130625094650) do
     t.string   "park"
     t.string   "busstop"
     t.integer  "terms_id"
-    t.integer  "floor"
+    t.string   "floor"
     t.integer  "rooms"
     t.float    "area"
     t.float    "living_area"
