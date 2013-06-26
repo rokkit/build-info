@@ -10,7 +10,7 @@ class BuildObjectsDatatable
       {
         sEcho: params[:sEcho].to_i,
         iTotalRecords: BuildObject.count,
-        iTotalDisplayRecords: products.count,
+        iTotalDisplayRecords: products.total_count,
         aaData: data
       }
     end
@@ -37,7 +37,7 @@ class BuildObjectsDatatable
       build_objects = BuildObject.scoped.full 
       build_objects = build_objects.invest_projects if @type_selection == :invest_projects
       build_objects = build_objects.public_objects if @type_selection == :public_objects
-      
+      build_objects = build_objects.page(page).per(per_page)
       unless params[:filter].blank?
         build_objects = build_objects.filter_country params[:filter][:country_id] unless params[:filter][:country_id].blank?
         build_objects = build_objects.filter_region params[:filter][:region_id] unless params[:filter][:region_id].blank?

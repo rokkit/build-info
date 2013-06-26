@@ -25,6 +25,9 @@ class Ability
         can [:read, :update, :destroy], Agency do |agency|
           agency.owner == user
         end
+        can :working, Agency do |agency|
+          user.agency == agency
+        end
       end
       if user.role? :super_user or user.role? :admin
         can :invest, :all

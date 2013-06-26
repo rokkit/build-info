@@ -2,7 +2,7 @@
 <h3><%= link_to "Добавить объект", new_build_object_path %></h3>
 <table>
     <thead>
-        <th>Название объекта</th>    
+        <th>Объект</th>    
         <th>Просмотры</th>   
         <th>Уникальные просмотры</th>  
         <th>Сегодняшние просмотры</th>            
@@ -11,7 +11,7 @@
         <% @build_objects.each do |build_object| %>
         <tr>
             <td>
-                <%= link_to build_object, "Объект №#{build_object.id}" %>
+                <%= link_to "#{build_object.address.street}, #{build_object.address.number_house}", build_object %>
             </td>
             <td>
                 <%= build_object.impressionist_count  %>

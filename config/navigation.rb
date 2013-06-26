@@ -50,11 +50,12 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>. 
     #
     primary.item :main, 'Главная', main_app.root_path
-    primary.item :agency, 'Агенство', main_app.agency_path(current_user.agency), unless: Proc.new { current_user.agency.nil? } do |sub_nav|
-      sub_nav.item :agents, "Агенты",main_app.agency_path(current_user.agency)
-      sub_nav.item :agents, "Агенты",main_app.agency_path(current_user.agency)
-      
-    end  
+    if current_user.try(:agency)
+      primary.item :agency, 'Агенство', main_app.agency_path(current_user.agency), if: Proc.new { can? :working, current_user.try(:agency) } do |sub_nav|
+        sub_nav.item :agents, "Агенты",main_app.agency_path(current_user.agency)
+        sub_nav.item :agents, "Агенты",main_app.agency_path(current_user.agency)
+      end  
+    end
     primary.item :admin,'Админ. панель', admin_root_path, if: Proc.new { can? :update, :all }
     primary.item :news, 'Новости', main_app.news_index_path
     primary.item :build_objects, 'Список объектов', main_app.build_objects_path
