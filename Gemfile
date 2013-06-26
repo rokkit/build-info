@@ -59,6 +59,7 @@ gem "devise-async"
 gem 'nokogiri'
 gem 'yaml_db'
 gem 'impressionist'
+gem 'activemerchant', :require => 'active_merchant'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

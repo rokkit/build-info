@@ -14,12 +14,13 @@ class User < ActiveRecord::Base
   belongs_to :agency
   has_many :reviews
   has_many :build_objects
+  has_one :account, as: :accountable
   # attr_accessible :title, :body
   has_and_belongs_to_many :roles
   accepts_nested_attributes_for :roles
   
   before_create :set_rating
-  after_create :send_devise_confirmation_by_sms
+  after_create :send_devise_confirmation_by_sms, :create_account
   
   mount_uploader :photo, LogoUploader
   
@@ -70,5 +71,10 @@ class User < ActiveRecord::Base
   private
   def set_rating
     self.rating = 0
+  end
+  
+  #После регистрации добавляем пользователю аккаунт со счетом
+  def create_account 
+    Account.create! accountable: self, total: 0
   end
 end

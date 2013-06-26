@@ -1,5 +1,8 @@
 BuildInfo::Application.routes.draw do
 
+  resources :payments
+
+
   get "crawler/parse"
 
   resources :reester_objects do
@@ -21,10 +24,19 @@ BuildInfo::Application.routes.draw do
     post "accept" => 'reviews#accept', on: :member
   end
 
-  get "cabinet/index"
-  get "cabinet/upgrade_account", as: :upgrade_account
+  scope :cabinet do
+    match 'cabinet' => "cabinet#index", as: :cabinet_index 
+    match "upgrade_account" => "cabinet/upgrade_account", as: :upgrade_account
+  end
   get "pages/index"
   get "pages/profile"
+  
+  scope 'robokassa' do
+    match 'paid'    => 'robokassa#paid',    :as => :robokassa_paid # to handle Robokassa push request
+
+    match 'success' => 'robokassa#success', :as => :robokassa_success # to handle Robokassa success redirect
+    match 'fail'    => 'robokassa#fail',    :as => :robokassa_fail # to handle Robokassa fail redirect
+  end
   
   resources :build_object_reports
   resources :articles

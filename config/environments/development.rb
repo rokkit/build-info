@@ -42,4 +42,6 @@ BuildInfo::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  ActiveMerchant::Billing::Base.integration_mode = :test
 end

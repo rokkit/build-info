@@ -54,6 +54,9 @@ class BuildObjectsController < ApplicationController
   # POST /build_objects
   # POST /build_objects.json
   def create
+    if current_user.account.total < Variables.find_by_name("create_build_object").to_f
+      
+    end
     @build_object = BuildObject.new(params[:build_object])
     @build_object.user = current_user
     respond_to do |format|

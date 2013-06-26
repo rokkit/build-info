@@ -41,6 +41,9 @@ ru:
        category_article: 
            one: "Рубрика статьи"
            other: "Рубрики статьи"
+       payment:
+           one: "Оплата"
+           other: "Оплаты"
        distinct: "Район"
        street: "Улица"
        address: "Адрес"
@@ -161,3 +164,7 @@ ru:
            site: "Сайт"
            logo: "Лого"
            confirmed_at: "Подтверждено"
+       payment:
+           amount: "Сумма пополнения"
+           comment: "Коментарий к оплате"
+           satus: "Статус"

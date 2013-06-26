@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130626082451) do
+ActiveRecord::Schema.define(:version => 20130626130523) do
+
+  create_table "accounts", :force => true do |t|
+    t.integer  "accountable_id"
+    t.string   "accountable_type"
+    t.decimal  "total"
+    t.integer  "valute_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "accounts", ["valute_id"], :name => "index_accounts_on_valute_id"
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -408,6 +419,18 @@ ActiveRecord::Schema.define(:version => 20130626082451) do
 
   add_index "news", ["user_id"], :name => "index_news_on_user_id"
 
+  create_table "order_transactions", :force => true do |t|
+    t.integer  "payment_id"
+    t.string   "action"
+    t.decimal  "amount"
+    t.boolean  "success"
+    t.string   "authorization"
+    t.string   "message"
+    t.text     "params"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "overlaps", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -421,6 +444,20 @@ ActiveRecord::Schema.define(:version => 20130626082451) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "payments", :force => true do |t|
+    t.decimal  "amount"
+    t.integer  "payable_id"
+    t.string   "payable_type"
+    t.integer  "account_id"
+    t.integer  "reason_id"
+    t.text     "comment"
+    t.boolean  "status"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "payments", ["account_id"], :name => "index_payments_on_user_id"
+
   create_table "photos", :force => true do |t|
     t.string   "image"
     t.datetime "created_at",      :null => false
@@ -429,6 +466,12 @@ ActiveRecord::Schema.define(:version => 20130626082451) do
   end
 
   create_table "plannings", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "reasons", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -579,9 +622,11 @@ ActiveRecord::Schema.define(:version => 20130626082451) do
   end
 
   create_table "variables", :force => true do |t|
-    t.decimal  "price_premium_account"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "key"
+    t.string   "value"
+    t.string   "human_name"
   end
 
   create_table "view_from_windows", :force => true do |t|

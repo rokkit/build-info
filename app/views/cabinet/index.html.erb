@@ -13,6 +13,7 @@
 	<li>Мобильный телефон: <%= @user.phone %></li>
 	<li>Рейтинг: <%= @user.rating %></li>
 	<li>Email: <%= @user.email %></li>
+    <li>На счету: <%= @user.account.total %> <%= link_to "Пополнить", new_payment_path %></li>
 </ul>
 
 <% unless can? :invest, :all %>
