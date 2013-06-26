@@ -9,7 +9,9 @@ BuildInfo::Application.routes.draw do
   end
 
 
-  resources :agencies
+  resources :agencies do
+    get :agents, on: :collection
+  end
   resources :users
 
 
@@ -28,6 +30,7 @@ BuildInfo::Application.routes.draw do
   resources :articles
   resources :build_objects do
     get :invest_projects, on: :collection
+    get :manage, on: :collection
   end
   resources :news
   resources :appartements

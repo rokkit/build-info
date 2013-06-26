@@ -1,5 +1,6 @@
 class BuildObjectsController < ApplicationController
-  before_filter :authenticate_user!, except: :index
+  impressionist
+  before_filter :authenticate_user!, except: [:index, :show]
   # GET /build_objects
   # GET /build_objects.json
   def index
@@ -14,6 +15,10 @@ class BuildObjectsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: BuildObjectsDatatable.new(view_context, :invest_projects)  }
     end
+  end
+  
+  def manage
+    @build_objects = current_user.build_objects
   end
 
   # GET /build_objects/1

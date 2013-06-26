@@ -10,5 +10,8 @@ class AgenciesController < InheritedResources::Base
       current_user.agency = @agency
       current_user.save
       create! :notice => "Агенство успешно зарегистрировано и будет доступно после проверки администрацией ресурса"
-    end
+  end
+  def agents
+    @agents = current_user.agency.agents
+  end
 end

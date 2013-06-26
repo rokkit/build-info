@@ -3,10 +3,10 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
     $("#inform-modal" ).dialog
-          dialogClass: "no-close"
-          height: 140,
-          modal: true
           hide: "fade"
           show: "fade"
           resizable: false
+          closeOnEscape: true
+          draggable: false
+          modal: true
         

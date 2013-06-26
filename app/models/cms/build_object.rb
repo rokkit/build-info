@@ -1,5 +1,7 @@
 class BuildObject < ActiveRecord::Base
   
+  is_impressionable
+  
   belongs_to :type_of_build_object
   belongs_to :user
   has_many :photos, :dependent => :destroy 

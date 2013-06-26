@@ -1,0 +1,28 @@
+<h1>Мои объекты</h1>
+<h3><%= link_to "Добавить объект", new_build_object_path %></h3>
+<table>
+    <thead>
+        <th>Название объекта</th>    
+        <th>Просмотры</th>   
+        <th>Уникальные просмотры</th>  
+        <th>Сегодняшние просмотры</th>            
+    </thead>
+    <tbody>
+        <% @build_objects.each do |build_object| %>
+        <tr>
+            <td>
+                <%= link_to build_object, "Объект №#{build_object.id}" %>
+            </td>
+            <td>
+                <%= build_object.impressionist_count  %>
+            </td>
+            <td>
+                <%= build_object.impressionist_count filter: :ip_address  %>
+            </td>
+            <td>
+                <%= build_object.impressionist_count start_date: DateTime.now.beginning_of_day,end_date: DateTime.now.end_of_day  %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

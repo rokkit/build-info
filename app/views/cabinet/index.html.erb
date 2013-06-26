@@ -1,6 +1,6 @@
 <h1>Личный кабинет</h1>
 <%= link_to "Редактировать профиль", edit_user_registration_path %>
-<%= link_to "Мои объекты", new_build_object_path %>
+<%= link_to "Мои объекты", manage_build_objects_path %>
 <%= link_to "Просмотры", reviews_path %>
 
 <% if current_user.agency %>
@@ -19,10 +19,10 @@
     <p>Для доступа к инвестпроектам и закрытым разделам сайта необходимо повысить уровень аккаунта</p>
 <%= link_to "Открыть доступ", upgrade_account_path %>
 <% else %>
-    <p>У вас открыт доступ к инветспроектам</p>
+    <p>У вас открыт доступ к <%= link_to "инвестпроектам", invest_projects_build_objects_path %></p>
 <% end %>
 
 
-<div id="inform-modal" title="Информация" class="modal" style="display: none; ">
+<div id="inform-modal" title="Информация" style="display: none; ">
      <p>Вы можете увеличить свой рейтинг <br> написанием статей на сайте и добавлением объектов</p>
 </div>

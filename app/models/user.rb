@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   belongs_to :type_user
   belongs_to :agency
   has_many :reviews
+  has_many :build_objects
   # attr_accessible :title, :body
   has_and_belongs_to_many :roles
   accepts_nested_attributes_for :roles
