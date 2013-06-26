@@ -57,6 +57,7 @@ gem 'twilio-ruby'
 gem 'sidekiq'
 gem "devise-async"
 gem 'nokogiri'
+gem 'yaml_db'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
