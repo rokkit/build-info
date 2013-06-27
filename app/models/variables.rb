@@ -1,3 +1,3 @@
 class Variables < ActiveRecord::Base
-  attr_accessible :price_premium_account
+  attr_accessible :key, :value, :human_name
 end

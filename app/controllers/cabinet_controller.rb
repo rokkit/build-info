@@ -11,4 +11,8 @@ class CabinetController < ApplicationController
     
   end
   
+  def lowbalance
+    @price = Variables.find_by_key(params[:action]).try(:value)
+  end
+  
 end

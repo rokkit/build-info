@@ -11,6 +11,7 @@ class BuildObjectsController < ApplicationController
   end
   
   def invest_projects
+    authorize! :invest, :all
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: BuildObjectsDatatable.new(view_context, :invest_projects)  }
@@ -40,6 +41,7 @@ class BuildObjectsController < ApplicationController
   # GET /build_objects/new.json
   def new
     @build_object = BuildObject.new
+    @ability_creating_buildobject = true if current_user.account.total >= Variables.find_by_key("create_build_object_price").to_f
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @build_object }
@@ -54,18 +56,19 @@ class BuildObjectsController < ApplicationController
   # POST /build_objects
   # POST /build_objects.json
   def create
-    if current_user.account.total < Variables.find_by_name("create_build_object").to_f
-      
-    end
-    @build_object = BuildObject.new(params[:build_object])
-    @build_object.user = current_user
-    respond_to do |format|
-      if @build_object.save
-        format.html { redirect_to @build_object, notice: 'Объект успешно добавлен' }
-        format.json { render json: @build_object, status: :created, location: @build_object }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @build_object.errors, status: :unprocessable_entity }
+    if current_user.account.total < Variables.find_by_key("create_build_object_price").to_f
+      render action: "new", notice: "У вас недостаточно средст на счету. Пожалуста, пополните кошелёк"
+    else
+      @build_object = BuildObject.new(params[:build_object])
+      @build_object.user = current_user
+      respond_to do |format|
+        if @build_object.save
+          format.html { redirect_to @build_object, notice: 'Объект успешно добавлен' }
+          format.json { render json: @build_object, status: :created, location: @build_object }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @build_object.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

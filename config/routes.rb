@@ -26,7 +26,8 @@ BuildInfo::Application.routes.draw do
 
   scope :cabinet do
     match 'cabinet' => "cabinet#index", as: :cabinet_index 
-    match "upgrade_account" => "cabinet/upgrade_account", as: :upgrade_account
+    match "upgrade_account" => "cabinet#upgrade_account", as: :upgrade_account
+    match 'lowbalance' => "cabinet#lowbalance"
   end
   get "pages/index"
   get "pages/profile"

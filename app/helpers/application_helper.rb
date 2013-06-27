@@ -14,4 +14,11 @@ module ApplicationHelper
     def common_block header
       render partial: "shared/block", locals: {header: header, content: yield}
     end
+    
+    def enought_money? action
+      if current_user.account.total >= Variables.find_by_key(action).value.to_f 
+        return true
+      end
+      false
+    end
 end

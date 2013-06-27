@@ -66,6 +66,7 @@ class BuildObject < ActiveRecord::Base
   
   before_save :count_rating
   before_create :set_rating
+  after_create :windraw_cost_from_account
   
   scope :actual, -> { where(archived: false) }
   scope :full, -> { joins(:address) }
@@ -116,5 +117,10 @@ class BuildObject < ActiveRecord::Base
   
   def to_s
     "Объект"
+  end
+private
+  def windraw_cost_from_account
+    self.user.account.total -= Variables.find_by_name("create_build_object_price").to_f
+    self.user.account.save!
   end
 end
