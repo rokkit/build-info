@@ -25,5 +25,7 @@ class ApplicationController < ActionController::Base
     current_user
   end
   
-
+  def _params
+    2
+  end
 end
