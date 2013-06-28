@@ -39,9 +39,9 @@ users:
     - 
     - 
     - 
-    - 1
-    - '2013-06-25 13:41:55.251845'
-    - '2013-06-25 13:41:55.251845'
+    - 4
+    - '2013-06-28 07:30:51.615178'
+    - '2013-06-27 07:10:35.407816'
     - 127.0.0.1
     - 127.0.0.1
     - fpqlg
@@ -55,13 +55,13 @@ users:
     - 
     - 
     - '2013-06-25 13:41:34.141743'
-    - '2013-06-25 13:41:55.255625'
+    - '2013-06-28 07:30:51.683992'
     - 
     - false
     - pending_review
     - false
     - 
-    - 
+    - 1
     - 
 
 ---
@@ -759,6 +759,35 @@ type_of_build_objects:
     - Комната (Вторичный рынок)
     - '2013-06-25 13:41:36.481337'
     - '2013-06-25 13:41:36.481337'
+
+---
+agencies:
+  columns:
+  - id
+  - owner_id
+  - name
+  - description
+  - created_at
+  - updated_at
+  - address
+  - phone
+  - fax
+  - site
+  - logo
+  - confirmed_at
+  records: 
+  - - 1
+    - 1
+    - Агенство
+    - Продажа недвижки
+    - '2013-06-26 07:42:51.050584'
+    - '2013-06-26 07:43:01.920273'
+    - Россия
+    - 232-234-32
+    - 234-23-43
+    - ''
+    - _ogotip__.jpg
+    - '2013-06-26 07:43:01.918306'
 
 ---
 build_objects:
@@ -1754,3 +1783,1132 @@ build_objects:
     - false
     - false
     - 
+
+---
+impressions:
+  columns:
+  - id
+  - impressionable_type
+  - impressionable_id
+  - user_id
+  - controller_name
+  - action_name
+  - view_name
+  - request_hash
+  - ip_address
+  - session_hash
+  - message
+  - referrer
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - BuildObject
+    - 1
+    - 1
+    - build_objects
+    - show
+    - 
+    - 8d8d22d1a761fbf3358467f41108c8c68f7f4d359779f258a1102e148f678356
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-26 08:34:38.172914'
+    - '2013-06-26 08:34:38.172914'
+  - - 2
+    - BuildObject
+    - 1
+    - 1
+    - build_objects
+    - show
+    - 
+    - b5a1ccf380cbd237d26b46cd84dd770c3d8f8e4c5a0d95b92a67566f2cbdba62
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-26 08:34:47.061950'
+    - '2013-06-26 08:34:47.061950'
+  - - 3
+    - BuildObject
+    - 1
+    - 1
+    - build_objects
+    - show
+    - 
+    - de058fd9b0aef91bcebf8a0af4562c089ff0f2fb736f7b5825fb46671635ec48
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-26 08:35:19.324432'
+    - '2013-06-26 08:35:19.324432'
+  - - 4
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - new
+    - 
+    - 2ab86f750f9095b1ddff64a61351c5d0cac45256a75fcae21a29c47d280db565
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/cabinet/index
+    - '2013-06-26 08:35:47.371409'
+    - '2013-06-26 08:35:47.371409'
+  - - 5
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - new
+    - 
+    - 643213eb4399df606a02a089c614c7eaf36a1c44dc87cd17a3cf62c3c1d7af66
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/cabinet/index
+    - '2013-06-26 08:48:19.626869'
+    - '2013-06-26 08:48:19.626869'
+  - - 6
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - 0b39477552e8d796aed34f8907ed5d70d122957f0d55e8448377e47efeff1db5
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/cabinet/index
+    - '2013-06-26 08:49:31.038898'
+    - '2013-06-26 08:49:31.038898'
+  - - 7
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - 064fa124f1eb829a4eb7315acbf9d4165d151d7aa2b70817de5b48ece66a95a5
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/cabinet/index
+    - '2013-06-26 08:49:43.349662'
+    - '2013-06-26 08:49:43.349662'
+  - - 8
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - 033b1c9599caf29eae72db20eb39be2623632f71e9ee2c32a9073e2fccb2f256
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/cabinet/index
+    - '2013-06-26 08:53:44.003376'
+    - '2013-06-26 08:53:44.003376'
+  - - 9
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - 3f7cc523169bb98740a8077fd3de514a1ed1ddee343de5536148a4e25fda739e
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/cabinet/index
+    - '2013-06-26 08:55:22.846746'
+    - '2013-06-26 08:55:22.846746'
+  - - 10
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - ec6246572bcc7f8abbcede92411b429692445aad5a53400e0340bf1b716aa224
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/cabinet/index
+    - '2013-06-26 08:55:49.801727'
+    - '2013-06-26 08:55:49.801727'
+  - - 11
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - bd2a5e69e92a64b1753fe31ecfb9c5d4bd553ba621460278b2dff792b8e93e7f
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/cabinet/index
+    - '2013-06-26 08:56:08.776860'
+    - '2013-06-26 08:56:08.776860'
+  - - 12
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - e6554bea418268e88b88287e91f8e8e49468d5edee05708f3c06f23205fb9a00
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/cabinet/index
+    - '2013-06-26 08:59:45.498080'
+    - '2013-06-26 08:59:45.498080'
+  - - 13
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - a3c84bfa5ca4d64fcd281273af4025b0ec52d3fdd011c5326fb7973f0bffa9a1
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/cabinet/index
+    - '2013-06-26 09:00:16.179315'
+    - '2013-06-26 09:00:16.179315'
+  - - 14
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - 3a087f7f99f5bd863dfac458bc2607330d4067b64cdb39bf02aabecd7cdb96a3
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/cabinet/index
+    - '2013-06-26 09:03:01.479434'
+    - '2013-06-26 09:03:01.479434'
+  - - 15
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - 102b45b81108d8f365b7678ee66552345d3cd4cd47f5ca3cbdc57af9a3bd3591
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/cabinet/index
+    - '2013-06-26 09:04:39.052398'
+    - '2013-06-26 09:04:39.052398'
+  - - 16
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - 454a177773710778693bc0d1874cca5ca5c3a597ea66a71a5ca45da8166a71bd
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/cabinet/index
+    - '2013-06-26 09:05:29.457380'
+    - '2013-06-26 09:05:29.457380'
+  - - 17
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - ceaa67077482274eb7b7fd688be97f3ecae92067807413101a9b555c4dfd2244
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/cabinet/index
+    - '2013-06-26 09:10:38.406810'
+    - '2013-06-26 09:10:38.406810'
+  - - 18
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - 086be372e4a6e540ce3226598754b7f4e10e86c8c8b5a05bc9d9558acec9f9fb
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/cabinet/index
+    - '2013-06-26 09:11:02.539880'
+    - '2013-06-26 09:11:02.539880'
+  - - 19
+    - BuildObject
+    - 6
+    - 1
+    - build_objects
+    - show
+    - 
+    - 2168e263e9a4696cec76c2bc072b4e2ed8f219c61d19e293b998962c20a3fc0c
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects/manage
+    - '2013-06-26 09:11:09.464160'
+    - '2013-06-26 09:11:09.464160'
+  - - 20
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - d1b0d305021589a04785064a5da6659c19ac1fc75776c38d7c0abb8fd653c972
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/cabinet/index
+    - '2013-06-26 09:11:16.587524'
+    - '2013-06-26 09:11:16.587524'
+  - - 21
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - f5cadeac9100cc0552a7fa63c27c352b86e0b2268e6e0754fbe8eca6a301843e
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects/manage
+    - '2013-06-26 09:12:55.350323'
+    - '2013-06-26 09:12:55.350323'
+  - - 22
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - 8b7124716205ce4b73f716e3210fda6c95c4e9017962d297e62a8501f8ed8f7b
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-26 09:12:58.610606'
+    - '2013-06-26 09:12:58.610606'
+  - - 23
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - 16dfdb103269da1aa89b2dc513996be2ff483f26598615fc4daf6d3e21c2af4b
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-26 09:13:06.110395'
+    - '2013-06-26 09:13:06.110395'
+  - - 24
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - 2173efc0bdb61437beec5950c55c941d6bddcc544cc2c8903c582588b600185c
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-26 09:13:08.420308'
+    - '2013-06-26 09:13:08.420308'
+  - - 25
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - e773f4b880fc65ce9bdbe252d8f2db29a99414c34353accc87d417c62b3427a5
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-26 09:13:09.570047'
+    - '2013-06-26 09:13:09.570047'
+  - - 26
+    - BuildObject
+    - 
+    - 
+    - build_objects
+    - index
+    - 
+    - a6fb57887aabfbfb7893efe71059358d1c08f4f6e19e8008e7eaa0559c53be9b
+    - 127.0.0.1
+    - a931b89596a4291fbc025555c1feb9e9
+    - 
+    - 
+    - '2013-06-26 09:13:19.452725'
+    - '2013-06-26 09:13:19.452725'
+  - - 27
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - e00732bcd54d8892e11143e2787eff442da7d07cbe48ea1029362f233efe3164
+    - 127.0.0.1
+    - 20d2b40179c35127577f923f18660ee0
+    - 
+    - http://localhost:3000/agencies/1
+    - '2013-06-26 09:23:21.655509'
+    - '2013-06-26 09:23:21.655509'
+  - - 28
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - cf2b9242791134eda0e7fca9bffe1ee06cb034ddc0dbe7fff2323ec7b384eaa3
+    - 127.0.0.1
+    - 20d2b40179c35127577f923f18660ee0
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-26 09:23:24.578208'
+    - '2013-06-26 09:23:24.578208'
+  - - 29
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - 1f614c02eb8a4c4af1a9f7687c4e47bbdb6dd952b585b4a0122cd88f4cb8e87e
+    - 127.0.0.1
+    - 20d2b40179c35127577f923f18660ee0
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-26 09:23:32.021236'
+    - '2013-06-26 09:23:32.021236'
+  - - 30
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - 0466fc7620e91a1b49243d5814b7667e0621b63b89bb544ef29923053f4bbea0
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects/manage
+    - '2013-06-26 09:26:13.001135'
+    - '2013-06-26 09:26:13.001135'
+  - - 31
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - d8b06a60903f0e40117b1f3e242783d3f4cd71b611b0896bac69fe0b4fdb31e8
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-26 09:26:15.721763'
+    - '2013-06-26 09:26:15.721763'
+  - - 32
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - d9ae24126dc8d4c24c425b8989aa257c518f53bb7f64465eed67c387c6a40bfe
+    - 127.0.0.1
+    - 20d2b40179c35127577f923f18660ee0
+    - 
+    - http://localhost:3000/agencies/1
+    - '2013-06-26 09:26:23.058742'
+    - '2013-06-26 09:26:23.058742'
+  - - 33
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - b71392df507ae0baf7a39dfb094e43e4401795db950bcd47774ded91b4b826f0
+    - 127.0.0.1
+    - 20d2b40179c35127577f923f18660ee0
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-26 09:26:26.162911'
+    - '2013-06-26 09:26:26.162911'
+  - - 34
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - db09af15b8d4dc3092e53ac7570351de717a68010ccab0a39f8fc15678ddcfa1
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects/manage
+    - '2013-06-26 09:28:01.077517'
+    - '2013-06-26 09:28:01.077517'
+  - - 35
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - 026454c217c0abc28aeaf0d81f89071278e05d227b56d4a91f50b37bdaca848b
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-26 09:28:04.389851'
+    - '2013-06-26 09:28:04.389851'
+  - - 36
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - 423977712183c37440ebc89705db0d4a5783f2d1b0ef46f43d7c38ca727fa06e
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-26 09:28:12.157150'
+    - '2013-06-26 09:28:12.157150'
+  - - 37
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - 16ae6985e7ac07f76fbee1950e004b576f5b7aebcbf8e8d76bd5aa2e9af14e3a
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-26 09:28:17.633466'
+    - '2013-06-26 09:28:17.633466'
+  - - 38
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - b6c15e0aa5aad9ddec24f4b8a67158d07f821ed0677af2de6d6f19a4ce4be6e3
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-26 09:28:28.770037'
+    - '2013-06-26 09:28:28.770037'
+  - - 39
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - 7dd67d1332727f441580231be81f6765f929366004120deed9fa5ff2bed04ba9
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-26 09:28:37.480577'
+    - '2013-06-26 09:28:37.480577'
+  - - 40
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - 6816b700659531240f0047751acc29232600848b46246727644fdf459dd2f067
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects/manage
+    - '2013-06-26 09:31:56.631231'
+    - '2013-06-26 09:31:56.631231'
+  - - 41
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - 84867c57265f06e4914a7c37207a84897cad0db2d75b8163f8134f392c68c6fd
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-26 09:31:59.445436'
+    - '2013-06-26 09:31:59.445436'
+  - - 42
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - fdec386cf05758e8baf0f50105e4f22f98ca997473ada436bca615b2041a993b
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-26 09:32:02.480658'
+    - '2013-06-26 09:32:02.480658'
+  - - 43
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - 02c155c3c9b33019b04d7bf8dcfe033ac8199667e38e010267202545fc24b350
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-26 09:32:04.275624'
+    - '2013-06-26 09:32:04.275624'
+  - - 44
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - 86af0117953b91ccd85d5ecbd574eac715ed68c6b4073317c60d7a4710f77c4d
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-26 09:32:10.501242'
+    - '2013-06-26 09:32:10.501242'
+  - - 45
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - 2c073609a02824fd4e5d8c59656455f480efe2c294250d57117dbab2ccc2cacd
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects/manage
+    - '2013-06-26 10:10:31.023895'
+    - '2013-06-26 10:10:31.023895'
+  - - 46
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - a4d9e74765908307a7848ea00d817944b9cc39c322b4035ecc363079f0d645d0
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects/manage
+    - '2013-06-26 10:10:53.606567'
+    - '2013-06-26 10:10:53.606567'
+  - - 47
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - 224dedd923374127664782acdeea358a621528fe8476fe580d2abf2e4567c43b
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects/manage
+    - '2013-06-26 10:14:44.026487'
+    - '2013-06-26 10:14:44.026487'
+  - - 48
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - a973d092c4069dc86ce24d5e56cf1d5d35a4354a1a449dfcffd3c335b2f3b88b
+    - 127.0.0.1
+    - 69d1510447bb278853b65e88186ecc23
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-26 10:14:52.511935'
+    - '2013-06-26 10:14:52.511935'
+  - - 49
+    - BuildObject
+    - 
+    - 
+    - build_objects
+    - index
+    - 
+    - 87f37159322ab725dcf98d466dc1b1f8da92effe29c9411ceb3d300ecd99cfbf
+    - 127.0.0.1
+    - 31bcabd96a1aeb7696d2178a791065df
+    - 
+    - http://localhost:3000/
+    - '2013-06-27 07:02:31.060125'
+    - '2013-06-27 07:02:31.060125'
+  - - 50
+    - BuildObject
+    - 
+    - 
+    - build_objects
+    - index
+    - 
+    - 14a344e131854f3735979181a6d278e07f3b4391e95aadb5da4f7a1f4f9c6bd6
+    - 127.0.0.1
+    - 31bcabd96a1aeb7696d2178a791065df
+    - 
+    - 
+    - '2013-06-27 07:03:08.316476'
+    - '2013-06-27 07:03:08.316476'
+  - - 51
+    - BuildObject
+    - 
+    - 
+    - build_objects
+    - index
+    - 
+    - 2abfd50961b6ba4ea5e16ef4b8bca170a1c815500967edb57316b757c74f0fb6
+    - 127.0.0.1
+    - 31bcabd96a1aeb7696d2178a791065df
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-27 07:04:26.342540'
+    - '2013-06-27 07:04:26.342540'
+  - - 52
+    - BuildObject
+    - 
+    - 
+    - build_objects
+    - invest_projects
+    - 
+    - 18c9a7ba0dab648e3b0d9c84c3193f089d322f418ac2504562a111a97bca7c9e
+    - 127.0.0.1
+    - 31bcabd96a1aeb7696d2178a791065df
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-27 07:10:30.474283'
+    - '2013-06-27 07:10:30.474283'
+  - - 53
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - invest_projects
+    - 
+    - 1452e2b4c22d6055fd20f694900449f385dd0aa5e62400252cd100de0ea17633
+    - 127.0.0.1
+    - d6d9971ca21fdc73a92ec0bcfc24d134
+    - 
+    - http://localhost:3000/
+    - '2013-06-27 07:10:35.443084'
+    - '2013-06-27 07:10:35.443084'
+  - - 54
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - 597ae29d871d13b2f989fc47f82d7a6b7c0b124453698c062b478fa5d91ff056
+    - 127.0.0.1
+    - d6d9971ca21fdc73a92ec0bcfc24d134
+    - 
+    - http://localhost:3000/build_objects/invest_projects
+    - '2013-06-27 07:10:38.310735'
+    - '2013-06-27 07:10:38.310735'
+  - - 55
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - invest_projects
+    - 
+    - bf4659c5053b9eb10d345f5ff24161fdf7d7bcd7763b593a723f483c1877c027
+    - 127.0.0.1
+    - d6d9971ca21fdc73a92ec0bcfc24d134
+    - 
+    - http://localhost:3000/build_objects/invest_projects
+    - '2013-06-27 07:12:25.357224'
+    - '2013-06-27 07:12:25.357224'
+  - - 56
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - 525ed0f4e739bb1029991ae95be4633fcf686bc3af5bd1ea17785e1c15f24351
+    - 127.0.0.1
+    - d6d9971ca21fdc73a92ec0bcfc24d134
+    - 
+    - http://localhost:3000/build_objects/invest_projects
+    - '2013-06-27 07:12:28.010249'
+    - '2013-06-27 07:12:28.010249'
+  - - 57
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - d0a7a7bf7b7de099a2173d1296baeca8bc208e387853b061b056df841be224c7
+    - 127.0.0.1
+    - d6d9971ca21fdc73a92ec0bcfc24d134
+    - 
+    - http://localhost:3000/cabinet
+    - '2013-06-27 07:25:07.054612'
+    - '2013-06-27 07:25:07.054612'
+  - - 58
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - new
+    - 
+    - ec39dbcf3bc15923e6dc89cf0d07d701b8579951162c491cfed785947941c32a
+    - 127.0.0.1
+    - d6d9971ca21fdc73a92ec0bcfc24d134
+    - 
+    - http://localhost:3000/build_objects/manage
+    - '2013-06-27 07:25:10.902805'
+    - '2013-06-27 07:25:10.902805'
+  - - 59
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - new
+    - 
+    - 7c4594db8c1026a60e78b1f17399242ef9d3ba078f4adb53fb252cafe7e0ae2a
+    - 127.0.0.1
+    - d6d9971ca21fdc73a92ec0bcfc24d134
+    - 
+    - http://localhost:3000/build_objects/manage
+    - '2013-06-27 07:27:01.373163'
+    - '2013-06-27 07:27:01.373163'
+  - - 60
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - 98624dd256fdb35f2a354e4077349bcb1f453060887f07f3254fb90ab6a56c1f
+    - 127.0.0.1
+    - d6d9971ca21fdc73a92ec0bcfc24d134
+    - 
+    - http://localhost:3000/cabinet
+    - '2013-06-27 07:37:26.059489'
+    - '2013-06-27 07:37:26.059489'
+  - - 61
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - 4e34835fbf4696c5434e52eaa2b93214e72096e4688d582e449a13940040572f
+    - 127.0.0.1
+    - d6d9971ca21fdc73a92ec0bcfc24d134
+    - 
+    - http://localhost:3000/cabinet
+    - '2013-06-27 07:37:41.753754'
+    - '2013-06-27 07:37:41.753754'
+  - - 62
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - 2e2224104071dc148aafe9311f6bebf50f7f1f0e22bb1870604545c19fd49090
+    - 127.0.0.1
+    - d6d9971ca21fdc73a92ec0bcfc24d134
+    - 
+    - http://localhost:3000/cabinet
+    - '2013-06-27 07:38:39.086928'
+    - '2013-06-27 07:38:39.086928'
+  - - 63
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - 93a8c41bf2427939bd66761b08582f6fbea76cdd3e04657d1dd134b8cabb5a6b
+    - 127.0.0.1
+    - d6d9971ca21fdc73a92ec0bcfc24d134
+    - 
+    - http://localhost:3000/cabinet
+    - '2013-06-27 07:39:53.226718'
+    - '2013-06-27 07:39:53.226718'
+  - - 64
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - 0756783f886f79326c6ca5209c276cb0b64b44121c9a1d0631e9e94483e58ec1
+    - 127.0.0.1
+    - d6d9971ca21fdc73a92ec0bcfc24d134
+    - 
+    - http://localhost:3000/cabinet
+    - '2013-06-27 07:40:41.402765'
+    - '2013-06-27 07:40:41.402765'
+  - - 65
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - 583e3a501b233a5b340f6e3db896cc97f948db8fdbbb0bf8eb43697887c67d50
+    - 127.0.0.1
+    - d6d9971ca21fdc73a92ec0bcfc24d134
+    - 
+    - http://localhost:3000/cabinet
+    - '2013-06-27 07:41:43.431712'
+    - '2013-06-27 07:41:43.431712'
+  - - 66
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - f75489050dcf1517a36d98e6da40b8f72bf299e47d0104438bd7596434622d88
+    - 127.0.0.1
+    - d6d9971ca21fdc73a92ec0bcfc24d134
+    - 
+    - http://localhost:3000/cabinet
+    - '2013-06-27 07:45:33.257322'
+    - '2013-06-27 07:45:33.257322'
+  - - 67
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - manage
+    - 
+    - 241e3c350ab3613973de44e8a9d1db5bde9e9b3ff5379ee713e5144b7bc2e352
+    - 127.0.0.1
+    - d6d9971ca21fdc73a92ec0bcfc24d134
+    - 
+    - 
+    - '2013-06-27 07:46:35.992642'
+    - '2013-06-27 07:46:35.992642'
+  - - 68
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - 91fe03852153c5c48b02516d1ce2a310fa288d660a119c815c125afd068cedd0
+    - 127.0.0.1
+    - d6d9971ca21fdc73a92ec0bcfc24d134
+    - 
+    - http://localhost:3000/agencies/1
+    - '2013-06-27 10:08:48.357130'
+    - '2013-06-27 10:08:48.357130'
+  - - 69
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - 084c5d29586475eb2b612fcfab4babe3ff9cfc2fc60d17584ccd36f0434ded92
+    - 127.0.0.1
+    - d6d9971ca21fdc73a92ec0bcfc24d134
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-27 10:08:51.118200'
+    - '2013-06-27 10:08:51.118200'
+  - - 70
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - 615369f59970bfaf84ebb7204657ad979b4f7e143b936668035ec97d0c946c2b
+    - 127.0.0.1
+    - e6df5a6f198a3eb9de172da842e0ae81
+    - 
+    - http://localhost:3000/
+    - '2013-06-28 07:30:55.956336'
+    - '2013-06-28 07:30:55.956336'
+  - - 71
+    - BuildObject
+    - 
+    - 1
+    - build_objects
+    - index
+    - 
+    - cf5264f77256111f799b030b1ff839bc6acd3da339dfbf7b5b6de3d3b05a8ede
+    - 127.0.0.1
+    - e6df5a6f198a3eb9de172da842e0ae81
+    - 
+    - http://localhost:3000/build_objects
+    - '2013-06-28 07:30:57.383300'
+    - '2013-06-28 07:30:57.383300'
+
+---
+order_transactions:
+  columns:
+  - id
+  - payment_id
+  - action
+  - amount
+  - success
+  - authorization
+  - message
+  - params
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 4
+    - 
+    - 300
+    - false
+    - 
+    - 
+    - 
+    - '2013-06-26 12:57:58.905924'
+    - '2013-06-26 12:57:58.905924'
+
+---
+accounts:
+  columns:
+  - id
+  - accountable_id
+  - accountable_type
+  - total
+  - valute_id
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 1
+    - User
+    - 0
+    - 
+    - '2013-06-26 11:15:38.267320'
+    - '2013-06-27 07:39:46.852102'
+
+---
+payments:
+  columns:
+  - id
+  - amount
+  - payable_id
+  - payable_type
+  - account_id
+  - reason_id
+  - comment
+  - status
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 30000
+    - 
+    - 
+    - 
+    - 
+    - ''
+    - false
+    - '2013-06-26 12:05:51.498418'
+    - '2013-06-26 12:05:51.498418'
+  - - 2
+    - 30000
+    - 
+    - 
+    - 1
+    - 
+    - ''
+    - false
+    - '2013-06-26 12:08:37.704924'
+    - '2013-06-26 12:08:37.704924'
+  - - 3
+    - 300
+    - 
+    - 
+    - 1
+    - 
+    - ''
+    - false
+    - '2013-06-26 12:32:02.491447'
+    - '2013-06-26 12:32:02.491447'
+  - - 4
+    - 300
+    - 
+    - 
+    - 1
+    - 
+    - ''
+    - true
+    - '2013-06-26 12:32:48.147748'
+    - '2013-06-26 12:33:40.230956'
+
+---
+variables:
+  columns:
+  - id
+  - created_at
+  - updated_at
+  - key
+  - value
+  - human_name
+  records: 
+  - - 1
+    - '2013-06-27 07:27:36.990376'
+    - '2013-06-27 07:27:36.990376'
+    - create_build_object_price
+    - '10'
+    - Цена добавления объекта
