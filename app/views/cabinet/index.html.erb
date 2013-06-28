@@ -1,29 +1,45 @@
 <h1>Личный кабинет</h1>
-<%= link_to "Редактировать профиль", edit_user_registration_path %>
-<%= link_to "Мои объекты", manage_build_objects_path %>
-<%= link_to "Просмотры", reviews_path %>
 
-<% if current_user.agency %>
-    <%= link_to "Агенство", agency_path(current_user.agency) %>
-<% end %>
+<div class="row" id="cabinet">
+	<div class="large-6 columns">
 
+		<div class="panel radius">
+			<dl class="user-info">
+				<dt>ФИО:</dt>
+				<dd><%= @user.fio %></dd>
+				<dt>Мобильный телефон:</dt>
+				<dd><%= @user.phone %></dd>
+				<dt>Рейтинг:</dt>
+				<dd><%= @user.rating %></dd>
+				<dt>Email:</dt>
+				<dd><%= @user.email %></dd>
+			    <dt>На счету:</dt>
+			    <dd><%= @user.account.total %> <%= link_to "Пополнить", new_payment_path, :class => "entypo-plus-circled" %></dd>
+			    <% if current_user.agency %>
+			    <dt>Агентство:</dt>
+			    <dd><%= link_to "Агентство", agency_path(current_user.agency) %></dd>
+				<% end %>
+			</dl>
+			
+			<% unless can? :invest, :all %>
+			    <p>Для доступа к инвестпроектам и закрытым разделам сайта необходимо повысить уровень аккаунта
+				<%= link_to "Открыть доступ", upgrade_account_path %></p>
+			<% else %>
+			    <p>У вас открыт доступ к <%= link_to "инвестпроектам", invest_projects_build_objects_path %></p>
+			<% end %>
+		</div>
 
-<ul>
-	<li>ФИО: <%= @user.fio %></li>
-	<li>Мобильный телефон: <%= @user.phone %></li>
-	<li>Рейтинг: <%= @user.rating %></li>
-	<li>Email: <%= @user.email %></li>
-    <li>На счету: <%= @user.account.total %> <%= link_to "Пополнить", new_payment_path %></li>
-</ul>
+		<%= link_to "Редактировать профиль", edit_user_registration_path, :class => "entypo-pencil" %>
+	</div>
+	<div class="large-6 columns">
+		<ul class="user-menu">
+			<li><%= link_to "Мои объекты", manage_build_objects_path, :class => "entypo-doc-text-inv" %></li>
+			<li><%= link_to "Просмотры", reviews_path, :class => "entypo-users" %></li>
+		</ul>
+	</div>
+</div><!-- /#cabinet -->
 
-<% unless can? :invest, :all %>
-    <p>Для доступа к инвестпроектам и закрытым разделам сайта необходимо повысить уровень аккаунта</p>
-<%= link_to "Открыть доступ", upgrade_account_path %>
-<% else %>
-    <p>У вас открыт доступ к <%= link_to "инвестпроектам", invest_projects_build_objects_path %></p>
-<% end %>
-
-
-<div id="inform-modal" title="Информация" style="display: none; ">
+<div id="info-modal" title="Информация" class="reveal-modal medium">
      <p>Вы можете увеличить свой рейтинг <br> написанием статей на сайте и добавлением объектов</p>
+     <a class="close-reveal-modal">&#215;</a>
 </div>

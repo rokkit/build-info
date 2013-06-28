@@ -81,7 +81,6 @@ h6 {
 
 header {
 	border-top: 1px solid $dark-grey;
-	overflow: hidden;
 	margin: 2em 0;
 	padding: 1em 0;
 }
@@ -94,6 +93,7 @@ header {
 		margin-top: 50px;
 		li {
 			border-right: 1px solid #808080;
+			position: relative;
 			&.last {
 				border-right: 0 none;
 			}
@@ -110,6 +110,26 @@ header {
 				}
 				&:hover {
 					text-decoration: none;
+				}
+			}
+			ul {
+				padding: 0;
+				margin: 0;
+				position: absolute;
+				left: -9999em;
+				top: 30px;
+				background-color: #fff;
+				li {
+					border-right: 0 none;
+					// border-bottom: 1px solid lighten($grey, 20%);
+					a {
+						padding: 0px 15px;
+					}
+				}
+			}
+			&:hover {
+				> ul {
+					left: 0;
 				}
 			}
 		}

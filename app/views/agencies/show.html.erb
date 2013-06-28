@@ -1,43 +1,50 @@
-<p>
-  <b>Название:</b>
-  <%= @agency.name %>
-</p>
-<p>
-  <%= image_tag @agency.logo_url(:main).to_s %>
-</p>
-<p>
-  <b>Сайт:</b>
-  <%= link_to @agency.site, @agency.site %>
-</p>
-<p>
-  <b>Адрес:</b>
-  <%= @agency.address %>
-</p>
-<p>
-  <b>Владелец:</b>
-  <%= @agency.owner %>
-</p>
-<p>
-  <b>Телефон:</b>
-  <%= @agency.phone %>
-</p>
-<p>
-  <b>Факс:</b>
-  <%= @agency.fax %>
-</p>
-<p>
-  <b>Описание:</b>
-  <%= @agency.description %>
-</p>
-<p>
-    Агенты:
-    <% @agency.agents.each do |agent| %>
-        <%= link_to agent, agent %>
+<h2>Агентство &laquo;<%= @agency.name %>&raquo;</h2>
+<div class="row" id="agency">
+  <div class="large-6 columns description">
+    <% unless @agency.description.nil? %>
+    <%= @agency.description %>
     <% end %>
-</p>
-
-<% if can? :manage,  @agency%>
-    <%= link_to 'Изменить', edit_agency_path(@agency) %> |
-    <%= link_to 'Администрирование', admin_agency_path %>
-<% end %>
-<%= link_to 'Назад', agencies_path %>
+  </div>
+  <div class="large-6 columns">
+    <div class="panel radius">
+      <dl class="agency-info">
+        <dd><%= image_tag @agency.logo_url(:main).to_s %></dd>
+        <% unless @agency.site.empty? %>
+        <dt>Сайт:</dt>
+        <dd><%= link_to @agency.site, @agency.site %></dd>
+        <% end %>
+        <% unless @agency.address.nil? %>
+        <dt>Адрес:</dt>
+        <dd><%= @agency.address %></dd>
+        <% end %>
+        <% unless @agency.owner.nil? %>
+        <dt>Владелец:</dt>
+        <dd><%= @agency.owner %></dd>
+        <% end %>
+        <% unless @agency.phone.nil? %>
+        <dt>Телефон:</dt>
+        <dd><%= @agency.phone %></dd>
+        <% end %>
+        <% unless @agency.fax.nil? %>
+        <dt>Факс:</dt>
+        <dd><%= @agency.fax %></dd>
+        <% end %>
+        <% unless @agency.agents.nil? %>
+        <dt>Агенты:</dt>
+        <dd>
+          <dl>
+            <% @agency.agents.each do |agent| %>
+              <dd><%= link_to agent, agent %></dd>
+            <% end %>
+          </dl>
+        </dd>
+        <% end %>
+      </dl>
+    </div>
+    <% if can? :manage,  @agency%>
+        <%= link_to 'Изменить', edit_agency_path(@agency), :class => "entypo-pencil" %> |
+        <%= link_to 'Администрирование', admin_agency_path %>
+    <% end %>
+    <%= link_to 'Назад', agencies_path %>
+  </div>
+</div>
