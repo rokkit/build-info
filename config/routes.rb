@@ -63,9 +63,11 @@ BuildInfo::Application.routes.draw do
   resources :distincts do
     get :autocomplete_distinct_name, :on => :collection
   end
-  resources :streets do
-    get :autocomplete_street_name, :on => :collection
-  end
+  get 'streets/autocomplete_street_name'
+  
+  # resources :streets do
+  #   get :autocomplete_street_name, :on => :collection
+  # end
 
   
   devise_for :admin_users, ActiveAdmin::Devise.config

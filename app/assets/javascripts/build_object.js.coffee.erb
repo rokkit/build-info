@@ -104,5 +104,11 @@ $ -> #заполнить поля создаваемого объекта воз
                   $("#build_object_area").val(data.area)
                   $("#build_object_price").val(data.cost)
                   
-# jQuery ->
-#     $("#new_build_object").fileupload
+jQuery ->
+    $("#filter_distinct_id").change ->
+        console.log "change" + $("option:selected", this).val()
+        $("#filter_street").attr("data-autocomplete","/streets/autocomplete_street_name?distinct_id="+$("option:selected", this).val())
+        
+jQuery -> #очищаем форму поиска улицы
+    $("#filter_street_id").change ->
+        $("#filter_street").val("")
