@@ -15,7 +15,7 @@ BuildInfo::Application.routes.draw do
   resources :agencies do
     get :agents, on: :collection
   end
-  resources :users
+
 
 
   root :to => 'pages#index'
@@ -76,6 +76,7 @@ BuildInfo::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"} do
     get 'users/activating' => 'registrations#activating'
   end
+    resources :users
   # devise_scope :user do
   #   get 'activating' => 'registrations#activating'
   # end

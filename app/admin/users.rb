@@ -20,6 +20,13 @@ ActiveAdmin.register User do
             row :confirmed_at
             bool_row :forem_admin
           end
+          panel 'Счёт' do
+            attributes_table_for ad.account do
+                row :total do |account|
+                  number_to_currency account.total, :unit => "руб."
+                end
+            end
+          end
           active_admin_comments
     end
     action_item only: :show do
@@ -35,6 +42,9 @@ ActiveAdmin.register User do
         f.input :agency
         f.input :roles, as: :check_boxes
         f.input :forem_admin
+      end
+      f.inputs "Счёт", for: :account do |account|
+        account.input :total
       end
           f.actions  
     end

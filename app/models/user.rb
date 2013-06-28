@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :remember_me, :rating, :fio, :phone,:name,
-                  :role_ids, :forem_admin, :user_type, :photo
+                  :role_ids, :forem_admin, :user_type, :photo, :agency_id, :account, :account_attributes, :accountable
   attr_accessor :user_type
   
   belongs_to :type_user
@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   has_one :account, as: :accountable
   # attr_accessible :title, :body
   has_and_belongs_to_many :roles
-  accepts_nested_attributes_for :roles
+  accepts_nested_attributes_for :roles, :account
   
   before_create :set_rating
   after_create :send_devise_confirmation_by_sms, :create_account

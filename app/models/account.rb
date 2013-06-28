@@ -3,5 +3,6 @@ class Account < ActiveRecord::Base
   belongs_to :valute
   has_many :payments
   attr_accessible :total, #денег на счету
-                  :valute_id
+                  :valute_id,
+                  :accountable
 end
