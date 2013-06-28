@@ -54,8 +54,8 @@
 				<% if user_signed_in? %>
 					<h2 class="block-title">Меню пользователя</h2>
 					<div class="content">
-						<%= link_to 'Кабинет', main_app.cabinet_index_path %>
-						<%= link_to "Выход", main_app.destroy_user_session_path, method: :delete %>
+						<%= link_to 'Кабинет', main_app.cabinet_index_path, :class => "entypo-lock-open" %>
+						<%= link_to "Выход", main_app.destroy_user_session_path, method: :delete, :class => "entypo-logout" %>
 					</div>
 				<% else %>
 					<%= render '/devise/sessions/new' %>

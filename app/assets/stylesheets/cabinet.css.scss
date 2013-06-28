@@ -1,6 +1,22 @@
-// Place all the styles related to the cabinet controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "../scss/mixins";
+@import "../scss/variables";
+
 .no-close .ui-dialog-titlebar-close {
   display: none;
+}
+
+#cabinet {
+	ul {
+		@include clear-nav();
+	}
+
+	.user-info {
+		dt {
+			float: left;
+			width: 130px;
+		}
+		dd {
+			color: lighten($grey, 10%);
+		}
+	}
 }

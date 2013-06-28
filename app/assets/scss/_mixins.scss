@@ -54,8 +54,11 @@
         padding: 0;
         margin: 0;
         a {
-            display: block;
-            padding: 0 6px;
+            display: inline-block;
+            padding: 0;
+        }
+        ul {
+            padding-left:1em;
         }
     }
 }
