@@ -1,6 +1,7 @@
 class BuildObjectsController < ApplicationController
   impressionist
   before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :views_limit, only: :show
   # GET /build_objects
   # GET /build_objects.json
   def index
@@ -99,6 +100,20 @@ class BuildObjectsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to build_objects_url }
       format.json { head :no_content }
+    end
+  end
+  
+private
+  def views_limit
+    count = nil
+    if current_user
+      count = Impression.where(user_id: current_user).size
+    elsif request.remote_ip
+      count = Impression.where(ip_address: request.remote_ip).size
+    end
+    if count > 5
+      flash[:notice] =  %Q[Закончился лимит бесплатных просмотров. Пожалуйста, пополните Ваш счёт  <a href=#{new_payment_path}>Пополнить</a>].html_safe
+      redirect_to action: "index" 
     end
   end
 end

@@ -47,13 +47,21 @@ namespace :crawle do
           build_object[:chute] = description_table[23].css("td")[1].inner_text
           build_object[:entrance] = description_table[24].css("td")[1].inner_text
           build_object[:view_from_windows] = ViewFromWindows.find_or_create_by_name name: description_table[25].css("td")[1].inner_text
-          photo = Photo.new
-          photo.remote_image_url =  "http://emls.ru#{full_info_page.css("img#photo_big_img").first['src']}"
-          photo.build_object = build_object
-          photo.save!
+          
+          
+          full_info_page.css("img#photo_big_img").each do |p| 
+            photo = Photo.new
+            puts p[:src]
+            photo.remote_image_url =  "http://emls.ru#{p[:src]}"
+            #photo.build_object = build_object
+            build_object.photos << photo
+            #photo.save!
+          end
+          
           
           puts "."
-          build_object.save!
+          build_object.type_of_build_object = TypeOfBuildObject.find_by_name "Квартира (Вторичный рынок)"
+          build_object.save if build_object.valid?
     end
   end
   
