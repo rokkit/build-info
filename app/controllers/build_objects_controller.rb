@@ -105,14 +105,14 @@ class BuildObjectsController < ApplicationController
   
 private
   def views_limit
-    count = nil
+    count = 0
     if current_user
-      count = Impression.where(user_id: current_user).size
+      count = Impression.where(user_id: current_user).size if current_user.rating <= 1
     elsif request.remote_ip
       count = Impression.where(ip_address: request.remote_ip).size
     end
-    if count > 5
-      flash[:notice] =  %Q[Закончился лимит бесплатных просмотров. Пожалуйста, пополните Ваш счёт  <a href=#{new_payment_path}>Пополнить</a>].html_safe
+    if count > Variables.find_by_key("max_views_limit_user_low_rating").value.to_i
+      flash[:notice] =  %Q[Закончился лимит бесплатных просмотров. Пожалуйста, увеличьте Ваш рейтинг  <a href=#{new_payment_path}>Пополнить</a>].html_safe
       redirect_to action: "index" 
     end
   end

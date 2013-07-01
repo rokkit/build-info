@@ -118,3 +118,13 @@ jQuery ->
             width: 940
             height: 528
             navigation: false
+            
+#Перевод описания дома
+jQuery ->
+    $("#do_transale").click (e) ->
+        e.preventDefault()
+        text = $("#description_content")
+        $.getJSON "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20130701T130104Z.e548ed207689a406.b9e8eb5d3d0999d95ea596a52d20c523862005ee&lang=en-ru&text="+$(text).html(), (data) ->
+            $(text).append("------- Перевод -------")
+            $(text).append(data.text[0])
+            $(text).append("Переведено сервисом <a href='http://translate.yandex.ru/'>«Яндекс.Перевод»</a>")

@@ -228,18 +228,7 @@
 </table>
 
 <% unless @build_object.description.nil? %>
-  <table width="100%" class="selling details">
-    <thead>
-      <tr>
-        <th>Условия продажи</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= simple_format @build_object.description %></td>
-      </tr>
-    </tbody>
-  </table>
+  <%= render :partial => 'description', locals: {build_object: @build_object} %>
 <% end %>
 
 <dl class="obj-contact details large-4 columns">
