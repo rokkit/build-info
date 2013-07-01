@@ -1,5 +1,4 @@
-
-<%= simple_form_for(@build_object, html: {class: ""}) do |f| %>
+<%= simple_nested_form_for(@build_object, html: {class: ""}) do |f| %>
 <% @build_object.address = Address.new %>
 <% @build_object.photos = [Photo.new] %>
   <% if @build_object.errors.any? %>
@@ -31,9 +30,11 @@
       <div class="field">
         <%= f.fields_for :photos do |image| %>
             <%= image.label :image, "Фото" %>
-            <%= image.file_field :image, multiple: true, name:"build_object[photos_attributes][0][image]" %>
-            <%= file_field_tag :image, multiple: true, name: "build_object[photos_attributes][0][image]" %>
+            <%# image.file_field :image, multiple: true, name:"build_object[photos_attributes][0][image]", style: "display: none;" %>
+            <%= image.file_field :image %>
+            <%= image.link_to_remove "Удалить фото" %>
         <% end %>
+        <p><%= f.link_to_add "Добавить фото", :photos %></p>
       </div>
   <div class="adress-fields">
     <h2>Адрес объекта</h2>

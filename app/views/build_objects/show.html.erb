@@ -4,7 +4,7 @@
 <% end %>
 
 <div class="large-6 columns">
-<ul class="gallery">
+<ul class="gallery" id="slides">
 <% @build_object.photos.each do |photo|%>
 	<li><%= image_tag photo.image_url(:main).to_s %></li>
 <% end %>
@@ -96,14 +96,14 @@
         <% unless @build_object.elevator.nil? %>
           <p>
             <b>Лифт:</b>
-            <%= t @build_object.elevator %>
+            <%= b @build_object.elevator %>
           </p>
         <% end %>
 
         <% unless @build_object.chute.nil? %>
           <p>
             <b>Мусоропровод:</b>
-            <%= t @build_object.chute %>
+            <%= b @build_object.chute %>
           </p>
         <% end %>
 

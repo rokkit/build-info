@@ -60,9 +60,9 @@ class BuildObject < ActiveRecord::Base
                   :archived,
                   :appartement_number, :photos_attributes
   
-  accepts_nested_attributes_for :photos, :address
+  accepts_nested_attributes_for :photos, :address, allow_destroy: true
   
-  #validates :type_of_build_object,:type_of_house, :price, presence: true
+  validates :type_of_build_object, :price, :photos, presence: true
   
   before_save :count_rating
   before_create :set_rating
@@ -91,14 +91,16 @@ class BuildObject < ActiveRecord::Base
   def count_rating
     self.user ||= User.first #если юзер не задан то добавить как от админа
     #todo rating
-    r = 0
-    r += 1 if user.rating.between?(3,4)
-    r += 2 if user.rating == 5
+    # r = 0
+    # r += 1 if user.rating.between?(3,4)
+    # r += 2 if user.rating == 5
+    # filled_attributes = attributes.select { |k,v| !!v }
+    # percent_filled_attributes = (attributes.count / filled_attributes.count).abs * 100 #считаем процент заполненных
+    # r += 1 if percent_filled_attributes < 60
+    # r += 1 if percent_filled_attributes < 80
     filled_attributes = attributes.select { |k,v| !!v }
-    percent_filled_attributes = (attributes.count / filled_attributes.count).abs * 100 #считаем процент заполненных
-    r += 1 if percent_filled_attributes < 60
-    r += 1 if percent_filled_attributes < 80
-    self.rating = r
+    
+    self.rating = filled_attributes.count
   end
   
   #Объектам в зависимости от заполненности присваивается рейтинг от 0 до 2 баллов, 
@@ -120,7 +122,7 @@ class BuildObject < ActiveRecord::Base
   end
 private
   def windraw_cost_from_account
-    self.user.account.total -= Variables.find_by_name("create_build_object_price").to_f
+    self.user.account.total -= Variables.find_by_key("create_build_object_price").value.to_f
     self.user.account.save!
   end
 end

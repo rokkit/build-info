@@ -14,7 +14,7 @@
 				<dt>Email:</dt>
 				<dd><%= @user.email %></dd>
 			    <dt>На счету:</dt>
-			    <dd><%= @user.account.total %> <%= link_to "Пополнить", new_payment_path, :class => "entypo-plus-circled" %></dd>
+			    <dd><%= number_to_currency @user.account.total, :unit => "руб." %> <%= link_to "Пополнить", new_payment_path, :class => "entypo-plus-circled" %></dd>
 			    <% if current_user.agency %>
 			    <dt>Агентство:</dt>
 			    <dd><%= link_to "Агентство", agency_path(current_user.agency) %></dd>

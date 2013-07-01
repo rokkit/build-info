@@ -25,7 +25,11 @@ class ApplicationController < ActionController::Base
     current_user
   end
   
-  def _params
-    2
+  def enought_money? action
+    if current_user.account.total >= Variables.find_by_key(action).value.to_f 
+      return true
+    end
+    false
   end
+
 end

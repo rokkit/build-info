@@ -41,7 +41,7 @@ class BuildObjectsController < ApplicationController
   # GET /build_objects/new.json
   def new
     @build_object = BuildObject.new
-    @ability_creating_buildobject = true if current_user.account.total >= Variables.find_by_key("create_build_object_price").to_f
+    #@ability_creating_buildobject = true if enought_money? :create_build_object_price
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @build_object }
@@ -56,9 +56,10 @@ class BuildObjectsController < ApplicationController
   # POST /build_objects
   # POST /build_objects.json
   def create
-    if current_user.account.total < Variables.find_by_key("create_build_object_price").to_f
+    unless enought_money? :create_build_object_price
       render action: "new", notice: "У вас недостаточно средст на счету. Пожалуста, пополните кошелёк"
     else
+      
       @build_object = BuildObject.new(params[:build_object])
       @build_object.user = current_user
       respond_to do |format|

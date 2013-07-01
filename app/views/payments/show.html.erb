@@ -3,13 +3,14 @@
   <b>Сумма пополения:</b>
   <%= @payment.amount %>
 </p>
-
+<% unless @payment.comment.empty? %>
 <p>
   <b>Комментарий:</b>
   <%= @payment.comment %>
 </p>
+<% end %>
 
 <p>
   <b>Статус:</b>
-  <%= @payment.status %>
+  <%= @payment.status ? "Зачислен" : "Обрабатывается" %>
 </p>

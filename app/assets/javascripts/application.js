@@ -18,5 +18,4 @@
 //= require jquery-fileupload/basic
 //= require autocomplete-rails
 //= require_tree .
-
 $(function(){ $(document).foundation(); });

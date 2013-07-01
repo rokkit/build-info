@@ -21,4 +21,8 @@ module ApplicationHelper
       end
       false
     end
+    
+    def b(value)
+            value ? "Да" : "Нет"
+    end
 end
