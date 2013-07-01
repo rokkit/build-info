@@ -70,6 +70,10 @@
 	}
 }
 
+.ui-corner-tl {
+    display: none;
+}
+
 // display appartment info
 .gallery {
 	@include span-columns(3,8);
