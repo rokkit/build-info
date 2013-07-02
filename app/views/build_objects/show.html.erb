@@ -4,13 +4,11 @@
 <% end %>
 
 <div class="large-6 columns">
-<div class="gallery" id="slides">
+<ul class="gallery" data-orbit>
 <% @build_object.photos.each do |photo|%>
-	<%= image_tag photo.image_url(:main).to_s %>
+  <li><%= image_tag photo.image_url(:main).to_s %></li>
 <% end %>
-<a href="#" class="slidesjs-previous slidesjs-navigation">Вперед<i class="icon-chevron-left icon-large"></i></a>
-      <a href="#" class="slidesjs-next slidesjs-navigation">Назад<i class="icon-chevron-right icon-large"></i></a>
-</div>
+</ul>
 </div>
 
 <div class="large-6 columns">
