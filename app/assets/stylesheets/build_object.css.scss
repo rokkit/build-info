@@ -92,7 +92,7 @@
 
 //=== main details
 table.details {
-	clear: both;
+	width: 100%;
 	border-spacing:0;
 	border-collapse:collapse;
 	margin-bottom: 1em;
@@ -125,6 +125,23 @@ table.details {
 			th {
 				text-align: left;
 			}
+		}
+	}
+}
+dl.object-info {
+	border: 1px solid $grey;
+	dt {
+		margin: 0 -0.520em .5em -0.520em;
+		border-bottom: 1px solid $grey;
+		background-color: $light-grey;
+		font-size: 1.2em;
+		color: $grey;
+		font-weight: 300;
+		padding: 5px;
+	}
+	dd {
+		p {
+			margin: 0 0 .5em 0;
 		}
 	}
 }
