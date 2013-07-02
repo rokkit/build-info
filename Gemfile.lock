@@ -79,6 +79,8 @@ GEM
     activesupport (3.2.13)
       i18n (= 0.6.1)
       multi_json (~> 1.0)
+    acts_as_votable (0.5.0)
+      rails (>= 3.0.0)
     afm (0.2.0)
     arbre (1.0.1)
       activesupport (>= 3.0.0)
@@ -317,6 +319,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   activemerchant
+  acts_as_votable
   arel
   cancan
   capistrano

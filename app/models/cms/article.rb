@@ -7,18 +7,28 @@ class Article < ActiveRecord::Base
   #before_create :make_unpublished
   validates :category_article, :name, :content, presence: true
   
-  scope :published, where(published: true)
+  scope :published, where('published NOT NULL')
   scope :top, Article.published
+  
+  before_destroy :lower_user_rating
+  
   def to_s
     name
   end
   def publish!
-    published = true
+    self.published = Time.zone.now
     user.add_rating! :article
+    save!
   end
-  private
+    
+
+private
   def make_unpublished
     self.published = false
+  end
+  
+  def lower_user_rating
+    self.user.lower_rating! :destroy_article
   end
   
 

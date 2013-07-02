@@ -62,6 +62,7 @@ gem 'yaml_db'
 gem 'impressionist'
 gem 'activemerchant', :require => 'active_merchant'
 gem 'rails-gallery'
+gem 'acts_as_votable'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

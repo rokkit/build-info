@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  
+  acts_as_voter
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -49,6 +51,15 @@ class User < ActiveRecord::Base
   def add_rating! reason
     if reason == :article
       self.rating += 1
+    elsif :full_described_object
+      self.reason += 1
+    end
+    save!
+  end
+  
+  def lower_rating! reason
+    if reason == :destroy_article
+      self.rating -= 1
     end
     save!
   end

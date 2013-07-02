@@ -246,6 +246,9 @@
   <dd>Вт. 22.01.13 18:00 - 19:00</dd>
   <dd><%= link_to "Записаться", new_review_path(build_object:@build_object) if can? :request_review, @build_object %></dd>
   <dd>Количество просмотров: <%= @build_object.impressionist_count filter: :ip_address %></dd>
+  <dd>Количество лайков: <%= @build_object.votes.size %>   <%= render :partial => 'shared/like_button',locals: {product: @build_object} %>
+</dd>
+
 </dl>
 
 

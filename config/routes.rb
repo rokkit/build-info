@@ -77,6 +77,7 @@ BuildInfo::Application.routes.draw do
     get 'users/activating' => 'registrations#activating'
   end
     resources :users
+    resources :votes, only: [:create, :destroy]
   # devise_scope :user do
   #   get 'activating' => 'registrations#activating'
   # end

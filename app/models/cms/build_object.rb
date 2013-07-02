@@ -2,6 +2,8 @@ class BuildObject < ActiveRecord::Base
   
   is_impressionable
   
+  acts_as_votable
+  
   belongs_to :type_of_build_object
   belongs_to :user
   has_many :photos, :dependent => :destroy 
@@ -96,6 +98,8 @@ class BuildObject < ActiveRecord::Base
     # r += 2 if user.rating == 5
     filled_attributes = attributes.select { |k,v| !!v }
     percent_filled_attributes = (attributes.count / filled_attributes.count).round * 100 #считаем процент заполненных
+    
+    self.user.add_rating! :full_described_object if percent_filled_attributes == 100
     # r += 1 if percent_filled_attributes < 60
     # r += 1 if percent_filled_attributes < 80
     
