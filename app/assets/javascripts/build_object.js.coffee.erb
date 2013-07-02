@@ -122,6 +122,15 @@ $ -> #заполнить поля создаваемого объекта воз
 #        caption_class: 'orbit-caption'
 #        active_slide_class: 'active'
 #        orbit_transition_class: 'orbit-transitioning'
+
+# make the info blocks the same height
+$(document).ready ->
+  $sameHeightDivs = $(".object-info")
+  maxHeight = 0
+  $sameHeightDivs.each ->
+    maxHeight = Math.max(maxHeight, $(this).outerHeight())
+
+  $sameHeightDivs.css height: maxHeight + "px"
                   
 jQuery ->
     $("#filter_distinct_id").change ->

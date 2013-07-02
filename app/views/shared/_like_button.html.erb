@@ -1,12 +1,12 @@
 <% if like = current_user.voted_up_on?(product) %>
   <%= form_for Vote.new, :html => { :method => :delete },
                      :remote => true do |f| %>
-    <%= f.submit "Мне понравилось",id: "like" %>
+    <%= f.submit "Мне понравилось", id: "like-button" %>
   <% end %>
 <% else %>
   <%= form_for Vote.new,remote: true do |f| %>
     <%= f.hidden_field :likeable_id, value: product.id %>
     <%= f.hidden_field :likeable_object, value: product.class.name %>
-    <%= f.submit "Мне нравится", id: "like" %>
+    <%= f.submit "Мне нравится", id: "like-button" %>
   <% end %>
 <% end %>

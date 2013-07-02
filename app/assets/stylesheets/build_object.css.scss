@@ -172,6 +172,29 @@ dl.details {
 	}
 }
 
+// Likes
+#new_vote {
+	display: inline;
+}
+#like-button {
+	border:0 none;
+	background-color: transparent;
+	color: $blue;
+	padding: 0;
+	margin: 0;
+	font-size: 100%;
+	font-family: 'PT Sans Narrow';
+}
+.voted,
+.vote {
+	&:before {
+		color: $blue;
+		margin-right: 2px;
+	}
+}
+.likes {
+
+}
 
 
 
