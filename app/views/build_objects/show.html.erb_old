@@ -1,0 +1,264 @@
+
+<% unless notice.nil? %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
+<div class="row">
+
+  <div class="large-6 columns">
+  <ul class="gallery" data-orbit>
+  <% @build_object.photos.each do |photo|%>
+    <li><%= image_tag photo.image_url(:main).to_s %></li>
+  <% end %>
+  </ul>
+  </div>
+
+  <div class="large-6 columns">
+  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=382x269&sensor=false&zoom=16&markers=#{@build_object.address.lat}%2C#{@build_object.address.lng}", :class => "gmap" %>
+  </div>
+
+</div>
+<div class="row">
+
+<table class="apartment details">
+  <thead>
+    <tr>
+      <th width="25%">Параметры квартиры</th>
+      <th width="25%">Характеристика дома</th>
+      <th width="25%">Инфраструктура</th>
+      <th width="25%">Дом обслуживается</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <% unless @build_object.floor.nil? %>
+          <p>
+            <b>Этаж:</b>
+            <%= @build_object.floor %>
+          </p>
+        <% end %>
+        <% unless @build_object.rooms.nil? %>
+          <p>
+            <b>Комнат:</b>
+            <%= @build_object.rooms %>
+          </p>
+        <% end %>
+        <% unless @build_object.area.nil? %>
+          <p>
+            <b>Общая площадь:</b>
+            <%= @build_object.area %>
+          </p>
+        <% end %>
+        <% unless @build_object.kitchen_area.nil? %>
+          <p>
+            <b>Площадь кухни:</b>
+            <%= @build_object.kitchen_area %>
+          </p>
+        <% end %>
+        <% unless @build_object.living_area.nil? %>
+          <p>
+            <b>Жилая площадь:</b>
+            <%= @build_object.living_area %>
+          </p>
+        <% end %>
+      </td>
+      <td>
+        <% unless @build_object.type_of_build_object.nil? %>
+          <p>
+            <b>Тип объекта:</b>
+            <%= @build_object.type_of_build_object %>
+          </p>
+        <% end %>
+
+        <% unless @build_object.byear.nil? %>
+          <p>
+            <b>Год постройки:</b>
+            <%= @build_object.byear %>
+          </p>
+        <% end %>
+
+        <% unless @build_object.overhault.nil? %>
+          <p>
+            <b>Капитальный ремонт:</b>
+            <%= @build_object.overhault %>
+          </p>
+        <% end %>
+
+        <% unless @build_object.material.nil? %>
+          <p>
+            <b>Материал:</b>
+            <%= @build_object.material %>
+          </p>
+        <% end %>
+        <% unless @build_object.overlap.nil? %>
+          <p>
+            <b>Перекрытия:</b>
+            <%= @build_object.overlap %>
+          </p>
+        <% end %>
+
+        <% unless @build_object.elevator.nil? %>
+          <p>
+            <b>Лифт:</b>
+            <%= b @build_object.elevator %>
+          </p>
+        <% end %>
+
+        <% unless @build_object.chute.nil? %>
+          <p>
+            <b>Мусоропровод:</b>
+            <%= b @build_object.chute %>
+          </p>
+        <% end %>
+
+        <% unless @build_object.consierge.nil? %>
+          <p>
+            <b>Консъерж:</b>
+            <%= @build_object.consierge %>
+          </p>
+        <% end %>
+
+        <% unless @build_object.stair.nil? %>
+          <p>
+            <b>Лестница:</b>
+            <%= @build_object.stair %>
+          </p>
+        <% end %>
+
+        <% unless @build_object.basement.nil? %>
+          <p>
+            <b>Подвал:</b>
+            <%= @build_object.basement %>
+          </p>
+        <% end %>
+
+        <% unless @build_object.hfirstfloor.nil? %>
+          <p>
+            <b>Высота первого этажа:</b>
+            <%= @build_object.hfirstfloor %>
+          </p>
+        <% end %>
+
+        <% unless @build_object.builder.nil? %>
+          <p>
+            <b>Застройщик:</b>
+            <%= @build_object.builder %>
+          </p>
+        <% end %>
+      </td>
+      <td>
+        <% unless @build_object.shopprod.nil? %>
+          <p>
+            <b>Продуктовый магазин:</b>
+            <%= @build_object.shopprod %>
+          </p>
+        <% end %>
+
+        <% unless @build_object.shopping.nil? %>
+          <p>
+            <b>Магазины:</b>
+            <%= @build_object.shopping %>
+          </p>
+        <% end %>
+
+        <% unless @build_object.phrmacy.nil? %>
+          <p>
+            <b>Аптека:</b>
+            <%= @build_object.phrmacy %>
+          </p>
+        <% end %>
+
+        <% unless @build_object.clinic.nil? %>
+          <p>
+            <b>Больница:</b>
+            <%= @build_object.clinic %>
+          </p>
+        <% end %>
+
+        <% unless @build_object.kgarten.nil? %>
+          <p>
+            <b>Детский сад:</b>
+            <%= @build_object.kgarten %>
+          </p>
+        <% end %>
+
+        <% unless @build_object.school.nil? %>
+          <p>
+            <b>Школа:</b>
+            <%= @build_object.school %>
+          </p>
+        <% end %>
+
+        <% unless @build_object.bank.nil? %>
+          <p>
+            <b>Банк:</b>
+            <%= @build_object.bank %>
+          </p>
+        <% end %>
+
+        <% unless @build_object.parking.nil? %>
+          <p>
+            <b>Парковка:</b>
+            <%= @build_object.parking %>
+          </p>
+        <% end %>
+
+        <% unless @build_object.park.nil? %>
+          <p>
+            <b>Парк:</b>
+            <%= @build_object.park %>
+          </p>
+        <% end %>
+
+        <% unless @build_object.busstop.nil? %>
+          <p>
+            <b>Автобусная остановка:</b>
+            <%= @build_object.busstop %>
+          </p>
+        <% end %>
+      </td>
+      <td>
+        <% unless @build_object.domesticserv.nil? %>
+          <p>
+            <b>Domesticserv:</b>
+            <%= @build_object.domesticserv %>
+          </p>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<% unless @build_object.description.nil? %>
+  <%= render :partial => 'description', locals: {build_object: @build_object} %>
+<% end %>
+
+</div>
+<div class="row">
+
+<dl class="obj-contact details large-4 columns">
+<% unless @build_object.user.nil? %>
+  <dt class="entypo-vcard">Контакты</dt>
+  <dd><%= @build_object.user %></dd>
+  <dd>+7 (921) 123-42-42</dd>
+  <dd><a href="mailto:<%= @build_object.user.email %>"><%= @build_object.user.email %></a></dd>
+<% end %>
+</dl>
+
+<dl class="obj-show details large-4 large-offset-4 columns">
+  <dt class="entypo-key">Записаться на просмотр</dt>
+  <dd>Пн. 21.01.13 18:00 - 18:30</dd>
+  <dd>Вт. 22.01.13 18:00 - 19:00</dd>
+  <dd><%= link_to "Записаться", new_review_path(build_object:@build_object) if can? :request_review, @build_object %></dd>
+  <dd>Количество просмотров: <%= @build_object.impressionist_count filter: :ip_address %></dd>
+</dl>
+
+</div>
+
+<div class="admin edit-links">
+  <%= link_to 'Назад', build_objects_path, :class=> "back" %> | 
+  <%= link_to 'Редактировать', edit_build_object_path(@build_object), :class => "edit" if can? :manage, @build_object%>
+  <%= link_to '| Администрирование', edit_admin_build_object_path(@build_object), :class => "edit" if can? :manage, :all%>
+  
+</div>

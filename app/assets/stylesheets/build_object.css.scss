@@ -74,18 +74,25 @@
     display: none;
 }
 
-// display appartment info
-.gallery {
-	@include span-columns(3,8);
-	@include clear-nav();
-    width: 100%;
+//====== display appartment info
+//=== gallery
+.orbit-container {
+	max-width: 359px;
 }
+.orbit-bullets li {
+	width: 8px;
+	height: 8px;
+}
+
+//=== map
 .gmap {
 	margin-bottom: 1em;
 	float: right;
 }
+
+//=== main details
 table.details {
-	clear: both;
+	width: 100%;
 	border-spacing:0;
 	border-collapse:collapse;
 	margin-bottom: 1em;
@@ -121,6 +128,23 @@ table.details {
 		}
 	}
 }
+dl.object-info {
+	border: 1px solid $grey;
+	dt {
+		margin: 0 -0.520em .5em -0.520em;
+		border-bottom: 1px solid $grey;
+		background-color: $light-grey;
+		font-size: 1.2em;
+		color: $grey;
+		font-weight: 300;
+		padding: 5px;
+	}
+	dd {
+		p {
+			margin: 0 0 .5em 0;
+		}
+	}
+}
 dl.details {
 	dt {
 		color: $grey;
@@ -147,65 +171,6 @@ dl.details {
 		}
 	}
 }
-//Галерея фотографий
-#slides {
-      display: none
-    }
-
-    #slides .slidesjs-navigation {
-      margin-top:3px;
-    }
-
-    #slides .slidesjs-previous {
-      margin-right: 5px;
-      float: left;
-    }
-
-    #slides .slidesjs-next {
-      margin-right: 5px;
-      float: left;
-    }
-
-    .slidesjs-pagination {
-      margin: 6px 0 0;
-      float: right;
-      list-style: none;
-    }
-
-    .slidesjs-pagination li {
-      float: left;
-      margin: 0 1px;
-    }
-
-    .slidesjs-pagination li a {
-      display: block;
-      width: 13px;
-      height: 0;
-      padding-top: 13px;
-      background-image: url(pagination.png);
-      background-position: 0 0;
-      float: left;
-      overflow: hidden;
-    }
-
-    .slidesjs-pagination li a.active,
-    .slidesjs-pagination li a:hover.active {
-      background-position: 0 -13px
-    }
-
-    .slidesjs-pagination li a:hover {
-      background-position: 0 -26px
-    }
-
-    #slides a:link,
-    #slides a:visited {
-      color: #333
-    }
-
-    #slides a:hover,
-    #slides a:active {
-      color: #9e2020
-    }
 
 
 
