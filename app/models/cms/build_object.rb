@@ -89,18 +89,17 @@ class BuildObject < ActiveRecord::Base
   #END FILTERS
   
   def count_rating
-    self.user ||= User.first #если юзер не задан то добавить как от админа
+    # self.user ||= User.first #если юзер не задан то добавить как от админа
     #todo rating
     # r = 0
     # r += 1 if user.rating.between?(3,4)
     # r += 2 if user.rating == 5
-    # filled_attributes = attributes.select { |k,v| !!v }
-    # percent_filled_attributes = (attributes.count / filled_attributes.count).abs * 100 #считаем процент заполненных
+    filled_attributes = attributes.select { |k,v| !!v }
+    percent_filled_attributes = (attributes.count / filled_attributes.count).round * 100 #считаем процент заполненных
     # r += 1 if percent_filled_attributes < 60
     # r += 1 if percent_filled_attributes < 80
-    filled_attributes = attributes.select { |k,v| !!v }
     
-    self.rating = filled_attributes.count
+    self.rating = percent_filled_attributes
   end
   
   #Объектам в зависимости от заполненности присваивается рейтинг от 0 до 2 баллов, 
