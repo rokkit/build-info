@@ -185,6 +185,13 @@ dl.details {
 	font-size: 100%;
 	font-family: 'PT Sans Narrow';
 }
+.voted,
+.vote {
+	&:before {
+		color: $blue;
+		margin-right: 2px;
+	}
+}
 .likes {
 
 }
