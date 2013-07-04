@@ -253,9 +253,11 @@
   <dd>Вт. 22.01.13 18:00 - 19:00</dd>
   <dd><%= link_to "Записаться", new_review_path(build_object:@build_object) if can? :request_review, @build_object %></dd>
   <dd>Количество просмотров: <%= @build_object.impressionist_count filter: :ip_address %></dd>
-  <dd class="<%= current_user.voted_up_on?(@build_object) ? 'voted entypo-heart' : 'vote entypo-heart-empty'  %>">
-    <%= render :partial => 'shared/like_button',locals: {product: @build_object} %>
-    <span class="likes"><%= @build_object.votes.size %></span>
+  <dd>
+    <div class="<%= current_user.voted_up_on?(@build_object) ? 'voted entypo-heart' : 'vote entypo-heart-empty'  %>">
+      <%= render :partial => 'shared/like_button',locals: {product: @build_object} %>
+      <span class="likes"><%= @build_object.votes.size %></span>
+    </div>
   </dd>
 
 </dl>
