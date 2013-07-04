@@ -1,6 +1,8 @@
 BuildInfo::Application.routes.draw do
 
-  resources :payments
+  resources :payments do
+    match :pay_for_rating, on: :collection
+  end
 
 
   get "crawler/parse"
@@ -28,6 +30,7 @@ BuildInfo::Application.routes.draw do
     match 'cabinet' => "cabinet#index", as: :cabinet_index 
     match "upgrade_account" => "cabinet#upgrade_account", as: :upgrade_account
     match 'lowbalance' => "cabinet#lowbalance"
+    match 'add_rating' => "cabinet#add_rating"
   end
   get "pages/index"
   get "pages/profile"

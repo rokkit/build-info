@@ -1,3 +1,6 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+jQuery ->
+    $("#count_rating").change ->
+        result = $(this).val()*$("#price_for_one_rating").val()
+        $("#total_price").html result
+        if $("#total").val() < result
+            $("#total_price").html result+" Недостаточно средств"

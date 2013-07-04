@@ -48,11 +48,13 @@ class User < ActiveRecord::Base
   
 
   
-  def add_rating! reason
+  def add_rating! reason, count = 0
     if reason == :article
       self.rating += 1
-    elsif :full_described_object
-      self.reason += 1
+    elsif reason == :full_described_object
+      self.rating += 1
+    elsif reason == :buy_rating
+      self.rating += count
     end
     save!
   end

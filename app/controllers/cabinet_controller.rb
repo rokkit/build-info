@@ -15,4 +15,8 @@ class CabinetController < ApplicationController
     @price = Variables.find_by_key(params[:action]).try(:value)
   end
   
+  def add_rating
+    
+  end
+  
 end

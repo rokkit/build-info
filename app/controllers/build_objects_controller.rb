@@ -107,6 +107,8 @@ private
   def views_limit
     count = 0
     if current_user
+       return true if BuildObject.find(params[:id]).user == current_user #автору объекта просмотры не ограничены
+       return true if current_user.rating > 3
       count = Impression.where(user_id: current_user).size if current_user.rating <= 1
     elsif request.remote_ip
       count = Impression.where(ip_address: request.remote_ip).size

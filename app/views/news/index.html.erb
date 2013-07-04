@@ -14,3 +14,5 @@
 		<% end %>
   </article>
 <% end %>
+
+<%= link_to "Добавить новость", new_news_path if can? :create,  News %>

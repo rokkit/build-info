@@ -10,7 +10,7 @@ class Ability
         can :manage, :all
       else
         can :read, Article, published: true
-        can [:update, :destroy], Article do |article|
+        can :manage, Article do |article|
                 article.try(:user) == user
                 true
         end
@@ -27,6 +27,10 @@ class Ability
         end
         can :working, Agency do |agency|
           user.agency == agency
+        end
+        can :manage, News do |news|
+          user.agency.present? && news.user == user
+          false
         end
       end
       if user.role? :super_user or user.role? :admin
