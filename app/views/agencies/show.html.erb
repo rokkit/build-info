@@ -1,6 +1,9 @@
 <h2>Агентство &laquo;<%= @agency.name %>&raquo;</h2>
 <div class="row" id="agency">
   <div class="large-6 columns description">
+    <h3>
+        <span data-tooltip class="has-tip" title="Рейтинг повышается за агентов с полностью описанными объектами">Рейтинг: <%= @agency.rating %></span></h3>
+      
     <% unless @agency.description.nil? %>
     <%= @agency.description %>
     <% end %>
@@ -17,10 +20,8 @@
         <dt>Адрес:</dt>
         <dd><%= @agency.address %></dd>
         <% end %>
-        <% unless @agency.owner.nil? %>
         <dt>Владелец:</dt>
-        <dd><%= @agency.owner %></dd>
-        <% end %>
+        <dd><%= link_to @agency.owner, @agency.owner %></dd>
         <% unless @agency.phone.nil? %>
         <dt>Телефон:</dt>
         <dd><%= @agency.phone %></dd>

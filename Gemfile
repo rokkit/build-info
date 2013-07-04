@@ -36,6 +36,7 @@ end
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'jquery_datepicker'
 gem 'rails3-jquery-autocomplete'
 gem 'devise'
 gem 'simple_form'

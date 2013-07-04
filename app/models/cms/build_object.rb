@@ -60,17 +60,17 @@ class BuildObject < ActiveRecord::Base
                   :description,
                   :kitchen_area,
                   :archived,
-                  :appartement_number, :photos_attributes
+                  :appartement_number, :photos_attributes,
+                  :selled_at
   
   accepts_nested_attributes_for :photos, :address, allow_destroy: true
   
   validates :type_of_build_object, :price, :photos, presence: true
   
   before_save :count_rating
-  before_create :set_rating
   after_create :windraw_cost_from_account
   
-  scope :actual, -> { where(archived: false) }
+  scope :actual, -> { where(archived: false, selled_at: nil) }
   scope :full, -> { joins(:address) }
   scope :invest_projects, -> { where(private: true) }
   scope :public_objects, -> { where(private: false) }
@@ -98,8 +98,12 @@ class BuildObject < ActiveRecord::Base
     # r += 2 if user.rating == 5
     filled_attributes = attributes.select { |k,v| !!v }
     percent_filled_attributes = (attributes.count / filled_attributes.count).round * 100 #считаем процент заполненных
-    
-    self.user.add_rating! :full_described_object if percent_filled_attributes == 100
+    if percent_filled_attributes == 100
+      self.user.add_rating! :full_described_object
+      unless self.user.agency.nil? #увеличить рейтинг агества 
+        self.user.agency.increment(:rating).save
+      end
+    end
     # r += 1 if percent_filled_attributes < 60
     # r += 1 if percent_filled_attributes < 80
     
@@ -110,9 +114,6 @@ class BuildObject < ActiveRecord::Base
   #за платные услуги свыше 2000 в месяц за объект присваивается 3 балла. 
   #За ввод объекта пользователем с рейтингом 3-4 рейтинг объекта повышается на 1 балл. 
   #За ввод объекта пользователем с рейтингом 5 рейтинг объекта повышается на 2 балла.
-  def set_rating
-
-  end
   
   #not removing just archiving
   def archive!

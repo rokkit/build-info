@@ -42,6 +42,7 @@ class BuildObjectsController < ApplicationController
   # GET /build_objects/new.json
   def new
     @build_object = BuildObject.new
+    @sale_type = params[:sale_type]
     #@ability_creating_buildobject = true if enought_money? :create_build_object_price
     respond_to do |format|
       format.html # new.html.erb
@@ -100,6 +101,14 @@ class BuildObjectsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to build_objects_url }
       format.json { head :no_content }
+    end
+  end
+  
+  def sold
+    @build_object = BuildObject.find(params[:id])
+    @build_object.selled_at = params[:build_object][:selled_at]
+    if @build_object.save!
+      redirect_to @build_object, notice: "Объект отмечен как проданный"
     end
   end
   

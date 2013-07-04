@@ -1,8 +1,16 @@
 
-<% unless notice.nil? %>
-  <p id="notice"><%= notice %></p>
-<% end %>
-
+<div class="row">
+    <div class="large-7 columns">
+        <h4>Адрес: <%= @build_object.address %></h4>
+    </div>
+    <div class="large-4 columns">
+        <% if @build_object.selled_at.blank? %>
+            <h4>Цена: <%= number_to_currency @build_object.price %></h4>
+        <% else %>
+        <h4>Продано!</h4>
+        <% end %>
+    </div>
+</div>
 <div class="row">
 
   <div class="large-6 columns">
@@ -266,7 +274,19 @@
 
 <div class="admin edit-links">
   <%= link_to 'Назад', build_objects_path, :class=> "back" %> | 
-  <%= link_to 'Редактировать', edit_build_object_path(@build_object), :class => "edit" if can? :manage, @build_object%>
+  <% if can? :manage, @build_object %>
+      <a class="edit" data-reveal-id="sold">Продано!</a>
+  <%= link_to 'Редактировать', edit_build_object_path(@build_object), :class => "edit"%>
+  <% end %>
   <%= link_to '| Администрирование', edit_admin_build_object_path(@build_object), :class => "edit" if can? :manage, :all%>
   
+</div>
+
+<div id="sold" title="Объект продан" class="reveal-modal medium">
+     <%= form_tag sold_build_object_path do %>
+         <%= label_tag  :sold_date, "Дата продажи" %>
+         <%= datepicker_input :build_object, :selled_at, value: DateTime.now.to_s %>
+         <%= submit_tag "Готово" %>
+     <% end %>
+     <a class="close-reveal-modal">&#215;</a>
 </div>

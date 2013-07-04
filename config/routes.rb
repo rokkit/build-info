@@ -47,6 +47,7 @@ BuildInfo::Application.routes.draw do
   resources :build_objects do
     get :invest_projects, on: :collection
     get :manage, on: :collection
+    post :sold, on: :member
   end
   resources :news
   resources :appartements

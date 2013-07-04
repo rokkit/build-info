@@ -11,15 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130702104154) do
+ActiveRecord::Schema.define(:version => 20130704120647) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "accountable_id"
     t.string   "accountable_type"
-    t.decimal  "total"
+    t.decimal  "total",            :default => 0.0, :null => false
     t.integer  "valute_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   add_index "accounts", ["valute_id"], :name => "index_accounts_on_valute_id"
@@ -86,16 +86,17 @@ ActiveRecord::Schema.define(:version => 20130702104154) do
 
   create_table "agencies", :force => true do |t|
     t.integer  "owner_id"
-    t.string   "name"
+    t.string   "name",                        :null => false
     t.text     "description"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.text     "address"
     t.string   "phone"
     t.string   "fax"
     t.string   "site"
     t.string   "logo"
     t.date     "confirmed_at"
+    t.integer  "rating",       :default => 0, :null => false
   end
 
   add_index "agencies", ["owner_id"], :name => "index_agencies_on_owner_id"
@@ -131,11 +132,11 @@ ActiveRecord::Schema.define(:version => 20130702104154) do
     t.string   "name"
     t.text     "content"
     t.integer  "user_id"
-    t.boolean  "published"
+    t.boolean  "published",           :default => false
     t.integer  "category_article_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-    t.integer  "rating"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.integer  "rating",              :default => 0,     :null => false
   end
 
   add_index "articles", ["category_article_id"], :name => "index_articles_on_category_article_id"
@@ -149,8 +150,8 @@ ActiveRecord::Schema.define(:version => 20130702104154) do
 
   create_table "build_objects", :force => true do |t|
     t.string   "type"
-    t.decimal  "price"
-    t.integer  "user_id"
+    t.decimal  "price",                                      :null => false
+    t.integer  "user_id",                                    :null => false
     t.integer  "type_of_build_object_id"
     t.integer  "type_of_house_id"
     t.date     "byear"
@@ -192,13 +193,14 @@ ActiveRecord::Schema.define(:version => 20130702104154) do
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
     t.integer  "rating"
-    t.boolean  "ipoteka"
+    t.boolean  "ipoteka",                 :default => false
     t.integer  "valute_id"
     t.integer  "address_id"
     t.text     "description"
     t.boolean  "archived",                :default => false
     t.boolean  "private",                 :default => false
     t.integer  "appartement_number"
+    t.datetime "selled_at"
   end
 
   create_table "category_articles", :force => true do |t|

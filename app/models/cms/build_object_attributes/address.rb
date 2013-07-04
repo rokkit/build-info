@@ -15,6 +15,7 @@ class Address < ActiveRecord::Base
   validates :country,:region, :city,:distinct,  presence: true
   
   def to_s
+    "#{street}, #{number_house}"
   end
 private
   def geocode_by_address

@@ -1,14 +1,15 @@
 <h1>Мои объекты</h1>
 <h3>
     <% if enought_money? :create_build_object_price %>
-        <%= link_to "Добавить объект", new_build_object_path %>
+        <a data-reveal-id="new-build-object">Добавить объект</a>
     <% else %>
         <%= link_to "Добавить объект", lowbalance_path(action: :create_build_object_price) %>
     <% end %>
 </h3>
 <table>
     <thead>
-        <th>Объект</th>    
+        <th>Объект</th>  
+        <th>Статус</th>  
         <th>Просмотры</th>   
         <th>Уникальные просмотры</th>  
         <th>Сегодняшние просмотры</th>            
@@ -18,6 +19,9 @@
         <tr>
             <td>
                 <%= link_to "#{build_object.address.street}, #{build_object.address.number_house}", build_object %>
+            </td>
+            <td>
+                <%= sell_status build_object.selled_at %>
             </td>
             <td>
                 <%= build_object.impressionist_count  %>
@@ -32,3 +36,14 @@
         <% end %>
     </tbody>
 </table>
+
+<div id="new-build-object" title="Тип продажи" class="reveal-modal medium">
+        <%= form_tag new_build_object_path, method: :get do %>   
+            <%= radio_button_tag :sale_type, :direct_sale %>
+            <%= label_tag :sale_type_direct_sale, "Прямая продажа" %>
+            <%= radio_button_tag :sale_type, :chaining_sale %>
+            <%= label_tag :sale_type_direct_sale_chaining_sale, "Встречная продажа" %>
+            <%= submit_tag "Перейти к созданию" %>
+        <% end %>
+     <a class="close-reveal-modal">&#215;</a>
+</div>
