@@ -44,6 +44,9 @@ ru:
        payment:
            one: "Оплата"
            other: "Оплаты"
+       node:
+           one: "Встречная покупка"
+           other: "Встречные покупки"
        distinct: "Район"
        street: "Улица"
        address: "Адрес"
@@ -170,3 +173,8 @@ ru:
            satus: "Статус"
        account:
            total: "На счету"
+       node:
+           min_price: "Мин. цена"
+           max_price: "Макс. цена"
+           min_area: "Мин. площадь"
+           max_area: "Макс. площадь"

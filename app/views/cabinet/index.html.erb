@@ -1,13 +1,13 @@
 <h1>Личный кабинет</h1>
 
 <div class="row" id="cabinet">
-	<div class="large-6 columns">
+	<div class="large-7 columns">
 
 		<div class="panel radius">
 			<dl class="user-info">
 				<dt>ФИО:</dt>
 				<dd><%= @user.fio %></dd>
-				<dt>Мобильный телефон:</dt>
+				<dt>Телефон:</dt>
 				<dd><%= @user.phone %></dd>
 				<dt>Рейтинг:</dt>
 				<dd><%= @user.rating %> <%= link_to "Увеличить", add_rating_path, :class => "entypo-plus-circled" %></dd>
@@ -31,7 +31,7 @@
 
 		<%= link_to "Редактировать профиль", edit_user_registration_path, :class => "entypo-pencil" %>
 	</div>
-	<div class="large-6 columns">
+	<div class="large-5 columns">
 		<ul class="user-menu">
 			<li><%= link_to "Мои объекты", manage_build_objects_path, :class => "entypo-doc-text-inv" %></li>
 			<li><%= link_to "Просмотры", reviews_path, :class => "entypo-users" %></li>

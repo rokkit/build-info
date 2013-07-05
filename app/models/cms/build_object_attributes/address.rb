@@ -12,7 +12,9 @@ class Address < ActiveRecord::Base
   :country_id, :region_id, :city_id, :distinct_id, :street_id, :build_object_id,
   :country, :region, :city, :distinct, :street, :build_object, :lat, :lng, :metro
   
-  validates :country,:region, :city,:distinct,  presence: true
+  has_and_belongs_to_many :nodes
+  
+  validates :country,:region, :city, :distinct, :number_house,  presence: true
   
   def to_s
     "#{street}, #{number_house}"

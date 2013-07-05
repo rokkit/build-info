@@ -124,6 +124,10 @@ class BuildObject < ActiveRecord::Base
   def to_s
     "Объект"
   end
+  
+  def name
+    "#{type_of_build_object}, #{address}"
+  end
 private
   def windraw_cost_from_account
     self.user.account.total -= Variables.find_by_key("create_build_object_price").value.to_f

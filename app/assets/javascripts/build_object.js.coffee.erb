@@ -1,6 +1,7 @@
 #Dynamic select
 jQuery.fn.extend dynsel: (child) ->
   $(child).parent().hide()
+  $(this).prepend("<option value=''>Выберите значение</option>").val('');
   data = $(child).html()
   $(this).change ->
     filter_value = $("option:selected", this).text()
@@ -8,7 +9,7 @@ jQuery.fn.extend dynsel: (child) ->
     $(this).parent().nextAll(".location-filter").hide()
     if options
       $(child).html(options)
-      $(child).prepend("<option value=''>Выберите значение</option>").val('');
+      $(child).prepend("<option value=''>Все варианты</option>").val('');
       $(child).parent().show()     
     else
       $(child).empty()

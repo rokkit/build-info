@@ -1,0 +1,57 @@
+<%= simple_nested_form_for(@node) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <fieldset>
+        <legend>Объект для продажи</legend>
+        <%= f.collection_select :sell, @build_objects, :id, :name %>
+        <%= link_to "Добавить новый", new_build_object_path %>  
+    </fieldset>
+    <fieldset>
+        <legend>Параметры встречной покупки</legend>
+        <%= f.input :min_price %>
+        <%= f.input :max_price %>
+        <%= f.input :min_area %>
+        <%= f.input :max_area %>
+    </fieldset>
+    <div>
+        <h3>Список адресов</h3>
+        <%= f.fields_for :addresses do |fa| %>
+        <fieldset>
+            <legend>Адрес</legend>
+            <div class="field location-filter">
+          	    <%= fa.label :country_id, "Страна" %>
+            	<%= fa.collection_select :country_id, Country.order(:name),:id,:name, {}, {id: "filter_country_id" }%>
+            </div>
+            <div class="field location-filter">
+                <%= fa.label :region_id, "Регион" %>
+                <%= fa.grouped_collection_select :region_id, Country.order(:name),:regions,:name, :id, :name, {}, {id: "filter_region_id" } %>
+              </div>
+            <div class="field location-filter">
+                <%= fa.label :city_id, "Город" %>
+                  <%= fa.grouped_collection_select :city_id, Region.order(:name),:cities,:name, :id, :name, {}, {id: "filter_city_id" }  %>
+              </div>
+            <div class="field location-filter">
+                <%= fa.label :distinct_id, "Район" %>
+                <%= fa.grouped_collection_select :distinct_id, City.order(:name),:distincts ,:name, :id, :name, {}, {id: "filter_distinct_id" }  %>
+              </div>
+          	  <div class="field location-filter">
+          	    <%= fa.label :street_id, "Улица" %>
+                <%= fa.grouped_collection_select :street_id, Distinct.order(:name),:streets ,:name, :id, :name, {}, {id: "filter_street_id" }  %>
+          	    </div>
+            <div class="field">
+                  <%= fa.label :number_house, "Номер дома" %>
+                  <%= fa.number_field :number_house %>
+            </div>
+          <%= fa.link_to_remove "Удалить" %>
+      </fieldset>
+        <% end %>
+        <p><%= f.link_to_add "Добавить адрес", :addresses %></p>
+    </div>
+    
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Создать" %>
+  </div>
+<% end %>

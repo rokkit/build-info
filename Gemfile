@@ -28,6 +28,7 @@ end
 group :development do
   gem 'sqlite3'
   gem "capistrano"
+  gem 'zeus'
 end
 group :production do
   gem 'pg'
@@ -65,6 +66,7 @@ gem 'activemerchant', :require => 'active_merchant'
 gem 'rails-gallery'
 gem 'acts_as_votable'
 gem 'whenever'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

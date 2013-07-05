@@ -17,6 +17,8 @@ BuildInfo::Application.routes.draw do
   resources :agencies do
     get :agents, on: :collection
   end
+  
+  resources :nodes
 
 
 

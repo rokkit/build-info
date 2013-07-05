@@ -43,6 +43,10 @@ class BuildObjectsController < ApplicationController
   def new
     @build_object = BuildObject.new
     @sale_type = params[:sale_type]
+    if params[:sale_type] == 'chaining_sale'
+      redirect_to controller: :nodes, action: :new 
+      return true
+    end
     #@ability_creating_buildobject = true if enought_money? :create_build_object_price
     respond_to do |format|
       format.html # new.html.erb

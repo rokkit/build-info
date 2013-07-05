@@ -38,12 +38,30 @@
 </table>
 
 <div id="new-build-object" title="Тип продажи" class="reveal-modal medium">
-        <%= form_tag new_build_object_path, method: :get do %>   
-            <%= radio_button_tag :sale_type, :direct_sale %>
-            <%= label_tag :sale_type_direct_sale, "Прямая продажа" %>
-            <%= radio_button_tag :sale_type, :chaining_sale %>
-            <%= label_tag :sale_type_direct_sale_chaining_sale, "Встречная продажа" %>
-            <%= submit_tag "Перейти к созданию" %>
-        <% end %>
+        <div class="small-8">
+          <div class="row">
+           <%= form_tag new_build_object_path, method: :get do %>   
+            <div class="small-3 columns">
+              <%= radio_button_tag :sale_type, :direct_sale, checked: true %>
+            </div>
+            <div class="small-9 columns">
+              <%= label_tag :sale_type_direct_sale, "Прямая продажа" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-3 columns">
+                <%= radio_button_tag :sale_type, :chaining_sale %>
+            </div>
+            <div class="small-9 columns">
+                <%= label_tag :sale_type_direct_sale_chaining_sale, "Встречная продажа" %>
+            </div>
+          </div>
+          <%= submit_tag "Перейти к созданию", class:'button' %>
+      <% end %>
+      </div>
+        
+            
+            
+
      <a class="close-reveal-modal">&#215;</a>
 </div>
