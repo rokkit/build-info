@@ -24,6 +24,7 @@ body {
 	font-family: 'Helvetica Neue', helvetica, Arial, sans-serif;
     font-size: 15px;
 	letter-spacing: 0.03em;
+	background-color: #D3D3D3;
 }
 
 a {
@@ -81,9 +82,18 @@ h6 {
 // HEADER
 
 header {
-	border-top: 1px solid $dark-grey;
-	margin: 2em 0;
-	padding: 1em 0;
+	border-bottom: 3px solid #EEEEEF;
+	margin-bottom:2em;
+	background: #fff image-url("header-left.gif") no-repeat left top;
+	.row {
+		background: image-url("header-right.gif") no-repeat right top;
+		padding: 30px 0;
+	}
+}
+
+// BRANDING
+#branding {
+	text-align: right;
 }
 
 // main navigation
@@ -91,9 +101,9 @@ header {
 #main-nav {
 	ul {
 		@include horizontal-nav();
-		margin-top: 50px;
+		margin-top: 22px;
 		li {
-			border-right: 1px solid #808080;
+			border-right: 2px solid $orange;
 			position: relative;
 			&.last {
 				border-right: 0 none;
@@ -102,9 +112,9 @@ header {
 				display: inline-block;
 				padding: 4px 15px 4px 15px;
 				font-size: 1em;
+				text-transform: uppercase;
 				font-family: $pt-sans;
-				font-weight: bold;
-				color: #000;
+				color: #7F7F7F;
 				&.active {
 					border-bottom: 2px solid $blue;
 					padding-bottom: 2px;
@@ -140,19 +150,16 @@ header {
 // SIDEBARS
 .sidebar {
 	.block {
-		border: 1px solid #CCCCCC;
-		background-color: #F2F2F2;
+		background-color: #fff;
 		margin-bottom: 1.5em;
 		.block-title {
-			background-color: $blue;
-			border-bottom: 1px solid #000;
-			color: #fff;
+			color: $orange;
 			font-size: 1em;
-			padding: 6px 8px;
+			padding: 14px;
 			margin: 0;
 		}
 		.content {
-			padding: 6px 8px;
+			padding: 14px;
 		}
 		.menu {
 			@include clear-nav();
@@ -176,6 +183,7 @@ header {
 // MAIN CONTENT
 #main-content {
 	padding-bottom: 2em;
+	background: #fff image-url("header-left.gif") no-repeat right 30px;
 }
 .btn {
 	@include sassy-button();
