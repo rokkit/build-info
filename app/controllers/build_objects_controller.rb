@@ -21,6 +21,7 @@ class BuildObjectsController < ApplicationController
   
   def manage
     @build_objects = current_user.build_objects
+    @nodes = Node.joins(:sell).where(build_objects: {user_id: current_user})
   end
 
   # GET /build_objects/1

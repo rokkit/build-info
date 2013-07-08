@@ -1,0 +1,44 @@
+<h3>
+    <% if enought_money? :create_build_object_price %> <a data-reveal-id="new-build-object">Добавить объект</a> <% else %> <%= link_to "Добавить объект", lowbalance_path(action: :create_build_object_price) %> <% end %>
+</h3>
+<table>
+    <thead>
+        <tr>
+            <th>
+                Объект
+            </th>
+            <th>
+                Статус
+            </th>
+            <th>
+                Просмотры
+            </th>
+            <th>
+                Уникальные просмотры
+            </th>
+            <th>
+                Сегодняшние просмотры
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @build_objects.each do |build_object| %>
+        <tr>
+            <td>
+                <%= link_to "#{build_object.address.street}, #{build_object.address.number_house}", build_object %>
+            </td>
+            <td>
+                <%= sell_status build_object.selled_at %>
+            </td>
+            <td>
+                <%= build_object.impressionist_count  %>
+            </td>
+            <td>
+                <%= build_object.impressionist_count filter: :ip_address  %>
+            </td>
+            <td>
+                <%= build_object.impressionist_count start_date: DateTime.now.beginning_of_day,end_date: DateTime.now.end_of_day  %>
+            </td>
+        </tr><% end %>
+    </tbody>
+</table>

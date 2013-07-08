@@ -31,13 +31,17 @@ class Ability
         can :manage, News do |news|
           user.agency.present? && news.user == user
           false
-        end
+        end        
       end
       if user.role? :super_user or user.role? :admin
         can :invest, :all
       end
       can :request_review, BuildObject do |build_object| #запрос на просмотр, пользовател не должен запрашивать у своих объектов
         build_object.user != user && !user.id.nil? 
+      end
+      
+      can :manage, Node do |node|
+        node.sell.user == user
       end
       
       if user.role? :agency_owner

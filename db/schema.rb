@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130705083449) do
+ActiveRecord::Schema.define(:version => 20130708105906) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "accountable_id"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20130705083449) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
   create_table "addresses", :force => true do |t|
-    t.integer  "country_id"
+    t.integer  "country_id",      :default => 0, :null => false
     t.integer  "region_id"
     t.integer  "city_id"
     t.integer  "distinct_id"
@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(:version => 20130705083449) do
     t.string   "trolleybus"
     t.string   "railsbus"
     t.integer  "metro_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.integer  "build_object_id"
     t.float    "lat"
     t.float    "lng"
@@ -65,6 +65,13 @@ ActiveRecord::Schema.define(:version => 20130705083449) do
   add_index "addresses", ["distinct_id"], :name => "index_addresses_on_distinct_id"
   add_index "addresses", ["region_id"], :name => "index_addresses_on_region_id"
   add_index "addresses", ["street_id"], :name => "index_addresses_on_street_id"
+
+  create_table "addresses_nodes", :id => false, :force => true do |t|
+    t.integer "node_id"
+    t.integer "address_id"
+  end
+
+  add_index "addresses_nodes", ["node_id", "address_id"], :name => "index_nodes_addresses_on_node_id_and_address_id"
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -442,13 +449,6 @@ ActiveRecord::Schema.define(:version => 20130705083449) do
 
   add_index "nodes", ["buy_id"], :name => "index_nodes_on_buy_id"
   add_index "nodes", ["sell_id"], :name => "index_nodes_on_sell_id"
-
-  create_table "nodes_addresses", :id => false, :force => true do |t|
-    t.integer "node_id"
-    t.integer "address_id"
-  end
-
-  add_index "nodes_addresses", ["node_id", "address_id"], :name => "index_nodes_addresses_on_node_id_and_address_id"
 
   create_table "order_transactions", :force => true do |t|
     t.integer  "payment_id"

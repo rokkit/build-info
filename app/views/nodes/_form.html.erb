@@ -4,7 +4,7 @@
   <div class="form-inputs">
     <fieldset>
         <legend>Объект для продажи</legend>
-        <%= f.collection_select :sell, @build_objects, :id, :name %>
+        <%= f.collection_select :sell_id, BuildObject.actual.where(user_id: current_user), :id, :name %>
         <%= link_to "Добавить новый", new_build_object_path %>  
     </fieldset>
     <fieldset>

@@ -1,5 +1,12 @@
-<p id="notice"><%= notice %></p>
 
+Объект продажи: <%= link_to @node.sell, @node.sell %> <br>
+Меняю на: <%= @node.buy ? link_to(@node.buy, @node.buy) : "Свободно" %> <br>
 
-<%= link_to 'Edit', edit_node_path(@node) %> |
+<h3>Предложенные варианты</h3>
+<ul>
+    <li>
+        <div></div>
+    </li>
+</ul>
+<%= link_to 'Edit', edit_node_path(@node) if can? :manage, @node %> |
 <%= link_to 'Back', nodes_path %>

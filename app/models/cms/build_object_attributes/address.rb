@@ -14,7 +14,7 @@ class Address < ActiveRecord::Base
   
   has_and_belongs_to_many :nodes
   
-  validates :country,:region, :city, :distinct, :number_house,  presence: true
+  #validates :country,:region, :city, :distinct, :number_house,  presence: true
   
   def to_s
     "#{street}, #{number_house}"

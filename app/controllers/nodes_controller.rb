@@ -1,4 +1,5 @@
 class NodesController < ApplicationController
+  load_and_authorize_resource
   # GET /nodes
   # GET /nodes.json
   def index
@@ -14,7 +15,7 @@ class NodesController < ApplicationController
   # GET /nodes/1.json
   def show
     @node = Node.find(params[:id])
-
+    @matched_build_objects = BuildObject.all
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @node }
@@ -26,7 +27,6 @@ class NodesController < ApplicationController
   def new
     @node = Node.new
     @node.addresses.build
-    @build_objects = BuildObject.actual.where(user_id: current_user)
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @node }
@@ -44,7 +44,7 @@ class NodesController < ApplicationController
     @node = Node.new(params[:node])
 
     respond_to do |format|
-      if @node.save
+      if @node.save!
         format.html { redirect_to @node, notice: 'Node was successfully created.' }
         format.json { render json: @node, status: :created, location: @node }
       else
