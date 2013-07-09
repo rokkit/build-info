@@ -1,4 +1,5 @@
-<h2>Агентство &laquo;<%= @agency.name %>&raquo;</h2>
+<% content_for :page_title do %>Агентство<% end %>
+<h2>&laquo;<%= @agency.name %>&raquo;</h2>
 <div class="row" id="agency">
   <div class="large-6 columns description">
     <h3>

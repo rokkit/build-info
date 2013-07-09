@@ -1,4 +1,4 @@
-<h1>Агенства недвижимости</h1>
+<% content_for :page_title do %>Агенства недвижимости<% end %>
 <%= link_to 'Создать агенство', new_agency_path if can? :create, Agency %>
 
 <table>
