@@ -51,7 +51,8 @@ SimpleNavigation::Configuration.run do |navigation|
     #
       primary.item :profile, 'Кабинет', main_app.cabinet_index_path, class: "entypo-lock-open"
       primary.item :logout, 'Выход', main_app.destroy_user_session_path, class: "entypo-logout"
-
+      primary.item :admin,'Админ. панель', admin_root_path, if: Proc.new { can? :update, :all }
+      primary.item :forum, 'Форум', forem.root_path
     
 
     # Add an item which has a sub navigation (same params, but with block)

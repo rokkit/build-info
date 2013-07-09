@@ -56,12 +56,10 @@ SimpleNavigation::Configuration.run do |navigation|
         sub_nav.item :agents, "Агенты",main_app.agency_path(current_user.agency)
       end  
     end
-    primary.item :admin,'Админ. панель', admin_root_path, if: Proc.new { can? :update, :all }
-    primary.item :news, 'Новости', main_app.news_index_path
     primary.item :build_objects, 'Список объектов', main_app.build_objects_path
     primary.item :invest_projects,'Инвестпроекты', main_app.invest_projects_build_objects_path
-    primary.item :forum, 'Форум', forem.root_path
-    primary.item :articles,'Статьи', main_app.articles_path, class: 'last'
+    primary.item :articles,'Статьи', main_app.articles_path
+    primary.item :news, 'Новости', main_app.news_index_path, class: 'last'
     
 
     # Add an item which has a sub navigation (same params, but with block)

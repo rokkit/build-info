@@ -2,6 +2,12 @@
 @import "../scss/mixins";
 @import "../scss/variables";
 
+#filter-build-object-form {
+	background-color: #F4F5F5;
+	margin: 0 -0.625em 1.5em -0.625em;
+	padding: 1.5em 1em;
+}
+
 // display filter
 .data-filter {
 	margin-bottom: 2em;
@@ -68,6 +74,9 @@
 			}
 		}
 	}
+}
+#buildobjects-datatable {
+	
 }
 
 .ui-corner-tl {
