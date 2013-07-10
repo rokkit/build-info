@@ -7,7 +7,7 @@ class Article < ActiveRecord::Base
   #before_create :make_unpublished
   validates :category_article, :name, :content, presence: true
   
-  scope :published, where('published NOT NULL')
+  scope :published, where('published IS NOT NULL')
   scope :top, Article.published
   
   before_destroy :lower_user_rating
