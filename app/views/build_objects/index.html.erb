@@ -1,6 +1,6 @@
 <% content_for :page_title do %>Список объектов<% end %>
 
-<%= render 'build_objects/filter_form' %>
+<% content_for :top_block do %><%= render 'build_objects/filter_form' %><% end %>
 
 <table id="buildobjects-datatable" class="display" data-source="<%= build_objects_url(format: "json") %>">
 <thead>

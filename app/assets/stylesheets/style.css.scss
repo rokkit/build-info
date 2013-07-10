@@ -204,7 +204,7 @@ header {
 // MAIN CONTENT
 #main-content {
 	padding-bottom: 2em;
-	background: #fff image-url("header-left.gif") no-repeat right 90px;
+	background-color: #fff;
 	h1.title {
 		background-color: #D3D3D3;
 		font-size: 1em;
@@ -217,6 +217,15 @@ header {
 			font-weight: 300;
 			color: #6C6D6F;
 		}
+	}
+	.top-block {
+		background-color: #F4F5F5;
+		padding-top: 1.5em;
+		padding-bottom: 1.5em;
+	}
+	.content {
+		padding-top: 1.5em;
+		background: image-url("content-bg.gif") no-repeat right 90px;
 	}
 }
 .btn {

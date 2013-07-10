@@ -2,12 +2,6 @@
 @import "../scss/mixins";
 @import "../scss/variables";
 
-#filter-build-object-form {
-	background-color: #F4F5F5;
-	margin: 0 -0.625em 1.5em -0.625em;
-	padding: 1.5em 1em;
-}
-
 // display filter
 .data-filter {
 	margin-bottom: 2em;
@@ -84,9 +78,24 @@
 }
 
 //====== display appartment info
+.top-block {
+	h4 {
+		color: $grey;
+		font-size: 1.1em;
+		font-weight: 300;
+		&.price, &.sold {
+			text-align: right;
+		}
+	}
+}
 //=== gallery
 .orbit-container {
 	max-width: 359px;
+	.orbit-slides-container {
+		img {
+			margin: 0 auto;
+		}
+	}
 }
 .orbit-bullets li {
 	width: 8px;
@@ -99,60 +108,29 @@
 	float: right;
 }
 
-//=== main details
-table.details {
-	width: 100%;
-	border-spacing:0;
-	border-collapse:collapse;
-	margin-bottom: 1em;
-	thead {
-		border: 1px solid $grey;
-		background-color: $light-grey;
-		tr {
-			th {
-				font-size: 1.2em;
-				color: $grey;
-				font-weight: 300;
-				padding: 5px;
-			}
+//=== details
+dl.object-info {
+	dt {
+		margin-bottom: .5em;
+		font-size: 1em;
+		color: $grey;
+		font-weight: 300;
+	}
+	dd {
+		border-right: 1px solid $orange;
+		p {
+			margin: 0 0 .5em 0;
+			font-size: .9em;
 		}
 	}
-	tbody {
-		tr {
-			td {
-				border: 1px solid $grey;
-				vertical-align: top;
-				padding: 5px;
-				p {
-					margin: 0 0 .5em 0;
-				}
-			}
-		}
-	}
-	&.selling {
-		thead {
-			th {
-				text-align: left;
-			}
+	&.last {
+		dd {
+			border-right: 0 none;
 		}
 	}
 }
-dl.object-info {
-	border: 1px solid $grey;
-	dt {
-		margin: 0 -0.520em .5em -0.520em;
-		border-bottom: 1px solid $grey;
-		background-color: $light-grey;
-		font-size: 1.2em;
-		color: $grey;
-		font-weight: 300;
-		padding: 5px;
-	}
-	dd {
-		p {
-			margin: 0 0 .5em 0;
-		}
-	}
+#do_translate {
+	float: right;
 }
 dl.details {
 	dt {
@@ -160,7 +138,7 @@ dl.details {
 		font-size: 1.2em;
 		margin-bottom: .5em;
 		&[class*="entypo-"]:before {
-			color: $blue;
+			color: $grey;
 		}
 	}
 	dd {
@@ -188,7 +166,7 @@ dl.details {
 #like-button {
 	border:0 none;
 	background-color: transparent;
-	color: $blue;
+	color: $orange;
 	padding: 0;
 	margin: 0;
 	font-size: 100%;
@@ -197,7 +175,7 @@ dl.details {
 .voted,
 .vote {
 	&:before {
-		color: $blue;
+		color: $orange;
 		margin-right: 2px;
 	}
 }

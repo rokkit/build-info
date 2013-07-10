@@ -1,12 +1,4 @@
-<table width="100%" class="selling details">
-  <thead>
-    <tr>
-      <th>Условия продажи <a href="#" style="float: right" id="do_transale">Перевести на русский</a></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="description_content"><%= simple_format build_object.description %></td>
-    </tr>
-  </tbody>
-</table>
+<dl class="object-info large-12 columns">
+  <dt>Условия продажи <a href="#" id="do_transale">Перевести на русский</a></dt>
+  <dd id="description_content"><%= simple_format build_object.description %></dd>
+</dl>
