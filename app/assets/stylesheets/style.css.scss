@@ -12,11 +12,10 @@ $pt-sans: 'PT Sans';
 @import url(http://weloveiconfonts.com/api/?family=entypo);
 
 /* entypo */
-[class*="entypo-"]:before {
-	font-family: 'entypo', sans-serif;
-	margin-right: 5px;
-	&:hover {
-		text-decoration: none;
+[class*="entypo-"] {
+	&:before {
+		font-family: 'entypo', sans-serif;
+		margin-right: 5px;
 	}
 }
 
@@ -40,7 +39,7 @@ a {
 a {
 	&:hover, &:active {
 		color: darken($orange, 20%);
-		text-decoration: underline;
+		text-decoration: none;
 	}
 }
 
