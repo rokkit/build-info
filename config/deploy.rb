@@ -1,4 +1,5 @@
 require 'bundler/capistrano'
+load 'deploy/assets'
 
 ssh_options[:forward_agent] = true
 set :user, "root"
