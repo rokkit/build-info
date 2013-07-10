@@ -356,7 +356,6 @@ DEPENDENCIES
   rails (= 3.2.13)
   rails-gallery
   rails3-jquery-autocomplete
-  rake
   rmagick
   roo
   russian

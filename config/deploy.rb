@@ -29,7 +29,7 @@ namespace :deploy do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
-
+set :bundle_flags, "--quiet --binstubs --shebang ruby-local-exec"
 set :default_environment, {
   'RBENV_ROOT' => "$HOME/.rbenv/",
   'PATH' => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
