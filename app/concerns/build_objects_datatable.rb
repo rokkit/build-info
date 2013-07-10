@@ -21,10 +21,11 @@ class BuildObjectsDatatable
       products.map do |product|
         image = product.photos.try { |p| p.first.image_url(:thumb).to_s if p.first }
         [
+          image_tag(image),
           number_to_currency(product.price),
           "#{product.address.city}, #{product.address.street}, #{product.address.number_house}",
           "#{product.area}/#{product.living_area}",
-          "#{image_tag(image)} #{product.description[0..100] if product.description}... | #{link_to('Подробнее', product)}"
+          "#{product.description[0..100] if product.description}... | #{link_to('Подробнее', product)}"
         ]
       end
     end
