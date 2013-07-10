@@ -105,8 +105,12 @@ table.display thead th div.DataTables_sort_wrapper span {
 
 /* Length is the dropdown which selects the number of items to return */
 .dataTables_length {
-	width: 40%;
 	float: left;
+	select {
+		margin: 0;
+		display: inline;
+		width: 60px;
+	}
 }
 
 /* Filter is the Search Field  */
