@@ -20,6 +20,7 @@ BuildInfo::Application.routes.draw do
   
   resources :nodes do
     post :exchange, on: :member
+    post :approve, on: :member
   end
 
 

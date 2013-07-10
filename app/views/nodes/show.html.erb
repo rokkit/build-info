@@ -1,6 +1,11 @@
-
-Объект продажи: <%= link_to @node.sell.name, @node.sell %> <br>
-Меняю на: <%= @node.buy.try(:name) ? link_to(@node.buy, @node.buy) : "Свободно" %> 
+<% if @node.sell.user == current_user %>
+    Объект продажи: <%= link_to @node.sell.name, @node.sell %> <br>
+    Меняю на: <%= @node.buy.try(:name) ? link_to(@node.buy.name, @node.buy) : "Свободно" %> 
+<% else %>
+    Объект продажи: <%= link_to(@node.buy.name, @node.buy) %> <br>
+    Меняю на: <%= link_to @node.sell.name, @node.sell %>
+<% end %>
+<% if @node.buy.nil? %>
 <h4>Я предлагаю обменять на</h4>
 <ul>
     <% @node.build_objects.each do |b| %>
@@ -23,5 +28,5 @@
     <% end %>
     
 </ul>
-<%= link_to 'Edit', edit_node_path(@node) if can? :manage, @node %> |
-<%= link_to 'Back', nodes_path %>
+<% end %>
+<%= link_to 'Изменить', edit_node_path(@node) if can? :manage, @node %>

@@ -20,7 +20,7 @@ class Node < ActiveRecord::Base
     elsif status == 1
       "Подан запрос на обмен"
     elsif status == 2
-      "Обмен успешен"
+      "Обмен состоялся"
     elsif status == 3
       "Предложение отклонено"
     end
@@ -34,11 +34,10 @@ class Node < ActiveRecord::Base
   
   #имеет право владелец объекта покупки
   def accept_request_for_exchange! build_object
-    self.status == 2
+    self.status = 2
     self.buy = build_object
     #все остальные предложения с данным объектом отмечаются как отклонённые
-    update_all({status: 1, sell_id: self.sell}, {status: 3})
-    save!
+    Node.update_all({status: 1, sell_id: self.sell}, {status: 3})
   end
   
   #имеет право владелец объекта покупки

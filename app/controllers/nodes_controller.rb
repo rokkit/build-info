@@ -93,6 +93,11 @@ class NodesController < ApplicationController
     end
   end
   def approve
-    
+    @node = Node.find params[:id]
+    @build_object = BuildObject.find(params[:build_object])
+    @node.accept_request_for_exchange! @build_object
+    if @node.save!
+      redirect_to @node, notice: "Обмен совершён"
+    end
   end
 end

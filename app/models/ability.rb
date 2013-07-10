@@ -40,8 +40,15 @@ class Ability
         build_object.user != user && !user.id.nil? 
       end
       
-      can :manage, Node do |node|
+      can [:update, :destroy], Node do |node|
         node.sell.try(:user) == user
+      end
+      can [:read], Node do |node|
+        node.sell.try(:user) == user || node.buy.try(:user) == user
+      end
+      
+      can [:approve], Node do |node|
+        true
       end
       
       if user.role? :agency_owner
