@@ -71,7 +71,7 @@ class BuildObjectsDatatable
 
     def sort_column
       columns = %w[price]
-      columns[params[:iSortCol_0].to_i]
+      columns[params[:iSortCol_1].to_i]
     end
 
     def sort_direction

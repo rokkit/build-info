@@ -61,6 +61,12 @@ jQuery ->
             bPaginate: true
             sPaginationType: "full_numbers"
             sAjaxSource: $('#buildobjects-datatable').data('source')
+            aoColumnDefs: [
+                      { 
+                        bSortable: false
+                        aTargets: [ 0, 2, 3, 4 ] 
+                      }
+                   ]
             oLanguage:
                 sProcessing: "Подождите..."
                 sLengthMenu: "Показать _MENU_ записей"
