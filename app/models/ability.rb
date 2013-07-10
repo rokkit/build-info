@@ -41,7 +41,7 @@ class Ability
       end
       
       can :manage, Node do |node|
-        node.sell.user == user
+        node.sell.try(:user) == user
       end
       
       if user.role? :agency_owner

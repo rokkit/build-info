@@ -7,6 +7,7 @@ class BuildObject < ActiveRecord::Base
   belongs_to :type_of_build_object
   belongs_to :user
   has_many :photos, :dependent => :destroy 
+  has_and_belongs_to_many :nodes
   
   #house
   belongs_to :type_of_house

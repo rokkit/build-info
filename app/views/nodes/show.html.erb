@@ -1,12 +1,27 @@
 
-Объект продажи: <%= link_to @node.sell, @node.sell %> <br>
-Меняю на: <%= @node.buy ? link_to(@node.buy, @node.buy) : "Свободно" %> <br>
-
-<h3>Предложенные варианты</h3>
+Объект продажи: <%= link_to @node.sell.name, @node.sell %> <br>
+Меняю на: <%= @node.buy.try(:name) ? link_to(@node.buy, @node.buy) : "Свободно" %> 
+<h4>Я предлагаю обменять на</h4>
 <ul>
+    <% @node.build_objects.each do |b| %>
     <li>
-        <div></div>
+        <%= b.name %>
     </li>
+    <% end %>
+</ul>
+<h4>Мне предлагают обменять на</h4>
+<br>
+Статус: <%= @node.human_status %>
+<h3>Подходящие варианты</h3>
+<ul>
+    <% @matched_build_objects.each do |mathed_build_object| %>
+    <li>
+        <div><%= image_tag mathed_build_object.photos.try { |p| p.first.image_url.to_s } %></div>
+        <p><%= mathed_build_object.name %></p>
+        <%= link_to "Подать заявку на обмен", exchange_node_path(@node, build_object: mathed_build_object), method: :post %>
+    </li>
+    <% end %>
+    
 </ul>
 <%= link_to 'Edit', edit_node_path(@node) if can? :manage, @node %> |
 <%= link_to 'Back', nodes_path %>

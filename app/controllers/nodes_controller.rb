@@ -15,7 +15,8 @@ class NodesController < ApplicationController
   # GET /nodes/1.json
   def show
     @node = Node.find(params[:id])
-    @matched_build_objects = BuildObject.all
+    @matched_build_objects = BuildObject.actual.where("user_id != ?", current_user)
+    @matched_build_objects.filter_min_price(@node.min_price).filter_max_price(@node.max_price)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @node }
@@ -80,5 +81,18 @@ class NodesController < ApplicationController
       format.html { redirect_to nodes_url }
       format.json { head :no_content }
     end
+  end
+  
+  def exchange
+    @node = Node.find(params[:id])
+    @node.request_for_exchange BuildObject.find(params[:build_object])
+    if @node.save
+      redirect_to @node, notice: "Предложение обмена подано"
+    else
+      render action: :new
+    end
+  end
+  def approve
+    
   end
 end

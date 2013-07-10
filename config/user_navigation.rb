@@ -50,7 +50,7 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>. 
     #
       primary.item :profile, 'Кабинет', main_app.cabinet_index_path, class: "entypo-lock-open"
-      primary.item :logout, 'Выход', main_app.destroy_user_session_path, class: "entypo-logout"
+      primary.item :logout, 'Выход', main_app.destroy_user_session_path, class: "entypo-logout", method: :delete
       primary.item :admin,'Админ. панель', admin_root_path, if: Proc.new { can? :update, :all }
       primary.item :forum, 'Форум', forem.root_path
     

@@ -18,7 +18,9 @@ BuildInfo::Application.routes.draw do
     get :agents, on: :collection
   end
   
-  resources :nodes
+  resources :nodes do
+    post :exchange, on: :member
+  end
 
 
 

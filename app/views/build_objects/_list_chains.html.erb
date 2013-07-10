@@ -1,36 +1,59 @@
-<table>
-    <thead>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Продаю
+                </th>
+                <th>
+                    Покупаю
+                </th>
+                <th>
+                    Состояние
+                </th>
+                <th>
+                    Подробнее
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @nodes.each do |node| %>
+            <tr>
+                <td>
+                    <%= link_to node.sell.name, node.sell %>
+                </td>
+                <td>
+                    <%= node.buy.try(:name) || "Пусто" %>
+                </td>
+                <td>
+                    <%= node.human_status %>
+                </td>
+                <td>
+                    <%= link_to "Подробнее" ,node %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    
+    <h4>Поступившие предложения</h4>
+    <table>
+        <thead>
+            <th>Мой объект</th>
+            <th>Предлагают поменять на</th>
+        </thead>
+    <% @incoming_request_for_exhange.each do |build_object| %>
         <tr>
-            <th>
-                Продаю
-            </th>
-            <th>
-                Покупаю
-            </th>
-            <th>
-                Состояние
-            </th>
-            <th>
-                Подробнее
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @nodes.each do |node| %>
-        <tr>
+            <td><%= link_to build_object.name, build_object %></td>
             <td>
-                <%= link_to node.sell.name, node.sell %>
-            </td>
-            <td>
-                <%= node.buy.try(:name) || "Пусто" %>
-            </td>
-            <td>
-                <%= sell_status node.status %>
-            </td>
-            <td>
-                <%= link_to "Подробнее" ,node %>
+                <ul>
+                    <% build_object.nodes.each do |node| %>
+                    <li>
+                        <%= link_to node.sell.name, node.sell %>
+                    </li>
+                    <% end %>
+                    <%= link_to approve_node_path(node, build_object: build_object) %>
+                </ul>
             </td>
         </tr>
-        <% end %>
-    </tbody>
-</table>
+    <% end %>
+    </table>
