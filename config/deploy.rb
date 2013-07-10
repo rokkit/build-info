@@ -31,6 +31,6 @@ namespace :deploy do
 end
 
 set :default_environment, {
-  'RBENV_ROOT' => '/usr/local/rbenv',
-  'PATH' => "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH"
+  'RBENV_ROOT' => "$HOME/.rbenv/"
+  'PATH' => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
 }
