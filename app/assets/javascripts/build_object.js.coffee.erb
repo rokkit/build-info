@@ -123,15 +123,6 @@ $ -> #заполнить поля создаваемого объекта воз
 #        caption_class: 'orbit-caption'
 #        active_slide_class: 'active'
 #        orbit_transition_class: 'orbit-transitioning'
-
-# make the info blocks the same height
-$(document).ready ->
-  $sameHeightDivs = $(".object-info")
-  maxHeight = 0
-  $sameHeightDivs.each ->
-    maxHeight = Math.max(maxHeight, $(this).outerHeight())
-
-  $sameHeightDivs.css height: maxHeight + "px"
                   
 jQuery ->
     $("#filter_distinct_id").change ->
@@ -150,10 +141,22 @@ jQuery ->
             
 #Перевод описания дома
 jQuery ->
-    $("#do_transale").click (e) ->
+    $("#do_translate").click (e) ->
         e.preventDefault()
         text = $("#description_content")
         $.getJSON "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20130701T130104Z.e548ed207689a406.b9e8eb5d3d0999d95ea596a52d20c523862005ee&lang=en-ru&text="+$(text).html(), (data) ->
             $(text).append("------- Перевод -------")
             $(text).append(data.text[0])
             $(text).append("Переведено сервисом <a href='http://translate.yandex.ru/'>«Яндекс.Перевод»</a>")
+        $(this).hide()
+
+# equal heights
+equalHeight = (group) ->
+  tallest = 0
+  group.each ->
+    thisHeight = $(this).height()
+    tallest = thisHeight  if thisHeight > tallest
+
+  group.height tallest
+$(document).ready ->
+  equalHeight $(".eheight dd")

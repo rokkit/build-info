@@ -12,7 +12,7 @@
   	<!-- Set the viewport width to device width for mobile -->
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+  	<title>Home.info <%= content_for?(:page_title) ? yield(:page_title) : "" %></title>
 
   	<%= stylesheet_link_tag "application" %>
     <%= csrf_meta_tags %>
@@ -23,7 +23,7 @@
       <div id="page" class="row">
       		<header class="small-12 columns">
       			<div class="row">
-      				<div id="branding" class="large-2 columns">
+      				<div id="branding" class="large-2 small-5 columns">
       					<%= link_to (image_tag "logo.png"), root_path %>
       				</div>
       				<!-- nav menu -->
@@ -42,6 +42,9 @@
               <% if content_for?(:page_title) %>
                 <h1 class="title small-12 columns"><b><%= yield(:page_title) %></b></h1>
               <% end %>
+              <% if content_for?(:top_block) %>
+                <div class="top-block small-12 columns"><%= yield(:top_block) %></div>
+              <% end %>
               <div class="small-12 columns content">
                 <%- flash.each do |name, msg| -%>
     	            <% if name == :error %>
@@ -52,6 +55,7 @@
     	                <%= content_tag :div, msg, :class => "alert-box warning radius" %>
     	            <% end %>
       	        <%- end -%>
+
                 <%= yield %>
               </div>
             </div>

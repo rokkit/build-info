@@ -1,16 +1,19 @@
-
+<% content_for :page_title do %>Карточка объекта<% end %>
+<% content_for :top_block do %>
 <div class="row">
     <div class="large-7 columns">
         <h4>Адрес: <%= @build_object.address %></h4>
     </div>
     <div class="large-4 columns">
         <% if @build_object.selled_at.blank? %>
-            <h4>Цена: <%= number_to_currency @build_object.price %></h4>
+          <h4 class="price">Цена: <%= number_to_currency @build_object.price %></h4>
         <% else %>
-        <h4>Продано!</h4>
+          <h4 class="sold">Продано!</h4>
         <% end %>
     </div>
 </div>
+<% end %>
+
 <div class="row">
 
   <div class="large-6 columns">
@@ -28,7 +31,7 @@
 </div>
 <div class="row">
 
-<dl class="large-3 columns object-info">
+<dl class="large-3 columns object-info eheight">
   <dt>Параметры квартиры</dt>
   <dd>
     <% unless @build_object.floor.nil? %>
@@ -64,7 +67,7 @@
   </dd>
 </dl>
 
-<dl class="large-3 columns object-info">
+<dl class="large-3 columns object-info eheight">
   <dt>Характеристика дома</dt>
   <dd>
     <% unless @build_object.type_of_build_object.nil? %>
@@ -152,7 +155,7 @@
   </dd>
 </dl>
 
-<dl class="large-3 columns object-info">
+<dl class="large-3 columns object-info eheight">
   <dt>Инфраструктура</dt>
   <dd>
     <% unless @build_object.shopprod.nil? %>
@@ -227,7 +230,7 @@
   </dd>
 </dl>
 
-<dl class="large-3 columns object-info">
+<dl class="large-3 columns object-info last eheight">
   <dt>Дом обслуживается</dt>
   <dd>
     <% unless @build_object.domesticserv.nil? %>
@@ -240,7 +243,10 @@
 </dl>
 
 <% unless @build_object.description.nil? %>
-  <%= render :partial => 'description', locals: {build_object: @build_object} %>
+  <dl class="object-info large-12 columns last">
+    <dt>Условия продажи <a href="#" id="do_translate" class="entypo-language">Перевести на русский</a></dt>
+    <dd id="description_content"><%= simple_format @build_object.description %></dd>
+  </dl>
 <% end %>
 
 </div>
@@ -279,7 +285,7 @@
       <a class="edit" data-reveal-id="sold">Продано!</a>
   <%= link_to 'Редактировать', edit_build_object_path(@build_object), :class => "edit"%>
   <% end %>
-  <%= link_to '| Администрирование', edit_admin_build_object_path(@build_object), :class => "edit" if can? :manage, :all%>
+  <%= link_to 'Администрирование', edit_admin_build_object_path(@build_object), :class => "edit" if can? :manage, :all%>
   
 </div>
 
