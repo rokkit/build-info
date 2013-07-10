@@ -13,8 +13,11 @@ $pt-sans: 'PT Sans';
 
 /* entypo */
 [class*="entypo-"]:before {
-  font-family: 'entypo', sans-serif;
-  margin-right: 5px;
+	font-family: 'entypo', sans-serif;
+	margin-right: 5px;
+	&:hover {
+		text-decoration: none;
+	}
 }
 
 // Main styles

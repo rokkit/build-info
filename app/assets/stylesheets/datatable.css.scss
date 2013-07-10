@@ -23,10 +23,6 @@
 	margin-right: -0.1em !important;
 }
 
-.paging_full_numbers {
-	width: 350px !important;
-}
-
 .dataTables_wrapper .ui-toolbar {
 	padding: 5px;
     margin: 0 auto;
@@ -40,10 +36,14 @@
 	padding-top: 3px;
 }
 
-table.display thead th {
-	padding: 3px 0px 3px 10px;
-	cursor: pointer;
-	* cursor: hand;
+table.display{
+	border:0 none;
+	thead th {
+		padding: 10px 0px 10px 10px;
+		border-bottom-color: $grey;
+		cursor: pointer;
+		* cursor: hand;
+	}
 }
 
 div.dataTables_wrapper .ui-widget-header {
@@ -95,7 +95,8 @@ table.display thead th div.DataTables_sort_wrapper span {
 	left: 50%;
 	width: 250px;
 	margin-left: -125px;
-	border: 1px solid #ddd;
+	border: 1px solid lighten($orange, 10%);
+	background-color: #fff;
 	text-align: center;
 	color: #999;
 	font-size: 11px;
@@ -159,30 +160,45 @@ table.display thead th div.DataTables_sort_wrapper span {
  * DataTables display
  */
 table.display {
-	margin: 0 auto;
+	margin: 0 auto 1em auto;
 	width: 100%;
 	clear: both;
 	border-collapse: collapse;
-}
 
-table.display tfoot th {
-	padding: 3px 0px 3px 10px;
-	font-weight: bold;
-	font-weight: normal;
-}
+	thead {
+		tr {
+			th {
+				color: $orange;
+				font-weight: 700;
+			}
+		}
+	}
 
-table.display tr.heading2 td {
-	border-bottom: 1px solid #aaa;
-}
+	tr.heading2 td {
+		border-bottom: 1px solid #aaa;
+	}
 
-table.display td {
-	padding: 3px 10px;
-}
+	tbody {
+		tr {
+			border-bottom: 1px solid $orange;
+			td {
+				padding: 10px 10px;
+				&.center {
+					text-align: center;
+				}
+				&:nth-child(1) {
+					font-size: 1.3em;
+				}
+			}
+		}
+	}
 
-table.display td.center {
-	text-align: center;
+	tfoot th {
+		padding: 3px 0px 3px 10px;
+		font-weight: bold;
+		font-weight: normal;
+	}
 }
-
 
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -258,13 +274,10 @@ table.display tr.even.gradeU {
 	background-color: #eee;
 }
 
-
-tr.odd {
-	background-color: #E2E4FF;
-}
-
-tr.even {
-	background-color: white;
+table.display {
+	tr {
+		background-color: white;
+	}
 }
 
 
@@ -317,178 +330,174 @@ td.details {
 	border: 2px solid #A19B9E;
 }
 
+.paging_full_numbers {
+	a.paginate_button,
+ 	a.paginate_active {
+		border: 1px solid #aaa;
+		@include border-radius(2px);
+		padding: 2px 5px;
+		margin: 0 3px;
+		cursor: pointer;
+		*cursor: hand;
+		color: #333;
+	}
 
-.example_alt_pagination div.dataTables_info {
-	width: 40%;
-}
+	a.paginate_button {
+		background-color: #ddd;
+	}
 
-.paging_full_numbers a.paginate_button,
- 	.paging_full_numbers a.paginate_active {
-	border: 1px solid #aaa;
-	@include border-radius(5px);
-	padding: 2px 5px;
-	margin: 0 3px;
-	cursor: pointer;
-	*cursor: hand;
-	color: #333 !important;
-}
+	a.paginate_button:hover {
+		background-color: #ccc;
+		text-decoration: none !important;
+	}
+	
+	a.paginate_button_disabled, a.paginate_button_disabled:hover {
+		background-color: lighten(#ddd, 20%);
+		border-color: lighten(#aaa, 20%);
+		color: lighten(#333, 20%);
+		cursor: default;
+	}
 
-.paging_full_numbers a.paginate_button {
-	background-color: #ddd;
-}
-
-.paging_full_numbers a.paginate_button:hover {
-	background-color: #ccc;
-	text-decoration: none !important;
-}
-
-.paging_full_numbers a.paginate_active {
-	background-color: #99B3FF;
-}
-
-table.display tr.even.row_selected td {
-	background-color: #B0BED9;
-}
-
-table.display tr.odd.row_selected td {
-	background-color: #9FAFD1;
+	a.paginate_active {
+		background-color: $orange;
+	}
 }
 
 
-/*
- * Sorting classes for columns
- */
-/* For the standard odd/even */
-tr.odd td.sorting_1 {
-	background-color: #D3D6FF;
-}
+// /*
+//  * Sorting classes for columns
+//  */
+// /* For the standard odd/even */
+// tr.odd td.sorting_1 {
+// 	background-color: #D3D6FF;
+// }
 
-tr.odd td.sorting_2 {
-	background-color: #DADCFF;
-}
+// tr.odd td.sorting_2 {
+// 	background-color: #DADCFF;
+// }
 
-tr.odd td.sorting_3 {
-	background-color: #E0E2FF;
-}
+// tr.odd td.sorting_3 {
+// 	background-color: #E0E2FF;
+// }
 
-tr.even td.sorting_1 {
-	background-color: #EAEBFF;
-}
+// tr.even td.sorting_1 {
+// 	background-color: #EAEBFF;
+// }
 
-tr.even td.sorting_2 {
-	background-color: #F2F3FF;
-}
+// tr.even td.sorting_2 {
+// 	background-color: #F2F3FF;
+// }
 
-tr.even td.sorting_3 {
-	background-color: #F9F9FF;
-}
+// tr.even td.sorting_3 {
+// 	background-color: #F9F9FF;
+// }
 
 
-/* For the Conditional-CSS grading rows */
-/*
- 	Colour calculations (based off the main row colours)
-  Level 1:
-		dd > c4
-		ee > d5
-	Level 2:
-	  dd > d1
-	  ee > e2
- */
-tr.odd.gradeA td.sorting_1 {
-	background-color: #c4ffc4;
-}
+// /* For the Conditional-CSS grading rows */
+// /*
+//  	Colour calculations (based off the main row colours)
+//   Level 1:
+// 		dd > c4
+// 		ee > d5
+// 	Level 2:
+// 	  dd > d1
+// 	  ee > e2
+//  */
+// tr.odd.gradeA td.sorting_1 {
+// 	background-color: #c4ffc4;
+// }
 
-tr.odd.gradeA td.sorting_2 {
-	background-color: #d1ffd1;
-}
+// tr.odd.gradeA td.sorting_2 {
+// 	background-color: #d1ffd1;
+// }
 
-tr.odd.gradeA td.sorting_3 {
-	background-color: #d1ffd1;
-}
+// tr.odd.gradeA td.sorting_3 {
+// 	background-color: #d1ffd1;
+// }
 
-tr.even.gradeA td.sorting_1 {
-	background-color: #d5ffd5;
-}
+// tr.even.gradeA td.sorting_1 {
+// 	background-color: #d5ffd5;
+// }
 
-tr.even.gradeA td.sorting_2 {
-	background-color: #e2ffe2;
-}
+// tr.even.gradeA td.sorting_2 {
+// 	background-color: #e2ffe2;
+// }
 
-tr.even.gradeA td.sorting_3 {
-	background-color: #e2ffe2;
-}
+// tr.even.gradeA td.sorting_3 {
+// 	background-color: #e2ffe2;
+// }
 
-tr.odd.gradeC td.sorting_1 {
-	background-color: #c4c4ff;
-}
+// tr.odd.gradeC td.sorting_1 {
+// 	background-color: #c4c4ff;
+// }
 
-tr.odd.gradeC td.sorting_2 {
-	background-color: #d1d1ff;
-}
+// tr.odd.gradeC td.sorting_2 {
+// 	background-color: #d1d1ff;
+// }
 
-tr.odd.gradeC td.sorting_3 {
-	background-color: #d1d1ff;
-}
+// tr.odd.gradeC td.sorting_3 {
+// 	background-color: #d1d1ff;
+// }
 
-tr.even.gradeC td.sorting_1 {
-	background-color: #d5d5ff;
-}
+// tr.even.gradeC td.sorting_1 {
+// 	background-color: #d5d5ff;
+// }
 
-tr.even.gradeC td.sorting_2 {
-	background-color: #e2e2ff;
-}
+// tr.even.gradeC td.sorting_2 {
+// 	background-color: #e2e2ff;
+// }
 
-tr.even.gradeC td.sorting_3 {
-	background-color: #e2e2ff;
-}
+// tr.even.gradeC td.sorting_3 {
+// 	background-color: #e2e2ff;
+// }
 
-tr.odd.gradeX td.sorting_1 {
-	background-color: #ffc4c4;
-}
+// tr.odd.gradeX td.sorting_1 {
+// 	background-color: #ffc4c4;
+// }
 
-tr.odd.gradeX td.sorting_2 {
-	background-color: #ffd1d1;
-}
+// tr.odd.gradeX td.sorting_2 {
+// 	background-color: #ffd1d1;
+// }
 
-tr.odd.gradeX td.sorting_3 {
-	background-color: #ffd1d1;
-}
+// tr.odd.gradeX td.sorting_3 {
+// 	background-color: #ffd1d1;
+// }
 
-tr.even.gradeX td.sorting_1 {
-	background-color: #ffd5d5;
-}
+// tr.even.gradeX td.sorting_1 {
+// 	background-color: #ffd5d5;
+// }
 
-tr.even.gradeX td.sorting_2 {
-	background-color: #ffe2e2;
-}
+// tr.even.gradeX td.sorting_2 {
+// 	background-color: #ffe2e2;
+// }
 
-tr.even.gradeX td.sorting_3 {
-	background-color: #ffe2e2;
-}
+// tr.even.gradeX td.sorting_3 {
+// 	background-color: #ffe2e2;
+// }
 
-tr.odd.gradeU td.sorting_1 {
-	background-color: #c4c4c4;
-}
+// tr.odd.gradeU td.sorting_1 {
+// 	background-color: #c4c4c4;
+// }
 
-tr.odd.gradeU td.sorting_2 {
-	background-color: #d1d1d1;
-}
+// tr.odd.gradeU td.sorting_2 {
+// 	background-color: #d1d1d1;
+// }
 
-tr.odd.gradeU td.sorting_3 {
-	background-color: #d1d1d1;
-}
+// tr.odd.gradeU td.sorting_3 {
+// 	background-color: #d1d1d1;
+// }
 
-tr.even.gradeU td.sorting_1 {
-	background-color: #d5d5d5;
-}
+// tr.even.gradeU td.sorting_1 {
+// 	background-color: #d5d5d5;
+// }
 
-tr.even.gradeU td.sorting_2 {
-	background-color: #e2e2e2;
-}
+// tr.even.gradeU td.sorting_2 {
+// 	background-color: #e2e2e2;
+// }
 
-tr.even.gradeU td.sorting_3 {
-	background-color: #e2e2e2;
-}
+// tr.even.gradeU td.sorting_3 {
+// 	background-color: #e2e2e2;
+// }
 
 
 /*
