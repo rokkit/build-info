@@ -96,6 +96,12 @@
 			margin: 0 auto;
 		}
 	}
+	.orbit-prev, .orbit-next {
+		top: 87%;
+	}
+	.orbit-slide-number {
+		color: darken($grey, 10%);
+	}
 }
 .orbit-bullets li {
 	width: 8px;

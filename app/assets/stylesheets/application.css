@@ -15,7 +15,6 @@
  *= require jquery.ui.all
  *= require jquery.ui.theme
  *= require jquery.modal
- *= require dataTables/src/demo_table_jui
  *= require layout
  *= require style
  *= require_tree .

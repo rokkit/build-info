@@ -33,37 +33,41 @@
       			</div>
       		</header>
 
-      		<aside id="sidebar-left" class="small-3 large-2 columns sidebar">
-            <%= render 'layouts/sidebar-first' %>
-      		</aside><!-- /left sidebar -->
-
-      		<section id="main-content" class="small-6 large-8 columns"> <!-- content -->
+          <div class="large-11 small-12 large-centered columns">
             <div class="row">
-              <% if content_for?(:page_title) %>
-                <h1 class="title small-12 columns"><b><%= yield(:page_title) %></b></h1>
-              <% end %>
-              <% if content_for?(:top_block) %>
-                <div class="top-block small-12 columns"><%= yield(:top_block) %></div>
-              <% end %>
-              <div class="small-12 columns content">
-                <%- flash.each do |name, msg| -%>
-    	            <% if name == :error %>
-    	                <%= content_tag :div, msg, :class => "alert-box alert radius" %>
-    	            <% elsif name == :notice %>
-    	                <%= content_tag :div, msg, :class => "alert-box success radius" %>
-    	            <% elsif name == :warning %>
-    	                <%= content_tag :div, msg, :class => "alert-box warning radius" %>
-    	            <% end %>
-      	        <%- end -%>
+                <aside id="sidebar-left" class="small-3 large-2 columns sidebar">
+                  <%= render 'layouts/sidebar-first' %>
+                </aside><!-- /left sidebar -->
 
-                <%= yield %>
-              </div>
+                <section id="main-content" class="small-6 large-8 columns"> <!-- content -->
+                  <div class="row">
+                    <% if content_for?(:page_title) %>
+                      <h1 class="title small-12 columns"><b><%= yield(:page_title) %></b></h1>
+                    <% end %>
+                    <% if content_for?(:top_block) %>
+                      <div class="top-block small-12 columns"><%= yield(:top_block) %></div>
+                    <% end %>
+                    <div class="small-12 columns content">
+                      <%- flash.each do |name, msg| -%>
+                        <% if name == :error %>
+                            <%= content_tag :div, msg, :class => "alert-box alert radius" %>
+                        <% elsif name == :notice %>
+                            <%= content_tag :div, msg, :class => "alert-box success radius" %>
+                        <% elsif name == :warning %>
+                            <%= content_tag :div, msg, :class => "alert-box warning radius" %>
+                        <% end %>
+                      <%- end -%>
+
+                      <%= yield %>
+                    </div>
+                  </div>
+                </section><!-- /content -->
+
+                <aside id="sidebar-right" class="small-3 large-2 columns sidebar">
+                  <%= render 'layouts/sidebar-second' %>
+                </aside><!-- /right sidebar -->
             </div>
-      		</section><!-- /content -->
-
-      		<aside id="sidebar-right" class="small-3 large-2 columns sidebar">
-            <%= render 'layouts/sidebar-second' %>
-      		</aside><!-- /right sidebar -->
+          </div>
 
       		<footer class="small-12 columns">
       			<p class="copyright">&copy; 2013 Home.info</p>
