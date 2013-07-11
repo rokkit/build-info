@@ -96,7 +96,7 @@ class NodesController < ApplicationController
   
   def exchange_by_node
     @node = Node.find(params[:id])
-    @node.request_for_exchange BuildObject.find(params[:build_object])
+    @node.request_for_exchange_by_node Node.find(params[:node])
     if @node.save
       redirect_to @node, notice: "Предложение обмена подано"
     else
@@ -106,8 +106,8 @@ class NodesController < ApplicationController
   
   def approve
     @node = Node.find params[:id]
-    @build_object = BuildObject.find(params[:build_object])
-    @node.accept_request_for_exchange! @build_object
+    @contragent_node = Node.find params[:node]
+    @node.accept_request_for_exchange_by_node! @contragent_node
     if @node.save!
       redirect_to @node, notice: "Обмен совершён"
     end

@@ -1,25 +1,34 @@
 <% if @node.sell.user == current_user %>
-    Объект продажи: <%= link_to @node.sell.name, @node.sell %> <br>
-    Меняю на: <%= @node.buy.try(:name) ? link_to(@node.buy.name, @node.buy) : "Свободно" %> 
-<% else %>
-    Я продаю: <%= @node.buy.nil?  ? "Свободно" : link_to(@node.buy.try :name, @node.buy) %> <br>
-    Меняет на: <%= link_to @node.sell.try(:name), @node.sell %>
+    Я меняю: <%= link_to @node.sell.name, @node.sell %> <br>
+    на: 
+    <% if @node.status == 2 %>
+        <%= @node.relationships.first.try {|f| f.node_two.sell.name} %>
+    <% end %>
 <% end %>
-
+<br>
+Статус: <%= @node.human_status %>
+<br>
 Цена: <%= "#{number_to_currency @node.min_price} - #{number_to_currency @node.max_price}" %>
 
-<% if @node.buy.nil? && @node.sell.user == current_user %>
+<% if @node.buy.nil? && @node.sell.user == current_user && @node.status != 2 %>
 <h4>Я предлагаю обменять на</h4>
 <ul>
-    <% @node.build_objects.each do |b| %>
+    <% @node.relationships.each do |b| %>
     <li>
-        <%= b.name %>
+        <%= b.node_two.sell.name %>
     </li>
     <% end %>
 </ul>
 <h4>Мне предлагают обменять на</h4>
+<ul>
+    <% Relationship.where(node_two_id: @node.id).each do |r| %>
+    <li>
+        <%= link_to r.node.sell.name, r.node %>
+        <%= link_to "Обменять", approve_node_path(@node, node: r.node), method: :post %>
+    </li>
+    <% end %>
+</ul>
 <br>
-Статус: <%= @node.human_status %>
 <h3>Подходящие объекты встречной продажи</h3>
 <ul>
     <% @matched_nodes.each do |node| %>
@@ -27,7 +36,7 @@
         <div><%= image_tag node.sell.photos.try { |p| p.first.image_url.to_s } %></div>
         <p><%= node.sell.name %></p>
         <%= link_to 'Подробнее', node %>
-        <%= link_to "Подать заявку на обмен", exchange_node_path(@node, node: node), method: :post %>
+        <%= link_to "Подать заявку на обмен", exchange_by_node_node_path(@node, node: node), method: :post %>
     </li>
     <% end %>
     

@@ -43,8 +43,9 @@ class Ability
       can [:update, :destroy], Node do |node|
         node.sell.try(:user) == user
       end
-      can [:read], Node do |node|
-        node.sell.try(:user) == user || node.buy.try(:user) == user
+      
+      can [:read,:exchange_by_node], Node do |node|
+        node.sell.try(:user) == user || node.buy.try(:user) == user || node.build_objects.any? { |b| b.user == user }
       end
       
       can [:approve], Node do |node|
