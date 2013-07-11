@@ -9,6 +9,10 @@ class Node < ActiveRecord::Base
   
   validates :sell_id, presence: true
   
+  scope :matched_by_node, -> (node) do
+    where { min_price >= node.min_price }
+  end
+  
   #Проверка возмжности обмена, объект не должен участвовать в цепочке, как покупаемый
   def self.existing? build_object
     !where(buy_id: build_object).empty?
@@ -36,6 +40,10 @@ class Node < ActiveRecord::Base
   def accept_request_for_exchange! build_object
     self.status = 2
     self.buy = build_object
+    self.selled_at = Time.zone.now
+    build_object.nodes.each do |node|
+      node.destroy if node.sell != self.sell
+    end
     #все остальные предложения с данным объектом отмечаются как отклонённые
     Node.update_all({status: 1, sell_id: self.sell}, {status: 3})
   end

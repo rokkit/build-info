@@ -21,8 +21,9 @@ class BuildObjectsController < ApplicationController
   
   def manage
     @build_objects = current_user.build_objects
-    @nodes = Node.joins(:sell).where(build_objects: {user_id: current_user})
-    @incoming_request_for_exhange = BuildObject.actual.includes(:nodes).where("user_id = ? AND nodes.id IS NOT NULL",current_user)
+    #@nodes = Node.joins(:sell).where(build_objects: { user_id: current_user })
+    @nodes = Node.joins('LEFT OUTER JOIN "build_objects" ON "build_objects"."id" = "nodes"."sell_id" LEFT OUTER JOIN "build_objects" "buys_nodes" ON "buys_nodes"."id" = "nodes"."buy_id"').where("build_objects.user_id == ?", current_user)
+    @incoming_request_for_exhange = BuildObject.actual.includes(:nodes).where("user_id = ? AND nodes.id IS NOT NULL AND nodes.status != 2",current_user)
   end
 
   # GET /build_objects/1

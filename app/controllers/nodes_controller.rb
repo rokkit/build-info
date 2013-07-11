@@ -1,5 +1,5 @@
 class NodesController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:create, :new]
   # GET /nodes
   # GET /nodes.json
   def index
@@ -16,6 +16,7 @@ class NodesController < ApplicationController
   def show
     @node = Node.find(params[:id])
     @matched_build_objects = BuildObject.actual.where("user_id != ?", current_user)
+    @matched_nodes = Node.includes(:sell).where("build_objects.user_id != ?", current_user).matched_by_node @node
     @matched_build_objects.filter_min_price(@node.min_price).filter_max_price(@node.max_price)
     respond_to do |format|
       format.html # show.html.erb
@@ -46,7 +47,7 @@ class NodesController < ApplicationController
 
     respond_to do |format|
       if @node.save!
-        format.html { redirect_to @node, notice: 'Node was successfully created.' }
+        format.html { redirect_to @node, notice: 'Встречная продажа создана' }
         format.json { render json: @node, status: :created, location: @node }
       else
         format.html { render action: "new" }
@@ -62,7 +63,7 @@ class NodesController < ApplicationController
 
     respond_to do |format|
       if @node.update_attributes(params[:node])
-        format.html { redirect_to @node, notice: 'Node was successfully updated.' }
+        format.html { redirect_to @node, notice: 'Встречная продажа обновлена' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -92,6 +93,17 @@ class NodesController < ApplicationController
       render action: :new
     end
   end
+  
+  def exchange_by_node
+    @node = Node.find(params[:id])
+    @node.request_for_exchange BuildObject.find(params[:build_object])
+    if @node.save
+      redirect_to @node, notice: "Предложение обмена подано"
+    else
+      render action: :new
+    end
+  end
+  
   def approve
     @node = Node.find params[:id]
     @build_object = BuildObject.find(params[:build_object])

@@ -50,6 +50,7 @@ gem 'russian'
 gem "rmagick"
 gem "geocoder"
 gem 'arel'
+gem "squeel"
 gem 'forem', :git => "git://github.com/radar/forem.git"
 gem 'forem-theme-twist', :git => "git://github.com/radar/forem-theme-twist.git"
 gem 'kaminari'

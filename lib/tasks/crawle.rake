@@ -61,6 +61,7 @@ namespace :crawle do
           
           puts "."
           build_object.type_of_build_object = TypeOfBuildObject.find_by_name "Квартира (Вторичный рынок)"
+          build_object.user = User.first
           build_object.save if build_object.valid?
     end
   end

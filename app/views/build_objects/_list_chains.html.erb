@@ -48,8 +48,10 @@
                 <ul>
                     <% build_object.nodes.each do |node| %>
                     <li>
-                        <%= link_to node.sell.name, node.sell %>
-                        <%= link_to "Обменять", approve_node_path(node, build_object: build_object), method: :post %>
+                        <% unless node.status == 2  %>
+                            <%= link_to node.sell.name, node.sell %>
+                            <%= link_to "Обменять", approve_node_path(node, build_object: build_object), method: :post %>
+                        <% end %>
                     </li>
                     <% end %>
                 </ul>
