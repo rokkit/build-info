@@ -52,28 +52,28 @@
             </div>
             <div class="large-6 columns large-uncentered filter">
                 <%= label_tag :view_from_windows_id, "Вид из окон" %>
-                <%= collection_select :filter, :view_from_windows_id, ViewFromWindows.all, :id, :name,include_blank: true %>
+                <%= collection_select :filter, :view_from_windows_id, ViewFromWindows.all, :id, :name, include_blank: true %>
             </div> 
         </div>
         <!-- end appartement filters -->
         <div class="row">
             <div class="large-6 columns large-uncentered filter">
                 <%= label_tag :material_id, "Материал дома" %>
-                <%= collection_select :filter, :material_id, Material.all, :id, :name %>
+                <%= collection_select :filter, :material_id, Material.all, :id, :name, include_blank: true %>
             </div>
             <div class="large-6 columns large-uncentered filter">
                 <%= label_tag :overlap_id, "Перекрытия" %>
-                <%= collection_select :filter, :overlapl_id, Overlap.all, :id, :name %>
+                <%= collection_select :filter, :overlapl_id, Overlap.all, :id, :name, include_blank: true %>
             </div> 
         </div>
         <div class="row">
             <div class="large-6 columns large-uncentered filter">
                 <%= label_tag :stair_id, "Лестница" %>
-                <%= collection_select :filter, :stair_id, Stair.all, :id, :name %>
+                <%= collection_select :filter, :stair_id, Stair.all, :id, :name, include_blank: true %>
             </div>
             <div class="large-6 columns large-uncentered filter">
                 <%= label_tag :basement_id, "Подвал" %>
-                <%= collection_select :filter, :basement_id, Basement.all, :id, :name %>
+                <%= collection_select :filter, :basement_id, Basement.all, :id, :name, include_blank: true %>
             </div> 
         </div>
     </div>
