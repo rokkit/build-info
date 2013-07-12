@@ -265,7 +265,7 @@
   <dt class="entypo-key">Записаться на просмотр</dt>
   <dd>Пн. 21.01.13 18:00 - 18:30</dd>
   <dd>Вт. 22.01.13 18:00 - 19:00</dd>
-  <dd><%= link_to "Записаться", new_review_path(build_object:@build_object) if can? :request_review, @build_object %></dd>
+  <dd><%= link_to "Записаться", new_review_path(build_object:@build_object) if @build_object.user != current_user %></dd>
   <dd>Количество просмотров: <%= @build_object.impressionist_count filter: :ip_address %></dd>
     <dd>Рейтинг: <%= @build_object.rating %></dd>
   <dd>

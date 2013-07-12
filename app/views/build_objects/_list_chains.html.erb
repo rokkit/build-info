@@ -22,7 +22,7 @@
                     <%= link_to node.sell.name, node.sell %>
                 </td>
                 <td>
-                    <%= node.buy.try(:name) || "Пусто" %>
+                    <%= node.relationships.first.try { |t| t.node_two.sell.name } || "Пусто" %>
                 </td>
                 <td>
                     <%= node.human_status %>

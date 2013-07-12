@@ -15,9 +15,11 @@ class NodesController < ApplicationController
   # GET /nodes/1.json
   def show
     @node = Node.find(params[:id])
-    @matched_build_objects = BuildObject.actual.where("user_id != ?", current_user)
-    @matched_nodes = Node.includes(:sell).where("build_objects.user_id != ?", current_user).matched_by_node @node
-    @matched_build_objects.filter_min_price(@node.min_price).filter_max_price(@node.max_price)
+    unless @node.status == '2'
+      @matched_build_objects = BuildObject.actual.where("user_id != ?", current_user)
+      @matched_nodes = Node.includes(:sell).where("build_objects.user_id != ?", current_user).matched_by_node @node
+      @matched_build_objects.filter_number(:price, :gt, @node.min_price).filter_number(:price, :lt, @node.max_price)
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @node }

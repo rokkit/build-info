@@ -115,7 +115,7 @@ class BuildObjectsController < ApplicationController
     @build_object = BuildObject.find(params[:id])
     @build_object.selled_at = params[:build_object][:selled_at]
     if @build_object.save!
-      redirect_to @build_object, notice: "Объект отмечен как проданный"
+      redirect_to @build_object, notice: "Объект продан!"
     end
   end
   

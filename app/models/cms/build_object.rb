@@ -16,21 +16,36 @@ class BuildObject < ActiveRecord::Base
   belongs_to :stair
   belongs_to :basement
   belongs_to :address
+  belongs_to :toilet
   #end house
   
   #appartement
   belongs_to :planning
-  belongs_to :toilet
   belongs_to :remont
   belongs_to :hotwater
   belongs_to :valute
   belongs_to :view_from_windows
   #end appartement
   
-  attr_accessible :bank, :builder, :busstop, :byear, :chute, :clinic, 
-                  :consierge, :domesticserv, :elevator, :hfirstfloor, 
-                  :kgarten, :name, :overhault, :park, :parking, :phrmacy, 
-                  :school, :shopping, :shopprod, 
+  attr_accessible :bank,
+                  :builder,
+                  :busstop, 
+                  :byear, 
+                  :chute, 
+                  :clinic, 
+                  :consierge, 
+                  :domesticserv, 
+                  :elevator, 
+                  :hfirstfloor, 
+                  :kgarten, 
+                  :name, 
+                  :overhault, 
+                  :park, 
+                  :parking, 
+                  :phrmacy, 
+                  :school, 
+                  :shopping, 
+                  :shopprod, 
                   :type_of_house_id, 
                   :material_id,
                   :overlap_id, 
@@ -82,12 +97,17 @@ class BuildObject < ActiveRecord::Base
   scope :filter_city, lambda {|city| where(addresses: { city_id: city })}
   scope :filter_distinct, lambda {|distinct| where(addresses: { distinct_id: distinct })}
   scope :filter_street, lambda {|street| where(addresses: { street_id: street })}
-  scope :filter_min_price, lambda {|price| where("price >= ?", price)}
-  scope :filter_max_price, lambda {|price| where("price <= ?", price)}
-  scope :filter_min_area, lambda {|area| where("area >= ?", area)}
-  scope :filter_max_area, lambda {|area| where("area <= ?", area)}
-  scope :filter_ipoteka, lambda {|ipoteka| where(ipoteka: ipoteka)}
   
+  scope :filter_boolean, -> (field, value) { where field => value }
+  scope :filter_number, -> (field, operation, value) do
+    if operation == :gt
+      where("#{field} >= ?", value)
+    elsif operation == :lt
+      where("#{field} < ?", value)
+    elsif operation == :eq
+      where("#{field} = ?", value)
+    end
+  end
   
   #END FILTERS
   

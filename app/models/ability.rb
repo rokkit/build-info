@@ -37,7 +37,8 @@ class Ability
         can :invest, :all
       end
       can :request_review, BuildObject do |build_object| #запрос на просмотр, пользовател не должен запрашивать у своих объектов
-        build_object.user != user && !user.id.nil? 
+        build_object.user != user
+        false
       end
       
       can [:update, :destroy], Node do |node|

@@ -61,12 +61,6 @@ jQuery ->
             bPaginate: true
             sPaginationType: "full_numbers"
             sAjaxSource: $('#buildobjects-datatable').data('source')
-            aoColumnDefs: [
-                      { 
-                        bSortable: false
-                        aTargets: [ 0, 2, 3, 4 ] 
-                      }
-                   ]
             oLanguage:
                 sProcessing: "Подождите..."
                 sLengthMenu: "Показать _MENU_ записей"
@@ -85,6 +79,12 @@ jQuery ->
                 oAria:
                   sSortAscending: ": активировать для сортировки столбца по возрастанию"
                   sSortDescending: ": активировать для сортировки столбцов по убыванию"
+            aoColumnDefs: [
+                      { 
+                        bSortable: false
+                        aTargets: [ 0, 2, 3, 4 ] 
+                      }
+                   ]
 jQuery ->
     console.log "init sucess"
     
@@ -166,3 +166,14 @@ equalHeight = (group) ->
   group.height tallest
 $(document).ready ->
   equalHeight $(".eheight dd")
+  
+#show advanced filter in search form
+jQuery ->
+    $("#show-advanced-filter").click (e) ->
+        e.preventDefault()
+        if $(this).hasClass("show-filter")
+            $("#advanced-filter").slideDown();
+            $(this).removeClass("show-filter").addClass("hide-filter")
+        else
+            $("#advanced-filter").slideUp();
+            $(this).removeClass("hide-filter").addClass("show-filter")
