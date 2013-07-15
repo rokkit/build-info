@@ -145,6 +145,7 @@ GEM
     hike (1.2.3)
     httpclient (2.3.3)
     i18n (0.6.1)
+    ice_cube (0.11.0)
     impressionist (1.3.1)
       httpclient (~> 2.2)
       nokogiri (~> 1.5)
@@ -217,6 +218,8 @@ GEM
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-mini-profiler (0.1.27)
+      rack (>= 1.1.3)
     rack-ssl (1.3.3)
       rack
     rack-test (0.6.2)
@@ -345,6 +348,7 @@ DEPENDENCIES
   forem-theme-twist!
   geocoder
   has_scope
+  ice_cube
   impressionist
   jquery-datatables-rails!
   jquery-fileupload-rails
@@ -357,6 +361,7 @@ DEPENDENCIES
   nokogiri
   pg
   prawn
+  rack-mini-profiler (~> 0.1.27)
   rails (= 3.2.13)
   rails-gallery
   rails3-jquery-autocomplete

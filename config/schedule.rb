@@ -16,14 +16,15 @@
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
 # end
-
+set :environment, 'development' 
 set :output, "#{path}/log/cron.log"
 # Learn more: http://github.com/javan/whenever
-every :sunday, :at => '12pm' do # Use any day of the week or :weekend, :weekday
-  rake "worker:lower_rating_unsaled_objects"
-  rake "crawle:parse"
-end
+# every :sunday, :at => '12pm' do # Use any day of the week or :weekend, :weekday
+#   #rake "worker:lower_rating_unsaled_objects"
+#   rake "crawle:parse"
+# end
 
 every 1.minutes do
-  rake "worker:lower_rating_unsaled_objects"
+  #rake "worker:lower_rating_unsaled_objects"
+  rake "crawle:parse", environment: 'development' 
 end

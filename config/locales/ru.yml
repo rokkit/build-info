@@ -47,6 +47,9 @@ ru:
        node:
            one: "Встречная покупка"
            other: "Встречные покупки"
+       rake_task:
+           one: "Задача"
+           other: "Задачи"
        distinct: "Район"
        street: "Улица"
        address: "Адрес"
@@ -178,3 +181,8 @@ ru:
            max_price: "Макс. цена"
            min_area: "Мин. площадь"
            max_area: "Макс. площадь"
+       rake_task:
+           name: "Название"
+           task: "Задание"
+           shedule: "Расписание"
+           status: "Выполнять?"

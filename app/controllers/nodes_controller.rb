@@ -1,5 +1,6 @@
 class NodesController < ApplicationController
   load_and_authorize_resource except: [:create, :new]
+  rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
   # GET /nodes
   # GET /nodes.json
   def index
@@ -18,7 +19,8 @@ class NodesController < ApplicationController
     unless @node.status == '2'
       @matched_build_objects = BuildObject.actual.where("user_id != ?", current_user)
       @matched_nodes = Node.includes(:sell).where("build_objects.user_id != ?", current_user).matched_by_node @node
-      @matched_build_objects.filter_number(:price, :gt, @node.min_price).filter_number(:price, :lt, @node.max_price)
+      #@matched_build_objects.filter_number(:price, :gt, @node.min_price).filter_number(:price, :lt, @node.max_price)
+      @matched_build_objects = BuildObject.match(@node)
     end
     respond_to do |format|
       format.html # show.html.erb
@@ -113,5 +115,10 @@ class NodesController < ApplicationController
     if @node.save!
       redirect_to @node, notice: "Обмен совершён"
     end
+  end
+  private
+  def record_not_found
+    flash[:notice] = "Запись не найдена"
+    redirect_to :action => 'index', controller: :cabinet
   end
 end

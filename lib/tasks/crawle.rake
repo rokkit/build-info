@@ -4,6 +4,7 @@ require "open-uri"
 namespace :crawle do
   desc "parse"
   task :parse => :environment do
+    puts "crawle parse"
     url = "http://emls.ru/flats/?query=r1/1/r2/1/r3/1/reg/2/dept/2/dist/39/sort1/7/dir1/1/s/1/sort2/1/dir2/2/interval/3"
     page = Nokogiri::HTML(open(url))
     rows = page.css('div.content-emls table.html_table_1 tr.html_table_tr_1')  
@@ -60,9 +61,9 @@ namespace :crawle do
           
           
           puts "."
-          build_object.type_of_build_object = TypeOfBuildObject.find_by_name "Квартира (Вторичный рынок)"
+          build_object.type_of_build_object = TypeOfBuildObject.where(name: "Квартира (Вторичный рынок)").first_or_create
           build_object.user = User.first
-          build_object.save if build_object.valid?
+          puts build_object.save! if build_object.valid? && BuildObject.where(description: build_object.description).empty?
     end
   end
   
@@ -71,11 +72,12 @@ namespace :crawle do
     recvisites = {}
     #получаем город
     address = strip_html address
-    recvisites[:country_id] = Country.find_by_name "Россия"
-    recvisites[:region_id] = Region.find_or_create_by_name name: "Санкт-Петербург", country_id: recvisites[:country_id].id
+    recvisites[:country_id] = Country.where(name: "Российская Федерация").first_or_create
+    recvisites[:region_id] = Region.where(name: "Санкт-Петербург", country_id: recvisites[:country_id].id).first_or_create
     recvisites[:city_id] = City.find_or_create_by_name name: address.split[0], region_id: recvisites[:region_id].id
     recvisites[:distinct_id] = Distinct.find_or_create_by_name name: address.split[2], city_id: recvisites[:city_id].id
-    recvisites[:street_id]  = Street.find_or_create_by_name name: (address.match(/\n(.*),/)[0])[1..-2], distinct_id: recvisites[:distinct_id].id #ищем от перевода строки до запятой и убираем запятую
+    recvisites[:street_id]  = Street.find_or_create_by_name name: (address.match(/\n(.*),/)[0])[1..-2], distinct_id: recvisites[:distinct_id].id 
+    #ищем от перевода строки до запятой и убираем запятую
     recvisites[:number_house] = address.split[-1]
     a = Address.where(recvisites).first_or_create
     a

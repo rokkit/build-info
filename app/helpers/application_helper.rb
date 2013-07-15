@@ -16,7 +16,7 @@ module ApplicationHelper
     end
     
     def enought_money? action
-      if current_user.account.total >= Variables.find_by_key(action.to_s).value.to_f 
+      if current_user.account.total >= Variables.where(key: action.to_s).first_or_create(value: 10).value.to_f 
         return true
       end
       false

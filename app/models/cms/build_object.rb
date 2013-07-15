@@ -146,6 +146,10 @@ class BuildObject < ActiveRecord::Base
     "Объект"
   end
   
+  #ПОдборка объектов для встречной продажи
+  def self.match node
+    filter_number(:price, :gt, node.min_price).filter_number(:price, :lt, node.max_price)
+  end
   def name
     "#{type_of_build_object}, #{address}"
   end

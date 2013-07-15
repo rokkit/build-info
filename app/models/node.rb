@@ -16,8 +16,15 @@ class Node < ActiveRecord::Base
   
   validates :sell_id, presence: true
   
+  sifter :address_matched do |addresses|
+    country_id != null
+  end
+  
   scope :matched_by_node, -> (node) do
-    where { min_price >= node.min_price }
+    nodes = where { min_price >= node.min_price && max_price <= node.max_price }
+    nodes = nodes.includes(:addresses).where { 
+      ( addresses.country_id == node.sell.address.street_id )
+    }
   end
   
   #Проверка возмжности обмена, объект не должен участвовать в цепочке, как покупаемый
@@ -80,6 +87,10 @@ class Node < ActiveRecord::Base
   def reject_request_for_exhange!
     self.status == 3
     save!
+  end
+  
+  def self.match node
+    includes(:sell).matched_by_node @node
   end
   
 end

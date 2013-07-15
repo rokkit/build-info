@@ -8,8 +8,20 @@
 <br>
 Статус: <%= @node.human_status %>
 <br>
+<h4>Условия</h4>
 Цена: <%= "#{number_to_currency @node.min_price} - #{number_to_currency @node.max_price}" %>
+Площадь: <%= "#{@node.min_area} - #{@node.max_area}" %>
+Жилая площадь: <%= "#{@node.min_living_area} - #{@node.max_living_area}" %>
+Кухонная пложащь:<%= "#{@node.min_kitchen_area} - #{@node.max_kitchen_area}" %>
+Количество комнат: <%= "#{@node.min_rooms} - #{@node.max_rooms}" %>
 
+Адреса:
+ <ul>
+ <% @node.addresses.each do |address| %>
+     <li><%= address %></li>
+ <% end %>
+ </ul>
+Комментарий: <%= simple_format @node.comment %>
 <% if @node.buy.nil? && @node.sell.user == current_user && @node.status != 2 %>
 <h4>Я предлагаю обменять на</h4>
 <ul>

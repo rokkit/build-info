@@ -30,7 +30,9 @@ class BuildObjectsController < ApplicationController
   # GET /build_objects/1.json
   def show
     @build_object = BuildObject.find(params[:id])
-
+    rescue ActiveRecord::RecordNotFound
+      flash[:notice] = "Wrong post it"
+      redirect_to :action => 'index'
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @build_object }
