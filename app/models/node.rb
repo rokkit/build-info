@@ -23,7 +23,7 @@ class Node < ActiveRecord::Base
   scope :matched_by_node, -> (node) do
     nodes = where { min_price >= node.min_price && max_price <= node.max_price }
     nodes = nodes.includes(:addresses).where { 
-      ( addresses.country_id == node.sell.address.street_id )
+      ( addresses.street_id == node.sell.address.street_id )
     }
   end
   

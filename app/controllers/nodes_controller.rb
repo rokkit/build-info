@@ -18,7 +18,7 @@ class NodesController < ApplicationController
     @node = Node.find(params[:id])
     unless @node.status == '2'
       @matched_build_objects = BuildObject.actual.where("user_id != ?", current_user)
-      @matched_nodes = Node.includes(:sell).where("build_objects.user_id != ?", current_user).matched_by_node @node
+      @matched_nodes = Node.includes(:sell).where("build_objects.user_id != ? AND status != 2", current_user).matched_by_node @node
       #@matched_build_objects.filter_number(:price, :gt, @node.min_price).filter_number(:price, :lt, @node.max_price)
       @matched_build_objects = BuildObject.match(@node)
     end
@@ -100,11 +100,14 @@ class NodesController < ApplicationController
   
   def exchange_by_node
     @node = Node.find(params[:id])
-    @node.request_for_exchange_by_node Node.find(params[:node])
-    if @node.save
-      redirect_to @node, notice: "Предложение обмена подано"
-    else
-      render action: :new
+    @conragent_node = Node.find(params[:node])
+    if @node.status != 2 && @conragent_node.status != 2
+      @node.request_for_exchange_by_node @conragent_node
+      if @node.save
+        redirect_to @node, notice: "Предложение обмена подано"
+      else
+        render action: :new
+      end
     end
   end
   
