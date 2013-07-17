@@ -35,6 +35,24 @@ group :production do
   gem 'mysql2'
 end
 
+group :develompent,:test do
+  gem 'rspec-rails', '~> 2.0'
+  gem "mocha", :require => false
+  #gem 'spork', '~> 1.0rc'
+  #gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  #gem 'guard-bundler'
+  #gem 'guard-rspec'
+  #gem 'guard-spork'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'shoulda'
+  gem 'faker'
+end
+
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery_datepicker'

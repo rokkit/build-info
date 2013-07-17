@@ -83,7 +83,8 @@ BuildInfo::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   
-  devise_for :users, :controllers => {:registrations => "registrations"} do
+  devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_scope :user do
     get 'users/activating' => 'registrations#activating'
   end
     resources :users

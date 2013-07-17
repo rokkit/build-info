@@ -131,7 +131,7 @@ private
     elsif request.remote_ip
       count = Impression.where(ip_address: request.remote_ip).size
     end
-    if count > Variables.find_by_key("max_views_limit_user_low_rating").value.to_i
+    if count > Variables.where(name: "max_views_limit_user_low_rating").first_or_create.value.to_i
       flash[:notice] =  %Q[Закончился лимит бесплатных просмотров. Пожалуйста, увеличьте Ваш рейтинг  <a href=#{new_payment_path}>Пополнить</a>].html_safe
       redirect_to action: "index" 
     end
