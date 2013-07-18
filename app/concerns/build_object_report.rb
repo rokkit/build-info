@@ -19,7 +19,7 @@ class BuildObjectReport < Prawn::Document
       autoprint
   end
   def to_pdf
-        render
+    render
   end
 private
   def main_text
@@ -32,23 +32,23 @@ private
     table [
       ["Агент","#{@build_object.user}, #{@build_object.user.phone}"],
       ["Метро:", "#{@build_object.address.metro}"],
-      ["Кол. комнат:", @build_object.rooms],
+      ["Кол. комнат:", "#{@build_object.rooms}"],
       ["Тип сделки:", "Прямая продажа"],
-      ["Цена:", @build_object.price],
+      ["Цена:", "#{@build_object.price}"],
       ["Собственность:", ""],
       ["Планировка:", @build_object.planning],
       ["Площади:", "Общая: #{@build_object.area}, жилая #{@build_object.living_area}, кухня: #{@build_object.kitchen_area}"],
-      ["Здание:", @build_object.type_of_house],
-      ["Этаж:", @build_object.floor],
-      ["Санузел:", @build_object.toilet],
+      ["Здание:", "#{@build_object.type_of_house}"],
+      ["Этаж:", "#{@build_object.floor}"],
+      ["Санузел:", "#{@build_object.toilet}"],
       ["Балкон:", ""],
       ["Пол:", ""],
-      ["Ремонт:", @build_object.remont],
+      ["Ремонт:", "#{@build_object.remont}"],
       ["Ванна:", ""],
-      ["Гор. вода:", @build_object.hotwater],
-      ["Мусоропровод:", @build_object.chute],
+      ["Гор. вода:", "#{@build_object.hotwater}"],
+      ["Мусоропровод:", "#{@build_object.chute}"],
       ["Вход:", ""],
-      ["Вид из окон:", @build_object.view_from_windows]
+      ["Вид из окон:", "#{@build_object.view_from_windows}"]
     ]
     move_down 20
     text @build_object.description
