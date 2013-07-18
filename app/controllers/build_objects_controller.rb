@@ -40,6 +40,7 @@ class BuildObjectsController < ApplicationController
         #response.headers['Content-Transfer-Encoding'] = 'binary'
         #response.headers['Expires'] = '0'
         #response.headers['Pragma'] = 'public'
+         response.headers["Content-Type"]='application/pdf'
          send_data report, filename: "#{@build_object.id}_#{report}.pdf", type: "application/pdf", disposition: "inline"
       end
     end
