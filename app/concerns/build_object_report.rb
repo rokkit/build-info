@@ -12,6 +12,8 @@ class BuildObjectReport < Prawn::Document
              :normal  => "#{Rails.root}/public/fonts/verdana.ttf" })
       font "Verdana", :size => 10
       header
+      main_text
+      move_down 20
       make_main_table
       footer
     end
@@ -19,10 +21,36 @@ class BuildObjectReport < Prawn::Document
         render
   end
 private
+  def main_text
+    text "Номер объекта: #{@build_object.id}"
+    text "#{address_fields}"
+    text "Занесён: #{@build_object.created_at.strftime("%d.%m.%y")}, Последнее изменение: #{@build_object.updated_at.strftime("%d.%m.%y")}"
+  end
   def make_main_table
+    image open(@build_object.photos.first.image.path.to_s),:width => 250,:at => [300,600]
     table [
-      [address_fields, address_fields]
+      ["Агент","#{@build_object.user}, #{@build_object.user.phone}"],
+      ["Метро:", "#{@build_object.address.metro}"],
+      ["Кол. комнат:", @build_object.rooms],
+      ["Тип сделки:", "Прямая продажа"],
+      ["Цена:", @build_object.price],
+      ["Собственность:", ""],
+      ["Планировка:", @build_object.planning],
+      ["Площади:", "Общая: #{@build_object.area}, жилая #{@build_object.living_area}, кухня: #{@build_object.kitchen_area}"],
+      ["Здание:", @build_object.type_of_house],
+      ["Этаж:", @build_object.floor],
+      ["Санузел:", @build_object.toilet],
+      ["Балкон:", ""],
+      ["Пол:", ""],
+      ["Ремонт:", @build_object.remont],
+      ["Ванна:", ""],
+      ["Гор. вода:", @build_object.hotwater],
+      ["Мусоропровод:", @build_object.chute],
+      ["Вход:", ""],
+      ["Вид из окон:", @build_object.view_from_windows]
     ]
+    move_down 20
+    text @build_object.description
   end
   def map_field
     image open("http://maps.google.com/maps/api/staticmap?size=382x256&sensor=false&zoom=16&markers=#{@build_object.address.lat}%2C#{@build_object.address.lng}")

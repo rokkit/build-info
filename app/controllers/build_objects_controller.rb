@@ -30,15 +30,12 @@ class BuildObjectsController < ApplicationController
   # GET /build_objects/1.json
   def show
     @build_object = BuildObject.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      flash[:notice] = "Wrong post it"
-      redirect_to :action => 'index'
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @build_object }
       format.pdf do
          report = BuildObjectReport.new(@build_object, view_context).to_pdf
-         send_data report, filename: "#{@build_object.name}_#{report}.pdf", type: "application/pdf", disposition: "inline" 
+         send_data report, filename: "#{@build_object.id}_#{report}.pdf", type: "application/pdf", disposition: "inline" 
       end
     end
   end
@@ -131,7 +128,7 @@ private
     elsif request.remote_ip
       count = Impression.where(ip_address: request.remote_ip).size
     end
-    if count > Variables.where(name: "max_views_limit_user_low_rating").first_or_create.value.to_i
+    if count > Variables.where(key: "max_views_limit_user_low_rating").first_or_create.value.to_i
       flash[:notice] =  %Q[Закончился лимит бесплатных просмотров. Пожалуйста, увеличьте Ваш рейтинг  <a href=#{new_payment_path}>Пополнить</a>].html_safe
       redirect_to action: "index" 
     end

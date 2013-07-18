@@ -19,7 +19,6 @@ class NodesController < ApplicationController
     unless @node.status == '2'
       @matched_build_objects = BuildObject.actual.where("user_id != ?", current_user)
       @matched_nodes = Node.joins{ sell }.where { sell.user_id != my {current_user} } #("build_objects.user_id != ? AND status != 2", current_user).matched_by_node @node
-      #@matched_nodes = [Node.last]
       @matched_build_objects = BuildObject.match(@node)
     end
     respond_to do |format|
