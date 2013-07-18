@@ -1,7 +1,7 @@
 class BuildObjectsController < ApplicationController
   impressionist
   before_filter :authenticate_user!, except: [:index, :show]
-  before_filter :views_limit, only: :show
+  #before_filter :views_limit, only: :show
   # GET /build_objects
   # GET /build_objects.json
   def index
@@ -35,7 +35,12 @@ class BuildObjectsController < ApplicationController
       format.json { render json: @build_object }
       format.pdf do
          report = BuildObjectReport.new(@build_object, view_context).to_pdf
-         send_data report#, filename: "#{@build_object.id}_#{report}.pdf", type: "application/pdf", disposition: "inline" 
+         #response.headers['Content-Disposition'] = "attachment;filename=\"#{@build_object.id}_#{report}.pdf\""
+        #response.headers['Content-Description'] = 'File Transfer'
+        #response.headers['Content-Transfer-Encoding'] = 'binary'
+        #response.headers['Expires'] = '0'
+        #response.headers['Pragma'] = 'public'
+         send_data report, filename: "#{@build_object.id}_#{report}.pdf", type: "application/pdf", disposition: "inline"
       end
     end
   end
