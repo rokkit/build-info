@@ -35,7 +35,7 @@ class BuildObjectsController < ApplicationController
       format.json { render json: @build_object }
       format.pdf do
          report = BuildObjectReport.new(@build_object, view_context).to_pdf
-         send_data report, filename: "#{@build_object.id}_#{report}.pdf", type: "application/pdf", disposition: "inline" 
+         send_data report#, filename: "#{@build_object.id}_#{report}.pdf", type: "application/pdf", disposition: "inline" 
       end
     end
   end
