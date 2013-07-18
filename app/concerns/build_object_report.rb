@@ -1,7 +1,7 @@
 require "open-uri"
 class BuildObjectReport < Prawn::Document
   def initialize(build_object, view)
-      super(top_margin: 70)
+      super(top_margin: 40)
       @build_object = build_object
       @view = view
       
@@ -13,9 +13,9 @@ class BuildObjectReport < Prawn::Document
       font "Verdana", :size => 10
       header
       main_text
-      move_down 20
+      move_down 10
       make_main_table
-      footer
+      _footer
     end
   def to_pdf
         render
@@ -64,11 +64,14 @@ private
     stroke_horizontal_rule
       move_down(20)
   end
-  def footer
+  def _footer
     # добавим время создания внизу страницы
         creation_date = Time.zone.now.strftime("Отчет сгенерирован %e %b %Y в %H:%M")
-        go_to_page(page_count)
-        move_down(600)
-        text creation_date, :align => :right, :style => :italic, :size => 9
+        bounding_box([bounds.left, bounds.bottom + 25], :width => 200) do
+         text "© 2013 Home Info"
+        end
+        bounding_box([bounds.right-200, bounds.bottom + 25], :width => 200) do
+         text creation_date, :align => :right, :style => :italic
+        end
   end
 end
