@@ -1,12 +1,3 @@
-HTTP/1.1 500 Internal Server Error
-Date: Thu, 18 Jul 2013 14:04:27 GMT
-Server: Apache/2.2.22 (Ubuntu)
-Status: 500 Internal Server Error
-Vary: Accept-Encoding
-Content-Length: 627
-Connection: close
-Content-Type: text/html; charset=iso-8859-1
-
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
 <html><head>
 <title>500 Internal Server Error</title>
