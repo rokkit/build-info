@@ -2,7 +2,8 @@
 <% content_for :top_block do %>
 <div class="row">
     <div class="large-7 columns">
-        <h4>Адрес: <%= @build_object.address %></h4>
+        <h4>Адрес: <%= @build_object.address %> <%= link_to "Печать",url_for(:controller=>:build_objects, :action=>:show, :format=>:pdf, :id => @build_object.id) , format: :pdf %></h4>
+        <%= %>
     </div>
     <div class="large-4 columns">
         <% if @build_object.selled_at.blank? %>
@@ -291,7 +292,7 @@
 
 <div id="sold" title="Объект продан" class="reveal-modal medium">
      <%= form_tag sold_build_object_path do %>
-         <%= label_tag  :sold_date, "Дата продажи" %>
+         <%= label_tag :sold_date, "Дата продажи" %>
          <%= datepicker_input :build_object, :selled_at, value: DateTime.now.to_s %>
          <%= submit_tag "Готово" %>
      <% end %>

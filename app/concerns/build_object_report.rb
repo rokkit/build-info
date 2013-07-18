@@ -16,7 +16,8 @@ class BuildObjectReport < Prawn::Document
       move_down 10
       make_main_table
       _footer
-    end
+      autoprint
+  end
   def to_pdf
         render
   end

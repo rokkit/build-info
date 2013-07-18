@@ -87,6 +87,7 @@ gem 'acts_as_votable'
 gem 'whenever'
 gem 'rack-mini-profiler', "~> 0.1.27"
 gem 'ice_cube'
+gem 'prawn-print', :git => 'git://github.com/barsoom/prawn-print.git'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
