@@ -11,21 +11,42 @@ describe NodesController do
     create :build_object, user: user_one
   end
   let(:build_object_2) { create :build_object, user: user_two }
+  let(:build_object_3) { create :build_object, user: user_two }
 
   let!(:node_one) { create :node, sell: build_object_1  }
   let!(:node_two) { create :node, sell: build_object_2  }
+  let!(:node_not) { create :node, sell: build_object_3, status: 2  }
   
   describe "GET #show" do
-    before do
-      sign_in user_one
-      get :show, id: node_one.id
+    context "when matched node exists" do
+      before do
+        sign_in user_one
+        get :show, id: node_one
+      end
+      it { should render_template :show }
+      it "should return node" do
+        assigns[:node].should == node_one
+      end
+      it "should return right list of mathed nodes" do
+        assigns[:matched_nodes].should == [node_two]
+      end
+      it "should not have status 'Exchange complete'" do
+        assigns[:matched_nodes].should_not include(node_not)
+      end
     end
-    it { should render_template :show }
-    it "should return node" do
-      assigns[:node].should == node_one
-    end
-    it "should return right list of mathed nodes" do
-      assigns[:matched_nodes].should == [node_two]
+    context "node don't match'" do
+      before do
+        sign_in user_one
+        node_one.update_attribute :max_price, 1
+        get :show, id: node_one
+      end
+      it { should render_template :show }
+      it "should return current node" do
+        assigns[:node].should == node_one
+      end
+      it "should return empty list of mathed nodes" do
+        assigns[:matched_nodes].should == []
+      end
     end
   end
 end
