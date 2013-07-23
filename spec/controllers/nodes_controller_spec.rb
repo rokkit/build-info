@@ -6,11 +6,13 @@ describe NodesController do
     create :user 
   }
   let(:user_two) { create :user, email: "user_two@mail.ru" }
+  let(:address_2) { create :address, street: FactoryGirl.create(:street,name: "Iowa"), country: create(:country, name: "Taraska") }
   let(:build_object_1) do
     BuildObject.any_instance.stubs(:windraw_cost_from_account).returns(true)
     create :build_object, user: user_one
   end
   let(:build_object_2) { create :build_object, user: user_two }
+  let(:build_object_2_with_other_address) { create :build_object, user: user_two, address: address_2 }
   let(:build_object_3) { create :build_object, user: user_two }
 
   let!(:node_one) { create :node, sell: build_object_1  }
@@ -27,9 +29,8 @@ describe NodesController do
       it "should return node" do
         assigns[:node].should == node_one
       end
-      it "should return right list of mathed nodes", focus: true do
+      it "should return right list of mathed nodes" do
         node_two.sell.address.country.should == build_object_1.address.country
-        node_two.sell.address.street.should == build_object_1.address.street
         assigns[:matched_nodes].should == [node_two]
       end
       it "should not have status 'Exchange complete'" do
@@ -50,5 +51,14 @@ describe NodesController do
         assigns[:matched_nodes].should == []
       end
     end
+  end
+  describe "#exchange_by_node" do
+      context "when request for exchange", focus: true do
+        before do
+          sign_in user_one
+          post :exchange_by_node, id: node_one, node: node_two
+        end
+        it { should redirect_to node_one }
+      end
   end
 end

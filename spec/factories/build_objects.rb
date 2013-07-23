@@ -6,6 +6,7 @@ FactoryGirl.define do
     area 40
     type_of_build_object TypeOfBuildObject.create
     photos { |g| [ g.association(:photo) ]}
+    user
   end
 
   factory :photo do

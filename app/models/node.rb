@@ -16,21 +16,14 @@ class Node < ActiveRecord::Base
   
   validates :sell_id, presence: true
   
-  sifter :address_matched do |addresses|
-    country_id != null
-  end
-  
   scope :matched_by_node, -> (node) do
     nodes = joins { sell }.where { sell.price <= node.max_price }
     nodes = nodes.includes(:addresses)
-    #.where { 
-      #( addresses.street_id == node.sell.address.street_id )
-    #}
     nodes = nodes.where { sell.addresses.country_id == node.addresses.first.country_id } unless node.addresses.first.country.nil?
     nodes = nodes.where { sell.addresses.region_id == node.addresses.first.region_id } unless node.addresses.first.region.nil?
     nodes = nodes.where { sell.addresses.city_id == node.addresses.first.city_id } unless node.addresses.first.city.nil?
     nodes = nodes.where { sell.addresses.distinct_id == node.addresses.first.distinct_id } unless node.addresses.first.distinct.nil?
-
+    nodes = nodes.where { sell.addresses.street_id == node.addresses.first.street_id } unless node.addresses.first.street.nil?
   end
   
   #Проверка возмжности обмена, объект не должен участвовать в цепочке, как покупаемый
@@ -56,11 +49,10 @@ class Node < ActiveRecord::Base
     save!
   end
   def request_for_exchange_by_node node
-    #self.build_objects << node.sell
-    r = self.relationships.build :node_two_id => node.id
-    r.save!
+    raise "ConditionError" if status == 2
+    relationships.build :node_two_id => node.id
     update_attribute(:status, 1)
-    save!
+    save
   end
   
   #имеет право владелец объекта покупки
