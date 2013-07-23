@@ -390,7 +390,7 @@ DEPENDENCIES
   database_cleaner
   devise
   devise-async
-  factory_girl_rails
+  factory_girl_rails (~> 4.2.0)
   faker
   forem!
   forem-theme-twist!

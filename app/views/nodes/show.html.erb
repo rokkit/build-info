@@ -2,7 +2,7 @@
     Я меняю: <%= link_to @node.sell.name, @node.sell %> <br>
     на: 
     <% if @node.status == 2 %>
-        <% link_to @node.relationships.first.try {|f| f.node_two.sell.name}, @node.relationships.first.node_two %>
+        <% link_to @node.relationships.first.try {|f| f.node_two.sell.name}, @node.relationships.first.try(:node_two) %>
     <% end %>
 <% end %>
 <br>

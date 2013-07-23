@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130715083727) do
+ActiveRecord::Schema.define(:version => 20130719133402) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "accountable_id"
@@ -434,7 +434,7 @@ ActiveRecord::Schema.define(:version => 20130715083727) do
   add_index "news", ["user_id"], :name => "index_news_on_user_id"
 
   create_table "nodes", :force => true do |t|
-    t.integer  "sell_id",          :null => false
+    t.integer  "sell_id",                         :null => false
     t.integer  "buy_id"
     t.decimal  "max_price"
     t.decimal  "min_price"
@@ -446,10 +446,10 @@ ActiveRecord::Schema.define(:version => 20130715083727) do
     t.float    "min_kitchen_area"
     t.integer  "min_rooms"
     t.integer  "max_rooms"
-    t.integer  "status"
+    t.integer  "status",           :default => 0, :null => false
     t.text     "comment"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.integer  "node_id"
   end
 

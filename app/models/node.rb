@@ -21,10 +21,16 @@ class Node < ActiveRecord::Base
   end
   
   scope :matched_by_node, -> (node) do
-    nodes = where { (min_price >= node.sell.price) & (max_price <= node.sell.price) }
-    nodes = nodes.includes(:addresses).where { 
-      ( addresses.street_id == node.sell.address.street_id )
-    }
+    nodes = joins { sell }.where { sell.price <= node.max_price }
+    nodes = nodes.includes(:addresses)
+    #.where { 
+      #( addresses.street_id == node.sell.address.street_id )
+    #}
+    nodes = nodes.where { sell.addresses.country_id == node.addresses.first.country_id } unless node.addresses.first.country.nil?
+    nodes = nodes.where { sell.addresses.region_id == node.addresses.first.region_id } unless node.addresses.first.region.nil?
+    nodes = nodes.where { sell.addresses.city_id == node.addresses.first.city_id } unless node.addresses.first.city.nil?
+    nodes = nodes.where { sell.addresses.distinct_id == node.addresses.first.distinct_id } unless node.addresses.first.distinct.nil?
+
   end
   
   #Проверка возмжности обмена, объект не должен участвовать в цепочке, как покупаемый

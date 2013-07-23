@@ -43,18 +43,66 @@ require 'rubygems'
     # the seed, which is printed after each run.
     #     --seed 1234
     config.order = "random"
+    #config.before(:suite) do
+      #DatabaseCleaner.strategy = :transaction
+      #DatabaseCleaner.clean_with(:truncation)
+    #end
+
+    #config.before(:each) do
+      #DatabaseCleaner.start
+    #end
+
+    #config.after(:each) do
+      #DatabaseCleaner.clean
+    #end
     config.before(:suite) do
-      DatabaseCleaner.strategy = :transaction
-      DatabaseCleaner.clean_with(:truncation)
-    end
+    DatabaseCleaner.clean_with(:truncation)
+  end
 
-    config.before(:each) do
-      DatabaseCleaner.start
-    end
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
 
-    config.after(:each) do
-      DatabaseCleaner.clean
-    end
+  config.before(:each, :js => true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+    config.use_transactional_fixtures = false
+ 
+#config.before(:suite) do
+  ## Do truncation once per suite to vacuum for Postgres
+  #DatabaseCleaner.clean_with :truncation
+  ## Normally do transactions-based cleanup
+  #DatabaseCleaner.strategy = :transaction
+#end
+ 
+#config.around(:each) do |spec|
+  #if spec.metadata[:js] || spec.metadata[:test_commit]
+    ## JS => run with PhantomJS that doesn't share connections => can't use transactions
+    ## deletion is often faster than truncation on Postgres - doesn't vacuum
+    ## no need to 'start', clean_with is sufficient for deletion
+    ## Devise Emails: devise-async sends confirmation on commit only! => can't use transactions
+    #spec.run
+    #DatabaseCleaner.clean_with :deletion
+  #else
+    ## No JS/Devise => run with Rack::Test => transactions are ok
+    #DatabaseCleaner.start
+    #spec.run
+    #DatabaseCleaner.clean
+    ## see https://github.com/bmabey/database_cleaner/issues/99
+    #begin
+      #ActiveRecord::Base.connection.send(:rollback_transaction_records, true)
+    #rescue
+    #end
+  #end
+#end
 
     config.include Devise::TestHelpers, :type => :controller
     config.include FactoryGirl::Syntax::Methods

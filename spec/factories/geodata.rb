@@ -2,29 +2,29 @@
 
 FactoryGirl.define do
   factory :country do
-    name Faker::Address.city
+    name "Aztorka"
   end
   factory :region do
-    name Faker::Address.state
-    country
+    name "Noman"
+    country {  Country.find_by_name("Aztorka") }
   end
   factory :city do
-    name Faker::Address.city
-    region
+    name "Braben"
+    region { Region.find_by_name "Noman" }
   end
   factory :distinct do
-    name Faker::Address.street_suffix
-    city
+    name "District 21"
+    city  { City.find_by_name "Braben" }
   end
   factory :street do
-    name Faker::Address.street_name
-    distinct
+    name "Veteranov"
+    distinct { Distinct.find_by_name "District 21" }
   end
   factory :address do
-    country
-    region
-    city
-    distinct
-    street
+    country { Country.find_by_name("Aztorka") || FactoryGirl.create(:country) }
+    region  { Region.find_by_name("Noman") || FactoryGirl.create(:region) }
+    city { City.find_by_name("Braben") || FactoryGirl.create(:city) }
+    distinct { Distinct.find_by_name("District 21") || FactoryGirl.create(:distinct) }
+    street { Street.find_by_name("Veteranov") || FactoryGirl.create(:street) }
   end
 end

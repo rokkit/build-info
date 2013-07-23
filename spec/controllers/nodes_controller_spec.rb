@@ -27,7 +27,9 @@ describe NodesController do
       it "should return node" do
         assigns[:node].should == node_one
       end
-      it "should return right list of mathed nodes" do
+      it "should return right list of mathed nodes", focus: true do
+        node_two.sell.address.country.should == build_object_1.address.country
+        node_two.sell.address.street.should == build_object_1.address.street
         assigns[:matched_nodes].should == [node_two]
       end
       it "should not have status 'Exchange complete'" do
