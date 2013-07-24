@@ -36,7 +36,7 @@ class BuildObjectsDatatable
     end
 
     def fetch_products
-      build_objects = BuildObject.scoped.full.actual  
+      build_objects = BuildObject.scoped.full.actual.select([:id,:price, :address_id, :description, :area, :living_area, :kitchen_area])  
       build_objects = build_objects.invest_projects if @type_selection == :invest_projects
       build_objects = build_objects.public_objects if @type_selection == :public_objects
       build_objects = build_objects.page(page).per(per_page)

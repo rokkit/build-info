@@ -87,7 +87,7 @@ class BuildObject < ActiveRecord::Base
   after_create :windraw_cost_from_account
   
   scope :actual, -> { where(archived: false, selled_at: nil) }
-  scope :full, -> { includes(:address) }
+  scope :full, -> { includes([:address, :photos]) }
   scope :invest_projects, -> { where(private: true) }
   scope :public_objects, -> { where(private: false) }
   

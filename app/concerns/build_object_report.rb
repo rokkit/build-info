@@ -51,7 +51,7 @@ private
       ["Вид из окон:", "#{@build_object.view_from_windows}"]
     ]
     move_down 20
-    text @build_object.description
+    text @build_object.description.to_s
   end
   def map_field
     image open("http://maps.google.com/maps/api/staticmap?size=382x256&sensor=false&zoom=16&markers=#{@build_object.address.lat}%2C#{@build_object.address.lng}")

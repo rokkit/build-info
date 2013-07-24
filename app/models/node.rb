@@ -49,7 +49,7 @@ class Node < ActiveRecord::Base
     save!
   end
   def request_for_exchange_by_node node
-    raise "ConditionError" if status == 2
+    raise "ConditionError" if status == 2 || self.sell.user == node.sell.user
     relationships.build :node_two_id => node.id
     update_attribute(:status, 1)
     save
@@ -70,15 +70,11 @@ class Node < ActiveRecord::Base
   def accept_request_for_exchange_by_node! node
     self.status = 2
     node.update_attribute :status, 2
-    # self.buy = node.sell
-    # node.buy = self.sell
     node.sell.update_attribute :selled_at, DateTime.now
     self.sell.update_attribute :selled_at, DateTime.now
-    #r = Relationship.where(node_id: self, node_two_id: node)
-    Relationship.delete_all ["node_id = ? AND node_two_id != ?", self.id, node.id]
-    
-    #все остальные предложения с данным объектом отмечаются как отклонённые
-    Node.update_all({status: 1, sell_id: self.sell}, {status: 3})
+    self.relationships.each do |r|
+      r.destroy if r.node_two != node
+    end
   end
   
   #имеет право владелец объекта покупки

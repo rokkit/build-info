@@ -73,6 +73,7 @@
   <div id="appartement-field">
     <h2>Параметры квартиры</h2>
     <div class="field">
+      <p>Виден только Вам. Введите, для использования<br> возможностей авто-расчёта стоимости</p>
       <%= f.input :appartement_number, label: "Номер квартиры" %>
     </div>
     <div class="field">
@@ -99,6 +100,12 @@
     </div>  
     
     <h2>Условия сделки</h2>
+    <% if can? :invest, :all %>
+      <div class="field">
+        <p>Объект будет отображаться только в приватной базе</p>
+        <%= f.input :private, label: "Приватный" %>
+      </div>
+    <% end %>
     <div class="field">
       <%= f.label :price, "Цена" %>
       <%= f.number_field :price %>
@@ -117,7 +124,7 @@
     <h2>Описание дома</h2>
     <div class="field">
       <%= f.label :byear %> 
-      <%= f.date_select :byear %>
+      <%= f.date_select :byear, start_year: Time.now.year - 100, end_year: Time.now.year %>
     </div>
     <div class="field">
        <%= f.label :overhault, "Капитальный ремонт" %>
