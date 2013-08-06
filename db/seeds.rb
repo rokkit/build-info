@@ -36,5 +36,8 @@ Material.delete_all
 %w(Кирпичный Крупно-панел. Деревянный Блочный Монолитный).each do |t|
   Material.create! name: t
 end
+%w(Avito).each do |t|
+  TypeOfLinkedAccount.create name: t
+end
 
 

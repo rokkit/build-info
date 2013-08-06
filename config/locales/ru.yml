@@ -186,3 +186,8 @@ ru:
            task: "Задание"
            shedule: "Расписание"
            status: "Выполнять?"
+       linked_account:
+         type_of_linked_account: "Торговая площадка"
+         login: "Логин или Почта"
+         password: "Пароль"
+

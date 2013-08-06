@@ -287,6 +287,18 @@
   <%= link_to 'Редактировать', edit_build_object_path(@build_object), :class => "edit"%>
   <% end %>
   <%= link_to 'Администрирование', edit_admin_build_object_path(@build_object), :class => "edit" if can? :manage, :all%>
+  <div>
+    Разместить на
+    <% TypeOfLinkedAccount.all.each do |account| %>
+      <li>
+      <% if current_user.linked_accounts.includes(:type_of_linked_account).where(type_of_linked_account: {name: account}) %>
+          <%= link_to account, repost_build_object_path(@build_object, provider: account) %>
+        <% else %>
+           <%= link_to account, new_linked_account_path%>
+        <% end %>
+      </li>
+    <% end %>
+  </div>
   
 </div>
 

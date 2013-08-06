@@ -1,5 +1,6 @@
 class BuildObjectsController < ApplicationController
   impressionist
+  #include Repost
   before_filter :authenticate_user!, except: [:index, :show]
   before_filter :views_limit, only: :show
   # GET /build_objects
@@ -121,6 +122,17 @@ class BuildObjectsController < ApplicationController
     @build_object.selled_at = params[:build_object][:selled_at]
     if @build_object.save!
       redirect_to @build_object, notice: "Объект продан!"
+    end
+  end
+
+  def repost
+    @build_object = BuildObject.find(params[:id])
+    @provider = TypeOfLinkedAccount.find params[:provider]
+    linked_account = current_user.linked_accounts.includes(:type_of_linked_account).where(type_of_linked_account: {name: @provider.name}).first
+    if request.post?
+      reposter = ReposterFactory.get_instansed @provider.name, @build_object, linked_account.login, linked_account.password
+      @output = reposter.repost!
+      #captcha = resposter.get_captcha()
     end
   end
   

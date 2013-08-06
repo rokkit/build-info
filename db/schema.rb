@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130719133402) do
+ActiveRecord::Schema.define(:version => 20130805073125) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "accountable_id"
@@ -411,6 +411,18 @@ ActiveRecord::Schema.define(:version => 20130719133402) do
   add_index "impressions", ["impressionable_type", "message", "impressionable_id"], :name => "impressionable_type_message_index"
   add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
 
+  create_table "linked_accounts", :force => true do |t|
+    t.integer  "type_of_linked_account_id", :null => false
+    t.integer  "user_id",                   :null => false
+    t.string   "login"
+    t.string   "password"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "linked_accounts", ["type_of_linked_account_id"], :name => "index_linked_accounts_on_type_of_linked_account_id"
+  add_index "linked_accounts", ["user_id"], :name => "index_linked_accounts_on_user_id"
+
   create_table "materials", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -623,6 +635,12 @@ ActiveRecord::Schema.define(:version => 20130719133402) do
 
   create_table "type_of_houses", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "type_of_linked_accounts", :force => true do |t|
+    t.string   "name",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

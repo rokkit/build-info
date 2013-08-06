@@ -25,6 +25,8 @@ module BuildInfo
     # config.autoload_paths += %W(#{config.root}/extras)
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '**/')] #recursively load all models
     config.autoload_paths += Dir[Rails.root.join('app', 'grids', '**/')]
+    config.autoload_paths += Dir[Rails.root.join('app', 'services', '**/')]
+    config.autoload_paths += Dir[Rails.root.join('app', 'services', '{**}')]
     config.autoload_paths += %W(#{config.root}/lib)
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.

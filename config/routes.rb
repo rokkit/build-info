@@ -31,6 +31,8 @@ BuildInfo::Application.routes.draw do
   resources :reviews do
     post "accept" => 'reviews#accept', on: :member
   end
+  
+  resources :linked_accounts
 
   scope :cabinet do
     match 'cabinet' => "cabinet#index", as: :cabinet_index 
@@ -54,6 +56,8 @@ BuildInfo::Application.routes.draw do
     get :invest_projects, on: :collection
     get :manage, on: :collection
     post :sold, on: :member
+    get :repost, on: :member
+    post :repost, on: :member
   end
   resources :news
   resources :appartements

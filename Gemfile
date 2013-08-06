@@ -79,6 +79,7 @@ gem 'twilio-ruby'
 gem 'sidekiq'
 gem "devise-async"
 gem 'nokogiri'
+gem 'mechanize'
 gem 'yaml_db'
 gem 'impressionist'
 gem 'activemerchant', :require => 'active_merchant'

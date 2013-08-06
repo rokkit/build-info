@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :build_objects
   has_one :account, as: :accountable
+  has_many :linked_accounts
   # attr_accessible :title, :body
   has_and_belongs_to_many :roles
   accepts_nested_attributes_for :roles, :account
@@ -42,7 +43,7 @@ class User < ActiveRecord::Base
   # end
   def approve!
     skip_confirmation!
-    confirmed_at = Time.zone.now
+    self.confirmed_at = Time.zone.now
     save!
   end
   
