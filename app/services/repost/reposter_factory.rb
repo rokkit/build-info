@@ -64,9 +64,9 @@ end
 
 
       #get captcha
-      captcha = page.at "#captcha_image"
-      captcha['src']
-      @agent.get(page.search("#captcha_image").first.attributes["src"]).save "public/images/captcha/captcha.jpg"
+      filename = (0...50).map{ ('a'..'z').to_a[rand(26)] }.join
+      @agent.get(page.search("#captcha_image").first.attributes["src"]).save "public/images/captcha/#{filename}.jpg"
+      [captcha: "/images/captcha/#{filename}.jpg"] 
    end
   end
 

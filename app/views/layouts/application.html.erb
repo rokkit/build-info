@@ -15,6 +15,7 @@
 
   	<title>Home.info <%= content_for?(:page_title) ? yield(:page_title) : "" %></title>
 
+    <%= javascript_include_tag "application" %>
   	<%= stylesheet_link_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
@@ -76,6 +77,5 @@
       	</div>
 
     
-    <%= javascript_include_tag "application" %>
   </body>
 </html>

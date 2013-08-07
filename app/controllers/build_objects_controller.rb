@@ -124,16 +124,34 @@ class BuildObjectsController < ApplicationController
       redirect_to @build_object, notice: "Объект продан!"
     end
   end
-
+  #виюшка размещения на площадке
   def repost
     @build_object = BuildObject.find(params[:id])
     @provider = TypeOfLinkedAccount.find params[:provider]
     linked_account = current_user.linked_accounts.includes(:type_of_linked_account).where(type_of_linked_account: {name: @provider.name}).first
-    if request.post?
       reposter = ReposterFactory.get_instansed @provider.name, @build_object, linked_account.login, linked_account.password
       @output = reposter.repost!
+      respond_to do |format|
+        format.html
+        format.json do
+          render json: [captcha: @output]
+        end
+      end
+  end
+  #Разместить на торговой площадке
+  #POST request
+  def do_repost
+    @build_object = BuildObject.find(params[:id])
+    @provider = TypeOfLinkedAccount.find params[:provider]
+    linked_account = current_user.linked_accounts.includes(:type_of_linked_account).where(type_of_linked_account: {name: @provider.name}).first
+      reposter = ReposterFactory.get_instansed @provider.name, @build_object, linked_account.login, linked_account.password
+      @output = reposter.repost!
+      respond_to do |format|
+        format.json do
+          render json: [result: @output]
+        end
+      end
       #captcha = resposter.get_captcha()
-    end
   end
   
 private

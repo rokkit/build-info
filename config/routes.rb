@@ -57,7 +57,8 @@ BuildInfo::Application.routes.draw do
     get :manage, on: :collection
     post :sold, on: :member
     get :repost, on: :member
-    post :repost, on: :member
+    get :do_repost, on: :member
+    post :do_repost, on: :member
   end
   resources :news
   resources :appartements
