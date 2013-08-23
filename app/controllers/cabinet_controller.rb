@@ -12,7 +12,7 @@ class CabinetController < ApplicationController
   end
   
   def lowbalance
-    @price = Variables.find_by_key(params[:action]).try(:value)
+    @price = 0#Variables.find_by_key(params[:action].to_s).try(:value)
   end
   
   def add_rating

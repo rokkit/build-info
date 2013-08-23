@@ -1,23 +1,63 @@
 <% if @node.sell.user == current_user %>
-    Объект продажи: <%= link_to @node.sell.name, @node.sell %> <br>
-    Меняю на: <%= @node.buy.try(:name) ? link_to(@node.buy.name, @node.buy) : "Свободно" %> 
-<% else %>
-    Объект продажи: <%= link_to(@node.buy.name, @node.buy) %> <br>
-    Меняю на: <%= link_to @node.sell.name, @node.sell %>
+    Я меняю: <%= link_to @node.sell.name, @node.sell %> <br>
+    на: 
+    <% if @node.status == 2 %>
+        <% link_to @node.relationships.first.try {|f| f.node_two.sell.name}, @node.relationships.first.try(:node_two) %>
+    <% end %>
 <% end %>
-<% if @node.buy.nil? %>
+<br>
+Статус: <%= @node.human_status %>
+<br>
+<h4>Условия</h4>
+Цена: <%= "#{number_to_currency @node.min_price} - #{number_to_currency @node.max_price}" %>
+Площадь: <%= "#{@node.min_area} - #{@node.max_area}" %>
+Жилая площадь: <%= "#{@node.min_living_area} - #{@node.max_living_area}" %>
+Кухонная пложащь:<%= "#{@node.min_kitchen_area} - #{@node.max_kitchen_area}" %>
+Количество комнат: <%= "#{@node.min_rooms} - #{@node.max_rooms}" %>
+
+Адреса:
+ <ul>
+ <% @node.addresses.each do |address| %>
+     <li><%= address %></li>
+ <% end %>
+ </ul>
+Комментарий: <%= simple_format @node.comment %>
+<% if @node.buy.nil? && @node.sell.user == current_user && @node.status != 2 %>
 <h4>Я предлагаю обменять на</h4>
 <ul>
-    <% @node.build_objects.each do |b| %>
+    <% @node.relationships.each do |b| %>
     <li>
-        <%= b.name %>
+        <%= b.node_two.sell.name %>
     </li>
     <% end %>
 </ul>
 <h4>Мне предлагают обменять на</h4>
+
+<ul>
+    <% Relationship.where(node_two_id: @node.id).each do |r| %>
+    <li>
+        <%= link_to r.node.sell.name, r.node %>
+        <%= link_to "Обменять", approve_node_path(@node, node: r.node), method: :post %>
+    </li>
+    <% end %>
+</ul>
 <br>
-Статус: <%= @node.human_status %>
-<h3>Подходящие варианты</h3>
+<h3>Подходящие объекты встречной продажи</h3>
+<ul>
+    <%= "Нет предложений" if @matched_nodes.empty? %>
+    <% @matched_nodes.each do |node| %>
+    <li>
+        <div><%= image_tag node.sell.photos.try { |p| p.first.image_url.to_s } %></div>
+        <p><%= node.sell.name %></p>
+        <%= link_to 'Подробнее', node %>
+        <%= link_to "Подать заявку на обмен", exchange_by_node_node_path(@node, node: node), method: :post %>
+    </li>
+    <% end %>
+    
+</ul>
+<h3>Подходящие объекты прямой продажи</h3>
+    <%= "Нет предложений" if @matched_build_objects.empty? %>
+
 <ul>
     <% @matched_build_objects.each do |mathed_build_object| %>
     <li>

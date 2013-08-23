@@ -36,7 +36,7 @@ class BuildObjectsDatatable
     end
 
     def fetch_products
-      build_objects = BuildObject.scoped.full 
+      build_objects = BuildObject.scoped.full.actual.select([:id,:price, :address_id, :description, :area, :living_area, :kitchen_area])  
       build_objects = build_objects.invest_projects if @type_selection == :invest_projects
       build_objects = build_objects.public_objects if @type_selection == :public_objects
       build_objects = build_objects.page(page).per(per_page)
@@ -46,11 +46,26 @@ class BuildObjectsDatatable
         build_objects = build_objects.filter_city params[:filter][:city_id] unless params[:filter][:city_id].blank?
         build_objects = build_objects.filter_distinct params[:filter][:distinct_id] unless params[:filter][:distinct_id].blank?
         build_objects = build_objects.filter_street params[:filter][:street_id] unless params[:filter][:street_id].blank?
-        build_objects = build_objects.filter_min_price params[:filter][:min_price] unless params[:filter][:min_price].blank?
-        build_objects = build_objects.filter_max_price params[:filter][:max_price] unless params[:filter][:max_price].blank?
-        build_objects = build_objects.filter_min_area params[:filter][:min_area] unless params[:filter][:min_area].blank?
-        build_objects = build_objects.filter_max_area params[:filter][:max_area] unless params[:filter][:max_area].blank?
-        build_objects = build_objects.filter_ipoteka params[:filter][:ipoteka] unless params[:filter][:ipoteka].blank?
+        
+        build_objects = build_objects.filter_number :price, :gt, params[:filter][:min_price] unless params[:filter][:min_price].blank?
+        build_objects = build_objects.filter_number :price, :lt, params[:filter][:max_price] unless params[:filter][:max_price].blank?
+        
+        build_objects = build_objects.filter_number :area, :gt, params[:filter][:min_area] unless params[:filter][:min_area].blank?
+        build_objects = build_objects.filter_number :area, :lt, params[:filter][:max_area] unless params[:filter][:max_area].blank?
+        
+        build_objects = build_objects.filter_boolean :ipoteka, params[:filter][:ipoteka] unless params[:filter][:ipoteka].blank?
+        
+        build_objects = build_objects.filter_number :planning_id, :eq, params[:filter][:planning_id] unless params[:filter][:planning_id].blank?
+        build_objects = build_objects.filter_number :remont_id, :eq, params[:filter][:remont_id] unless params[:filter][:remont_id].blank?
+        build_objects = build_objects.filter_number :hotwater_id, :eq, params[:filter][:hotwater_id] unless params[:filter][:hotwater_id].blank?
+        build_objects = build_objects.filter_number :view_from_windows_id, :eq, params[:filter][:view_from_windows_id] unless params[:filter][:view_from_windows_id].blank?
+        build_objects = build_objects.filter_number :material_id, :eq, params[:filter][:material_id] unless params[:filter][:material_id].blank?
+        build_objects = build_objects.filter_number :overlapl_id, :eq, params[:filter][:overlapl_id] unless params[:filter][:overlapl_id].blank?
+        build_objects = build_objects.filter_number :stair_id, :eq, params[:filter][:stair_id] unless params[:filter][:stair_id].blank?
+        build_objects = build_objects.filter_number :basement_id, :eq, params[:filter][:basement_id] unless params[:filter][:basement_id].blank?
+        
+        
+        
       end
       products = build_objects.order("#{sort_column} #{sort_direction}")
       # Product.order("#{sort_column} #{sort_direction}")

@@ -1,0 +1,22 @@
+<h1>Размещение объекта на <%= @provider %></h1>
+<h2>Объект <%= link_to @build_object.address, @build_object %></h2>
+<img src="" id="captcha-img" alt="" />
+<%= form_tag repost_build_object_path(@build_object) do %>
+  <%= hidden_field_tag :provider, @provider.id %>
+  <%= submit_tag "Разместить" %>
+<% end %>
+<div id="repost-container">
+  <%= pp @output.inspect if @output %> 
+  <%#  raw @output.html_safe if @output %> 
+</div>
+ 
+<%= javascript_tag do %>
+  $(function(){ //first stage and getting captcha
+  $.getJSON('<%= j do_repost_build_object_path(@build_object, format: :json) %>', {provider: <%=  @provider.id %>}, function(data) {
+      console.log(data[0]['result']);
+      d = data[0]['result']
+      console.log(d[0]['captcha'])
+      $("#captcha-img").attr("src", d[0]['captcha'])
+    });
+  });
+<% end %>

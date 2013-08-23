@@ -37,14 +37,16 @@ class Ability
         can :invest, :all
       end
       can :request_review, BuildObject do |build_object| #запрос на просмотр, пользовател не должен запрашивать у своих объектов
-        build_object.user != user && !user.id.nil? 
+        build_object.user != user
+        false
       end
       
       can [:update, :destroy], Node do |node|
         node.sell.try(:user) == user
       end
-      can [:read], Node do |node|
-        node.sell.try(:user) == user || node.buy.try(:user) == user
+      
+      can [:read,:exchange_by_node], Node do |node|
+        node.sell.try(:user) == user || node.build_objects.any? { |b| b.user == user }
       end
       
       can [:approve], Node do |node|

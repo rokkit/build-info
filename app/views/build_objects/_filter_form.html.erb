@@ -19,7 +19,7 @@
   </div>
 
   <div class="address row">
-    <%= render partial: 'location_filter' %>
+      <%= render partial: 'location_filter' %>
   </div>
 
   <div class="details row">
@@ -32,6 +32,52 @@
         <%= collection_select :filter, :type_of_build_object,TypeOfBuildObject.all, :id, :name %>
     </div>
   </div>
-
+  <div class="details row" id="advanced-filter">
+    <div class="large-7 columns">
+        <!-- appartement filters -->
+        <div class="row">
+            <div class="large-6 columns large-uncentered filter">
+                <%= label_tag :planning_id, "Планировка" %>
+                <%= collection_select :filter, :planning_id, Planning.all, :id, :name,include_blank: true %>
+            </div>
+            <div class="large-6 columns large-uncentered filter">
+                <%= label_tag :remont_id, "Ремонт" %>
+                <%= collection_select :filter, :remont_id, Remont.all, :id, :name, include_blank: true %>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="large-6 columns large-uncentered filter">
+                <%= label_tag :hotwater_id, "Горячая вода" %>
+                <%= collection_select :filter, :hotwater_id, Hotwater.all, :id, :name,include_blank: true %>
+            </div>
+            <div class="large-6 columns large-uncentered filter">
+                <%= label_tag :view_from_windows_id, "Вид из окон" %>
+                <%= collection_select :filter, :view_from_windows_id, ViewFromWindows.all, :id, :name, include_blank: true %>
+            </div> 
+        </div>
+        <!-- end appartement filters -->
+        <div class="row">
+            <div class="large-6 columns large-uncentered filter">
+                <%= label_tag :material_id, "Материал дома" %>
+                <%= collection_select :filter, :material_id, Material.all, :id, :name, include_blank: true %>
+            </div>
+            <div class="large-6 columns large-uncentered filter">
+                <%= label_tag :overlap_id, "Перекрытия" %>
+                <%= collection_select :filter, :overlapl_id, Overlap.all, :id, :name, include_blank: true %>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="large-6 columns large-uncentered filter">
+                <%= label_tag :stair_id, "Лестница" %>
+                <%= collection_select :filter, :stair_id, Stair.all, :id, :name, include_blank: true %>
+            </div>
+            <div class="large-6 columns large-uncentered filter">
+                <%= label_tag :basement_id, "Подвал" %>
+                <%= collection_select :filter, :basement_id, Basement.all, :id, :name, include_blank: true %>
+            </div> 
+        </div>
+    </div>
+  </div>
   <%= submit_tag I18n.t("datgrid.form.submit", :default => "Подобрать").html_safe, :class => "submit-form btn" %>
+  <a id="show-advanced-filter" class="show-filter">Расширеный поиск</a>
 <% end -%>

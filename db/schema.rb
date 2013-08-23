@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130710080101) do
+ActiveRecord::Schema.define(:version => 20130805073125) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "accountable_id"
@@ -411,6 +411,18 @@ ActiveRecord::Schema.define(:version => 20130710080101) do
   add_index "impressions", ["impressionable_type", "message", "impressionable_id"], :name => "impressionable_type_message_index"
   add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
 
+  create_table "linked_accounts", :force => true do |t|
+    t.integer  "type_of_linked_account_id", :null => false
+    t.integer  "user_id",                   :null => false
+    t.string   "login"
+    t.string   "password"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "linked_accounts", ["type_of_linked_account_id"], :name => "index_linked_accounts_on_type_of_linked_account_id"
+  add_index "linked_accounts", ["user_id"], :name => "index_linked_accounts_on_user_id"
+
   create_table "materials", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -434,7 +446,7 @@ ActiveRecord::Schema.define(:version => 20130710080101) do
   add_index "news", ["user_id"], :name => "index_news_on_user_id"
 
   create_table "nodes", :force => true do |t|
-    t.integer  "sell_id",          :null => false
+    t.integer  "sell_id",                         :null => false
     t.integer  "buy_id"
     t.decimal  "max_price"
     t.decimal  "min_price"
@@ -446,10 +458,11 @@ ActiveRecord::Schema.define(:version => 20130710080101) do
     t.float    "min_kitchen_area"
     t.integer  "min_rooms"
     t.integer  "max_rooms"
-    t.integer  "status"
+    t.integer  "status",           :default => 0, :null => false
     t.text     "comment"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.integer  "node_id"
   end
 
   add_index "nodes", ["buy_id"], :name => "index_nodes_on_buy_id"
@@ -507,6 +520,15 @@ ActiveRecord::Schema.define(:version => 20130710080101) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "rake_tasks", :force => true do |t|
+    t.string   "name"
+    t.string   "task"
+    t.text     "shedule"
+    t.boolean  "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "reasons", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -536,6 +558,13 @@ ActiveRecord::Schema.define(:version => 20130710080101) do
   end
 
   add_index "regions", ["country_id"], :name => "index_regions_on_country_id"
+
+  create_table "relationships", :force => true do |t|
+    t.integer  "node_id"
+    t.integer  "node_two_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "remonts", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -606,6 +635,12 @@ ActiveRecord::Schema.define(:version => 20130710080101) do
 
   create_table "type_of_houses", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "type_of_linked_accounts", :force => true do |t|
+    t.string   "name",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

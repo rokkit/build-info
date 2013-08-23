@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :remember_me, :rating, :fio, :phone,:name,
-                  :role_ids, :forem_admin, :user_type, :photo, :agency_id, :account, :account_attributes, :accountable
+                  :role_ids, :forem_admin, :user_type, :photo, :agency_id, :account, :account_attributes, :accountable, :build_objects
   attr_accessor :user_type
   
   belongs_to :type_user
@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :build_objects
   has_one :account, as: :accountable
+  has_many :linked_accounts
   # attr_accessible :title, :body
   has_and_belongs_to_many :roles
   accepts_nested_attributes_for :roles, :account
@@ -42,7 +43,7 @@ class User < ActiveRecord::Base
   # end
   def approve!
     skip_confirmation!
-    confirmed_at = Time.zone.now
+    self.confirmed_at = Time.zone.now
     save!
   end
   

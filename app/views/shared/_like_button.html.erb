@@ -1,5 +1,5 @@
 <span id="action">
-<% if current_user.voted_up_on?(product) %>
+<% if current_user && current_user.voted_up_on?(product) %>
   <%= form_for Vote.new, :html => { :method => :delete },
                      :remote => true do |f| %>
      <%= f.submit "Мне понравилось", id: "like-button" %>

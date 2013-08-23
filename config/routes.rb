@@ -20,6 +20,7 @@ BuildInfo::Application.routes.draw do
   
   resources :nodes do
     post :exchange, on: :member
+    post :exchange_by_node, on: :member
     post :approve, on: :member
   end
 
@@ -30,6 +31,8 @@ BuildInfo::Application.routes.draw do
   resources :reviews do
     post "accept" => 'reviews#accept', on: :member
   end
+  
+  resources :linked_accounts
 
   scope :cabinet do
     match 'cabinet' => "cabinet#index", as: :cabinet_index 
@@ -53,6 +56,9 @@ BuildInfo::Application.routes.draw do
     get :invest_projects, on: :collection
     get :manage, on: :collection
     post :sold, on: :member
+    get :repost, on: :member
+    get :do_repost, on: :member
+    post :do_repost, on: :member
   end
   resources :news
   resources :appartements
@@ -82,7 +88,8 @@ BuildInfo::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   
-  devise_for :users, :controllers => {:registrations => "registrations"} do
+  devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_scope :user do
     get 'users/activating' => 'registrations#activating'
   end
     resources :users

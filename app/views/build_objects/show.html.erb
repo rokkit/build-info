@@ -2,7 +2,8 @@
 <% content_for :top_block do %>
 <div class="row">
     <div class="large-7 columns">
-        <h4>Адрес: <%= @build_object.address %></h4>
+        <h4>Адрес: <%= @build_object.address %> <%= link_to "Печать",url_for(:controller=>:build_objects, :action=>:show, :format=>:pdf, :id => @build_object.id) , format: :pdf %></h4>
+        <%= %>
     </div>
     <div class="large-4 columns">
         <% if @build_object.selled_at.blank? %>
@@ -265,11 +266,11 @@
   <dt class="entypo-key">Записаться на просмотр</dt>
   <dd>Пн. 21.01.13 18:00 - 18:30</dd>
   <dd>Вт. 22.01.13 18:00 - 19:00</dd>
-  <dd><%= link_to "Записаться", new_review_path(build_object:@build_object) if can? :request_review, @build_object %></dd>
+  <dd><%= link_to "Записаться", new_review_path(build_object:@build_object) if @build_object.user != current_user %></dd>
   <dd>Количество просмотров: <%= @build_object.impressionist_count filter: :ip_address %></dd>
     <dd>Рейтинг: <%= @build_object.rating %></dd>
   <dd>
-    <div id="like" class="<%= current_user.voted_up_on?(@build_object) ? 'voted entypo-heart' : 'vote entypo-heart-empty'  %>">
+    <div id="like" class="<%= current_user && current_user.voted_up_on?(@build_object) ? 'voted entypo-heart' : 'vote entypo-heart-empty'  %>">
       <%= render :partial => 'shared/like_button',locals: {product: @build_object} %>
       <span class="likes" id="likes_count"><%= @build_object.votes.size %></span>
     </div>
@@ -286,12 +287,24 @@
   <%= link_to 'Редактировать', edit_build_object_path(@build_object), :class => "edit"%>
   <% end %>
   <%= link_to 'Администрирование', edit_admin_build_object_path(@build_object), :class => "edit" if can? :manage, :all%>
+  <div>
+    Разместить на
+    <% TypeOfLinkedAccount.all.each do |account| %>
+      <li>
+      <% if current_user.linked_accounts.includes(:type_of_linked_account).where(type_of_linked_account: {name: account}) %>
+          <%= link_to account, repost_build_object_path(@build_object, provider: account) %>
+        <% else %>
+           <%= link_to account, new_linked_account_path%>
+        <% end %>
+      </li>
+    <% end %>
+  </div>
   
 </div>
 
 <div id="sold" title="Объект продан" class="reveal-modal medium">
      <%= form_tag sold_build_object_path do %>
-         <%= label_tag  :sold_date, "Дата продажи" %>
+         <%= label_tag :sold_date, "Дата продажи" %>
          <%= datepicker_input :build_object, :selled_at, value: DateTime.now.to_s %>
          <%= submit_tag "Готово" %>
      <% end %>

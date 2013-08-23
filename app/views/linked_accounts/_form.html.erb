@@ -1,0 +1,13 @@
+<%= simple_form_for(@linked_account) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :type_of_linked_account  %>
+    <%= f.input :login %>
+    <%= f.input :password %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Привязать" %>
+  </div>
+<% end %>

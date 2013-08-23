@@ -1,5 +1,6 @@
 class NodesController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:create, :new]
+  rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
   # GET /nodes
   # GET /nodes.json
   def index
@@ -15,8 +16,11 @@ class NodesController < ApplicationController
   # GET /nodes/1.json
   def show
     @node = Node.find(params[:id])
-    @matched_build_objects = BuildObject.actual.where("user_id != ?", current_user)
-    @matched_build_objects.filter_min_price(@node.min_price).filter_max_price(@node.max_price)
+    unless @node.status == '2'
+      @matched_build_objects = BuildObject.actual.where("user_id != ?", current_user)
+      @matched_nodes = Node.includes{ [sell] }.where { (sell.user_id != my {current_user}) & ( status != 2 ) }.matched_by_node @node #("build_objects.user_id != ? AND status != 2", current_user).matched_by_node @node
+      @matched_build_objects = BuildObject.match(@node)
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @node }
@@ -46,7 +50,7 @@ class NodesController < ApplicationController
 
     respond_to do |format|
       if @node.save!
-        format.html { redirect_to @node, notice: 'Node was successfully created.' }
+        format.html { redirect_to @node, notice: 'Встречная продажа создана' }
         format.json { render json: @node, status: :created, location: @node }
       else
         format.html { render action: "new" }
@@ -62,7 +66,7 @@ class NodesController < ApplicationController
 
     respond_to do |format|
       if @node.update_attributes(params[:node])
-        format.html { redirect_to @node, notice: 'Node was successfully updated.' }
+        format.html { redirect_to @node, notice: 'Встречная продажа обновлена' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -92,12 +96,31 @@ class NodesController < ApplicationController
       render action: :new
     end
   end
+  
+  def exchange_by_node
+    @node = Node.find(params[:id])
+    @conragent_node = Node.find(params[:node])
+    if @node.status != 2 && @conragent_node.status != 2
+      @node.request_for_exchange_by_node @conragent_node
+      if @node.save
+        redirect_to @node, notice: "Предложение обмена подано"
+      else
+        render action: :new
+      end
+    end
+  end
+  
   def approve
     @node = Node.find params[:id]
-    @build_object = BuildObject.find(params[:build_object])
-    @node.accept_request_for_exchange! @build_object
+    @contragent_node = Node.find params[:node]
+    @node.accept_request_for_exchange_by_node! @contragent_node
     if @node.save!
       redirect_to @node, notice: "Обмен совершён"
     end
+  end
+  private
+  def record_not_found
+    flash[:notice] = "Запись не найдена"
+    redirect_to :action => 'index', controller: :cabinet
   end
 end

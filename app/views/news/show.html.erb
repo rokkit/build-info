@@ -1,18 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
   <%= @news.name %>
 </p>
 
-<p>
-  <b>User:</b>
-  <%= @news.user %>
-</p>
 
 <p>
-  <b>Content:</b>
-  <%= @news.content %>
+  <%= simple_format @news.content %>
 </p>
 
 <% if can? :update, @news %>

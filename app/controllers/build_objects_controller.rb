@@ -1,5 +1,6 @@
 class BuildObjectsController < ApplicationController
   impressionist
+  #include Repost
   before_filter :authenticate_user!, except: [:index, :show]
   before_filter :views_limit, only: :show
   # GET /build_objects
@@ -21,21 +22,27 @@ class BuildObjectsController < ApplicationController
   
   def manage
     @build_objects = current_user.build_objects
-    @nodes = Node.joins(:sell).where(build_objects: {user_id: current_user})
-    @incoming_request_for_exhange = BuildObject.actual.includes(:nodes).where("user_id = ? AND nodes.id IS NOT NULL",current_user)
+    #@nodes = Node.joins(:sell).where(build_objects: { user_id: current_user })
+    @nodes = Node.joins(:sell).where(sell: { user_id: current_user })
+    @incoming_request_for_exhange = BuildObject.select([:id,:name]).actual.includes(:nodes).includes(:address).where("user_id = ? AND nodes.id IS NOT NULL AND nodes.status != 2",current_user)
   end
 
   # GET /build_objects/1
   # GET /build_objects/1.json
   def show
     @build_object = BuildObject.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @build_object }
       format.pdf do
          report = BuildObjectReport.new(@build_object, view_context).to_pdf
-         send_data report, filename: "#{@build_object.name}_#{report}.pdf", type: "application/pdf", disposition: "inline" 
+         response.headers['Content-Disposition'] = "attachment;filename=\"#{@build_object.id}_#{report}.pdf\""
+        response.headers['Content-Description'] = 'File Transfer'
+        response.headers['Content-Transfer-Encoding'] = 'binary'
+        response.headers['Expires'] = '0'
+        response.headers['Pragma'] = 'public'
+         response.headers["Content-Type"]='application/pdf'
+         send_data report, disposition: "inline", type: "application/pdf"#, filename: "#{@build_object.id}_#{report}.pdf", , 
       end
     end
   end
@@ -114,8 +121,37 @@ class BuildObjectsController < ApplicationController
     @build_object = BuildObject.find(params[:id])
     @build_object.selled_at = params[:build_object][:selled_at]
     if @build_object.save!
-      redirect_to @build_object, notice: "Объект отмечен как проданный"
+      redirect_to @build_object, notice: "Объект продан!"
     end
+  end
+  #виюшка размещения на площадке
+  def repost
+    @build_object = BuildObject.find(params[:id])
+    @provider = TypeOfLinkedAccount.find params[:provider]
+    linked_account = current_user.linked_accounts.includes(:type_of_linked_account).where(type_of_linked_account: {name: @provider.name}).first
+      reposter = ReposterFactory.get_instansed @provider.name, @build_object, linked_account.login, linked_account.password
+      @output = reposter.repost!
+      respond_to do |format|
+        format.html
+        format.json do
+          render json: [captcha: @output]
+        end
+      end
+  end
+  #Разместить на торговой площадке
+  #POST request
+  def do_repost
+    @build_object = BuildObject.find(params[:id])
+    @provider = TypeOfLinkedAccount.find params[:provider]
+    linked_account = current_user.linked_accounts.includes(:type_of_linked_account).where(type_of_linked_account: {name: @provider.name}).first
+      reposter = ReposterFactory.get_instansed @provider.name, @build_object, linked_account.login, linked_account.password
+      @output = reposter.repost!
+      respond_to do |format|
+        format.json do
+          render json: [result: @output]
+        end
+      end
+      #captcha = resposter.get_captcha()
   end
   
 private
@@ -128,7 +164,7 @@ private
     elsif request.remote_ip
       count = Impression.where(ip_address: request.remote_ip).size
     end
-    if count > Variables.find_by_key("max_views_limit_user_low_rating").value.to_i
+    if count > Variables.where(key: "max_views_limit_user_low_rating").first_or_create.value.to_i
       flash[:notice] =  %Q[Закончился лимит бесплатных просмотров. Пожалуйста, увеличьте Ваш рейтинг  <a href=#{new_payment_path}>Пополнить</a>].html_safe
       redirect_to action: "index" 
     end

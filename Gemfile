@@ -35,6 +35,24 @@ group :production do
   gem 'mysql2'
 end
 
+group :develompent,:test do
+  gem 'rspec-rails', '~> 2.0'
+  gem "mocha", :require => false
+  #gem 'spork', '~> 1.0rc'
+  #gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  #gem 'guard-bundler'
+  #gem 'guard-rspec'
+  #gem 'guard-spork'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails', '~> 4.2.0'
+  gem 'shoulda'
+  gem 'faker'
+end
+
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery_datepicker'
@@ -50,6 +68,7 @@ gem 'russian'
 gem "rmagick"
 gem "geocoder"
 gem 'arel'
+gem "squeel"
 gem 'forem', :git => "git://github.com/radar/forem.git"
 gem 'forem-theme-twist', :git => "git://github.com/radar/forem-theme-twist.git"
 gem 'kaminari'
@@ -60,12 +79,16 @@ gem 'twilio-ruby'
 gem 'sidekiq'
 gem "devise-async"
 gem 'nokogiri'
+gem 'mechanize'
 gem 'yaml_db'
 gem 'impressionist'
 gem 'activemerchant', :require => 'active_merchant'
 gem 'rails-gallery'
 gem 'acts_as_votable'
 gem 'whenever'
+gem 'rack-mini-profiler', "~> 0.1.27"
+gem 'ice_cube'
+gem 'prawn-print', :git => 'git://github.com/barsoom/prawn-print.git'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

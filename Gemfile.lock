@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/barsoom/prawn-print.git
+  revision: 64696b4ecc2ff966046207012169d8df36794d8b
+  specs:
+    prawn-print (0.0.2)
+      prawn (>= 0.12.0)
+
+GIT
   remote: git://github.com/radar/forem-theme-twist.git
   revision: f08ab243ee695bd5485d589c1177d99d00602150
   specs:
@@ -97,6 +104,12 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
+    capybara (2.1.0)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -118,6 +131,7 @@ GEM
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
     connection_pool (1.1.0)
+    database_cleaner (1.0.1)
     decorators (1.0.3)
       railties (>= 3.0.19, != 3.2.9, != 3.2.8, != 3.2.7, != 3.2.6, != 3.2.5, != 3.2.4, != 3.2.3, != 3.2.2, != 3.2.10, != 3.2.1, != 3.2.0, != 3.1.9, != 3.1.8, != 3.1.7, != 3.1.6, != 3.1.5, != 3.1.4, != 3.1.3, != 3.1.2, != 3.1.1, != 3.1.0)
     devise (2.2.4)
@@ -127,9 +141,19 @@ GEM
       warden (~> 1.2.1)
     devise-async (0.7.0)
       devise (>= 2.2)
+    diff-lcs (1.2.4)
+    domain_name (0.5.12)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.2.1)
+      factory_girl (~> 4.2.0)
+      railties (>= 3.0.0)
+    faker (1.1.2)
+      i18n (~> 0.5)
     fastercsv (1.5.5)
     formtastic (2.2.1)
       actionpack (>= 3.0)
@@ -143,8 +167,11 @@ GEM
     hashie (2.0.5)
     highline (1.6.19)
     hike (1.2.3)
+    http-cookie (1.0.1)
+      domain_name (~> 0.5)
     httpclient (2.3.3)
     i18n (0.6.1)
+    ice_cube (0.11.0)
     impressionist (1.3.1)
       httpclient (~> 2.2)
       nokogiri (~> 1.5)
@@ -178,19 +205,33 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mechanize (2.7.1)
+      domain_name (~> 0.5, >= 0.5.1)
+      http-cookie (~> 1.0.0)
+      mime-types (~> 1.17, >= 1.17.2)
+      net-http-digest_auth (~> 1.1, >= 1.1.1)
+      net-http-persistent (~> 2.5, >= 2.5.2)
+      nokogiri (~> 1.4)
+      ntlm-http (~> 0.1, >= 0.1.1)
+      webrobots (>= 0.0.9, < 0.2)
     meta_search (1.1.3)
       actionpack (~> 3.1)
       activerecord (~> 3.1)
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
+    metaclass (0.0.1)
     method_source (0.8.1)
     mime-types (1.23)
     mini_portile (0.5.0)
+    mocha (0.14.0)
+      metaclass (~> 0.0.1)
     money (5.1.1)
       i18n (~> 0.6.0)
     multi_json (1.7.7)
     mysql2 (0.3.11)
     nested_form (0.3.2)
+    net-http-digest_auth (1.4)
+    net-http-persistent (2.9)
     net-scp (1.1.1)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
@@ -200,6 +241,7 @@ GEM
       net-ssh (>= 2.6.5)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
+    ntlm-http (0.1.1)
     orm_adapter (0.4.0)
     pdf-reader (1.3.3)
       Ascii85 (~> 1.0.0)
@@ -217,6 +259,8 @@ GEM
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-mini-profiler (0.1.27)
+      rack (>= 1.1.3)
     rack-ssl (1.3.3)
       rack
     rack-test (0.6.2)
@@ -257,6 +301,17 @@ GEM
       nokogiri
       rubyzip
       spreadsheet (> 0.6.4)
+    rspec-core (2.14.3)
+    rspec-expectations (2.14.0)
+      diff-lcs (>= 1.1.3, < 2.0)
+    rspec-mocks (2.14.1)
+    rspec-rails (2.14.0)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 2.14.0)
+      rspec-expectations (~> 2.14.0)
+      rspec-mocks (~> 2.14.0)
     ruby-ole (1.2.11.7)
     ruby-rc4 (0.1.5)
     rubyzip (0.9.9)
@@ -268,6 +323,12 @@ GEM
       sass (>= 3.1.10)
       tilt (~> 1.3)
     sassy-buttons (0.2)
+    shoulda (3.5.0)
+      shoulda-context (~> 1.0, >= 1.0.1)
+      shoulda-matchers (>= 1.4.1, < 3.0)
+    shoulda-context (1.1.4)
+    shoulda-matchers (2.2.0)
+      activesupport (>= 3.0.0)
     sidekiq (2.12.4)
       celluloid (>= 0.14.1)
       connection_pool (>= 1.0.0)
@@ -287,6 +348,10 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.7)
+    squeel (1.0.18)
+      activerecord (~> 3.0)
+      activesupport (~> 3.0)
+      polyamorous (~> 0.5.0)
     susy (1.0.9)
       compass (>= 0.12.2)
       sass (>= 3.2.0)
@@ -308,12 +373,18 @@ GEM
     uglifier (2.1.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    unf (0.1.1)
+      unf_ext
+    unf_ext (0.0.6)
     warden (1.2.1)
       rack (>= 1.0)
+    webrobots (0.1.1)
     whenever (0.8.2)
       activesupport (>= 2.3.4)
       chronic (>= 0.6.3)
     workflow (0.8.0)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
     ya2yaml (0.31)
     yaml_db (0.2.3)
     zeus (0.13.3)
@@ -331,16 +402,21 @@ DEPENDENCIES
   arel
   cancan
   capistrano
+  capybara
   carrierwave
   coffee-rails (~> 3.2.1)
   compass
   compass-rails
+  database_cleaner
   devise
   devise-async
+  factory_girl_rails (~> 4.2.0)
+  faker
   forem!
   forem-theme-twist!
   geocoder
   has_scope
+  ice_cube
   impressionist
   jquery-datatables-rails!
   jquery-fileupload-rails
@@ -348,23 +424,30 @@ DEPENDENCIES
   jquery-ui-rails
   jquery_datepicker
   kaminari
+  mechanize
+  mocha
   mysql2
   nested_form
   nokogiri
   pg
   prawn
+  prawn-print!
+  rack-mini-profiler (~> 0.1.27)
   rails (= 3.2.13)
   rails-gallery
   rails3-jquery-autocomplete
   rmagick
   roo
+  rspec-rails (~> 2.0)
   russian
   sass-rails (~> 3.2.3)
   sassy-buttons
+  shoulda
   sidekiq
   simple-navigation
   simple_form
   sqlite3
+  squeel
   susy
   therubyracer
   twilio-ruby
