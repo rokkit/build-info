@@ -36,6 +36,6 @@ class RobokassaController < ApplicationController
   end
 
   def find_payment
-    @payment = Payment.find(@notification.item_id)
+    @payment = Payment.find(params[:InvId])
   end
 end
