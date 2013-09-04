@@ -20,11 +20,12 @@ class RobokassaController < ApplicationController
   # Robokassa redirect user to this action if it’s all ok
   def success
     notification = Robokassa.notification request.raw_post, :secret => APP['robokassa']["secret"]
+    
     if !@payment.approved? && notification.acknowledge
       @payment.approve!
-      redirect_to @payment, :notice => "Robokassa success"
+      redirect_to @payment, :notice => "#{request.raw_post}"
     end
-      redirect_to @payment, :notice => "Local payment fails"
+      redirect_to @payment, :notice => "#{request.raw_post}"
   end
   # Robokassa redirect user to this action if it’s not
   def fail
