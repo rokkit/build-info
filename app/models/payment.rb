@@ -9,6 +9,10 @@ class Payment < ActiveRecord::Base
     self.status = true
     save!
   end 
+
+  def approved?
+    self.status
+  end
 private
   def record_transaction
     if self.status # если пополнеие успешно то записать транзакцию
