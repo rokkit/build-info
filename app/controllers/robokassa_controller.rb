@@ -9,7 +9,7 @@ class RobokassaController < ApplicationController
   # Robokassa call this action after transaction
   def paid
     if @notification.acknowledge # check if it’s genuine Robokassa request
-      @payment.approve! # project-specific code
+      #@payment.approve! # project-specific code
       render :text => @notification.success_response
     else
       head :bad_request
@@ -22,17 +22,17 @@ class RobokassaController < ApplicationController
       @payment.approve!
     end
 
-    redirect_to @payment, :notice => I18n.t("notice.robokassa.success")
+    redirect_to @payment, :notice => "Robokassa success"
   end
   # Robokassa redirect user to this action if it’s not
   def fail
-    redirect_to @payment, :notice => I18n.t("notice.robokassa.fail")
+    redirect_to @payment, :notice => "Robokassa fail"
   end
 
   private
 
   def create_notification
-    @notification = Robokassa::Notification.new(request.raw_post, :secret => AppConfig.robokassa_secret)
+    @notification = Robokassa::Notification.new(request.raw_post, :secret => APP[:robokassa][:secret])
   end
 
   def find_payment

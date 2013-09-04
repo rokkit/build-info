@@ -5,7 +5,10 @@ class Payment < ActiveRecord::Base
   attr_accessible :amount, :comment, :payable_id, :payable_type, :reason_id, :status
   
   after_update :record_transaction
-  
+  def approve!
+    self.status = true
+    save!
+  end 
 private
   def record_transaction
     if self.status # если пополнеие успешно то записать транзакцию

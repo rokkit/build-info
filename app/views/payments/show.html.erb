@@ -14,3 +14,9 @@
   <b>Статус:</b>
   <%= @payment.status ? "Зачислен" : "Обрабатывается" %>
 </p>
+<%= payment_service_for @payment.id, APP['robokassa']['login'],
+                        :amount =>  @payment.amount,
+                        :service => :robokassa,
+                        :secret => APP['robokassa']['secret'] do |s| %>
+  <%= submit_tag "Submit" %>
+<% end %>

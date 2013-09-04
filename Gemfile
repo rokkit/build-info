@@ -29,6 +29,7 @@ group :development do
   gem 'sqlite3'
   gem "capistrano"
   gem 'zeus'
+  gem 'thin'
 end
 group :production do
   gem 'pg'
