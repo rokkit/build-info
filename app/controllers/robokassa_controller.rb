@@ -18,7 +18,7 @@ class RobokassaController < ApplicationController
 
   # Robokassa redirect user to this action if it’s all ok
   def success
-    if @notification.acknowledge
+    if !@payment.approved? && @notification.acknowledge
       @payment.approve!
       redirect_to @payment, :notice => "Robokassa success"
     end
@@ -32,7 +32,7 @@ class RobokassaController < ApplicationController
   private
 
   def create_notification
-    @notification = Robokassa::Notification.new(request.raw_post, :secret => APP['robokassa']['secret'])
+    @notification = Robokassa::Notification.new(request.raw_post, :secret => APP['robokassa']['secret_2'])
   end
 
   def find_payment

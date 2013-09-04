@@ -6,6 +6,7 @@ development:
     robokassa:
       login: "homeinfo"
       secret: "W)e4'x583o"
+      secret_2: "JHbH2JK42bB232b2j"
 test:
     twilio:
       from: '+12692056408'
@@ -14,6 +15,7 @@ test:
     robokassa:
       login: "homeinfo"
       secret: "W)e4'x583o"
+      secret_2: "JHbH2JK42bB232b2j"
 production:
     twilio:
       from: '+12692056408'
@@ -22,3 +24,5 @@ production:
     robokassa:
       login: "homeinfo"
       secret: "W)e4'x583o"
+      secret_2: "JHbH2JK42bB232b2j"
+
