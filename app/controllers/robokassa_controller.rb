@@ -23,9 +23,8 @@ class RobokassaController < ApplicationController
     
     if !@payment.approved? && notification.acknowledge
       @payment.approve!
-      redirect_to @payment, :notice => "#{request.raw_post}"
     end
-      redirect_to @payment, :notice => "#{request.raw_post}"
+      redirect_to @payment, :notice => "Оплата успешна"
   end
   # Robokassa redirect user to this action if it’s not
   def fail
