@@ -18,5 +18,10 @@
                         :amount =>  @payment.amount,
                         :service => :robokassa,
                         :secret => APP['robokassa']['secret'] do |s| %>
-  <%= submit_tag "Submit" %>
+  <div class="formM shadows lifted">
+		<div>
+      <%= submit_tag "Submit" %>
+			<img src="https://auth.robokassa.ru/Merchant/PaymentForm/Images/logo-l.png">
+		</div>
+	</div>
 <% end %>
