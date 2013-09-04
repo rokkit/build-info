@@ -8,7 +8,7 @@ class RobokassaController < ApplicationController
 
   # Robokassa call this action after transaction
   def paid
-    notification = Robokassa.notification request.raw_post, :secret => APP['robokassa']["secret"]
+    notification = Robokassa.notification request.raw_post, :secret => APP['robokassa']["secret_2"]
     if notification.acknowledge # check if it’s genuine Robokassa request
       #@payment.approve! # project-specific code
       render :text => notification.success_response
@@ -19,7 +19,7 @@ class RobokassaController < ApplicationController
 
   # Robokassa redirect user to this action if it’s all ok
   def success
-    notification = Robokassa.notification request.raw_post, :secret => APP['robokassa']["secret_2"]
+    notification = Robokassa.notification request.raw_post, :secret => APP['robokassa']["secret"]
     if !@payment.approved? && notification.acknowledge
       @payment.approve!
       redirect_to @payment, :notice => "Robokassa success"
