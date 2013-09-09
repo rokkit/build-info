@@ -14,3 +14,14 @@
   <b>Статус:</b>
   <%= @payment.status ? "Зачислен" : "Обрабатывается" %>
 </p>
+<%= payment_service_for @payment.id, APP['robokassa']['login'],
+                        :amount =>  @payment.amount,
+                        :service => :robokassa,
+                        :secret => APP['robokassa']['secret'] do |s| %>
+  <div class="formM shadows lifted">
+		<div>
+      <%= submit_tag "Оплатить" %>
+			<img src="https://auth.robokassa.ru/Merchant/PaymentForm/Images/logo-l.png">
+		</div>
+	</div>
+<% end %>

@@ -1,16 +1,17 @@
 class RobokassaController < ApplicationController
   include ActiveMerchant::Billing::Integrations
 
-  skip_before_filter :verify_authenticity_token # skip before filter if you chosen POST request for callbacks
+  #skip_before_filter :verify_authenticity_token # skip before filter if you chosen POST request for callbacks
 
-  before_filter :create_notification
+  #before_filter :create_notification
   before_filter :find_payment
 
   # Robokassa call this action after transaction
   def paid
-    if @notification.acknowledge # check if it’s genuine Robokassa request
-      @payment.approve! # project-specific code
-      render :text => @notification.success_response
+    notification = Robokassa.notification request.raw_post, :secret => APP['robokassa']["secret_2"]
+    if notification.acknowledge # check if it’s genuine Robokassa request
+      #@payment.approve! # project-specific code
+      render :text => notification.success_response
     else
       head :bad_request
     end
@@ -18,24 +19,25 @@ class RobokassaController < ApplicationController
 
   # Robokassa redirect user to this action if it’s all ok
   def success
-    if !@payment.approved? && @notification.acknowledge
+    notification = Robokassa.notification request.raw_post, :secret => APP['robokassa']["secret"]
+    
+    if !@payment.approved? && notification.acknowledge
       @payment.approve!
     end
-
-    redirect_to @payment, :notice => I18n.t("notice.robokassa.success")
+      redirect_to cabinet_index_path, :notice => "Оплата успешна"
   end
   # Robokassa redirect user to this action if it’s not
   def fail
-    redirect_to @payment, :notice => I18n.t("notice.robokassa.fail")
+    redirect_to @payment, :notice => "Robokassa fail"
   end
 
   private
 
   def create_notification
-    @notification = Robokassa::Notification.new(request.raw_post, :secret => AppConfig.robokassa_secret)
+    @notification = Robokassa::Notification.new(request.raw_post, :secret => APP['robokassa']['secret'])
   end
 
   def find_payment
-    @payment = Payment.find(@notification.item_id)
+    @payment = Payment.find(params[:InvId])
   end
 end
