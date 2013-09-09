@@ -22,26 +22,27 @@
 
   <body>
 
+      <header>
+        <div class="row">
+          <div id="branding" class="large-2 small-5 columns">
+            <%= link_to (image_tag "logo.png"), root_path %>
+          </div>
+          <!-- nav menu -->
+          <nav id="main-nav" class="large-10 columns">
+            <%= render_navigation context: :main %>
+          </nav>
+        </div>
+      </header>
+
       <div id="page" class="row">
-      		<header class="small-12 columns">
-      			<div class="row">
-      				<div id="branding" class="large-2 small-5 columns">
-      					<%= link_to (image_tag "logo.png"), root_path %>
-      				</div>
-      				<!-- nav menu -->
-      				<nav id="main-nav" class="large-10 columns">
-                <%= render_navigation context: :main %>
-      				</nav>
-      			</div>
-      		</header>
 
           <div class="large-11 small-12 large-centered columns clear">
             <div class="row">
-                <aside id="sidebar-left" class="small-3 large-2 columns sidebar">
+                <aside id="sidebar-left" class="small-12 large-2 columns sidebar">
                   <%= render 'layouts/sidebar-first' %>
                 </aside><!-- /left sidebar -->
 
-                <section id="main-content" class="small-6 large-8 columns"> <!-- content -->
+                <section id="main-content" class="small-12 large-8 columns"> <!-- content -->
                   <div class="row">
                     <% if content_for?(:page_title) %>
                       <h1 class="title small-12 columns"><b><%= yield(:page_title) %></b></h1>
@@ -65,7 +66,7 @@
                   </div>
                 </section><!-- /content -->
 
-                <aside id="sidebar-right" class="small-3 large-2 columns sidebar">
+                <aside id="sidebar-right" class="small-12 large-2 columns sidebar">
                   <%= render 'layouts/sidebar-second' %>
                 </aside><!-- /right sidebar -->
             </div>

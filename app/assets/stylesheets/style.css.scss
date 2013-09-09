@@ -24,8 +24,6 @@ $pt-sans: 'PT Sans';
 body {
 	margin: 0;
 	font-family: 'Helvetica Neue', helvetica, Arial, sans-serif;
-    font-size: 15px;
-	letter-spacing: 0.03em;
 	background-color: #D3D3D3;
 }
 
@@ -92,11 +90,10 @@ h6 {
 header {
 	border-bottom: 3px solid #EEEEEF;
 	margin-bottom:1.5em;
-	// background: #fff image-url("header-left.gif") no-repeat left top;
-	background-color: #fff;
+	background: #fff image-url("header-right.gif") no-repeat right top;
 	.row {
-		background: image-url("header-right.gif") no-repeat right top;
-		padding: 30px 0;
+		// background: image-url("header-right.gif") no-repeat right top;
+		padding: 31px 0;
 	}
 }
 
