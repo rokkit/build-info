@@ -22,7 +22,7 @@ User.delete_all
 
 
 
-#####BUILD OBEJCTS#####
+######BUILD OBEJCTS#####
 TypeOfBuildObject.delete_all
 ['Квартира (Вторичный рынок)', "Комната (Вторичный рынок)", 'Квартира (Первичный рынок)','Комната (Вторичный рынок)'].each do |variable|
   TypeOfBuildObject.create! name: variable
@@ -40,4 +40,6 @@ end
   TypeOfLinkedAccount.create name: t
 end
 
+Variables.create(key: "create_build_object_price", value: 0)
 
+Variables.create key: 'buy_rating', value: 5

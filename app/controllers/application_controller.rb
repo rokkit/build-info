@@ -24,6 +24,11 @@ class ApplicationController < ActionController::Base
     #return nil if user_signed_in? && !current_user.admin?
     current_user
   end
+
+   rescue_from CanCan::AccessDenied do |exception|
+        flash[:notice] = "Доступ к этому разделу ограничен"
+        redirect_to root_url
+  end
   
   def enought_money? action
     if current_user.account.total >= Variables.where(key: action.to_s).first_or_create(value: 10).value.to_f 

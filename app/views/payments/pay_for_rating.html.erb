@@ -1,7 +1,6 @@
 <h1>Покупка рейтинга</h1>
 <p>На счету: <%= current_user.account.total %></p>
-<%= form_tag do%>
-    <%= label_tag :count_rating, "Рейтинг" %>
+<%= form_tag do %>
     <%= number_field_tag :count_rating %>
     <p>Сумма к оплате: <span id="total_price">0.0</span></p>
     <%= hidden_field_tag :total, current_user.account.total.to_f %>

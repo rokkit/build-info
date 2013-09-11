@@ -29,6 +29,10 @@ end
         page = add_first_stage
      end
 
+     def repost_final
+       page = add_second_stage
+     end
+
   private
    def open_page_and_login
      url = "https://www.avito.ru/profile"  #get login page
@@ -46,7 +50,7 @@ end
       build_object_form = page.forms.first
       build_object_form.category_id = "24" #категория Недвижимость => Квартиры на авито
       build_object_form.description = @build_object.description
-      build_object_form.price = @build_object.price
+      build_object_form.price = @build_object.price.to_i
       build_object_form['params[201]'] = '1059' #тип объявления - продам
       build_object_form['params[549]'] = '5695' #кол-во комнат - студия
       build_object_form['params[496]'] = '5120' #первый этаж
@@ -64,9 +68,15 @@ end
 
 
       #get captcha
+      p page.search(".custom_param_error")
+      p build_object_form
       filename = (0...50).map{ ('a'..'z').to_a[rand(26)] }.join
       @agent.get(page.search("#captcha_image").first.attributes["src"]).save "public/images/captcha/#{filename}.jpg"
+      session[:jar] = agent.cookie_jar.jar['.avito.ru']['/']
       [captcha: "/images/captcha/#{filename}.jpg"] 
+   end
+   def add_second_stage
+    agent.cookie_jar.jar['.avito.ru']['/'] = session[:jar]
    end
   end
 

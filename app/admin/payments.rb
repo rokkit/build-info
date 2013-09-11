@@ -1,4 +1,6 @@
 ActiveAdmin.register Payment do
+
+  menu parent: "Финансы", priority: 0
   show do |ad|
         attributes_table do
           row :account
