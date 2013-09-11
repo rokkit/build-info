@@ -72,7 +72,7 @@ class BuildObjectsController < ApplicationController
   # POST /build_objects.json
   def create
     unless enought_money? :create_build_object_price
-      render action: "new", notice: "У вас недостаточно средст на счету. Пожалуста, пополните кошелёк"
+      render action: "new", notice: "У вас недостаточно средств на счету. Пожалуста, пополните кошелёк"
     else
       
       @build_object = BuildObject.new(params[:build_object])
@@ -96,7 +96,7 @@ class BuildObjectsController < ApplicationController
     @build_object.user = current_user
     respond_to do |format|
       if @build_object.update_attributes(params[:build_object])
-        format.html { redirect_to @build_object, notice: 'Build object was successfully updated.' }
+        format.html { redirect_to @build_object, notice: 'Объект успешно обновлен.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

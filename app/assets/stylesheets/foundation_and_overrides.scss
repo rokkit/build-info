@@ -4,7 +4,7 @@
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.
-$base-font-size: 100% !default;
+$base-font-size: 12px !default;
 
 // $base-line-height is 24px while $base-font-size is 16px
 // $base-line-height: 150%;
@@ -1127,7 +1127,7 @@ $custom-dropdown-list-item-min-height: emCalc(24px);
 
 // Background color for the table and even rows
 
-// $table-bg: #fff;
+$table-bg: rgba(255,255,255,.3);
 // $table-even-row-bg: #f9f9f9;
 
 // Table cell border style

@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require modernizr
 //= require jquery_ujs
 //= require foundation
 //= require dataTables/jquery.dataTables
