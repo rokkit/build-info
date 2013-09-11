@@ -13,6 +13,9 @@
 
   	<title>Home.info <%= content_for?(:page_title) ? yield(:page_title) : "" %></title>
 
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
     <%= javascript_include_tag "application" %>
   	<%= stylesheet_link_tag "application" %>
     <%= csrf_meta_tags %>
