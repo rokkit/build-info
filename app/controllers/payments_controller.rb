@@ -8,6 +8,7 @@ class PaymentsController < InheritedResources::Base
   
   def pay_for_rating
     @action = Variables.find_by_key :buy_rating.to_s
+    @plans = Plan.order 'price'
     if request.post?
       result_price = params[:count_rating].to_f * @action.value.to_f
       if result_price <= current_user.account.total.to_f

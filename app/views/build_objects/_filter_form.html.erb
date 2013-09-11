@@ -1,3 +1,4 @@
+<% cache "filter_form" do %>
 <%= form_tag build_objects_path(format: :json), method: :get,id:'filter-build-object-form' do |f| -%>
   <div class="row">
     <div class="large-3 columns filter price">
@@ -81,3 +82,4 @@
   <%= submit_tag I18n.t("datgrid.form.submit", :default => "Подобрать").html_safe, :class => "submit-form btn" %>
   <a id="show-advanced-filter" class="show-filter">Расширеный поиск</a>
 <% end -%>
+  <% end %>

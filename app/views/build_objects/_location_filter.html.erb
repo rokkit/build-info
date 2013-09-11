@@ -1,3 +1,4 @@
+<% cache "location_filter" do %>
 <div class="large-6 columns filter country location-filter">
   	    <%= label_tag 'filter[country]', "Страна" %>
     <%= collection_select :filter, :country_id, Country.order(:name),:id,:name, include_blank:true %>
@@ -19,4 +20,5 @@
         <%= autocomplete_field_tag '', '', "#{streets_autocomplete_street_name_path}?distinct_id=",id:'filter_street', id_element: '#filter_street_id' %>
     <%= grouped_collection_select :filter, :street_id,Distinct.order(:name),:streets,:name, :id, :name, include_blank:true  %>
 
-</div>
+  </div>
+<% end %>
