@@ -20,7 +20,7 @@
 
   <body>
 
-      <header>
+      <div id="header">
         <div class="row">
           <div id="branding" class="large-2 small-5 columns">
             <%= link_to (image_tag "logo.png"), root_path %>
@@ -30,17 +30,17 @@
             <%= render_navigation context: :main %>
           </nav>
         </div>
-      </header>
+      </div>
 
       <div id="page" class="row">
 
           <div class="large-11 small-12 large-centered columns clear">
             <div class="row">
-                <aside id="sidebar-left" class="small-12 large-2 columns sidebar">
+                <div id="sidebar-left" class="small-12 large-2 columns sidebar">
                   <%= render 'layouts/sidebar-first' %>
-                </aside><!-- /left sidebar -->
+                </div><!-- /left sidebar -->
 
-                <section id="main-content" class="small-12 large-8 columns"> <!-- content -->
+                <div id="main-content" class="small-12 large-8 columns"> <!-- content -->
                   <div class="row">
                     <% if content_for?(:page_title) %>
                       <h1 class="title small-12 columns"><b><%= yield(:page_title) %></b></h1>
@@ -62,17 +62,17 @@
                       <%= yield %>
                     </div>
                   </div>
-                </section><!-- /content -->
+                </div><!-- /content -->
 
-                <aside id="sidebar-right" class="small-12 large-2 columns sidebar">
+                <div id="sidebar-right" class="small-12 large-2 columns sidebar">
                   <%= render 'layouts/sidebar-second' %>
-                </aside><!-- /right sidebar -->
+                </div><!-- /right sidebar -->
             </div>
           </div>
 
-      		<footer class="small-12 columns">
+      		<div id="footer" class="small-12 columns">
       			<p class="copyright">&copy; 2013 Home.info</p>
-      		</footer>
+      		</div>
       	</div>
 
     
