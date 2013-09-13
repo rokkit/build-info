@@ -8,8 +8,8 @@
     <p class="read-more btn"><%= link_to 'Подробнее', news %></p>
 		<% if can? :update, news %>
     		<div class="edit">
-          <p><%= link_to 'Edit', edit_news_path(news) %> / 
-      		<%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+          <p><%= link_to 'Редактировать', edit_news_path(news) %> / 
+      		<%= link_to 'Удалить', news, method: :delete, data: { confirm: 'Вы уверены?' } %></p>
         </div>
 		<% end %>
   </article>

@@ -12,7 +12,7 @@
 	<% if can? :update, article %>
     	<div class="edit-links">
         <p><%= link_to 'Изменить', edit_article_path(article), :class => 'edit btn entypo-pencil' %> | 
-        <%= link_to 'Удалить', article, :class => 'delete btn entypo-cancel-circled', method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        <%= link_to 'Удалить', article, :class => 'delete btn entypo-cancel-circled', method: :delete, data: { confirm: 'Вы уверены?' } %></p>
       </div>
 	<% end %>
   </article>
