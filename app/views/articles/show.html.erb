@@ -1,23 +1,18 @@
-<p id="notice"><%= notice %></p>
+<h2><%= @article.name %></h2>
 
-<p>
-  <%= @article.name %>
-</p>
-
-<p>
+<div class="article-content">
   <%= @article.content %>
-</p>
+</div>
 
-<p>
-  <b>Добавил:</b>
-  <%= @article.try(:user) || "admin" %>
-</p>
+<dl>
+  <dt>Добавил:</dt>
+  <dd><%= @article.try(:user) || "admin" %></dd>
+  <dt>Дата</dt>
+  <dd><%= @article.created_at.to_date %></dd>
+  <dt>Категория:</dt>
+  <dd><%= @article.category_article %></dd>
+</dl>
 
-<p>
-  <b>Категория:</b>
-  <%= @article.category_article %>
-</p>
-
-	<% if can? :update, @article %>
-		<%= link_to 'Изменить', edit_article_path(@article) %>
-	<% end %>
+<% if can? :update, @article %>
+	<%= link_to 'Изменить', edit_article_path(@article) %>
+<% end %>
