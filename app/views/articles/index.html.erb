@@ -6,7 +6,7 @@
   <article class="article-<%= article.id %>">
     <h2><%= link_to article.name, article %></h2>
     <p class="user-date"><%= article.try(:user) %>, <%= article.created_at.to_date %></p>
-    <div class="post"><%= article.content %></div>
+    <div class="post"><%= truncate article.content, 200 %></div>
     <p class="more"><%= link_to 'Подробнее', article %></p>
     <p class="article-categoy"><%= article.category_article %></p>
 	<% if can? :update, article %>
