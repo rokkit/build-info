@@ -5,16 +5,12 @@ namespace :crawle do
   desc "parse"
   task :parse => :environment do
     puts "crawle parse"
-    #url = "http://emls.ru/flats/?query=r1/1/r2/1/r3/1/reg/2/dept/2/dist/39/sort1/7/dir1/1/s/1/sort2/1/dir2/2/interval/3"
-    #url = "http://emls.ru/flats/?query=reg/2/dept/2/dist/38/sort1/7/dir1/1/s/1/sort2/1/dir2/2/interval/3" #Адмиралтейский район
-    url = "http://emls.ru/flats/?query=reg/2/dept/2/dist/43/sort1/7/dir1/1/s/1/sort2/1/dir2/2/interval/3" #Василеостровский
-    url = "http://www.emls.ru/flats/?query=reg/2/dept/2/dist/4/sort1/7/dir1/1/s/1/sort2/1/dir2/2/interval/3" #Выборгский
-    url = "http://www.emls.ru/flats/?query=reg/2/dept/2/dist/6/sort1/7/dir1/1/s/1/sort2/1/dir2/2/interval/3" #Калининский
-    url = "http://www.emls.ru/flats/?query=reg/2/dept/2/dist/7/sort1/7/dir1/1/s/1/sort2/1/dir2/2/interval/3" #Кировский
-    url = "http://www.emls.ru/flats/?query=reg/2/dept/2/dist/8/sort1/7/dir1/1/s/1/sort2/1/dir2/2/interval/3"
-    url = "http://www.emls.ru/flats/?query=reg/2/dept/2/dist/9/sort1/7/dir1/1/s/1/sort2/1/dir2/2/interval/3"
-    url = "http://www.emls.ru/flats/?query=reg/2/dept/2/dist/12/sort1/7/dir1/1/s/1/sort2/1/dir2/2/interval/3"
-    url = "http://www.emls.ru/flats/?query=reg/2/dept/2/dist/13/sort1/7/dir1/1/s/1/sort2/1/dir2/2/interval/3"
+    disticns_from_elms = ["http://emls.ru/flats/?query=r1/1/r2/1/r3/1/reg/2/dept/2/dist/39/sort1/7/dir1/1/s/1/sort2/1/dir2/2/interval/3", "http://emls.ru/flats/?query=reg/2/dept/2/dist/38/sort1/7/dir1/1/s/1/sort2/1/dir2/2/interval/3", "http://emls.ru/flats/?query=reg/2/dept/2/dist/43/sort1/7/dir1/1/s/1/sort2/1/dir2/2/interval/3", "http://www.emls.ru/flats/?query=reg/2/dept/2/dist/4/sort1/7/dir1/1/s/1/sort2/1/dir2/2/interval/3", "http://www.emls.ru/flats/?query=reg/2/dept/2/dist/6/sort1/7/dir1/1/s/1/sort2/1/dir2/2/interval/3","http://www.emls.ru/flats/?query=reg/2/dept/2/dist/7/sort1/7/dir1/1/s/1/sort2/1/dir2/2/interval/3","http://www.emls.ru/flats/?query=reg/2/dept/2/dist/8/sort1/7/dir1/1/s/1/sort2/1/dir2/2/interval/3","http://www.emls.ru/flats/?query=reg/2/dept/2/dist/9/sort1/7/dir1/1/s/1/sort2/1/dir2/2/interval/3","http://www.emls.ru/flats/?query=reg/2/dept/2/dist/12/sort1/7/dir1/1/s/1/sort2/1/dir2/2/interval/3","http://www.emls.ru/flats/?query=reg/2/dept/2/dist/13/sort1/7/dir1/1/s/1/sort2/1/dir2/2/interval/3"]
+    disticns_from_elms.each { |url| do_crawle(url) }
+    
+  end
+  
+  def do_crawle url
     page = Nokogiri::HTML(open(url))
     rows = page.css('div.content-emls table.html_table_1 tr.html_table_tr_1')  
     

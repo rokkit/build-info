@@ -22,16 +22,9 @@ BuildInfo::Application.configure do
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
-  config.action_mailer.default_url_options = { :host => "home-info-2.dot-tech.ru" }
+  config.action_mailer.default_url_options = { :host => "home.info" }
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :user_name            => 'indmaksim',
-    :password             => '14051992',
-    :authentication       => 'plain',
-    :enable_starttls_auto => true  }
+
   # Specifies the header that your server uses for sending files
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
@@ -74,5 +67,12 @@ BuildInfo::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   ActiveMerchant::Billing::Base.integration_mode = :test
+  
+  config.middleware.use ExceptionNotification::Rack,
+    :email => {
+      :email_prefix => "[HOME-INFO]",
+      :sender_address => %{"notifier" <homeinfo@list.ru>},
+      :exception_recipients => %w{indmaksim@gmail.com}
+    }
   
 end

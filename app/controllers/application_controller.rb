@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
-
+  # rescue_from Exception do |e|
+  #   ExceptionNotifier.notify_exception(e, :data => {:msg => "Error"})
+  #   respond_to do |type|
+  #         type.html { redirect_to root_path, :status => 200 }
+  #   end
+  # end
   def forem_user
     current_user
   end
