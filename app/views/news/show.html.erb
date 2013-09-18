@@ -1,13 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <%= @news.name %>
-</p>
+<h2><%= @news.name %></h2>
 
-
-<p>
-  <%= simple_format @news.content %>
-</p>
+<%= simple_format @news.content %>
 
 <% if can? :update, @news %>
 	<%= link_to 'Редактировать', edit_news_path(@news) %>
