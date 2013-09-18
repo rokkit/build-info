@@ -20,7 +20,7 @@ namespace :crawle do
       build_objects = Array.new
 
     hrefs[1..200].each do |href|
-      if BuildObject.find_by_elms_number(href).first.nil?
+      if BuildObject.find_by_elms_number(href).nil?
         build_object[:elms_number] = href
         build_object = BuildObject.new   
         build_object[:photos] = Array.new 
