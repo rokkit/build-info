@@ -19,7 +19,7 @@ namespace :crawle do
       }.compact
       build_objects = Array.new
 
-    hrefs[1..15].each do |href|
+    hrefs[1..200].each do |href|
       
       build_object = BuildObject.new   
       build_object[:photos] = Array.new 
