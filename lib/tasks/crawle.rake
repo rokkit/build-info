@@ -20,55 +20,57 @@ namespace :crawle do
       build_objects = Array.new
 
     hrefs[1..200].each do |href|
-      
-      build_object = BuildObject.new   
-      build_object[:photos] = Array.new 
-      remote_url = "http://emls.ru#{href}"
-      full_info_page = Nokogiri::HTML(open(remote_url))
-      info_fields = full_info_page.css("div#emls_tab_data_1 table.description_table tr")
-        description_table = full_info_page.css("table.description_table tr")
-          build_object[:description] = full_info_page.css(".description_column_left p").inner_text #получаем примечание
-          format_address(description_table[1].css("td")[1].inner_html).build_objects << build_object
-          #build_object[:address].metro = description_table[2].css("td")[1].inner_text
-          build_object[:rooms] = description_table[3].css("td")[1].inner_text
-          build_object[:type_of_deal] = description_table[4].css("td")[1].inner_text #тип сделки
-          build_object[:price] = description_table[5].css("td")[1].inner_text
-          build_object[:owning] = description_table[6].css("td")[1].inner_text #собственность
-          build_object[:planning] = description_table[7].css("td")[1].inner_text
-          build_object[:area] = description_table[8].css("td")[1].inner_text
-          build_object[:living_area] = description_table[9].css("td")[1].inner_text
-          #площадь комнат 10
-          build_object[:kitchen_area] = description_table[11].css("td")[1].inner_text
-          #прихожая 12
-          #коридор 13
-          build_object[:building] = description_table[14].css("td")[1].inner_text #здание
-          build_object[:floor] = description_table[15].css("td")[1].inner_text
-          build_object[:phone] = description_table[16].css("td")[1].inner_text
-          build_object[:toilet] = Toilet.find_or_create_by_name name: description_table[17].css("td")[1].inner_text
-          #балкон 18
-          #пол 19
-          build_object[:remont] = Remont.find_or_create_by_name name: description_table[20].css("td")[1].inner_text
-          #ванна 21
-          build_object[:hot_water] = Hotwater.find_or_create_by_name name: description_table[22].css("td")[1].inner_text
-          build_object[:chute] = description_table[23].css("td")[1].inner_text
-          build_object[:entrance] = description_table[24].css("td")[1].inner_text
-          build_object[:view_from_windows] = ViewFromWindows.find_or_create_by_name name: description_table[25].css("td")[1].inner_text
+      if BuildObject.find_by_emls_number(href).first.nil?
+        build_object[:emls_number] = href
+        build_object = BuildObject.new   
+        build_object[:photos] = Array.new 
+        remote_url = "http://emls.ru#{href}"
+        full_info_page = Nokogiri::HTML(open(remote_url))
+        info_fields = full_info_page.css("div#emls_tab_data_1 table.description_table tr")
+          description_table = full_info_page.css("table.description_table tr")
+            build_object[:description] = full_info_page.css(".description_column_left p").inner_text #получаем примечание
+            format_address(description_table[1].css("td")[1].inner_html).build_objects << build_object
+            #build_object[:address].metro = description_table[2].css("td")[1].inner_text
+            build_object[:rooms] = description_table[3].css("td")[1].inner_text
+            build_object[:type_of_deal] = description_table[4].css("td")[1].inner_text #тип сделки
+            build_object[:price] = description_table[5].css("td")[1].inner_text
+            build_object[:owning] = description_table[6].css("td")[1].inner_text #собственность
+            build_object[:planning] = description_table[7].css("td")[1].inner_text
+            build_object[:area] = description_table[8].css("td")[1].inner_text
+            build_object[:living_area] = description_table[9].css("td")[1].inner_text
+            #площадь комнат 10
+            build_object[:kitchen_area] = description_table[11].css("td")[1].inner_text
+            #прихожая 12
+            #коридор 13
+            build_object[:building] = description_table[14].css("td")[1].inner_text #здание
+            build_object[:floor] = description_table[15].css("td")[1].inner_text
+            build_object[:phone] = description_table[16].css("td")[1].inner_text
+            build_object[:toilet] = Toilet.find_or_create_by_name name: description_table[17].css("td")[1].inner_text
+            #балкон 18
+            #пол 19
+            build_object[:remont] = Remont.find_or_create_by_name name: description_table[20].css("td")[1].inner_text
+            #ванна 21
+            build_object[:hot_water] = Hotwater.find_or_create_by_name name: description_table[22].css("td")[1].inner_text
+            build_object[:chute] = description_table[23].css("td")[1].inner_text
+            build_object[:entrance] = description_table[24].css("td")[1].inner_text
+            build_object[:view_from_windows] = ViewFromWindows.find_or_create_by_name name: description_table[25].css("td")[1].inner_text
           
           
-          full_info_page.css("img#photo_big_img").each do |p| 
-            photo = Photo.new
-            puts p[:src]
-            photo.remote_image_url =  "http://emls.ru#{p[:src]}"
-            #photo.build_object = build_object
-            build_object.photos << photo
-            #photo.save!
+            full_info_page.css("img#photo_big_img").each do |p| 
+              photo = Photo.new
+              puts p[:src]
+              photo.remote_image_url =  "http://emls.ru#{p[:src]}"
+              #photo.build_object = build_object
+              build_object.photos << photo
+              #photo.save!
+            end
+          
+          
+            puts "."
+            build_object.type_of_build_object = TypeOfBuildObject.where(name: "Квартира (Вторичный рынок)").first_or_create
+            build_object.user = User.first
+            puts build_object.save! if build_object.valid? && BuildObject.where(description: build_object.description).empty?
           end
-          
-          
-          puts "."
-          build_object.type_of_build_object = TypeOfBuildObject.where(name: "Квартира (Вторичный рынок)").first_or_create
-          build_object.user = User.first
-          puts build_object.save! if build_object.valid? && BuildObject.where(description: build_object.description).empty?
     end
   end
   

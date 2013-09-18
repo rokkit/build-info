@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130910075046) do
+ActiveRecord::Schema.define(:version => 20130918094056) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "accountable_id"
@@ -208,6 +208,7 @@ ActiveRecord::Schema.define(:version => 20130910075046) do
     t.boolean  "private",                 :default => false
     t.integer  "appartement_number"
     t.datetime "selled_at"
+    t.string   "elms_number"
   end
 
   create_table "build_objects_nodes", :id => false, :force => true do |t|
