@@ -4,7 +4,7 @@
   <article>
     <h2><%= news.name %></h2>
     <p class="user-date"><%= news.user %></p>
-    <div class="content"><%= news.content %></div>
+    <div class="content"><%= simple_format news.content %></div>
     <p class="read-more btn"><%= link_to 'Подробнее', news %></p>
 		<% if can? :update, news %>
     		<div class="edit">
