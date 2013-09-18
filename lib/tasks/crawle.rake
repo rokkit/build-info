@@ -20,8 +20,8 @@ namespace :crawle do
       build_objects = Array.new
 
     hrefs[1..200].each do |href|
-      if BuildObject.find_by_emls_number(href).first.nil?
-        build_object[:emls_number] = href
+      if BuildObject.find_by_elms_number(href).first.nil?
+        build_object[:elms_number] = href
         build_object = BuildObject.new   
         build_object[:photos] = Array.new 
         remote_url = "http://emls.ru#{href}"
