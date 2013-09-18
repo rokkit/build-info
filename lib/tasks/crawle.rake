@@ -21,8 +21,8 @@ namespace :crawle do
 
     hrefs[1..200].each do |href|
       if BuildObject.find_by_elms_number(href).nil?
-        build_object[:elms_number] = href
         build_object = BuildObject.new   
+        build_object[:elms_number] = href
         build_object[:photos] = Array.new 
         remote_url = "http://emls.ru#{href}"
         full_info_page = Nokogiri::HTML(open(remote_url))
