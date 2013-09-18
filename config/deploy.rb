@@ -31,10 +31,10 @@ namespace :deploy do
   end
 end
 set :bundle_flags, "--quiet --binstubs --shebang ruby-local-exec"
-set :default_environment, {
-  'RBENV_ROOT' => "$HOME/.rbenv/",
-  'PATH' => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
-}
+# set :default_environment, {
+#   'RBENV_ROOT' => "$HOME/.rbenv/",
+#   'PATH' => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
+# }
 after :deploy do
   run "#{try_sudo} chmod 777 -R #{current_path}/log"
   run "#{try_sudo} chmod 777 -R #{current_path}/tmp"
