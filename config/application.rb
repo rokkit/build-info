@@ -20,7 +20,22 @@ module BuildInfo
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address              => "smtp.gmail.com",
+      :port                 => 465,
+      :user_name            => 'indmaksim',
+      :password             => "14051992",
+      :authentication       => 'plain',
+      :enable_starttls_auto => true  }
+    # config.middleware.use ExceptionNotification::Rack,
+    #   :email => {
+    #     :email_prefix => "[HOME-INFO]",
+    #     :sender_address => "indmaksim@gmail.com",
+    #     :exception_recipients => %w{indmaksim@gmail.com}
+    #   }
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '**/')] #recursively load all models
