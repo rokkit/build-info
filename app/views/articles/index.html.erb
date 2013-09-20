@@ -1,6 +1,4 @@
-<%= content_for :header do %>
-<h1>Статьи</h1>
-<% end %>
+<% content_for :page_title do %>Статьи<% end %>
 
 <% @articles.each do |article| %>
   <article class="article-<%= article.id %>">
