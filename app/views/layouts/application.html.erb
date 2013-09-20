@@ -22,7 +22,7 @@
   </head>
 
   <body>
-
+	  <% cache :menu do %>
       <div id="header">
         <div class="row">
           <div id="branding" class="large-2 small-5 columns">
@@ -34,13 +34,14 @@
           </nav>
         </div>
       </div>
+	  <% end %>
 
       <div id="page" class="row">
 
           <div class="large-11 small-12 large-centered columns clear">
             <div class="row">
                 <div id="sidebar-left" class="small-12 large-2 columns sidebar">
-                  <%= render 'layouts/sidebar-first' %>
+	                  <%= render 'layouts/sidebar-first' %>
                 </div><!-- /left sidebar -->
 
                 <div id="main-content" class="small-12 large-8 columns"> <!-- content -->

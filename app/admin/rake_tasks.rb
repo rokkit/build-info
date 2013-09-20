@@ -1,4 +1,6 @@
 ActiveAdmin.register RakeTask do
+  menu parent: "Параметры сайта", priority: 2
+  
   form do |f|
     f.inputs "Настройка задачи" do
       f.input :name

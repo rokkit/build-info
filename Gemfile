@@ -30,6 +30,7 @@ group :development do
   gem "capistrano"
   gem 'zeus'
   gem 'thin'
+  gem "bullet"
 end
 group :production do
   gem 'pg'

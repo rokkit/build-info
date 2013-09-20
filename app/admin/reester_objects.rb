@@ -1,5 +1,7 @@
 # encoding: UTF-8
 ActiveAdmin.register ReesterObject do
+  menu parent: "Параметры объекта"
+  
     action_item :only => :index do
       link_to 'Загрузить CSV', :action => 'import_reester_objects_new'
     end

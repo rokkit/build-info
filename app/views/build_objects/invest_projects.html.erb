@@ -1,50 +1,15 @@
+<% content_for :page_title do %>Список объектов<% end %>
 
+<% content_for :top_block do %><%= render 'build_objects/filter_form' %><% end %>
 
-<%= form_tag build_objects_path(format: :json), method: :get,id:'filter-build-object-form' do |f| -%>
-  <div class="row">
-    <div class="large-3 columns filter price">
-        <%= label_tag :price, "Цена от" %>
-        <%= number_field_tag 'filter[min_price]' %>
-    </div>
-    <div class="large-3 columns filter price">
-        <%= label_tag :price, "Цена до" %>
-        <%= number_field_tag 'filter[max_price]' %>
-    </div>
-    <div class="large-3 columns filter area">
-        <%= label_tag :area, "Площадь от" %>
-        <%= number_field_tag 'filter[min_area]' %>
-    </div>
-    <div class="large-3 columns filter area">
-        <%= label_tag :area, "Площадь до" %>
-        <%= number_field_tag 'filter[max_area]' %>
-    </div>
-  </div>
-
-  <div class="address row">
-      <%= render partial: 'location_filter' %>
-  </div>
-
-  <div class="details row">
-    <div class="large-2 columns filter ipoteka">
-        <%= label_tag :ipoteka, "Ипотека" %>
-        <%= check_box_tag 'filter[ipoteka]' %>
-    </div>
-    <div class="large-4 columns large-uncentered filter object-type">
-        <%= label_tag :type_of_build_object_id, "Тип объекта" %>
-        <%= collection_select :filter, :type_of_build_object,TypeOfBuildObject.all, :id, :name %>
-    </div>
-  </div>
-
-  <%= submit_tag I18n.t("datgrid.form.submit", :default => "Подобрать").html_safe, :class => "submit-form btn" %>
-<% end -%>
-
-<table id="buildobjects-datatable" class="display" data-source="<%= build_objects_url(format: "json") %>">
+<table id="buildobjects-datatable" class="display" data-source="<%= invest_projects_build_objects_url(format: "json") %>">
 <thead>
   <tr>
-    <th>Цена</th>
-    <th>Адрес</th>
-    <th>Площадь</th>
-    <th>Описание</th>
+  	<th width="8%"></th>
+    <th width="20%">Цена</th>
+    <th width="20%">Адрес</th>
+    <th width="12%">Площадь</th>
+    <th width="30%">Описание</th>
   </tr>
 </thead>
 <tbody>

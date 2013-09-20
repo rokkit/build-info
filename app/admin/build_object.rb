@@ -1,6 +1,7 @@
 # encoding: UTF-8
 ActiveAdmin.register BuildObject do
-        menu parent: "Объекты"
+        menu parent: "Параметры объекта", priority: 1
+        
         index do
           column "Тип объекта", :type_of_build_object
           column :price do |p|

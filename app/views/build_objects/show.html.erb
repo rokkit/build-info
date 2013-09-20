@@ -294,7 +294,7 @@
       <% if  current_user.linked_accounts.any? {|la| la.type_of_linked_account == TypeOfLinkedAccount.where(name: account.name).first } %>
           <%= link_to account, repost_build_object_path(@build_object, provider: account) %>
         <% else %>
-           <%= link_to account, new_linked_account_path%>
+           <%= link_to account, new_linked_account_path(build_object: @build_object.id)%>
         <% end %>
       </li>
     <% end %>

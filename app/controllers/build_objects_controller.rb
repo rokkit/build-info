@@ -21,7 +21,7 @@ class BuildObjectsController < ApplicationController
   end
   
   def manage
-    @build_objects = current_user.build_objects
+    @build_objects = current_user.build_objects.includes({:address => :street})
     #@nodes = Node.joins(:sell).where(build_objects: { user_id: current_user })
     @nodes = Node.joins(:sell).where(sell: { user_id: current_user })
     @incoming_request_for_exhange = BuildObject.select([:id,:name]).actual.includes(:nodes).includes(:address).where("user_id = ? AND nodes.id IS NOT NULL AND nodes.status != 2",current_user)

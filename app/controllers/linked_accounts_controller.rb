@@ -2,7 +2,7 @@ class LinkedAccountsController < ApplicationController
   # GET /linked_accounts
   # GET /linked_accounts.json
   def index
-    @linked_accounts = current_user.linked_accounts
+    @linked_accounts = current_user.linked_accounts.includes(:type_of_linked_account)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +24,8 @@ class LinkedAccountsController < ApplicationController
   # GET /linked_accounts/new
   # GET /linked_accounts/new.json
   def new
-    @linked_account = LinkedAccount.new
+    @linked_account = LinkedAccount.new :type_of_linked_account => params[:provider]
+    @build_object = params[:build_object]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,7 +46,7 @@ class LinkedAccountsController < ApplicationController
 
     respond_to do |format|
       if @linked_account.save
-        format.html { redirect_to @linked_account, notice: "Аккаунт успешно привязан. Теперь при размещении обявлений на этом сайте, Вы можете при помощи данной системы разместить на сайте #{@linked_account.type_of_linked_account}" }
+        format.html { redirect_to repost_build_object_path(params[:build_object], provider: @linked_account.type_of_linked_account), notice: "Аккаунт успешно привязан. Теперь при размещении обявлений на этом сайте, Вы можете при помощи данной системы разместить на сайте #{@linked_account.type_of_linked_account}" }
         format.json { render json: @linked_account, status: :created, location: @linked_account }
       else
         format.html { render action: "new" }
