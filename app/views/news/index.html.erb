@@ -2,15 +2,15 @@
 
 <% @news.each do |news| %>
   <article class="news-<%= news.id %>">
-    <h2><%= news.name %></h2>
+    <h2><%= link_to news.name, news %></h2>
     <p class="user-date"><%= news.user %></p>
     <div class="post news">
-      <p><%= truncate news.content, lenght: 600 %></p>
+      <%= simple_format truncate(news.content, lenght: 600) %>
     </div>
     <p class="more"><%= link_to 'Подробнее', news, :class => 'read-more' %></p>
 		<% if can? :update, news %>
     		<div class="edit">
-          <p><%= link_to 'Редактировать', edit_news_path(news), :class => 'edit btn entypo-pencil' %> / 
+          <p><%= link_to 'Редактировать', edit_news_path(news), :class => 'edit btn entypo-pencil' %> 
       		<%= link_to 'Удалить', news, :class => 'delete btn entypo-cancel-circled', method: :delete, data: { confirm: 'Вы уверены?' } %></p>
         </div>
 		<% end %>
