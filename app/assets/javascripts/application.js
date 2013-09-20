@@ -18,6 +18,7 @@
 //= require jquery.ui.all
 //= require jquery-fileupload/basic
 //= require autocomplete-rails
+//= require tinymce-jquery
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

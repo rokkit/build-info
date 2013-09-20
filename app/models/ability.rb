@@ -11,7 +11,7 @@ class Ability
       else
         can :read, Article, published: true
         can :manage, Article do |article|
-                article.try(:user) == user
+              article.try(:user) == user
         end
         can :manage, BuildObject do |house|
                 house.try(:user) == user

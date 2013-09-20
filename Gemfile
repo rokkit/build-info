@@ -91,6 +91,8 @@ gem 'rack-mini-profiler', "~> 0.1.27"
 gem 'ice_cube'
 gem 'prawn-print', :git => 'git://github.com/barsoom/prawn-print.git'
 gem 'exception_notification'
+gem 'tinymce-rails'
+gem 'tinymce-rails-langs'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
