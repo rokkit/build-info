@@ -239,6 +239,12 @@ h6 {
 		color: #fff;
 	}
 }
+.more {
+	text-align: right;
+	.read-more {
+		color: $orange;
+	}
+}
 //admin
 .edit-links {
 	clear: both;
