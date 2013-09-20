@@ -7,10 +7,10 @@
     <div class="post news">
       <%= simple_format truncate(news.content, lenght: 600) %>
     </div>
-    <p class="more"><%= link_to 'Подробнее', news, :class => 'read-more' %></p>
+    <p class="more"><%= link_to 'Подробнее', news, :class => 'read-more btn' %></p>
 		<% if can? :update, news %>
-    		<div class="edit">
-          <p><%= link_to 'Редактировать', edit_news_path(news), :class => 'edit btn entypo-pencil' %> 
+    		<div class="edit-links">
+          <p><%= link_to 'Редактировать', edit_news_path(news), :class => 'edit btn entypo-pencil' %> | 
       		<%= link_to 'Удалить', news, :class => 'delete btn entypo-cancel-circled', method: :delete, data: { confirm: 'Вы уверены?' } %></p>
         </div>
 		<% end %>

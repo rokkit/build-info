@@ -7,7 +7,7 @@
     <div class="post article">
       <%= simple_format truncate(article.content, lenght: 600)%>
     </div>
-    <p class="more"><%= link_to 'Подробнее', article, :class => 'read-more' %></p>
+    <p class="more"><%= link_to 'Подробнее', article, :class => 'read-more btn' %></p>
     <p class="article-categoy"><%= article.category_article %></p>
 	<% if can? :update, article %>
     	<div class="edit-links">

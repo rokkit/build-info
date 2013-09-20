@@ -243,6 +243,9 @@ h6 {
 	text-align: right;
 	.read-more {
 		color: $orange;
+		&.btn {
+			color: #fff;
+		}
 	}
 }
 //admin
