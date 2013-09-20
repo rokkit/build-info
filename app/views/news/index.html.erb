@@ -1,15 +1,17 @@
 <% content_for :page_title do %>Новости<% end %>
 
 <% @news.each do |news| %>
-  <article>
-    <h2><%= news.name %></h2>
+  <article class="news-<%= news.id %>">
+    <h2><%= link_to news.name, news %></h2>
     <p class="user-date"><%= news.user %></p>
-    <div class="content"><%= truncate news.content, lenght: 200 %></div>
-    <p class="read-more btn"><%= link_to 'Подробнее', news %></p>
+    <div class="post news">
+      <%= simple_format truncate(news.content, lenght: 600) %>
+    </div>
+    <p class="more"><%= link_to 'Подробнее', news, :class => 'read-more btn' %></p>
 		<% if can? :update, news %>
-    		<div class="edit">
-          <p><%= link_to 'Редактировать', edit_news_path(news) %> / 
-      		<%= link_to 'Удалить', news, method: :delete, data: { confirm: 'Вы уверены?' } %></p>
+    		<div class="edit-links">
+          <p><%= link_to 'Редактировать', edit_news_path(news), :class => 'edit btn entypo-pencil' %> | 
+      		<%= link_to 'Удалить', news, :class => 'delete btn entypo-cancel-circled', method: :delete, data: { confirm: 'Вы уверены?' } %></p>
         </div>
 		<% end %>
   </article>

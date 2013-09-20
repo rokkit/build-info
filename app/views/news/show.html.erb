@@ -1,10 +1,8 @@
-<p id="notice"><%= notice %></p>
-
 <h2><%= @news.name %></h2>
 
 <%= simple_format @news.content %>
 
 <% if can? :update, @news %>
-	<%= link_to 'Редактировать', edit_news_path(@news) %>
+	<%= link_to 'Редактировать', edit_news_path(@news), :class => 'edit btn entypo-pencil' %>
 <% end %>
 <%= link_to 'Назад', news_index_path %>
