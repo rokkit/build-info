@@ -15,4 +15,4 @@
   </article>
 <% end %>
 
-<%= link_to "Добавить новость", new_news_path if can? :create,  News %>
+<%= link_to "Добавить новость", new_news_path if current_user.present? and can? :create,  News %>	

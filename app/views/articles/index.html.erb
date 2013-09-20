@@ -20,4 +20,4 @@
 
 <br />
 
-<%= link_to 'Добавить статью', new_article_path %>
+<%= link_to 'Добавить статью', new_article_path if current_user.present? and can? :manage, Article %>
