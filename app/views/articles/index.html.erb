@@ -5,7 +5,7 @@
     <h2><%= link_to article.name, article %></h2>
     <p class="user-date"><%= article.try(:user) %>, <%= article.created_at.to_date %></p>
     <div class="post article">
-      <%= simple_format truncate(article.content, lenght: 600)%>
+      <%= simple_format truncate(article.content, length: 600) %>
     </div>
     <p class="more"><%= link_to 'Подробнее', article, :class => 'read-more btn' %></p>
     <p class="article-categoy"><%= article.category_article %></p>
