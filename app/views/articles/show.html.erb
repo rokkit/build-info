@@ -1,7 +1,7 @@
 <h2><%= @article.name %></h2>
 
 <div class="article-content">
-  <%= simple_format @article.content %>
+  <%=  @article.content.html_safe %>
 </div>
 
 <dl>
