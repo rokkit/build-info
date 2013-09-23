@@ -4,8 +4,14 @@ theme_advanced_statusbar_location: bottom
 theme_advanced_buttons3_add:
   - tablecontrols
   - fullscreen
+  - media
+theme_advanced_buttons1_add : "media"
 plugins:
   - table
   - fullscreen
+  - media
+  - preview
+  - searchreplace
+  - paste
 language: ru
 height: 400
