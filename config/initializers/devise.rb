@@ -36,6 +36,7 @@ Devise.setup do |config|
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
   config.case_insensitive_keys = [ :email ]
+  config.secret_key = '954c3f41b9be01bb792ddbd89f76c339a69157bdf60394e6ae611d78372aff712ef5ff7e42ceb31d63eefe4963118f4b7c2e8c1218d0f0a037e3917d8b38517c'
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or

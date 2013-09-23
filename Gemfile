@@ -88,12 +88,13 @@ gem 'activemerchant', :require => 'active_merchant'
 gem 'rails-gallery'
 gem 'acts_as_votable'
 gem 'whenever'
-gem 'rack-mini-profiler', "~> 0.1.27"
+# gem 'rack-mini-profiler', "~> 0.1.27"
 gem 'ice_cube'
 gem 'prawn-print', :git => 'git://github.com/barsoom/prawn-print.git'
 gem 'exception_notification'
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
+gem 'tinymce-rails-imageupload', git: 'https://github.com/PerfectlyNormal/tinymce-rails-imageupload.git', branch: 'tinymce3'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

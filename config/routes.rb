@@ -1,8 +1,11 @@
 BuildInfo::Application.routes.draw do
 
+  get "tinymce_assets/create"
+
   resources :payments do
     match :pay_for_rating, on: :collection
   end
+  post '/tinymce_assets' => 'tinymce_assets#create'
 
 
   get "crawler/parse"

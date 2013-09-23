@@ -5,7 +5,9 @@ theme_advanced_buttons3_add:
   - tablecontrols
   - fullscreen
   - media
-theme_advanced_buttons1_add : "media"
+theme_advanced_buttons1_add : 
+  - media
+  - uploadimage	
 plugins:
   - table
   - fullscreen
@@ -13,5 +15,6 @@ plugins:
   - preview
   - searchreplace
   - paste
+  - uploadimage
 language: ru
 height: 400
