@@ -61,7 +61,7 @@ namespace :crawle do
               puts p[:src]
               photo.remote_image_url =  "http://emls.ru#{p[:src]}"
               #photo.build_object = build_object
-              build_object.photos << photo
+              build_object.photos << photo if p[:src].present?
               #photo.save!
             end
           
