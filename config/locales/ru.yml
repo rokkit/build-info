@@ -162,6 +162,7 @@ ru:
            content: "Текст статьи"
            published: "Опубликовано"
            category_article: "Категория статьи"
+           avatar: "Изображение"      
        agency:
            description: "Описание"
            address: "Адрес"

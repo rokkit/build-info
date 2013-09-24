@@ -8,6 +8,7 @@ server "37.200.65.209", :app, :web, :db, :primary => true
 
 set :application, "home_info"
 set :deploy_to, "/home/www/#{application}"
+set :keep_releases, 2
 
 default_run_options[:pty] = true 
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names

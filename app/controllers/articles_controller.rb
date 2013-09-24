@@ -9,6 +9,6 @@ class ArticlesController < InheritedResources::Base
       create!
     end
     def index
-      @articles = Article.published
+      @articles = Article.includes([:user, :category_article]).published
     end
 end

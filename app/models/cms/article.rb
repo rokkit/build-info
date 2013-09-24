@@ -2,7 +2,7 @@ class Article < ActiveRecord::Base
   belongs_to :user
   belongs_to :category_article
   attr_accessible :content, :name, :published, :category_article_id,
-                  :user_id, :rating
+                  :user_id, :rating, :avatar
   
   #before_create :make_unpublished
   validates :category_article, :name, :content, presence: true
@@ -12,6 +12,8 @@ class Article < ActiveRecord::Base
   scope :top_news, Article.published.joins(:category_article).where(:category_articles => {name: "Новости"})
   
   before_destroy :lower_user_rating
+  mount_uploader :avatar, AvatarUploader
+  
   
   def to_s
     name

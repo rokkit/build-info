@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130918094056) do
+ActiveRecord::Schema.define(:version => 20130924075219) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "accountable_id"
@@ -144,6 +144,7 @@ ActiveRecord::Schema.define(:version => 20130918094056) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.integer  "rating",              :default => 0,     :null => false
+    t.string   "avatar"
   end
 
   add_index "articles", ["category_article_id"], :name => "index_articles_on_category_article_id"
