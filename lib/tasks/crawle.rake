@@ -69,7 +69,7 @@ namespace :crawle do
             puts "."
             build_object.type_of_build_object = TypeOfBuildObject.where(name: "Квартира (Вторичный рынок)").first_or_create
             build_object.user = User.first
-            puts build_object.save! if build_object.valid? && BuildObject.where(description: build_object.description).empty?
+            puts build_object.save! if !build_object.photos.empty? build_object.valid? && BuildObject.where(description: build_object.description).empty?
           end
     end
   end

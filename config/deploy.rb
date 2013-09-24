@@ -42,6 +42,8 @@ after :deploy do
   run "#{try_sudo} chmod 777 -R #{current_path}/public"
 end
 
+
+
 # namespace :deploy do
 #   namespace :assets do
 #     task :precompile, :roles => :web, :except => { :no_release => true } do
