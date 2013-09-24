@@ -9,6 +9,7 @@ class Article < ActiveRecord::Base
   
   scope :published, where('published IS NOT NULL')
   scope :top, Article.published
+  scope :top_news, Article.published.joins(:category_article).where(:category_articles => {name: "Новости"})
   
   before_destroy :lower_user_rating
   
