@@ -9,6 +9,10 @@ class ArticlesController < InheritedResources::Base
       create!
     end
     def index
-      @articles = Article.includes([:user, :category_article]).published
+      if params[:news].present?
+        @articles = Article.includes([:user, :category_article]).published.all_news        
+      else
+        @articles = Article.includes([:user, :category_article]).published
+      end
     end
 end

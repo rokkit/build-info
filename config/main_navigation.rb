@@ -59,7 +59,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :build_objects, 'Список объектов', main_app.build_objects_path
     primary.item :invest_projects,'Инвестпроекты', main_app.invest_projects_build_objects_path
     primary.item :articles,'Статьи', main_app.articles_path
-    primary.item :news, 'Новости', main_app.news_index_path, class: 'last'
+    primary.item :news, 'Новости', main_app.articles_path(news: true), class: 'last'
     
 
     # Add an item which has a sub navigation (same params, but with block)
