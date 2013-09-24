@@ -42,6 +42,12 @@ after :deploy do
   run "#{try_sudo} chmod 777 -R #{current_path}/public"
 end
 
+task :link_shared_directories do     
+  run "ln -s #{shared_path}/files #{release_path}/public"   
+end    
+
+after "deploy:update_code", :link_shared_directories
+
 
 
 namespace :deploy do

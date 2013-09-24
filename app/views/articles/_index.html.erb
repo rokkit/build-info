@@ -12,7 +12,7 @@
 				<div class="views-field views-field-body">        
 					<div class="field-content">
 						<p>
-						<%= strip_tags truncate(article.content, length: 200) %>
+						<%= sanitize truncate(article.content, length: 200) %>
 						</p>
 					</div>  
 				</div>
