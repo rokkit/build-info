@@ -1,6 +1,7 @@
 <h2><%= @article.name %></h2>
 
 <div class="article-content">
+  <%= image_tag @article.avatar_url(:main).to_s, class: 'article-img' if @article.avatar.present? %>
   <%=  @article.content.html_safe %>
 </div>
 

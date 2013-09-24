@@ -5,7 +5,7 @@
     <h2><%= link_to article.name, article %></h2>
     <p class="user-date"><%= article.try(:user) %>, <%= article.created_at.to_date %></p>
     <div class="post article">
-        <%= image_tag article.avatar_url(:main).to_s if article.avatar.present? %>
+        <%= image_tag article.avatar_url(:main).to_s, class: 'article-img' if article.avatar.present? %>
         <div class="article-content">
             <%= simple_format truncate(article.content, length: 600) %>
         </div>

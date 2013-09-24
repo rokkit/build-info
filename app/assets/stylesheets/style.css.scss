@@ -262,6 +262,17 @@ h6 {
 	}
 }
 
+//=== ARTICLES
+.article-content, .article {
+	.article-img {
+		float: left;
+		margin: 0 15px 15px 0;
+	}
+}
+p.more {
+	clear: both;
+}
+
 // FOOTER
 #footer {
 	.copyright {
