@@ -279,7 +279,7 @@
 </dl>
 
 </div>
-<% if current_user.present? %>
+<% if can? :manage, @build_object %>
 <div class="admin edit-links">
   <%= link_to 'Назад', build_objects_path, :class=> "back" %> | 
   <% if can? :manage, @build_object %>
