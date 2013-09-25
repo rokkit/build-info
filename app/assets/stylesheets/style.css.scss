@@ -160,12 +160,12 @@ h6 {
 		margin-bottom: 1.5em;
 		.block-title {
 			color: $orange;
-			font-size: 1em;
+			font-size: 1.2em;
 			padding: 14px;
 			margin: 0;
 		}
 		.content {
-			padding: 14px;
+			padding: 0 14px 14px;
 		}
 		.menu {
 			@include clear-nav();
@@ -195,6 +195,9 @@ h6 {
 #login-block {
 	.textinput {
 		width: 95%;
+	}
+	h2.block-title {
+		color: #fff;
 	}
 	ul {
 		@include clear-nav();
@@ -226,6 +229,7 @@ h6 {
 	.content {
 		padding-top: 1.5em;
 		background: image-url("content-bg.gif") no-repeat right 90px;
+		text-align: justify;
 	}
 }
 .btn {
@@ -271,6 +275,29 @@ h6 {
 }
 p.more {
 	clear: both;
+}
+// Articles block
+#last-news-block {
+	.views-row {
+		margin-bottom: 1em;
+		.news-date {
+			font-size: 1.3em;
+			font-family: Georgia, serif;
+			margin-bottom: 5px;
+		}
+		.views-field-title {
+			a {
+				color: #000;
+				&:hover {
+					color: #000;
+					text-decoration: underline;
+				}
+				em {
+					color: $orange;
+				}
+			}
+		}
+	}
 }
 
 // FOOTER

@@ -1,23 +1,19 @@
-<h2 class="block-title">Новости >></h2>
-<div class="content">
-	<div class="view">
-		<div class="view-content">
-			<% Article.top_news.last(2).each do |article| %>
-			<div class="view_row">		
-				<div class="views-field views-field-title">        
-					<span class="field-content">
-						<%= link_to "#{article.name}",main_app.article_path(article) %>
-					</span>  
+<div id="last-news-block">
+	<h2 class="block-title">Новости >></h2>
+	<div class="content">
+		<div class="view">
+			<div class="view-content">
+				<% Article.top_news.last(5).each do |article| %>
+				<div class="views-row">
+					<div class="news-date">
+						<%= article.created_at.strftime("%-m/%e") %>
+					</div>
+					<div class="views-field-title">
+						<%= link_to raw("#{article.name} <em>>></em>"), main_app.article_path(article) %>
+					</div>
 				</div>
-				<div class="views-field views-field-body">        
-					<div class="field-content">
-						<p>
-						<%= sanitize truncate(article.content, length: 200) %>
-						</p>
-					</div>  
-				</div>
+				<% end %>
 			</div>
-			<% end %>
 		</div>
 	</div>
 </div>
