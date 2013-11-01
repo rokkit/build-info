@@ -6,7 +6,6 @@
     <div class="post article">
         <%= image_tag article.avatar_url(:main).to_s, class: 'article-img' if article.avatar.present? %>
         <div class="article-content">
-            <!-- <p><%=  truncate(strip_tags(article.content), length: 600) %></p> -->
             <%= sanitize truncate(article.content, length: 600), tags: %w(p) %>
         </div>
     </div>
