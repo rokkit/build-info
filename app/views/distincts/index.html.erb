@@ -1,4 +1,4 @@
-<h1>Listing distincts</h1>
+<% content_for :page_title do %>Список районов<% end %>
 
 <table>
   <tr>
@@ -9,13 +9,13 @@
 
 <% @distincts.each do |distinct| %>
   <tr>
-    <td><%= link_to 'Show', distinct %></td>
-    <td><%= link_to 'Edit', edit_distinct_path(distinct) %></td>
-    <td><%= link_to 'Destroy', distinct, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Посмотреть', distinct %></td>
+    <td><%= link_to 'Редактировать', edit_distinct_path(distinct) %></td>
+    <td><%= link_to 'Удалить', distinct, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Distinct', new_distinct_path %>
+<%= link_to 'Создать район', new_distinct_path %>

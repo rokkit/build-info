@@ -1,4 +1,4 @@
-<h2><%= @article.name %></h2>
+<% content_for :page_title do @article.name end %>
 
 <div class="article-content">
   <%= image_tag @article.avatar_url(:main).to_s, class: 'article-img' if @article.avatar.present? %>

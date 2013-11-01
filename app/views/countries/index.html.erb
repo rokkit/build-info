@@ -1,4 +1,4 @@
-<h1>Listing countries</h1>
+<% content_for :page_title do %>Список стран<% end %>
 
 <table>
   <tr>
@@ -9,13 +9,13 @@
 
 <% @countries.each do |country| %>
   <tr>
-    <td><%= link_to 'Show', country %></td>
-    <td><%= link_to 'Edit', edit_country_path(country) %></td>
-    <td><%= link_to 'Destroy', country, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Посмотреть', country %></td>
+    <td><%= link_to 'Редактировать', edit_country_path(country) %></td>
+    <td><%= link_to 'Удалить', country, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Country', new_country_path %>
+<%= link_to 'Создать страну', new_country_path %>

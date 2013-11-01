@@ -25,10 +25,10 @@
 		<%= image_tag house.photos.first.image_url.to_s %>
 	</td>
     <td>
-		<%= link_to 'Show', house %></td>
+		<%= link_to 'Посмотреть', house %></td>
 	<% if can? :update, house %>
-    	<td><%= link_to 'Edit', edit_house_path(house) %></td>
-    	<td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    	<td><%= link_to 'Редактировать', edit_house_path(house) %></td>
+    	<td><%= link_to 'Удалить', house, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
 	<% end %>
   </tr>
 <% end %>

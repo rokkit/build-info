@@ -6,7 +6,7 @@
     <div class="post article">
         <%= image_tag article.avatar_url(:main).to_s, class: 'article-img' if article.avatar.present? %>
         <div class="article-content">
-            <%= sanitize truncate(article.content, length: 600), tags: %w(p) %>
+            <%= sanitize truncate(article.content, length: 500), tags: %w(p) %>
         </div>
     </div>
     <p class="more">Добавил: <%= article.try(:user) %>, <%= article.created_at.to_date %> <%= article.category_article %> <%= link_to 'Подробнее', article, :class => 'read-more btn' %></p>
