@@ -207,7 +207,6 @@ h6 {
 
 // MAIN CONTENT
 #main-content {
-	padding-bottom: 2em;
 	background-color: #fff;
 	h1.title {
 		background-color: #D3D3D3;
@@ -229,6 +228,7 @@ h6 {
 	}
 	.content {
 		padding-top: 1.5em;
+		padding-bottom: 2em;
 		background: image-url("content-bg.gif") no-repeat right 90px;
 		text-align: justify;
 	}
