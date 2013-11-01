@@ -1,16 +1,24 @@
-<h2>Регистрация</h2>
+<% content_for :page_title do %>Регистрация<% end %>
 
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.select :user_type, [["Собственник (частное лицо)",'common_seller'],['Соискатель','common_buyer'], ['Руководитель агенства','agency_owner']] %>
-    <%= f.input :email,label:"Почта", :required => true, :autofocus => true %>
-    <%= f.input :password,label: "Пароль", :required => true %>
-    <%# f.input :password_confirmation,label:"Подтверждение пароля", :required => true %>
-    <%= f.input :fio, label: "Ф.И.О." %>
-    <%= f.input :phone, label: "Телефон" %>
-    <%= f.input :photo %>
+  <div class="form-inputs row">
+    <div class="large-12 columns">
+      <%= f.select :user_type, [["Собственник (частное лицо)",'common_seller'],['Соискатель','common_buyer'], ['Руководитель агенства','agency_owner']] %>
+    </div>
+    <div class="large-6 columns">
+      <%= f.input :email,label:"Почта", :required => true, :autofocus => true %>
+      <%= f.input :password,label: "Пароль", :required => true %>
+      <%# f.input :password_confirmation,label:"Подтверждение пароля", :required => true %>
+    </div>
+    <div class="large-6 columns">
+      <%= f.input :fio, label: "Ф.И.О." %>
+      <%= f.input :phone, label: "Телефон" %>
+    </div>
+    <div class="large-12 columns">
+      <%= f.input :photo %>
+    </div>
   </div>
 
   <div class="form-actions">
