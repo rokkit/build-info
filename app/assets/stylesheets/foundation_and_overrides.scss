@@ -302,12 +302,12 @@ $fieldset-margin: emCalc(18px) 0;
 
 // Error states for inputs and labels
 
-// $input-error-message-padding: emCalc(6px) emCalc(4px);
-// $input-error-message-top: -($form-spacing) - emCalc(5px);
-// $input-error-message-font-size: emCalc(12px);
-// $input-error-message-font-weight: bold;
-// $input-error-message-font-color: #fff;
-// $input-error-message-font-color-alt: #333;
+$input-error-message-padding: emCalc(6px) emCalc(4px);
+$input-error-message-top: emCalc(1px); //-($form-spacing)
+$input-error-message-font-size: emCalc(12px);
+$input-error-message-font-weight: bold;
+$input-error-message-font-color: #fff;
+$input-error-message-font-color-alt: #333;
 
 // Glowing effect of inputs when focused
 
@@ -850,14 +850,14 @@ $custom-dropdown-list-item-min-height: emCalc(24px);
 
 // Background and border styles
 
-// $panel-bg: darken(#fff, 5%);
+$panel-bg: rgba(218, 218, 218, 0.75);
 // $panel-border-style: solid;
 // $panel-border-size: 1px;
 
 // Control how much we darken things on hover
 
-// $panel-function-factor: 10%;
-// $panel-border-color: darken($panel-bg, $panel-function-factor);
+$panel-function-factor: 10%;
+$panel-border-color: darken(#999, $panel-function-factor);
 
 // Inner padding and bottom margin
 
