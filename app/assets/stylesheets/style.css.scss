@@ -327,6 +327,20 @@ select,
 
 html { overflow-y:scroll; }
 
+input[type="file"] {
+	overflow: hidden;
+	border: 0;
+	width: 94px;
+	height: 34px;
+	display: block;
+	margin-bottom: .5em;
+	&:before {
+		content: "Загрузить";
+		margin: 0 1em 1em 0;
+		@include sassy-button();
+	}
+}
+
 // MEDIA QUERIES
 @media #{$small} {
 	@import "../scss/bigger-screen";
