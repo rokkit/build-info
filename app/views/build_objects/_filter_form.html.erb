@@ -1,21 +1,31 @@
 <% cache "filter_form" do %>
-<%= form_tag build_objects_path(format: :json), method: :get,id:'filter-build-object-form' do |f| -%>
+<%= form_tag build_objects_path(format: :json), method: :get, id:'filter-build-object-form' do |f| -%>
   <div class="row">
-    <div class="large-3 columns filter price">
-        <%= label_tag :price, "Цена от" %>
-        <%= number_field_tag 'filter[min_price]' %>
+    <div class="large-6 columns">
+      <h3>Цена</h3>
+      <div class="row">
+        <div class="large-6 columns filter price">
+            <%= label_tag :price, "от" %>
+            <%= number_field_tag 'filter[min_price]' %>
+        </div>
+        <div class="large-6 columns filter price">
+            <%= label_tag :price, "до" %>
+            <%= number_field_tag 'filter[max_price]' %>
+        </div>
+      </div>
     </div>
-    <div class="large-3 columns filter price">
-        <%= label_tag :price, "Цена до" %>
-        <%= number_field_tag 'filter[max_price]' %>
-    </div>
-    <div class="large-3 columns filter area">
-        <%= label_tag :area, "Площадь от" %>
-        <%= number_field_tag 'filter[min_area]' %>
-    </div>
-    <div class="large-3 columns filter area">
-        <%= label_tag :area, "Площадь до" %>
-        <%= number_field_tag 'filter[max_area]' %>
+    <div class="large-6 columns">
+      <h3>Площадь</h3>
+      <div class="row">
+        <div class="large-6 columns filter area">
+            <%= label_tag :area, "от" %>
+            <%= number_field_tag 'filter[min_area]' %>
+        </div>
+        <div class="large-6 columns filter area">
+            <%= label_tag :area, "до" %>
+            <%= number_field_tag 'filter[max_area]' %>
+        </div>
+      </div>
     </div>
   </div>
 
