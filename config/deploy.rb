@@ -43,7 +43,8 @@ after :deploy do
 end
 
 task :link_shared_directories do     
-  run "ln -s #{shared_path}/files #{release_path}/public"   
+  run "ln -s #{shared_path}/files/ #{release_path}/public"   
+  # run "ln -s /home/www/home_info/shared/files/ public"
 end    
 
 after "deploy:update_code", :link_shared_directories
