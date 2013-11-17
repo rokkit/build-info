@@ -16,6 +16,7 @@ class Review < ActiveRecord::Base
   def accept!
     self.status = 2
     InformMailer.approve_request(self).deliver
+    InformMail.create user: self.user, sms_body: "Ваша заявка на просмотр #{self.date.strftime('%d.%m.%Y %R')} подтверждена"
     save!
   end
 end

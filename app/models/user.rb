@@ -69,12 +69,13 @@ class User < ActiveRecord::Base
   
   
   def send_devise_confirmation_by_sms 
-    client = Twilio::REST::Client.new(APP['twilio']['sid'], APP['twilio']['token'])
-    client.account.sms.messages.create(
-      from: APP['twilio']['from'],
-      to: "+#{self.phone}",
-      body: "Код активации: #{self.confirmation_token}"
-    )
+    # client = Twilio::REST::Client.new(APP['twilio']['sid'], APP['twilio']['token'])
+    # client.account.sms.messages.create(
+    #   from: APP['twilio']['from'],
+    #   to: "+#{self.phone}",
+    #   body: "Код активации: #{self.confirmation_token}"
+    # )
+    InformMail.create user: self, sms_body: "Регистрация на сайте Home.info. Код активации: #{self.confirmation_token}"
   end
   
   def generate_confirmation_token

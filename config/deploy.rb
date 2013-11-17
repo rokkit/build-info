@@ -14,7 +14,7 @@ default_run_options[:pty] = true
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 set :repository, "https://github.com/rokkit/build-info.git"
 set :branch, "master"
-set :deploy_via, :checkout
+set :deploy_via, :remote_cache
 
 
 # if you want to clean up old releases on each deploy uncomment this:

@@ -27,7 +27,7 @@ group :assets do
 end
 group :development do
   gem 'sqlite3'
-  gem "capistrano"
+  gem "capistrano", '~> 2.15'
   gem 'zeus'
   gem 'thin'
   gem "bullet"

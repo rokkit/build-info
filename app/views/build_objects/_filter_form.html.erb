@@ -82,10 +82,12 @@
                 <%= label_tag :stair_id, "Лестница" %>
                 <%= collection_select :filter, :stair_id, Stair.all, :id, :name, include_blank: true %>
             </div>
-            <div class="large-6 columns large-uncentered filter">
-                <%= label_tag :basement_id, "Подвал" %>
-                <%= collection_select :filter, :basement_id, Basement.all, :id, :name, include_blank: true %>
-            </div> 
+            <% if Basement.count>0 %>
+                <div class="large-6 columns large-uncentered filter">
+                    <%= label_tag :basement_id, "Подвал" %>
+                    <%= collection_select :filter, :basement_id, Basement.all, :id, :name, include_blank: true %>
+                </div> 
+            <% end %>
         </div>
     </div>
   </div>
