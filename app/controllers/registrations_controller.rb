@@ -7,9 +7,9 @@ class RegistrationsController < Devise::RegistrationsController
     def create
       # add custom create logic here
       super
-      self.resource
-      self.resource.roles << Role.where(name: params[:user][:user_type]).first_or_create
-      self.resource.save!
+      # self.resource
+      # self.resource.roles << Role.where(name: params[:user][:user_type]).first_or_create
+      # self.resource.save!
     end
 
     def update
