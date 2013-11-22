@@ -9,7 +9,8 @@
             <%= sanitize truncate(article.content, length: 500), tags: %w(p) %>
         </div>
     </div>
-    <p class="more">Добавил: <%= article.try(:user) %>, <%= article.created_at.to_date %> <%= article.category_article %> <%= link_to 'Подробнее', article, :class => 'read-more btn' %></p>
+    <p class="more">Добавил: <%= article.try(:user) %>, <%= article.created_at.to_date %> <%= article.category_article %>
+        <%= link_to 'Подробнее', article, :class => 'read-more btn' %></p>
     <p class="user-date"></p>
     
 	<% if can? :update, article %>
